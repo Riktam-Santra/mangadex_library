@@ -1,9 +1,9 @@
-import 'package:mangadex_library/chapter/Chapter.dart';
+import 'package:mangadex_library/chapter/ChapterData.dart';
 import 'mangadex_library.dart';
 
-class jsonSearch {
+class JsonSearch {
   List<String> getChapterFilenames(
-      String chapterID, Chapter chapters, bool isDataSaverMode) {
+      String chapterID, ChapterData chapters, bool isDataSaverMode) {
     for (var i = 0; i < chapters.result.length; i++) {
       if (chapters.result[i].data.id == chapterID) {
         if (isDataSaverMode == false) {
@@ -13,9 +13,19 @@ class jsonSearch {
         }
       } else {
         print('Chapter by ID $chapterID not found');
-        return <String>[];
       }
     }
     return <String>[];
+  }
+
+  Result getChapterDataByChapterId(String chapterId, ChapterData chapters) {
+    for (var i = 0; i < chapters.result.length; i++) {
+      if (chapters.result[i].data.id == chapterId) {
+        return chapters.result[i];
+      } else {
+        print('Chapter data using ID $chapterId not found');
+      }
+    }
+    return chapters.result[0];
   }
 }

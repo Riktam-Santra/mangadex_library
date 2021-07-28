@@ -1,19 +1,88 @@
-A library for Dart developers.
+A dart library to facilitate easier access to the mangadex API (https://api.mangadex.org)
 
-## Usage
+## WARNING In progress library
 
-A simple usage example:
+THe library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:
+ - Get login refrest and session tokens
+ - Search for Mangas
+ - Get Manga thumbnails/covers
+ - Retieve Manga pages
 
-```dart
-import 'package:mangadex_library/mangadex_library.dart';
+The library DOESN'T support ratelimiting, this will be added in the future.
 
-main() {
-  var awesome = new Awesome();
+## Quickstart
+
+A quick demonstration of the API:
+
+```
+import 'package:mangadex_library/mangadex_library.dart' as lib;
+import 'package:mangadex_library/jsonSearchCommands.dart';
+
+import 'dart:convert';
+
+import 'package:mangadex_library/mangadex_library.dart' as lib;
+import 'package:mangadex_library/jsonSearchCommands.dart';
+
+void main() {
+  printFilenames();
 }
+
+void printFilenames() async {
+  // this function, needs a manga dex account username and password supplied
+  // to retrive login token
+  var username = 'USERNAME'; // Put your username here
+  var password = 'PASSWORD'; // Put your password here
+
+  //The line below uses the login function and takes in
+  //two String parameters, username and password and returns
+  //an instance of the Login class
+  var loginData = await lib.login(username, password);
+  var token = loginData.token
+      .session; // this sets the token variable to store the session token obtained using
+  //the login function, it is a String value.
+  // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
+
+  var searchData = await lib.search(
+      'oregairu'); //This is a search function that queries mangadex for the name of a manga
+  // it returns a Search class instance
+  // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
+
+  var mangaID = searchData.results[0].data
+      .id; // this line gets the manga ID from the instance of the Search we just obtained
+  //for demonstration we are talking the manga ID of only the first search result
+  //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
+  //For example, chapter pages and thimbnails
+
+  var chapterData = await lib.getChapters(
+      mangaID); //This function returns an instance of the ChapterData class,
+  // it contains info on all the chapters of the manga ID it has been provided.
+
+  var chapterID = chapterData.result[0].data
+      .id; // This line sets the chapterID variable to the chapter id of
+  // the first chapter from the chapterData we just got.
+  //Every chapter has a usique chapter ID and a chapter Hash
+  //Chapter ID is required to access info of the desired chapter.
+  var chapterHash = chapterData.result[0].data.attributes
+      .hash; // this variable stores the chapter hash of a chapter
+  //Chapter Has is required for requesting manga pages.
+
+  var baseUrl = await lib.getBaseUrl(
+      chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
+  //For now, there is only one base URL (https://uploads.mangadex.org)
+  //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
+  jsonSearch jsonSearchInstance = new jsonSearch();
+  var filenames =
+      jsonSearchInstance.getChapterFilenames(chapterID, chapterData, false);
+
+  // the filenames variable stores the name of all files in a manga chapter
+  // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
+  for (var i = 0; i < filenames.length; i++) {
+    print(lib.ConstructUrl(chapterID, token, chapterHash, filenames[i], false));
+  }
+  // this for loop prints the url to all the pages in the provided chapters.
+}
+
 ```
 
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+## Documentation
+The documentation is still to be created, sadly there were issues with DartDoc and therefore it has been delayed.

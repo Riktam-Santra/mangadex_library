@@ -17,7 +17,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'search/Search.dart';
-import 'chapter/Chapter.dart';
+import 'chapter/ChapterData.dart';
 import 'login/Login.dart';
 
 final String authority = 'api.mangadex.org';
@@ -89,10 +89,9 @@ Future<http.Response> getChaptersResponse(String mangaId) async {
   return response;
 }
 
-Future<Chapter> getChapters(String mangaId) async {
+Future<ChapterData> getChapters(String mangaId) async {
   var response = await getChaptersResponse(mangaId);
-
-  var chapterData = Chapter.fromJson(jsonDecode(response.body));
+  var chapterData = ChapterData.fromJson(jsonDecode(response.body));
   return chapterData;
 }
 
@@ -101,4 +100,32 @@ Future<http.Response> getServer(String chapterId) async {
   var response = await http.get(Uri.https(authority, unencodedPath),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
+}
+
+Future<BaseUrl> getBaseUrl(String chapterId) async {
+  var response = await getServer(chapterId);
+  return BaseUrl.fromJson(jsonDecode(response.body));
+}
+
+Future<String> ConstructUrl(String chapterId, String token, String chapterHash,
+    String filename, bool dataSaver) async {
+  var baseUrl = await getBaseUrl(chapterId);
+  var dataMode = dataSaver ? 'data-saver' : 'data';
+  return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
+}
+
+String ConstructThumbUrl(String mangaId, String coverFilename, {int? Size}) {
+  if (Size != null) {
+    return 'https://uploads.mangadex.org/covers/$mangaId/$coverFilename.$Size.png';
+  } else {
+    return 'https://uploads.mangadex.org/covers/$mangaId/$coverFilename';
+  }
+}
+
+class BaseUrl {
+  late final String baseUrl;
+  BaseUrl(this.baseUrl);
+  BaseUrl.fromJson(Map<String, dynamic> json) {
+    baseUrl = json['baseUrl'];
+  }
 }

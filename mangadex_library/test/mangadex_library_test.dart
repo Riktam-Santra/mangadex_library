@@ -1,4 +1,5 @@
 import 'package:mangadex_library/mangadex_library.dart';
+import 'package:mangadex_library/jsonSearchCommands.dart';
 
 void main() async {
   // The code below is to demonstrate the search() function,
@@ -21,7 +22,7 @@ void main() async {
   //and your mangadex username and password
   //the username and password are required to generated tokens.
 
-  var id = 'PUT_A_MANGAID_HERE'; // Put the manga id here.
+  var id = 'MANGA_ID'; // Put the manga id here.
   var chapters = await getChapters(id);
   var chapId = chapters.result[0].data.id;
   print('Chapter ID: ' + chapId);
@@ -34,4 +35,10 @@ void main() async {
   var baseUrl = 'https://uploads.mangadex.org';
   print('Token: ' + token);
   print('Url: $baseUrl/$token/data/$chapHash/$filename');
+  // the code below prints the file names of the 1st chapter
+  var a = JsonSearch();
+  var b = a.getChapterFilenames('$chapId', chapters, false);
+  for (var i = 0; i < b.length; i++) {
+    print(b[i]);
+  }
 }
