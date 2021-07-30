@@ -16,6 +16,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
+import 'cover/Cover.dart';
 import 'search/Search.dart';
 import 'chapter/ChapterData.dart';
 import 'login/Login.dart';
@@ -114,12 +115,18 @@ Future<String> ConstructUrl(String chapterId, String token, String chapterHash,
   return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
 }
 
-String ConstructThumbUrl(String mangaId, String coverFilename, {int? Size}) {
-  if (Size != null) {
-    return 'https://uploads.mangadex.org/covers/$mangaId/$coverFilename.$Size.png';
-  } else {
-    return 'https://uploads.mangadex.org/covers/$mangaId/$coverFilename';
-  }
+Future<http.Response> getCoverArtResponse(List<String> mangaID) async {
+  var queryParameters = {'limit': '10', 'manga': '$mangaID'};
+  var unencodedPath = '/cover';
+  var response = await http.get(
+      Uri.https(authority, unencodedPath, queryParameters),
+      headers: {HttpHeaders.contentTypeHeader: 'application/json'});
+  return response;
+}
+
+Future<Cover> getCoverArt(List<String> mangaID) async {
+  var response = await getCoverArtResponse(mangaID);
+  return Cover.fromJson(jsonDecode(response.body));
 }
 
 class BaseUrl {

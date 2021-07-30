@@ -19,3 +19,6 @@
 ## 1.0.6
  - changed class name jsonSearch to JsonSearch in jsonSearchCommands.dart
  - added a Quickstart in README.md until proper documentation is created.
+
+## 1.0.7
+ - added getCoverArt function to retrieve coverArt details.
