@@ -108,8 +108,8 @@ Future<BaseUrl> getBaseUrl(String chapterId) async {
   return BaseUrl.fromJson(jsonDecode(response.body));
 }
 
-Future<String> ConstructUrl(String chapterId, String token, String chapterHash,
-    String filename, bool dataSaver) async {
+Future<String> ConstructThumbUrl(String chapterId, String token,
+    String chapterHash, String filename, bool dataSaver) async {
   var baseUrl = await getBaseUrl(chapterId);
   var dataMode = dataSaver ? 'data-saver' : 'data';
   return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
