@@ -10,8 +10,6 @@ class Cover {
       json['results'].forEach((v) {
         results.add(Result.fromJson(v));
       });
-    } else {
-      print(json['results']);
     }
     limit = json['limit'] ?? 0;
     offset = json['offset'] ?? 0;
