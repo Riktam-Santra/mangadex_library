@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////
-// The library currently only supports search, login, getting toke,
+// The library currently only supports search, login, getting token,
 // getting chapters data using the manga ID, and finally using the
 // login token to get base url used to retireve pages.
 // To see an example of retrieving pages, have a look at the
@@ -74,7 +74,7 @@ Future<http.Response> getChaptersResponse(String mangaId) async {
     //'title': '',
     //'groups': [],
     //'uploader': null,
-    'manga': '0296dc0b-7635-4154-927a-33c2244c4503',
+    'manga': '$mangaId',
     //'volume': [],
     //'chapter': [],
     //'translatedLanguage': [],
@@ -108,25 +108,37 @@ Future<BaseUrl> getBaseUrl(String chapterId) async {
   return BaseUrl.fromJson(jsonDecode(response.body));
 }
 
-Future<String> ConstructThumbUrl(String chapterId, String token,
+Future<String> ConstructPageUrl(String chapterId, String token,
     String chapterHash, String filename, bool dataSaver) async {
   var baseUrl = await getBaseUrl(chapterId);
   var dataMode = dataSaver ? 'data-saver' : 'data';
   return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
 }
 
-Future<http.Response> getCoverArtResponse(List<String> mangaID) async {
-  var queryParameters = {'limit': '10', 'manga': '$mangaID'};
-  var unencodedPath = '/cover';
-  var response = await http.get(
-      Uri.https(authority, unencodedPath, queryParameters),
+Future<http.Response> getCoverArtResponse([
+  String? mangaID,
+  String? coverID,
+  int limit = 10,
+  int offset = 0,
+]) async {
+  final mangas = mangaID != null ? '&manga[]=$mangaID' : '';
+  final covers = coverID != null ? '&cover[]=$coverID' : '';
+  final uri =
+      'https://$authority/cover?limit=$limit&offset=$offset$mangas$covers';
+  var response = await http.get(Uri.parse(uri),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
 }
 
-Future<Cover> getCoverArt(List<String> mangaID) async {
+Future<Cover> getCoverArt(String mangaID) async {
   var response = await getCoverArtResponse(mangaID);
   return Cover.fromJson(jsonDecode(response.body));
+}
+
+Future<String> getCoverArtUrl(String mangaID) async {
+  var data = await getCoverArt(mangaID);
+  var filename = data.results[0].data.attributes.fileName;
+  return 'https://uploads.mangadex.org/covers/$mangaID/$filename';
 }
 
 class BaseUrl {

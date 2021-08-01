@@ -1,6 +1,9 @@
 ## 1.0.0
 
-- First release
+ - First release
+
+## 1.0.1
+ - Minor fixes.
 
 ## 1.0.2
 
@@ -14,11 +17,14 @@
  - Chapter class name changed to ChapterData.
 
 ## 1.0.5
- - added ConstructThumbUrl function, it returns the uri to a thumbnail in the form of a String, it requires manga ID and cover filename.
+ - Added ConstructThumbUrl function, it returns the uri to a thumbnail in the form of a String, it requires manga ID and cover filename.
 
 ## 1.0.6
- - changed class name jsonSearch to JsonSearch in jsonSearchCommands.dart
- - added a Quickstart in README.md until proper documentation is created.
+ - Changed class name jsonSearch to JsonSearch in jsonSearchCommands.dart
+ - Cdded a Quickstart in README.md until proper documentation is created.
 
 ## 1.0.7
- - added getCoverArt function to retrieve coverArt details.
+ - Cdded getCoverArt function to retrieve cover art details.
+
+## 1.0.8
+ - Fixed issues while retireving cover art.

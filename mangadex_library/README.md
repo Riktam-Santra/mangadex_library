@@ -2,8 +2,8 @@ A dart library to facilitate easier access to the mangadex API (https://api.mang
 
 ## WARNING In progress library
 
-THe library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:
- - Get login refrest and session tokens
+The library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:
+ - Get login refresh and session tokens
  - Search for Mangas
  - Get Manga thumbnails/covers
  - Retieve Manga pages

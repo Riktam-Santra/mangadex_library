@@ -10,6 +10,8 @@ class Cover {
       json['results'].forEach((v) {
         results.add(Result.fromJson(v));
       });
+    } else {
+      print(json['results']);
     }
     limit = json['limit'] ?? 0;
     offset = json['offset'] ?? 0;
@@ -44,25 +46,28 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
+    if (json['attributes'] != null) {
+      attributes = Attributes.fromJson(json['attributes']);
+    }
   }
 }
 
 class Attributes {
   late String volume;
-  late String filename;
+  late String fileName;
   late String description;
   late int version;
   late String createdAt;
   late String updatedAt;
-  Attributes(this.volume, this.filename, this.description, this.version,
+  Attributes(this.volume, this.fileName, this.description, this.version,
       this.createdAt, this.updatedAt);
   Attributes.fromJson(Map<String, dynamic> json) {
-    volume = json['volume'] ?? '';
-    filename = json['filename'] ?? '';
-    description = json['description'] ?? '';
-    version = json['version'] ?? '';
-    createdAt = json['createdAt'] ?? '';
-    updatedAt = json['updatedAt'] ?? '';
+    volume = json['volume'] ?? 'null';
+    fileName = json['fileName'] ?? 'null';
+    description = json['description'] ?? 'null';
+    version = json['version'] ?? 'null';
+    createdAt = json['createdAt'] ?? 'null';
+    updatedAt = json['updatedAt'] ?? 'null';
   }
 }
 
