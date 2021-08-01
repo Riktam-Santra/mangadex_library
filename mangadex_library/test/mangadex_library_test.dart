@@ -22,7 +22,7 @@ void main() async {
   // and your mangadex username and password
   // the username and password are required to generated tokens.
 
-  var id = 'c6bbbeca-f4fd-4595-9d4d-4ba31370d08c'; // Put the manga id here.
+  var id = 'MANGA_ID'; // Put the manga id here.
   var chapters = await getChapters(id);
   var chapId = chapters.result[0].data.id;
   print('Chapter ID: ' + chapId);
@@ -30,7 +30,7 @@ void main() async {
   print('Chapter Hash: ' + chapHash);
   var filename = chapters.result[0].data.attributes.chapterData[0];
   var response = await login(
-      'riksantra', 'Sikkim123.'); // Put your username and password here.
+      'USERNAME', 'PASSWORD.'); // Put your username and password here.
   var token = response.token.session;
   var baseUrl = 'https://uploads.mangadex.org';
   print('Token: ' + token);
@@ -41,5 +41,4 @@ void main() async {
   for (var i = 0; i < b.length; i++) {
     print(b[i]);
   }
-  var cvart = await getCoverArt('c6bbbeca-f4fd-4595-9d4d-4ba31370d08c');
 }
