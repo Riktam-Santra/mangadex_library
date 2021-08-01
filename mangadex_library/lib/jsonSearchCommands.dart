@@ -1,5 +1,4 @@
 import 'package:mangadex_library/chapter/ChapterData.dart';
-import 'mangadex_library.dart';
 
 class JsonSearch {
   List<String> getChapterFilenames(

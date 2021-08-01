@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:mangadex_library/mangadex_library.dart';
-import 'package:test/test.dart';
 import 'dart:io';
 
 void main() async {
