@@ -135,10 +135,15 @@ Future<Cover> getCoverArt(String mangaID) async {
   return Cover.fromJson(jsonDecode(response.body));
 }
 
-Future<String> getCoverArtUrl(String mangaID) async {
+Future<String> getCoverArtUrl(String mangaID, String? res) async {
+  var reso = res ?? '';
   var data = await getCoverArt(mangaID);
   var filename = data.results[0].data.attributes.fileName;
-  return 'https://uploads.mangadex.org/covers/$mangaID/$filename';
+  if (reso == '256' || reso == '512') {
+    return 'https://uploads.mangadex.org/covers/$mangaID/$filename.$reso.jpg';
+  } else {
+    return 'https://uploads.mangadex.org/covers/$mangaID/$filename';
+  }
 }
 
 class BaseUrl {
