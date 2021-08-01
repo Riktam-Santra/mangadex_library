@@ -28,3 +28,6 @@
 
 ## 1.0.8
  - Fixed issues while retireving cover art.
+
+## 1.0.9
+ - Added resolution options to getCoverArtUrl. Can me '256', '512' or null
