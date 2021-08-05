@@ -33,6 +33,12 @@ Future<http.Response> loginResponse(String username, String password) async {
 
 Future<Login> login(String username, String password) async {
   var response = await loginResponse(username, password);
+  var headers = response.headers;
+  if (headers['x-ratelimit-remaining'] == '0') {
+    print('Rate Limit Exceeded.');
+  } else {
+    return Login.fromJson(jsonDecode(response.body));
+  }
   return Login.fromJson(jsonDecode(response.body));
 }
 
@@ -61,8 +67,13 @@ Future<http.Response> searchResponse(String query) async {
 
 Future<Search> search(String query) async {
   var response = await searchResponse(query);
-  var search = Search.fromJson(jsonDecode(response.body));
-  return search;
+  var headers = response.headers;
+  if (headers['x-ratelimit-remaining'] == '0') {
+    print('Rate Limit Exceeded.');
+  } else {
+    return Search.fromJson(jsonDecode(response.body));
+  }
+  return Search.fromJson(jsonDecode(response.body));
 }
 
 Future<http.Response> getChaptersResponse(String mangaId) async {
@@ -92,11 +103,16 @@ Future<http.Response> getChaptersResponse(String mangaId) async {
 
 Future<ChapterData> getChapters(String mangaId) async {
   var response = await getChaptersResponse(mangaId);
-  var chapterData = ChapterData.fromJson(jsonDecode(response.body));
-  return chapterData;
+  var headers = response.headers;
+  if (headers['x-ratelimit-remaining'] == '0') {
+    print('Rate Limit Exceeded.');
+  } else {
+    return ChapterData.fromJson(jsonDecode(response.body));
+  }
+  return ChapterData.fromJson(jsonDecode(response.body));
 }
 
-Future<http.Response> getServer(String chapterId) async {
+Future<http.Response> getBaseUrlResponse(String chapterId) async {
   var unencodedPath = '/at-home/server/$chapterId';
   var response = await http.get(Uri.https(authority, unencodedPath),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
@@ -104,7 +120,13 @@ Future<http.Response> getServer(String chapterId) async {
 }
 
 Future<BaseUrl> getBaseUrl(String chapterId) async {
-  var response = await getServer(chapterId);
+  var response = await getBaseUrlResponse(chapterId);
+  var headers = response.headers;
+  if (headers['x-ratelimit-remaining'] == '0') {
+    print('Rate Limit Exceeded.');
+  } else {
+    return BaseUrl.fromJson(jsonDecode(response.body));
+  }
   return BaseUrl.fromJson(jsonDecode(response.body));
 }
 
@@ -132,6 +154,12 @@ Future<http.Response> getCoverArtResponse([
 
 Future<Cover> getCoverArt(String mangaID) async {
   var response = await getCoverArtResponse(mangaID);
+  var headers = response.headers;
+  if (headers['x-ratelimit-remaining'] == '0') {
+    print('Rate Limit Exceeded.');
+  } else {
+    return Cover.fromJson(jsonDecode(response.body));
+  }
   return Cover.fromJson(jsonDecode(response.body));
 }
 
