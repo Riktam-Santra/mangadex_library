@@ -31,3 +31,6 @@
 
 ## 1.0.9
  - Added resolution options to getCoverArtUrl. Can me '256', '512' or null
+
+## 1.1.0
+ - Now prints 'Rate limit exceeded' if the rate limit is exceeded by the requests.
