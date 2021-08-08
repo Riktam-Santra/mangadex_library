@@ -1,4 +1,4 @@
-A dart library to facilitate easier access to the mangadex API (https://api.mangadex.org)
+A dart library to facilitate easier access to the [mangadex API](https://api.mangadex.org)
 
 ## WARNING In progress library
 
@@ -7,8 +7,6 @@ The library is currently in an 'under development' state and therefore doesn't c
  - Search for Mangas
  - Get Manga thumbnails/covers
  - Retieve Manga pages
-
-The library DOESN'T support ratelimiting, this will be added in the future.
 
 ## Quickstart
 
@@ -85,4 +83,4 @@ void printFilenames() async {
 ```
 
 ## Documentation
-The documentation is still to be created, sadly there were issues with DartDoc and therefore it has been delayed.
+The documentation is still to be created, for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc) can be found in the doc/api/ folder.
