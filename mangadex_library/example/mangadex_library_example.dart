@@ -6,7 +6,7 @@ void main() async {
   var query = stdin.readLineSync();
   var searchData = await search(query ?? '');
   print('Title of all manga found: \n');
-  for (var i = 0; i < searchData.results.length; i++) {
+  for (var i = 0; i < searchData!.results.length; i++) {
     print(searchData.results[i].data.attributes.title.en);
   }
 }

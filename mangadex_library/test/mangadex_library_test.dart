@@ -9,11 +9,15 @@ void main() async {
   var query = 'SEARCH_QUERY'; // Put your search query here.
   var searchData = await search(query);
   print('Title and ID of all manga found: \n');
-  for (var i = 0; i < searchData.results.length; i++) {
-    //This for loop prints the Title and ID
-    //of all the manga returned by the search() function.
-    print('Title: ' + searchData.results[i].data.attributes.title.en);
-    print('Manga ID: ' + searchData.results[i].data.id);
+  if (searchData != null) {
+    for (var i = 0; i < searchData.results.length; i++) {
+      //This for loop prints the Title and ID
+      //of all the manga returned by the search() function.
+      print('Title: ' + searchData.results[i].data.attributes.title.en);
+      print('Manga ID: ' + searchData.results[i].data.id);
+    }
+  } else {
+    print('Manga not found >:C');
   }
 
   // The code below prints out the url to the first page of the first chapter of a manga
@@ -24,7 +28,7 @@ void main() async {
 
   var id = 'MANGA_ID'; // Put the manga id here.
   var chapters = await getChapters(id);
-  var chapId = chapters.result[0].data.id;
+  var chapId = chapters!.result[0].data.id;
   print('Chapter ID: ' + chapId);
   var chapHash = chapters.result[0].data.attributes.hash;
   print('Chapter Hash: ' + chapHash);
