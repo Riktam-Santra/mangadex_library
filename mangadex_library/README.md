@@ -1,4 +1,4 @@
-A dart library to facilitate easier access to the [mangadex API](https://api.mangadex.org)
+A [dart library](https://pub.dev/packages/mangadex_library) to facilitate easier access to the [mangadex API](https://api.mangadex.org)
 
 ## WARNING In progress library
 
