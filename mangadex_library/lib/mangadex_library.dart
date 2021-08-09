@@ -218,19 +218,15 @@ Future<Cover?> getCoverArt(String mangaID) async {
   }
 }
 
-Future<String?> getCoverArtUrl(String mangaID, int? res) async {
+Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
   var reso = res ?? '';
   var data = await getCoverArt(mangaID);
-  if (data != null) {
-    var filename = data.results[0].data.attributes.fileName;
-    if (reso == 256 || reso == 512) {
-      return 'https://uploads.mangadex.org/covers/$mangaID/$filename.$reso.jpg';
-    } else {
-      return 'https://uploads.mangadex.org/covers/$mangaID/$filename';
-    }
+
+  var filename = data!.results[0].data.attributes.fileName;
+  if (reso == 256 || reso == 512) {
+    return 'https://uploads.mangadex.org/covers/$mangaID/$filename.$reso.jpg';
   } else {
-    print(
-        'No cover art for manga ID $mangaID found, make sure the manga ID is correct and manga ID is not an empty String.');
+    return 'https://uploads.mangadex.org/covers/$mangaID/$filename';
   }
 }
 

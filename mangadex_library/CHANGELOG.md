@@ -49,3 +49,6 @@
 
 ## 1.1.5
  - Minor fixes
+
+## 1.1.6
+ - getCoverArtUrl() no longer returns a nullable String.

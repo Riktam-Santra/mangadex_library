@@ -17,7 +17,7 @@ void main() async {
       print('Manga ID: ' + searchData.results[i].data.id);
     }
   } else {
-    print('Manga not found >:C');
+    print('Manga not found :(');
   }
 
   // The code below prints out the url to the first page of the first chapter of a manga
