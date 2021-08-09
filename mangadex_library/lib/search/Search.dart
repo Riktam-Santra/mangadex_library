@@ -28,7 +28,7 @@ class Results {
     relationships = <Relationships>[];
     if (json['relationships'] != null) {
       json['relationships'].forEach((v) {
-        relationships.add(Relationships.formJson(v));
+        relationships.add(Relationships.fromJson(v));
       });
     }
   }
@@ -38,7 +38,7 @@ class Relationships {
   late final String id;
   late final String type;
   Relationships(this.id, this.type);
-  Relationships.formJson(Map<String, dynamic> json) {
+  Relationships.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
   }
