@@ -167,25 +167,19 @@ class Tags {
 
 class TagAttributes {
   late final Name name;
-  late final List<Description> description;
+  //late final Description description;
   late final String group;
   late final int version;
-  TagAttributes(this.name, this.description, this.group, this.version);
+  TagAttributes(this.name, /*this.description,*/ this.group, this.version);
   TagAttributes.fromJson(Map<String, dynamic> json) {
     if (json['name'] != null) {
       name = Name.fromJson(json['name']);
     }
-    description = <Description>[];
-    if (json['description'] != null) {
-      json['description'].forEach((v) {
-        description.add(Description.fromJson(v));
-      });
-      if (description.isEmpty) {
-        print(
-            'Tag description is empty. Please be careful, if you aren\'t dealing with the description of the tags involved, this shouldn\'t be a matter of concern.');
-      }
-    }
+    // if (json['description'] != null) {
+    //   description = Description.fromJson(json['description']);
+    // }
     group = json['group'] ?? '';
+    version = json[version] ?? 1;
   }
 }
 
