@@ -179,7 +179,7 @@ class TagAttributes {
     //   description = Description.fromJson(json['description']);
     // }
     group = json['group'] ?? '';
-    version = json[version] ?? 1;
+    version = json['version'] ?? 1;
   }
 }
 

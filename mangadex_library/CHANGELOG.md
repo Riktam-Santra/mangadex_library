@@ -46,3 +46,6 @@
 
 ## 1.1.4
  - Disabled description class for TagAttributes because of an error, shouldn't be a concern as long as the description of a tag isn't required (note: the description here isn't the manga description.)
+
+## 1.1.5
+ - Minor fixes
