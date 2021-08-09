@@ -30,9 +30,9 @@
  - Fixed issues while retireving cover art.
 
 ## 1.0.9
- - Added resolution options to getCoverArtUrl. Can me '256', '512' or null
+ - Added resolution options to getCoverArtUrl. Can be '256', '512' or null
 
 ## 1.1.0
  - Now prints 'Rate limit exceeded' if the rate limit is exceeded by the requests.
 ## 1.1.1
- - All the functions that are to return a value are now nullable, that is if the resulsts are empty (for example you search for a manga and no manga is found) the function will return null and print the results were not found.
+ - All the functions that are to return a value are now nullable, that is if the results are empty (for example you search for a manga and no manga is found) the function will return null and print the results were not found.
