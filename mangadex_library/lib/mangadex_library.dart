@@ -56,7 +56,7 @@ Future<http.Response> searchResponse(String query,
     String? originalLanguage,
     String? authors}) async {
   var unencodedPath = '/manga';
-  var Title = '$query';
+  var Title = '&title=$query';
   var IncludedTagsMode = includedTagsMode != null
       ? '&includedTagsMode=$includedTagsMode'
       : '&includedTagsMode=AND';
