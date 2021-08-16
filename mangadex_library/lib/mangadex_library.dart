@@ -28,10 +28,11 @@ Future<http.Response> loginResponse(String username, String password) async {
   var response = await http.post(Uri.https(authority, unencodedPath),
       headers: {'content-type': 'application/json'},
       body: jsonEncode({'username': '$username', 'password': '$password'}));
+
   return response;
 }
 
-Future<Login> login(String username, String password) async {
+Future<Login?> login(String username, String password) async {
   var response = await loginResponse(username, password);
   var headers = response.headers;
   if (headers['x-ratelimit-remaining'] == '0') {
@@ -39,7 +40,6 @@ Future<Login> login(String username, String password) async {
   } else {
     return Login.fromJson(jsonDecode(response.body));
   }
-  return Login.fromJson(jsonDecode(response.body));
 }
 
 Future<http.Response> searchResponse(String query,

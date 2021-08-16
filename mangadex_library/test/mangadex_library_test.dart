@@ -35,14 +35,16 @@ void main() async {
   var filename = chapters.result[0].data.attributes.chapterData[0];
   var response = await login(
       'USERNAME', 'PASSWORD.'); // Put your username and password here.
-  var token = response.token.session;
-  var baseUrl = 'https://uploads.mangadex.org';
-  print('Token: ' + token);
-  print('Url: $baseUrl/$token/data/$chapHash/$filename');
-  // the code below prints the file names of the 1st chapter
-  var a = JsonSearch();
-  var b = a.getChapterFilenames('$chapId', chapters, false);
-  for (var i = 0; i < b.length; i++) {
-    print(b[i]);
+  if (response != null) {
+    var token = response.token.session;
+    var baseUrl = 'https://uploads.mangadex.org';
+    print('Token: ' + token);
+    print('Url: $baseUrl/$token/data/$chapHash/$filename');
+    // the code below prints the file names of the 1st chapter
+    var a = JsonSearch();
+    var b = await a.getChapterFilenames('$chapId', false);
+    for (var i = 0; i < b.length; i++) {
+      print(b[i]);
+    }
   }
 }

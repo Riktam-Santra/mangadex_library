@@ -62,7 +62,7 @@ void printFilenames() async {
   //Chapter ID is required to access info of the desired chapter.
   var chapterHash = chapterData.result[0].data.attributes
       .hash; // this variable stores the chapter hash of a chapter
-  //Chapter Has is required for requesting manga pages.
+  //Chapter Hash is required for requesting manga pages.
 
   var baseUrl = await lib.getBaseUrl(
       chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
@@ -70,7 +70,7 @@ void printFilenames() async {
   //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
   jsonSearch jsonSearchInstance = new jsonSearch();
   var filenames =
-      jsonSearchInstance.getChapterFilenames(chapterID, chapterData, false);
+      jsonSearchInstance.getChapterFilenames(chapterID, false);
 
   // the filenames variable stores the name of all files in a manga chapter
   // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
