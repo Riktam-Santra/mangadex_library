@@ -4,8 +4,10 @@ class Login {
   Login(this.result, this.token);
   Login.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    if (result != null) {
+    if (result == 'ok') {
       token = Token.fromJson(json['token']);
+    } else {
+      print(result);
     }
   }
 }

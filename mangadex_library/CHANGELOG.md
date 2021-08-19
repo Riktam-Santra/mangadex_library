@@ -55,3 +55,6 @@
 
 ## 1.1.7
  -  getChapterDataByChapterId() and  getMangaDataByMangaId() both shifted to jsonSearchCommands. None of them require a Chapter instance as a parameter anymore and are now Future functions.
+
+## 1.1.8
+ - added null handling for Login class.
