@@ -230,6 +230,19 @@ Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
   }
 }
 
+Future<http.Response> getRefreshResponse(String refresh) async {
+  final uri = 'https://$authority/auth/refresh';
+  var response = await http.post(Uri.parse(uri),
+      headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      body: {'token': '$refresh'});
+  return response;
+}
+
+Future<Login> refresh(String refreshToken) async {
+  var response = await getRefreshResponse(refreshToken);
+  return Login.fromJson(jsonDecode(response.body));
+}
+
 class BaseUrl {
   late final String baseUrl;
   BaseUrl(this.baseUrl);

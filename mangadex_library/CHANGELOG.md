@@ -58,3 +58,6 @@
 
 ## 1.1.8
  - added null handling for Login class.
+
+## 1.1.9
+ - added refresh function to refresh token, returns a Login instance.
