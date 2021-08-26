@@ -234,7 +234,7 @@ Future<http.Response> getRefreshResponse(String refresh) async {
   final uri = 'https://$authority/auth/refresh';
   var response = await http.post(Uri.parse(uri),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-      body: {'token': '$refresh'});
+      body: jsonEncode({'token': '$refresh'}));
   return response;
 }
 
