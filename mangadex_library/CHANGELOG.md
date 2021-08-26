@@ -61,3 +61,6 @@
 
 ## 1.1.9
  - added refresh function to refresh token, returns a Login instance.
+
+## 1.2.0
+ - minor fixes related to refresh
