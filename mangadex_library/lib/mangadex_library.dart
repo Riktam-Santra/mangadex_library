@@ -6,7 +6,7 @@
 // mangadex_library_test.dart file.
 //
 // the documentation of this library will be updated in a while
-// there aren't much features yet (not even rate limiting)
+// there aren't much features yet
 // but they will be added eventually.
 ///////////////////////////////////////////////////////////
 
@@ -143,12 +143,16 @@ Future<http.Response> getChaptersResponse(String mangaId,
 
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
-
+  print(url);
   return response;
 }
 
-Future<ChapterData?> getChapters(String mangaId) async {
-  var response = await getChaptersResponse(mangaId);
+Future<ChapterData?> getChapters(String mangaId,
+    {int? offset, int? limit}) async {
+  var _chapterOffset = offset ?? 0;
+  var _ChapterLimit = limit ?? 10;
+  var response = await getChaptersResponse(mangaId,
+      offset: _chapterOffset, limit: _ChapterLimit);
   var headers = response.headers;
   if (headers['x-ratelimit-remaining'] == '0') {
     print('Rate Limit Exceeded.');
@@ -171,14 +175,14 @@ Future<http.Response> getBaseUrlResponse(String chapterId) async {
 }
 
 Future<BaseUrl?> getBaseUrl(
-  String chapterId,
+  String _chapterId,
 ) async {
-  var response = await getBaseUrlResponse(chapterId);
+  var response = await getBaseUrlResponse(_chapterId);
   var headers = response.headers;
   if (headers['x-ratelimit-remaining'] == '0') {
     print('Rate Limit Exceeded.');
   } else {
-    if (chapterId == '') {
+    if (_chapterId == '') {
       print('Chapter ID is an empty String!');
     } else {
       return BaseUrl.fromJson(jsonDecode(response.body));
@@ -231,7 +235,8 @@ Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
 }
 
 Future<http.Response> getRefreshResponse(String refresh) async {
-  final uri = 'https://$authority/auth/refresh';
+  final unencodedPath = '/auth/refresh';
+  final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       body: jsonEncode({'token': '$refresh'}));
@@ -241,6 +246,16 @@ Future<http.Response> getRefreshResponse(String refresh) async {
 Future<Login> refresh(String refreshToken) async {
   var response = await getRefreshResponse(refreshToken);
   return Login.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getUserFollowedManga(String token) async {
+  final unencodedPath = '/user/follows/manga';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
 }
 
 class BaseUrl {

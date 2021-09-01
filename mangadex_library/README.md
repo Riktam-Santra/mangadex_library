@@ -26,7 +26,7 @@ void main() {
 }
 
 void printFilenames() async {
-  // this function, needs a manga dex account username and password supplied
+  // this function, needs a mangadex account username and password supplied
   // to retrive login token
   var username = 'USERNAME'; // Put your username here
   var password = 'PASSWORD'; // Put your password here

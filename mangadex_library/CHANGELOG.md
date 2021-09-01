@@ -63,4 +63,10 @@
  - added refresh function to refresh token, returns a Login instance.
 
 ## 1.2.0
- - minor fixes related to refresh
+ - minor fixes related to refresh.
+
+## 1.2.1
+ - added options to set a limit and offset for getChapters function.
+
+## 1.2.2
+ - added getUserFollowedManga() to retrive follwed manga by logged in user.
