@@ -15,11 +15,15 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:mangadex_library/user/logged_user_details/logged_user_details.dart';
+import 'package:mangadex_library/user/user_followed_groups/user_followed_groups.dart';
+import 'package:mangadex_library/user/user_followed_users/user_followed_users.dart';
 
 import 'cover/Cover.dart';
 import 'search/Search.dart';
 import 'chapter/ChapterData.dart';
 import 'login/Login.dart';
+import 'user/user_followed_manga/user_followed_manga.dart';
 
 final String authority = 'api.mangadex.org';
 
@@ -248,7 +252,7 @@ Future<Login> refresh(String refreshToken) async {
   return Login.fromJson(jsonDecode(response.body));
 }
 
-Future<http.Response> getUserFollowedManga(String token) async {
+Future<http.Response> getUserFollowedMangaResponse(String token) async {
   final unencodedPath = '/user/follows/manga';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
@@ -256,6 +260,108 @@ Future<http.Response> getUserFollowedManga(String token) async {
     HttpHeaders.authorizationHeader: 'Bearer $token'
   });
   return response;
+}
+
+Future<http.Response> checkIfUserFollowsMangaResponse(
+    String token, String mangaId) async {
+  final unencodedPath = '/user/follows/manga/$mangaId';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserFollowedUsers> checkIfUserFollowsManga(
+    String token, String mangaId) async {
+  var response = await checkIfUserFollowsUserResponse(token, mangaId);
+  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+}
+
+Future<UserFollowedManga> getUserFollowedManga(String token) async {
+  var response = await getUserFollowedMangaResponse(token);
+  return UserFollowedManga.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getUserFollowedUsersResponse(String token) async {
+  final unencodedPath = '/user/follows/user';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserFollowedUsers> getUserFollowedUsers(String token) async {
+  var response = await getUserFollowedMangaResponse(token);
+  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> checkIfUserFollowsUserResponse(
+    String token, String userId) async {
+  final unencodedPath = '/user/follows/user/$userId';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserFollowedUsers> checkIfUserFollowsUser(
+    String token, String userId) async {
+  var response = await checkIfUserFollowsUserResponse(token, userId);
+  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getUserFollowedGroupsResponse(String token) async {
+  final unencodedPath = '/user/follows/group';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserFollowedGroups> getUserFollowedGroups(String token) async {
+  var response = await getUserFollowedMangaResponse(token);
+  return UserFollowedGroups.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> checkIfUserFollowsGroupResponse(
+    String token, String groupId) async {
+  final unencodedPath = '/user/follows/group/$groupId';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserFollowedUsers> checkIfUserFollowsGroup(
+    String token, String groupId) async {
+  var response = await checkIfUserFollowsUserResponse(token, groupId);
+  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getLoggedUserDetailsResponse(String token) async {
+  final unencodedPath = '/user/follows/user/me';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<LoggedUserDetails> getLoggedUserDetails(
+    String token, String groupId) async {
+  var response = await getLoggedUserDetailsResponse(token);
+  return LoggedUserDetails.fromJson(jsonDecode(response.body));
 }
 
 class BaseUrl {

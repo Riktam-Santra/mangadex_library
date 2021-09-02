@@ -69,4 +69,12 @@
  - added options to set a limit and offset for getChapters function.
 
 ## 1.2.2
- - added getUserFollowedManga() to retrive follwed manga by logged in user.
+ - added function getUserFollowedManga() to retrieve followed manga by the logged in user.
+
+## 1.2.3
+ - added function checkIfUserFollowsManga() to check if a users follows a certain manga.
+ - added function getUserFollowedUsers() to retrieve followed users by the logged in user.
+ - added function checkIfUserFollowsUser() to check if a users follows a certain user.
+ - added function getUserFollowedGroups() to retrieve followed groups by the logged in user.
+ - added function checkIfUserFollowsGroup() to check if a users follows a certain group.
+ - added function getLoggedUserDetails() to get the profile details of the logged in user.
