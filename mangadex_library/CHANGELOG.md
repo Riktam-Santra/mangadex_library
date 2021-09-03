@@ -78,3 +78,6 @@
  - added function getUserFollowedGroups() to retrieve followed groups by the logged in user.
  - added function checkIfUserFollowsGroup() to check if a users follows a certain group.
  - added function getLoggedUserDetails() to get the profile details of the logged in user.
+
+## 1.2.4
+ - fixed issues related to all the user specific functions in 1.2.3

@@ -1,26 +1,20 @@
-import 'result.dart';
+import 'package:mangadex_library/search/Search.dart';
 
 class UserFollowedManga {
-	List<Result>? results;
-	int? limit;
-	int? offset;
-	int? total;
-
-	UserFollowedManga({this.results, this.limit, this.offset, this.total});
-
-	factory UserFollowedManga.fromJson(Map<String, dynamic> json) => UserFollowedManga(
-				results: (json['results'] as List<dynamic>?)
-						?.map((e) => Result.fromJson(e as Map<String, dynamic>))
-						.toList(),
-				limit: json['limit'] as int?,
-				offset: json['offset'] as int?,
-				total: json['total'] as int?,
-			);
-
-	Map<String, dynamic> toJson() => {
-				'results': results?.map((e) => e.toJson()).toList(),
-				'limit': limit,
-				'offset': offset,
-				'total': total,
-			};
+  late final List<Results> results;
+  late final int limit;
+  late final int offset;
+  late final int total;
+  UserFollowedManga(this.results, this.limit, this.offset, this.total);
+  UserFollowedManga.fromJson(Map<String, dynamic> json) {
+    results = <Results>[];
+    if (json['results'] != null) {
+      json['results'].forEach((v) {
+        results.add(Results.fromJson(v));
+      });
+    }
+    limit = json['limit'] ?? 0;
+    offset = json['offset'] ?? 0;
+    total = json['total'] ?? 0;
+  }
 }

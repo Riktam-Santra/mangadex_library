@@ -1,13 +1,9 @@
 class MangaCheck {
-	String? result;
+  late String result;
 
-	MangaCheck({this.result});
+  MangaCheck(this.result);
 
-	factory MangaCheck.fromJson(Map<String, dynamic> json) => MangaCheck(
-				result: json['result'] as String?,
-			);
-
-	Map<String, dynamic> toJson() => {
-				'result': result,
-			};
+  MangaCheck.fromJson(Map<String, dynamic> json) {
+    result = json['result'] ?? '';
+  }
 }

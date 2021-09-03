@@ -17,6 +17,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:mangadex_library/user/logged_user_details/logged_user_details.dart';
 import 'package:mangadex_library/user/user_followed_groups/user_followed_groups.dart';
+import 'package:mangadex_library/user/user_followed_manga/manga_check.dart';
 import 'package:mangadex_library/user/user_followed_users/user_followed_users.dart';
 
 import 'cover/Cover.dart';
@@ -273,10 +274,9 @@ Future<http.Response> checkIfUserFollowsMangaResponse(
   return response;
 }
 
-Future<UserFollowedUsers> checkIfUserFollowsManga(
-    String token, String mangaId) async {
+Future<MangaCheck> checkIfUserFollowsManga(String token, String mangaId) async {
   var response = await checkIfUserFollowsUserResponse(token, mangaId);
-  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+  return MangaCheck.fromJson(jsonDecode(response.body));
 }
 
 Future<UserFollowedManga> getUserFollowedManga(String token) async {
@@ -310,10 +310,9 @@ Future<http.Response> checkIfUserFollowsUserResponse(
   return response;
 }
 
-Future<UserFollowedUsers> checkIfUserFollowsUser(
-    String token, String userId) async {
+Future<MangaCheck> checkIfUserFollowsUser(String token, String userId) async {
   var response = await checkIfUserFollowsUserResponse(token, userId);
-  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+  return MangaCheck.fromJson(jsonDecode(response.body));
 }
 
 Future<http.Response> getUserFollowedGroupsResponse(String token) async {
@@ -342,10 +341,9 @@ Future<http.Response> checkIfUserFollowsGroupResponse(
   return response;
 }
 
-Future<UserFollowedUsers> checkIfUserFollowsGroup(
-    String token, String groupId) async {
+Future<MangaCheck> checkIfUserFollowsGroup(String token, String groupId) async {
   var response = await checkIfUserFollowsUserResponse(token, groupId);
-  return UserFollowedUsers.fromJson(jsonDecode(response.body));
+  return MangaCheck.fromJson(jsonDecode(response.body));
 }
 
 Future<http.Response> getLoggedUserDetailsResponse(String token) async {
@@ -358,10 +356,9 @@ Future<http.Response> getLoggedUserDetailsResponse(String token) async {
   return response;
 }
 
-Future<LoggedUserDetails> getLoggedUserDetails(
-    String token, String groupId) async {
+Future<UserDetails> getLoggedUserDetails(String token, String groupId) async {
   var response = await getLoggedUserDetailsResponse(token);
-  return LoggedUserDetails.fromJson(jsonDecode(response.body));
+  return UserDetails.fromJson(jsonDecode(response.body));
 }
 
 class BaseUrl {
