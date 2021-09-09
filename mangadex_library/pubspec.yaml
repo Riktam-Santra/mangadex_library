@@ -1,6 +1,6 @@
 name: mangadex_library
 description: A mangadex library for dart to facilitate easier access to the Mangadex API (https://api.mangadex.org)
-version: 1.2.4
+version: 1.2.6
 repository: https://github.com/Riktam-Santra/mangadexForDart
 
 environment:

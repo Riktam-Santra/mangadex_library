@@ -28,6 +28,7 @@ import 'user/user_followed_manga/user_followed_manga.dart';
 
 final String authority = 'api.mangadex.org';
 
+// User login related functions
 Future<http.Response> loginResponse(String username, String password) async {
   var unencodedPath = '/auth/login';
   var response = await http.post(Uri.https(authority, unencodedPath),
@@ -47,6 +48,21 @@ Future<Login?> login(String username, String password) async {
   }
 }
 
+Future<http.Response> getRefreshResponse(String refresh) async {
+  final unencodedPath = '/auth/refresh';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.post(Uri.parse(uri),
+      headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      body: jsonEncode({'token': '$refresh'}));
+  return response;
+}
+
+Future<Login> refresh(String refreshToken) async {
+  var response = await getRefreshResponse(refreshToken);
+  return Login.fromJson(jsonDecode(response.body));
+}
+
+// Manga search related functions
 Future<http.Response> searchResponse(String query,
     {String? includedTagsMode,
     String? artists,
@@ -108,6 +124,7 @@ Future<Search?> search(String query) async {
   }
 }
 
+//Manga chapters related functions
 Future<http.Response> getChaptersResponse(String mangaId,
     {String? ids,
     String? title,
@@ -172,6 +189,7 @@ Future<ChapterData?> getChapters(String mangaId,
   }
 }
 
+// Functions to get base url for a chapter ID
 Future<http.Response> getBaseUrlResponse(String chapterId) async {
   var unencodedPath = '/at-home/server/$chapterId';
   var response = await http.get(Uri.https(authority, unencodedPath),
@@ -195,6 +213,7 @@ Future<BaseUrl?> getBaseUrl(
   }
 }
 
+// A function to create URl to a manga page
 Future<String> ConstructPageUrl(String chapterId, String token,
     String chapterHash, String filename, bool dataSaver) async {
   var baseUrl = await getBaseUrl(chapterId);
@@ -202,6 +221,7 @@ Future<String> ConstructPageUrl(String chapterId, String token,
   return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
 }
 
+// Manga cover art related functions
 Future<http.Response> getCoverArtResponse(
   String mangaID, [
   String? coverID,
@@ -239,20 +259,7 @@ Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
   }
 }
 
-Future<http.Response> getRefreshResponse(String refresh) async {
-  final unencodedPath = '/auth/refresh';
-  final uri = 'https://$authority$unencodedPath';
-  var response = await http.post(Uri.parse(uri),
-      headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-      body: jsonEncode({'token': '$refresh'}));
-  return response;
-}
-
-Future<Login> refresh(String refreshToken) async {
-  var response = await getRefreshResponse(refreshToken);
-  return Login.fromJson(jsonDecode(response.body));
-}
-
+// User related functions
 Future<http.Response> getUserFollowedMangaResponse(String token) async {
   final unencodedPath = '/user/follows/manga';
   final uri = 'https://$authority$unencodedPath';
@@ -274,9 +281,13 @@ Future<http.Response> checkIfUserFollowsMangaResponse(
   return response;
 }
 
-Future<MangaCheck> checkIfUserFollowsManga(String token, String mangaId) async {
+Future<bool> checkIfUserFollowsManga(String token, String mangaId) async {
   var response = await checkIfUserFollowsUserResponse(token, mangaId);
-  return MangaCheck.fromJson(jsonDecode(response.body));
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 Future<UserFollowedManga> getUserFollowedManga(String token) async {
@@ -310,9 +321,13 @@ Future<http.Response> checkIfUserFollowsUserResponse(
   return response;
 }
 
-Future<MangaCheck> checkIfUserFollowsUser(String token, String userId) async {
+Future<bool> checkIfUserFollowsUser(String token, String userId) async {
   var response = await checkIfUserFollowsUserResponse(token, userId);
-  return MangaCheck.fromJson(jsonDecode(response.body));
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 Future<http.Response> getUserFollowedGroupsResponse(String token) async {
@@ -341,9 +356,13 @@ Future<http.Response> checkIfUserFollowsGroupResponse(
   return response;
 }
 
-Future<MangaCheck> checkIfUserFollowsGroup(String token, String groupId) async {
+Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
   var response = await checkIfUserFollowsUserResponse(token, groupId);
-  return MangaCheck.fromJson(jsonDecode(response.body));
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 Future<http.Response> getLoggedUserDetailsResponse(String token) async {
@@ -361,6 +380,28 @@ Future<UserDetails> getLoggedUserDetails(String token, String groupId) async {
   return UserDetails.fromJson(jsonDecode(response.body));
 }
 
+//Follow or unfollow a manga
+Future<MangaCheck> followManga(String token, String mangaId) async {
+  var unencodedPath = '/manga/$mangaId/follow';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return MangaCheck.fromJson(jsonDecode(response.body));
+}
+
+Future<MangaCheck> unfollowManga(String token, String mangaId) async {
+  var unencodedPath = '/manga/$mangaId/follow';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.delete(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return MangaCheck.fromJson(jsonDecode(response.body));
+}
+
+// Base url class to parse base url
 class BaseUrl {
   late final String baseUrl;
   BaseUrl(this.baseUrl);

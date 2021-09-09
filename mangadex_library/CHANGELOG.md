@@ -81,3 +81,9 @@
 
 ## 1.2.4
  - fixed issues related to all the user specific functions in 1.2.3
+
+## 1.2.5
+ - Added followManga() and unfollowManga() functions to follow / unfollow a manga.
+
+## 1.2.6
+ - the functions checkIfUserFollowsManga() checkIfUserFollowsUser() and checkIfUserFollowsGroup() now return a bool rather than a MangaCheck.
