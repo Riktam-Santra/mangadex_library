@@ -99,3 +99,6 @@
 
 ## 1.2.8
  - Model classes updated and rearranged according to the JSON structure changes in Mangadex API 5.2.35.
+
+## 1.2.8+1
+- Fixed problems with JsonSearch.

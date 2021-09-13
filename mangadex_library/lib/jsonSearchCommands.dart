@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:mangadex_library/models/chapter/ChapterData.dart' as chapter;
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/models/search/Search.dart' as search;
-import 'package:mangadex_library/models/user/user_followed_users/user_followed_users.dart';
+import 'package:mangadex_library/models/common/data.dart';
 
 class JsonSearch {
   var authority = 'api.mangadex.org';
