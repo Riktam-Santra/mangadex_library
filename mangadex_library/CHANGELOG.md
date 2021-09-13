@@ -87,3 +87,15 @@
 
 ## 1.2.6
  - the functions checkIfUserFollowsManga() checkIfUserFollowsUser() and checkIfUserFollowsGroup() now return a bool rather than a MangaCheck.
+
+## 1.2.7
+ - minor bug fixes.
+
+## 1.2.7+1
+ - minor bug fixes
+
+## 1.2.7+2 
+ - fixed bug where search would return null despite having results.
+
+## 1.2.8
+ - Model classes updated and rearranged according to the JSON structure changes in Mangadex API 5.2.35.

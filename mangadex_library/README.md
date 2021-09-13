@@ -45,8 +45,7 @@ void printFilenames() async {
   // it returns a Search class instance
   // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
 
-  var mangaID = searchData.results[0].data
-      .id; // this line gets the manga ID from the instance of the Search we just obtained
+  var mangaID = searchData.data[0].id; // this line gets the manga ID from the instance of the Search we just obtained
   //for demonstration we are talking the manga ID of only the first search result
   //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
   //For example, chapter pages and thimbnails

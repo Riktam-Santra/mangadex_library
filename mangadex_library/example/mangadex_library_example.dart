@@ -10,11 +10,11 @@ void main() async {
   var searchData = await search(query);
   print('Title and ID of all manga found: \n');
   if (searchData != null) {
-    for (var i = 0; i < searchData.results.length; i++) {
+    for (var i = 0; i < searchData.data.length; i++) {
       //This for loop prints the Title and ID
       //of all the manga returned by the search() function.
-      print('Title: ' + searchData.results[i].data.attributes.title.en);
-      print('Manga ID: ' + searchData.results[i].data.id);
+      print('Title: ' + searchData.data[i].attributes.title.en);
+      print('Manga ID: ' + searchData.data[i].id);
     }
   } else {
     print('Manga not found :(');
@@ -28,11 +28,11 @@ void main() async {
 
   var id = 'MANGA_ID'; // Put the manga id here.
   var chapters = await getChapters(id);
-  var chapId = chapters!.result[0].data.id;
+  var chapId = chapters!.data[0].id;
   print('Chapter ID: ' + chapId);
-  var chapHash = chapters.result[0].data.attributes.hash;
+  var chapHash = chapters.data[0].attributes.hash;
   print('Chapter Hash: ' + chapHash);
-  var filename = chapters.result[0].data.attributes.chapterData[0];
+  var filename = chapters.data[0].attributes.chapterData[0];
   var response = await login(
       'USERNAME', 'PASSWORD.'); // Put your username and password here.
   if (response != null) {

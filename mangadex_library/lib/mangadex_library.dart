@@ -15,16 +15,16 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/user/logged_user_details/logged_user_details.dart';
-import 'package:mangadex_library/user/user_followed_groups/user_followed_groups.dart';
-import 'package:mangadex_library/user/user_followed_manga/manga_check.dart';
-import 'package:mangadex_library/user/user_followed_users/user_followed_users.dart';
+import 'package:mangadex_library/models/user/logged_user_details/logged_user_details.dart';
+import 'package:mangadex_library/models/user/user_followed_groups/user_followed_groups.dart';
+import 'package:mangadex_library/models/user/user_followed_manga/manga_check.dart';
+import 'package:mangadex_library/models/user/user_followed_users/user_followed_users.dart';
 
-import 'cover/Cover.dart';
-import 'search/Search.dart';
-import 'chapter/ChapterData.dart';
-import 'login/Login.dart';
-import 'user/user_followed_manga/user_followed_manga.dart';
+import 'models/cover/Cover.dart';
+import 'models/search/Search.dart';
+import 'models/chapter/ChapterData.dart';
+import 'models/login/Login.dart';
+import 'models/user/user_followed_manga/user_followed_manga.dart';
 
 final String authority = 'api.mangadex.org';
 
@@ -114,13 +114,7 @@ Future<Search?> search(String query) async {
     print('Rate Limit Exceeded.');
   } else {
     var data = Search.fromJson(jsonDecode(response.body));
-    if (data.results.isNotEmpty) {
-      return data;
-    }
-    if (data.results.isEmpty) {
-      print('Search empty!');
-      print('Response body: \n' + response.body);
-    }
+    return data;
   }
 }
 
@@ -180,7 +174,7 @@ Future<ChapterData?> getChapters(String mangaId,
     print('Rate Limit Exceeded.');
   } else {
     var data = ChapterData.fromJson(jsonDecode(response.body));
-    if (data.result.isNotEmpty) {
+    if (data.data.isNotEmpty) {
       return data;
     } else {
       print(
@@ -214,11 +208,11 @@ Future<BaseUrl?> getBaseUrl(
 }
 
 // A function to create URl to a manga page
-Future<String> ConstructPageUrl(String chapterId, String token,
+Future<String> constructPageUrl(String chapterId, String token,
     String chapterHash, String filename, bool dataSaver) async {
   var baseUrl = await getBaseUrl(chapterId);
   var dataMode = dataSaver ? 'data-saver' : 'data';
-  return 'https://$baseUrl/$token/$dataMode/$chapterHash/$filename';
+  return '${baseUrl!.baseUrl}/$token/$dataMode/$chapterHash/$filename';
 }
 
 // Manga cover art related functions

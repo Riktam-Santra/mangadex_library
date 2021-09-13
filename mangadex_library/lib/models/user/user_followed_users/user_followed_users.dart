@@ -24,7 +24,7 @@ class Results {
   Results(this.result, this.data, this.relationships);
   Results.fromJson(Map<String, dynamic> json) {
     result = json['result'];
-    data = Data.fromjson(json['data']);
+    data = Data.fromJson(json['data']);
     relationships = <Relationships>[];
     if (json['relationships'] != null) {
       json['relationships'].forEach((v) {
@@ -49,7 +49,7 @@ class Data {
   late final String type;
   late final Attributes attributes;
   Data(this.id, this.type, this.attributes);
-  Data.fromjson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
     attributes = Attributes.fromJson(json['attributes']);

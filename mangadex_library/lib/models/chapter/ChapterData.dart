@@ -1,14 +1,16 @@
+import 'package:mangadex_library/models/common/relationships.dart';
+
 class ChapterData {
-  late final List<Result> result;
+  late final List<Data> data;
   late final int limit;
   late final int offset;
   late final int total;
-  ChapterData(this.result, this.limit, this.offset, this.total);
+  ChapterData(this.data, this.limit, this.offset, this.total);
   ChapterData.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
-      result = <Result>[];
+      data = <Data>[];
       json['results'].forEach((v) {
-        result.add(Result.fromJson(v));
+        data.add(Data.fromJson(v));
       });
     }
     limit = json['limit'] ?? '';
@@ -17,37 +19,19 @@ class ChapterData {
   }
 }
 
-class Result {
-  late final String result;
-  late final Data data;
-  late final List<Relationships> relationships;
-  Result(this.result, this.data, this.relationships);
-  Result.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    if (json['data'] != null) {
-      data = Data.fromJson(json['data']);
-    }
-    if (json['relationships'] != null) {
-      relationships = <Relationships>[];
-      json['relationships'].forEach((v) {
-        relationships.add(Relationships.fromJson(v));
-      });
-    }
-  }
-}
-
 class Data {
   late final String id;
   late final String type;
   late Attributes attributes;
+  late List<Relationship> relationships;
   Data(this.id, this.type, this.attributes);
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
-
-    if (json['attributes'] != null) {
-      attributes = Attributes.fromJson(json['attributes']);
-    }
+    attributes = Attributes.fromJson(json['attributes']!);
+    json['relationships'].forEach((v) {
+      relationships.add(Relationship.fromJson(v));
+    });
   }
 }
 
@@ -91,15 +75,5 @@ class Attributes {
     createdAt = json['createdAt'] ?? '';
     updatedAt = json['updatedAt'] ?? '';
     version = json['version'] ?? '';
-  }
-}
-
-class Relationships {
-  late final String id;
-  late final String type;
-  Relationships(this.id, this.type);
-  Relationships.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
   }
 }
