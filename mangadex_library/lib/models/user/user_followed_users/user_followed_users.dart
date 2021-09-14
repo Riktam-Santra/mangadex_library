@@ -1,46 +1,21 @@
+import 'package:mangadex_library/models/common/relationships.dart';
+
 class UserFollowedUsers {
-  late final List<Results> results;
+  late final List<Data> data;
   late final int limit;
   late final int offset;
   late final int total;
-  UserFollowedUsers(this.results, this.limit, this.offset, this.total);
+  UserFollowedUsers(this.data, this.limit, this.offset, this.total);
   UserFollowedUsers.fromJson(Map<String, dynamic> json) {
-    results = <Results>[];
-    if (json['results'] != null) {
-      json['results'].forEach((v) {
-        results.add(Results.fromJson(v));
-      });
-    }
+    data = <Data>[];
+
+    json['data']!.forEach((v) {
+      data.add(Data.fromJson(v));
+    });
+
     limit = json['limit'] ?? 0;
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
-  }
-}
-
-class Results {
-  late final String result;
-  late final Data data;
-  late final List<Relationships> relationships;
-  Results(this.result, this.data, this.relationships);
-  Results.fromJson(Map<String, dynamic> json) {
-    result = json['result'];
-    data = Data.fromJson(json['data']);
-    relationships = <Relationships>[];
-    if (json['relationships'] != null) {
-      json['relationships'].forEach((v) {
-        relationships.add(Relationships.fromJson(v));
-      });
-    }
-  }
-}
-
-class Relationships {
-  late final String id;
-  late final String type;
-  Relationships(this.id, this.type);
-  Relationships.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
   }
 }
 
@@ -48,11 +23,16 @@ class Data {
   late final String id;
   late final String type;
   late final Attributes attributes;
+  late final List<Relationship> relationships;
   Data(this.id, this.type, this.attributes);
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
     attributes = Attributes.fromJson(json['attributes']);
+    relationships = <Relationship>[];
+    json['relationships']!.forEach((v) {
+      relationships.add(Relationship.fromJson(v));
+    });
   }
 }
 
@@ -74,7 +54,7 @@ class Role {
   Role.fromJson(Map<String, dynamic> json) {
     roles = <String>[];
     if (json['roles'] != null) {
-      json[roles].forEach((v) {
+      json['roles'].forEach((v) {
         roles.add(v);
       });
     }
