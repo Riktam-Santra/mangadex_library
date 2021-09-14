@@ -102,3 +102,6 @@
 
 ## 1.2.8+1
 - Fixed problems with JsonSearch.
+
+## 1.2.8+2
+ - Changed Cover model class according to Mangadex API update 5.2.35

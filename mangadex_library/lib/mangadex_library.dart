@@ -245,7 +245,7 @@ Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
   var reso = res ?? '';
   var data = await getCoverArt(mangaID);
 
-  var filename = data!.results[0].data.attributes.fileName;
+  var filename = data!.data[0].attributes.fileName;
   if (reso == 256 || reso == 512) {
     return 'https://uploads.mangadex.org/covers/$mangaID/$filename.$reso.jpg';
   } else {
