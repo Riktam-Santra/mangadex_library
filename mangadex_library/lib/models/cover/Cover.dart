@@ -7,12 +7,11 @@ class Cover {
   late int total;
   Cover(this.data, this.limit, this.offset, this.total);
   Cover.fromJson(Map<String, dynamic> json) {
-    if (json['results'] != null) {
-      data = <Data>[];
-      json['results'].forEach((v) {
-        data.add(Data.fromJson(v));
-      });
-    }
+    data = <Data>[];
+    json['data']!.forEach((v) {
+      data.add(Data.fromJson(v));
+    });
+
     limit = json['limit'] ?? 0;
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
@@ -28,9 +27,11 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
-    if (json['attributes'] != null) {
-      attributes = Attributes.fromJson(json['attributes']);
-    }
+    relationships = <Relationship>[];
+    json['relationships']!.forEach((v) {
+      relationships.add(Relationship.fromJson(v));
+    });
+    attributes = Attributes.fromJson(json['attributes']!);
   }
 }
 

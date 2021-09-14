@@ -1,8 +1,8 @@
 import 'dart:convert';
-
-import 'package:mangadex_library/models/chapter/ChapterData.dart' as chapter;
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/models/common/data.dart';
+import 'package:mangadex_library/models/common/singleMangaData.dart';
+
+import 'models/common/singleChapterData.dart';
 
 class JsonSearch {
   var authority = 'api.mangadex.org';
@@ -10,22 +10,22 @@ class JsonSearch {
       String chapterId, bool isDataSaverMode) async {
     var response = await getChapterDataByChapterId(chapterId);
     if (isDataSaverMode == true) {
-      return response.attributes.chapterDataSaver;
+      return response.data.attributes.chapterDataSaver;
     } else {
-      return response.attributes.chapterData;
+      return response.data.attributes.chapterData;
     }
   }
 
-  Future<chapter.Data> getChapterDataByChapterId(String chapterId) async {
+  Future<SingleChapterData> getChapterDataByChapterId(String chapterId) async {
     var unencodedPath = '/chapter/$chapterId';
     var response = await http.get(Uri.https(authority, unencodedPath));
-    var result = chapter.Data.fromJson(jsonDecode(response.body));
+    var result = SingleChapterData.fromJson(jsonDecode(response.body));
     return result;
   }
 
-  Future<Data> getMangaDataByMangaId(String mangaId) async {
+  Future<SingleMangaData> getMangaDataByMangaId(String mangaId) async {
     var unencodedPath = '/manga/$mangaId';
     var response = await http.get(Uri.http(authority, unencodedPath));
-    return Data.fromJson(jsonDecode(response.body));
+    return SingleMangaData.fromJson(jsonDecode(response.body));
   }
 }

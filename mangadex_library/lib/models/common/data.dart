@@ -4,16 +4,22 @@ import 'package:mangadex_library/models/common/relationships.dart';
 class Data {
   late final String id;
   late final String type;
-  late final Attributes attributes;
+  late Attributes attributes;
   late final List<Relationship> relationships;
   Data(this.id, this.type, this.attributes, this.relationships);
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
-    attributes = Attributes.fromJson(json['attributes']!);
+    if (json['attributes'] != null) {
+      attributes = Attributes.fromJson(json['attributes']);
+    } else {
+      print(json['attributes'].toString());
+    }
     relationships = <Relationship>[];
-    json['relationships']!.forEach((v) {
-      relationships.add(Relationship.fromJson(v));
-    });
+    if (json['relationships'] != null) {
+      json['relationships'].forEach((v) {
+        relationships.add(Relationship.fromJson(v));
+      });
+    }
   }
 }

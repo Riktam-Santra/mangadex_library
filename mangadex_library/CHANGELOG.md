@@ -108,3 +108,27 @@
 
 ## 1.2.8+3 
  - User data models related changes according to Mangadex API update 5.2.35
+
+## 1.2.9
+ - fixed all major bugs related to Mangadex API update 5.2.35
+
+## 1.2.9+1
+ - minor bug fixes related to login.
+
+## 1.2.9+2
+ - even more bug fixes related to chapterData.
+
+## 1.2.9+3
+ - more bug fixes related to chapterData.
+
+## 1.2.9+4
+ - fixed errors in model classes(again)
+
+## 1.2.9+5
+ - tried fixing the data model for getMangaDataByMangaId()
+
+## 1.2.9+6
+ - finally fixed the data model for getMangaDataByMangaId()
+  
+## 1.2.9+7
+ - fixed issues related to getChapterFilenames() in JsonSearch

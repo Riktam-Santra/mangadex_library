@@ -7,9 +7,9 @@ class ChapterData {
   late final int total;
   ChapterData(this.data, this.limit, this.offset, this.total);
   ChapterData.fromJson(Map<String, dynamic> json) {
-    if (json['results'] != null) {
+    if (json['data'] != null) {
       data = <Data>[];
-      json['results'].forEach((v) {
+      json['data'].forEach((v) {
         data.add(Data.fromJson(v));
       });
     }
@@ -29,6 +29,7 @@ class Data {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
     attributes = Attributes.fromJson(json['attributes']!);
+    relationships = <Relationship>[];
     json['relationships'].forEach((v) {
       relationships.add(Relationship.fromJson(v));
     });

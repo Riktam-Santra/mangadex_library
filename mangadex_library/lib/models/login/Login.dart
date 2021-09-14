@@ -5,8 +5,9 @@ class Login {
   Login.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
     if (result == 'ok') {
-      token = Token.fromJson(json['token']);
+      token = Token.fromJson(json['token']!);
     } else {
+      print(json.toString());
       print(result);
     }
   }

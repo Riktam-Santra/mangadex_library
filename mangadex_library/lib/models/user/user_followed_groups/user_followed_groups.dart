@@ -29,6 +29,7 @@ class Data {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
     attributes = Attributes.fromJson(json['attributes']!);
+    relationships = <Relationship>[];
     json['relationships']!.forEach((v) {
       relationships.add(Relationship.fromJson(v));
     });

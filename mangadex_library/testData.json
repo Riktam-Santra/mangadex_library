@@ -1,323 +1,71 @@
 {
     "result": "ok",
-    "response": "collection",
-    "data": [
-        {
-            "id": "23b51846-bec4-41e4-a9a2-a034064d01eb",
-            "type": "manga",
-            "attributes": {
-                "title": {
-                    "en": "Yahari Ore no Seishun Love Come wa Machigatteiru @comic"
-                },
-                "altTitles": [
-                    {
-                        "en": "My Youth Romantic Comedy Is Wrong as I Expected @ Comic"
-                    },
-                    {
-                        "en": "Oregairu"
-                    },
-                    {
-                        "en": "Как и ожидал, моя школьная романтическая жизнь не удалась @комикс"
-                    },
-                    {
-                        "en": "กะแล้วชีวิตรักวัยรุ่นของผมมันต้องไม่สดใสเลยซักนิด"
-                    },
-                    {
-                        "en": "やはり俺の青春ラブコメはまちがっている。@comic"
-                    }
-                ],
-                "description": {
-                    "en": "Hachiman Hikigaya is a cynic. He believes \"youth\" is a crock-a sucker's game, an illusion woven from failure and hypocrisy. Unsurprisingly, he's not the most popular guy. Meanwhile, there's Yukino Yukinoshita - brilliant, beautiful, and chillier than winter in Antarctica. Would you believe she's not exactly beloved by her classmates either? The unlikely pair gets forced into a club dedicated to helping solve their fellow students' problems. But will an ice queen and a screw-up really be able to help anybody?  \n\n\n---\n\n",
-                    "ru": "Эта история о школьнике по имени Хачиман Хикигая, который обладает искаженными взглядами на жизнь. У него нет ни друзей, ни подруг, а на вопрос о том, какая у него мечта, можно услышать лишь: «Ее нет». Но не все безразличны к апатии Хачимана. Его учительница просит школьника стать волонтером сервис-клуба, в котором также находится самая красивая девушка школы. Как изменит членство в клубе жизнь Хачимана? Появится ли теперь у него мечта?  \n  \nОдна из двух манга-адаптаций ранобэ Yahari Ore no Seishun Love Comedy wa Machigatteiru."
-                },
-                "links": {
-                    "al": "92954",
-                    "ap": "my-youth-romantic-comedy-is-wrong-as-i-expected-at-comic",
-                    "bw": "series/124661",
-                    "kt": "27003",
-                    "mu": "88429",
-                    "nu": "yahari-ore-no-seishun-love-come-wa-machigatte-iru",
-                    "amz": "https://www.amazon.co.jp/gp/product/B075GWK8V3",
-                    "ebj": "https://ebookjapan.yahoo.co.jp/books/174510/",
-                    "mal": "80091",
-                    "engtl": "http://www.b2c.hachettebookgroup.com/series/my-youth-romantic-comedy-is-wrong-as-i-expected-comic-manga/?yen"
-                },
-                "originalLanguage": "ja",
-                "lastVolume": null,
-                "lastChapter": null,
-                "publicationDemographic": "seinen",
-                "status": "ongoing",
-                "year": null,
-                "contentRating": "safe",
-                "tags": [
-                    {
-                        "id": "3b60b75c-a2d7-4860-ab56-05f391bb889c",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Psychological"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "423e2eae-a7a2-4a8b-ac03-a8351462d71d",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Romance"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "4d32cc48-9f00-4cca-9b5a-a839f0764984",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Comedy"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "b9af3a63-f058-46de-a9a0-e0c13906197a",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Drama"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "caaa44eb-cd40-4177-b930-79d3ef2afe87",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "School Life"
-                            },
-                            "description": [],
-                            "group": "theme",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "e5301a23-ebd9-49dd-a0cb-2add944c7fe9",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Slice of Life"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "f4122d1c-3b44-44d0-9936-ff7502c39ad3",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Adaptation"
-                            },
-                            "description": [],
-                            "group": "format",
-                            "version": 1
-                        },
-                        "relationships": []
-                    }
-                ],
-                "createdAt": "2018-10-10T14:56:11+00:00",
-                "updatedAt": "2021-05-25T15:40:20+00:00",
-                "version": 2
+    "response": "entity",
+    "data": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "type": "manga",
+        "attributes": {
+            "title": {
+                "en": "This is a localized string",
+                "fr": "C'est une chaine traduite"
             },
-            "relationships": [
+            "altTitles": [
                 {
-                    "id": "495bcda7-e2c7-4812-8a14-0f602cefad78",
-                    "type": "author"
-                },
-                {
-                    "id": "663d5cea-a81b-4b25-a604-49934a9d58e4",
-                    "type": "artist"
-                },
-                {
-                    "id": "c57179b4-3f50-4f34-ac96-ce366767462e",
-                    "type": "cover_art"
+                    "en": "This is a localized string",
+                    "fr": "C'est une chaine traduite"
                 }
-            ]
+            ],
+            "description": {
+                "en": "This is a localized string",
+                "fr": "C'est une chaine traduite"
+            },
+            "isLocked": true,
+            "links": {
+                "property1": "string",
+                "property2": "string"
+            },
+            "originalLanguage": "string",
+            "lastVolume": "string",
+            "lastChapter": "string",
+            "publicationDemographic": "shounen",
+            "status": "string",
+            "year": 0,
+            "contentRating": "safe",
+            "tags": [
+                {
+                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                    "type": "tag",
+                    "attributes": {
+                        "name": {
+                            "en": "This is a localized string",
+                            "fr": "C'est une chaine traduite"
+                        },
+                        "description": {
+                            "en": "This is a localized string",
+                            "fr": "C'est une chaine traduite"
+                        },
+                        "group": "string",
+                        "version": 1
+                    },
+                    "relationships": [
+                        {
+                            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                            "type": "string",
+                            "attributes": {}
+                        }
+                    ]
+                }
+            ],
+            "version": 1,
+            "createdAt": "string",
+            "updatedAt": "string"
         },
-        {
-            "id": "0296dc0b-7635-4154-927a-33c2244c4503",
-            "type": "manga",
-            "attributes": {
-                "title": {
-                    "en": "Yahari Ore no Seishun Love Come wa Machigatteiru -Monologue-"
-                },
-                "altTitles": [
-                    {
-                        "en": "Kisah Komedi Romantis Remajaku Memang Salah Kaprah -Monolog-"
-                    },
-                    {
-                        "en": "My Youth Romantic Comedy Is Wrong as I Expected"
-                    },
-                    {
-                        "en": "Oregairu"
-                    },
-                    {
-                        "en": "Yahari Ore no Seishun Rabukome wa Machigatte Iru. - Mougenroku"
-                    },
-                    {
-                        "en": "Yahari Ore no Seishun Rabukome wa Machigatteiru"
-                    },
-                    {
-                        "en": "Как и ожидал, моя школьная романтическая жизнь не удалась"
-                    },
-                    {
-                        "en": "やはり俺の青春ラブコメはまちがっている -妄言錄-"
-                    },
-                    {
-                        "en": "我的青春恋爱物语果然有问题"
-                    }
-                ],
-                "description": {
-                    "en": "Hikigaya Hachiman, a boy with a distorted personality, is brought to the \"Service Club\", led by a beautiful and harsh girl named Yukinoshita Yukino, by his academic advisor. Hilarity ensues as the isolated boy, through his many mistakes, begins to reshape himself and those around him.  \n\n\n---\n\n",
-                    "ru": "История о школьнике по имени Хачиман Хикигая, обладающем искаженными взглядами на жизнь. У него нет ни друзей, ни подруг, а на вопрос о том, какая у него цель в жизни, можно услышать лишь ответ, что ее нет. Но не все безразличны к апатии Хачимана. Его учительница просит школьника стать волонтером клуба помощи, в котором также находится самая красивая девушка школы. Как изменит членство в клубе жизнь Хачимана? Появится ли теперь у него цель в жизни?"
-                },
-                "links": {
-                    "al": "75447",
-                    "ap": "my-youth-romantic-comedy-is-wrong-as-i-expected-monologue",
-                    "bw": "series/7474",
-                    "kt": "922",
-                    "mu": "83813",
-                    "nu": "yahari-ore-no-seishun-love-come-wa-machigatte-iru",
-                    "amz": "https://www.amazon.co.jp/gp/product/B074CDLQHK",
-                    "ebj": "https://ebookjapan.yahoo.co.jp/books/175031/",
-                    "mal": "45447",
-                    "raw": "https://seiga.nicovideo.jp/comic/5557?track=official_list_l1"
-                },
-                "originalLanguage": "ja",
-                "lastVolume": null,
-                "lastChapter": null,
-                "publicationDemographic": "seinen",
-                "status": "ongoing",
-                "year": null,
-                "contentRating": "safe",
-                "tags": [
-                    {
-                        "id": "423e2eae-a7a2-4a8b-ac03-a8351462d71d",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Romance"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "4d32cc48-9f00-4cca-9b5a-a839f0764984",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Comedy"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "b9af3a63-f058-46de-a9a0-e0c13906197a",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Drama"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "caaa44eb-cd40-4177-b930-79d3ef2afe87",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "School Life"
-                            },
-                            "description": [],
-                            "group": "theme",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "e5301a23-ebd9-49dd-a0cb-2add944c7fe9",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Slice of Life"
-                            },
-                            "description": [],
-                            "group": "genre",
-                            "version": 1
-                        },
-                        "relationships": []
-                    },
-                    {
-                        "id": "f4122d1c-3b44-44d0-9936-ff7502c39ad3",
-                        "type": "tag",
-                        "attributes": {
-                            "name": {
-                                "en": "Adaptation"
-                            },
-                            "description": [],
-                            "group": "format",
-                            "version": 1
-                        },
-                        "relationships": []
-                    }
-                ],
-                "createdAt": "2018-06-16T14:21:15+00:00",
-                "updatedAt": "2021-05-25T15:38:47+00:00",
-                "version": 2
-            },
-            "relationships": [
-                {
-                    "id": "495bcda7-e2c7-4812-8a14-0f602cefad78",
-                    "type": "author"
-                },
-                {
-                    "id": "9e4997ff-27cf-40b2-ac83-d74a819c627d",
-                    "type": "artist"
-                },
-                {
-                    "id": "49777fa2-e82c-4f62-b7fd-d012ec59e1c2",
-                    "type": "cover_art"
-                }
-            ]
-        }
-    ],
-    "limit": 10,
-    "offset": 0,
-    "total": 2
+        "relationships": [
+            {
+                "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                "type": "string",
+                "attributes": {}
+            }
+        ]
+    }
 }
