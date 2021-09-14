@@ -105,3 +105,6 @@
 
 ## 1.2.8+2
  - Changed Cover model class according to Mangadex API update 5.2.35
+
+## 1.2.8+3 
+ - User data models related changes according to Mangadex API update 5.2.35
