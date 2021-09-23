@@ -2,70 +2,15 @@
     "result": "ok",
     "response": "entity",
     "data": {
-        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-        "type": "manga",
+        "id": "4a3fcdee-a70f-41fe-8f67-ab4b5145e309",
+        "type": "user",
         "attributes": {
-            "title": {
-                "en": "This is a localized string",
-                "fr": "C'est une chaine traduite"
-            },
-            "altTitles": [
-                {
-                    "en": "This is a localized string",
-                    "fr": "C'est une chaine traduite"
-                }
+            "username": "riksantra",
+            "roles": [
+                "ROLE_MEMBER"
             ],
-            "description": {
-                "en": "This is a localized string",
-                "fr": "C'est une chaine traduite"
-            },
-            "isLocked": true,
-            "links": {
-                "property1": "string",
-                "property2": "string"
-            },
-            "originalLanguage": "string",
-            "lastVolume": "string",
-            "lastChapter": "string",
-            "publicationDemographic": "shounen",
-            "status": "string",
-            "year": 0,
-            "contentRating": "safe",
-            "tags": [
-                {
-                    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-                    "type": "tag",
-                    "attributes": {
-                        "name": {
-                            "en": "This is a localized string",
-                            "fr": "C'est une chaine traduite"
-                        },
-                        "description": {
-                            "en": "This is a localized string",
-                            "fr": "C'est une chaine traduite"
-                        },
-                        "group": "string",
-                        "version": 1
-                    },
-                    "relationships": [
-                        {
-                            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-                            "type": "string",
-                            "attributes": {}
-                        }
-                    ]
-                }
-            ],
-            "version": 1,
-            "createdAt": "string",
-            "updatedAt": "string"
+            "version": 3
         },
-        "relationships": [
-            {
-                "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-                "type": "string",
-                "attributes": {}
-            }
-        ]
+        "relationships": []
     }
 }

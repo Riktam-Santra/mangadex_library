@@ -12,9 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="../static-assets/github.css">
-  <link rel="stylesheet" href="../static-assets/styles.css">
-  <link rel="icon" href="../static-assets/favicon.png">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
 
   
 </head>
@@ -40,6 +41,41 @@
 
 <main>
 
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-function">getCoverArt</span> function 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+
+<span class="returntype"><a href="https://api.dart.dev/stable/2.14.2/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_cover_Cover/Cover-class.html">Cover</a>?</span>&gt;</span></span>
+<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaID"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaID</span></span></li>
+</ol>)
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;Cover?&gt; getCoverArt(String mangaID) async {
+  var response = await getCoverArtResponse(mangaID);
+  var headers = response.headers;
+  if (headers[&#39;x-ratelimit-remaining&#39;] == &#39;0&#39;) {
+    print(&#39;Rate Limit Exceeded.&#39;);
+  } else {
+    return Cover.fromJson(jsonDecode(response.body));
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
     <header id="header-search-sidebar" class="hidden-l">
@@ -67,7 +103,16 @@
   <li><a href="../mangadex_library/authority.html">authority</a></li>
 
   <li class="section-title"><a href="../mangadex_library/mangadex_library-library.html#functions">Functions</a></li>
-  <li><a href="../mangadex_library/ConstructPageUrl.html">ConstructPageUrl</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsGroup.html">checkIfUserFollowsGroup</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsGroupResponse.html">checkIfUserFollowsGroupResponse</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsManga.html">checkIfUserFollowsManga</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsMangaResponse.html">checkIfUserFollowsMangaResponse</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsUser.html">checkIfUserFollowsUser</a></li>
+  <li><a href="../mangadex_library/checkIfUserFollowsUserResponse.html">checkIfUserFollowsUserResponse</a></li>
+  <li><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></li>
+  <li><a href="../mangadex_library/followManga.html">followManga</a></li>
+  <li><a href="../mangadex_library/getAllMangaReadingStatus.html">getAllMangaReadingStatus</a></li>
+  <li><a href="../mangadex_library/getAllReadChapters.html">getAllReadChapters</a></li>
   <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
   <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
   <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
@@ -75,51 +120,32 @@
   <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
   <li><a href="../mangadex_library/getCoverArtResponse.html">getCoverArtResponse</a></li>
   <li><a href="../mangadex_library/getCoverArtUrl.html">getCoverArtUrl</a></li>
+  <li><a href="../mangadex_library/getLoggedUserDetails.html">getLoggedUserDetails</a></li>
+  <li><a href="../mangadex_library/getLoggedUserDetailsResponse.html">getLoggedUserDetailsResponse</a></li>
+  <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
+  <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+  <li><a href="../mangadex_library/getUserFollowedGroups.html">getUserFollowedGroups</a></li>
+  <li><a href="../mangadex_library/getUserFollowedGroupsResponse.html">getUserFollowedGroupsResponse</a></li>
+  <li><a href="../mangadex_library/getUserFollowedManga.html">getUserFollowedManga</a></li>
+  <li><a href="../mangadex_library/getUserFollowedMangaResponse.html">getUserFollowedMangaResponse</a></li>
+  <li><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></li>
+  <li><a href="../mangadex_library/getUserFollowedUsersResponse.html">getUserFollowedUsersResponse</a></li>
   <li><a href="../mangadex_library/login.html">login</a></li>
   <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
+  <li><a href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
+  <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
+  <li><a href="../mangadex_library/markMultileChaptersRead.html">markMultileChaptersRead</a></li>
+  <li><a href="../mangadex_library/markMultileChaptersUnread.html">markMultileChaptersUnread</a></li>
+  <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/search.html">search</a></li>
   <li><a href="../mangadex_library/searchResponse.html">searchResponse</a></li>
+  <li><a href="../mangadex_library/unfollowManga.html">unfollowManga</a></li>
 
 
 
 </ol>
 
   </div><!--/.sidebar-offcanvas-left-->
-
-  <div id="dartdoc-main-content" class="main-content">
-      <div>
-<h1><span class="kind-function">getCoverArt</span> function 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
- 
-</h1></div>
-
-    <section class="multi-line-signature">
-        
-
-<span class="returntype"><a href="https://api.dart.dev/stable/2.13.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../cover_Cover/Cover-class.html">Cover</a>?</span>&gt;</span></span>
-<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaID"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.13.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaID</span></span></li>
-</ol>)
-
-    </section>
-    
-
-
-    
-<section class="summary source-code" id="source">
-  <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Cover?&gt; getCoverArt(String mangaID) async {
-  var response = await getCoverArtResponse(mangaID);
-  var headers = response.headers;
-  if (headers[&#39;x-ratelimit-remaining&#39;] == &#39;0&#39;) {
-    print(&#39;Rate Limit Exceeded.&#39;);
-  } else {
-    return Cover.fromJson(jsonDecode(response.body));
-  }
-}</code></pre>
-</section>
-
-
-  </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
@@ -129,15 +155,16 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.1.1
+      1.2.11
   </span>
 
   
 </footer>
 
 
-<script src="../static-assets/highlight.pack.js"></script>
-<script src="../static-assets/script.js"></script>
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
 
 
 

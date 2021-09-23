@@ -132,3 +132,22 @@
   
 ## 1.2.9+7
  - fixed issues related to getChapterFilenames() in JsonSearch
+
+## 1.2.10
+ - added getAllMangaReadingStatus() and getMangaReadingStatus() functions
+ - fixed getLoggedUserDetails() function
+
+## 1.2.10+1
+ - minor changes related to UserDetails model class.
+
+## 1.2.10+2
+ - more changes related to UserDetails model class.
+
+## 1.2.10+3
+ - more changes related to UserDetails model class.
+
+## 1.2.10+4
+ - more changes related to UserDetails model class (I swear it's working this time)
+
+## 1.2.11
+ - added getAllReadChapters(), markChapterRead(), markChapterUnread(), markMultileChaptersRead() and markMultileChaptersUnread functions

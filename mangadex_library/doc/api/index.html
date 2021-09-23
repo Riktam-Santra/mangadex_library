@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 0.42.0">
+  <meta name="generator" content="made with love by dartdoc 2.0.0">
   <meta name="description" content="mangadex_library API docs, for the Dart programming language.">
   <title>mangadex_library - Dart API docs</title>
 
@@ -13,9 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="static-assets/github.css">
-  <link rel="stylesheet" href="static-assets/styles.css">
-  <link rel="icon" href="static-assets/favicon.png">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
 
   
 </head>
@@ -40,35 +41,10 @@
 <main>
 
 
-  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
-  <form class="search-sidebar" role="search">
-    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-  </form>
-</header>
-
-<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li class="self-crumb">mangadex_library package</li>
-</ol>
-
-
-    <h5 class="hidden-xs"><span class="package-name">mangadex_library</span> <span class="package-kind">package</span></h5>
-    <ol>
-      <li class="section-title">Libraries</li>
-      <li><a href="chapter_ChapterData/chapter_ChapterData-library.html">ChapterData</a></li>
-      <li><a href="cover_Cover/cover_Cover-library.html">Cover</a></li>
-      <li><a href="jsonSearchCommands/jsonSearchCommands-library.html">jsonSearchCommands</a></li>
-      <li><a href="login_Login/login_Login-library.html">Login</a></li>
-      <li><a href="mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-      <li><a href="search_Search/search_Search-library.html">Search</a></li>
-</ol>
-
-  </div>
-
   <div id="dartdoc-main-content" class="main-content">
       
 <section class="desc markdown">
-  <p>A dart library to facilitate easier access to the <a href="https://api.mangadex.org">mangadex API</a></p>
+  <p>A <a href="https://pub.dev/packages/mangadex_library">dart library</a> to facilitate easier access to the <a href="https://api.mangadex.org">mangadex API</a></p>
 <h2 id="warning-in-progress-library">WARNING In progress library</h2>
 <p>The library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:</p>
 <ul>
@@ -92,7 +68,7 @@ void main() {
 }
 
 void printFilenames() async {
-  // this function, needs a manga dex account username and password supplied
+  // this function, needs a mangadex account username and password supplied
   // to retrive login token
   var username = 'USERNAME'; // Put your username here
   var password = 'PASSWORD'; // Put your password here
@@ -111,8 +87,7 @@ void printFilenames() async {
   // it returns a Search class instance
   // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
 
-  var mangaID = searchData.results[0].data
-      .id; // this line gets the manga ID from the instance of the Search we just obtained
+  var mangaID = searchData.data[0].id; // this line gets the manga ID from the instance of the Search we just obtained
   //for demonstration we are talking the manga ID of only the first search result
   //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
   //For example, chapter pages and thimbnails
@@ -128,7 +103,7 @@ void printFilenames() async {
   //Chapter ID is required to access info of the desired chapter.
   var chapterHash = chapterData.result[0].data.attributes
       .hash; // this variable stores the chapter hash of a chapter
-  //Chapter Has is required for requesting manga pages.
+  //Chapter Hash is required for requesting manga pages.
 
   var baseUrl = await lib.getBaseUrl(
       chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
@@ -136,7 +111,7 @@ void printFilenames() async {
   //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
   jsonSearch jsonSearchInstance = new jsonSearch();
   var filenames =
-      jsonSearchInstance.getChapterFilenames(chapterID, chapterData, false);
+      jsonSearchInstance.getChapterFilenames(chapterID, false);
 
   // the filenames variable stores the name of all files in a manga chapter
   // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
@@ -148,22 +123,64 @@ void printFilenames() async {
 
 </code></pre>
 <h2 id="documentation">Documentation</h2>
-<p>The documentation is still to be created, sadly there were issues with DartDoc and therefore it has been delayed.</p>
+<p>The documentation is still to be created, for now the generated html docs using <a href="https://pub.dev/packages/dartdoc">dartdoc</a> can be found in the doc/api/ folder.</p>
 </section>
 
 
       <section class="summary">
           <h2>Libraries</h2>
         <dl>
+          <dt id="allMangaReadingStatus">
+  <span class="name"><a href="models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="alt_titles">
+  <span class="name"><a href="models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="attributes">
+  <span class="name"><a href="models_common_attributes/models_common_attributes-library.html">attributes</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
           <dt id="ChapterData">
-  <span class="name"><a href="chapter_ChapterData/chapter_ChapterData-library.html">ChapterData</a></span> 
+  <span class="name"><a href="models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="chapterData">
+  <span class="name"><a href="models_chapter_chapterData/models_chapter_chapterData-library.html">chapterData</a></span> 
 
 </dt>
 <dd> 
 </dd>
 
           <dt id="Cover">
-  <span class="name"><a href="cover_Cover/cover_Cover-library.html">Cover</a></span> 
+  <span class="name"><a href="models_cover_Cover/models_cover_Cover-library.html">Cover</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="data">
+  <span class="name"><a href="models_common_data/models_common_data-library.html">data</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="description">
+  <span class="name"><a href="models_common_description/models_common_description-library.html">description</a></span> 
 
 </dt>
 <dd> 
@@ -176,8 +193,22 @@ void printFilenames() async {
 <dd> 
 </dd>
 
+          <dt id="logged_user_details">
+  <span class="name"><a href="models_user_logged_user_details_logged_user_details/models_user_logged_user_details_logged_user_details-library.html">logged_user_details</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
           <dt id="Login">
-  <span class="name"><a href="login_Login/login_Login-library.html">Login</a></span> 
+  <span class="name"><a href="models_login_Login/models_login_Login-library.html">Login</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="manga_check">
+  <span class="name"><a href="models_user_user_followed_manga_manga_check/models_user_user_followed_manga_manga_check-library.html">manga_check</a></span> 
 
 </dt>
 <dd> 
@@ -191,8 +222,92 @@ void printFilenames() async {
 //////////////////////////////////////////////////////// 
 </dd>
 
+          <dt id="mangaReadingStatus">
+  <span class="name"><a href="models_common_mangaReadingStatus/models_common_mangaReadingStatus-library.html">mangaReadingStatus</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="name">
+  <span class="name"><a href="models_common_name/models_common_name-library.html">name</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="relationships">
+  <span class="name"><a href="models_common_relationships/models_common_relationships-library.html">relationships</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="resultOk">
+  <span class="name"><a href="models_common_resultOk/models_common_resultOk-library.html">resultOk</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
           <dt id="Search">
-  <span class="name"><a href="search_Search/search_Search-library.html">Search</a></span> 
+  <span class="name"><a href="models_search_Search/models_search_Search-library.html">Search</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="singleChapterData">
+  <span class="name"><a href="models_common_singleChapterData/models_common_singleChapterData-library.html">singleChapterData</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="singleMangaData">
+  <span class="name"><a href="models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="tag_attributes">
+  <span class="name"><a href="models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="tags">
+  <span class="name"><a href="models_common_tags/models_common_tags-library.html">tags</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="title">
+  <span class="name"><a href="models_common_title/models_common_title-library.html">title</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="user_followed_groups">
+  <span class="name"><a href="models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="user_followed_manga">
+  <span class="name"><a href="models_user_user_followed_manga_user_followed_manga/models_user_user_followed_manga_user_followed_manga-library.html">user_followed_manga</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="user_followed_users">
+  <span class="name"><a href="models_user_user_followed_users_user_followed_users/models_user_user_followed_users_user_followed_users-library.html">user_followed_users</a></span> 
 
 </dt>
 <dd> 
@@ -203,6 +318,51 @@ void printFilenames() async {
 
   </div> <!-- /.main-content -->
 
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li class="self-crumb">mangadex_library package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">mangadex_library</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></li>
+      <li><a href="models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
+      <li><a href="models_common_attributes/models_common_attributes-library.html">attributes</a></li>
+      <li><a href="models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
+      <li><a href="models_chapter_chapterData/models_chapter_chapterData-library.html">chapterData</a></li>
+      <li><a href="models_cover_Cover/models_cover_Cover-library.html">Cover</a></li>
+      <li><a href="models_common_data/models_common_data-library.html">data</a></li>
+      <li><a href="models_common_description/models_common_description-library.html">description</a></li>
+      <li><a href="jsonSearchCommands/jsonSearchCommands-library.html">jsonSearchCommands</a></li>
+      <li><a href="models_user_logged_user_details_logged_user_details/models_user_logged_user_details_logged_user_details-library.html">logged_user_details</a></li>
+      <li><a href="models_login_Login/models_login_Login-library.html">Login</a></li>
+      <li><a href="models_user_user_followed_manga_manga_check/models_user_user_followed_manga_manga_check-library.html">manga_check</a></li>
+      <li><a href="mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+      <li><a href="models_common_mangaReadingStatus/models_common_mangaReadingStatus-library.html">mangaReadingStatus</a></li>
+      <li><a href="models_common_name/models_common_name-library.html">name</a></li>
+      <li><a href="models_common_relationships/models_common_relationships-library.html">relationships</a></li>
+      <li><a href="models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
+      <li><a href="models_search_Search/models_search_Search-library.html">Search</a></li>
+      <li><a href="models_common_singleChapterData/models_common_singleChapterData-library.html">singleChapterData</a></li>
+      <li><a href="models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
+      <li><a href="models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></li>
+      <li><a href="models_common_tags/models_common_tags-library.html">tags</a></li>
+      <li><a href="models_common_title/models_common_title-library.html">title</a></li>
+      <li><a href="models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></li>
+      <li><a href="models_user_user_followed_manga_user_followed_manga/models_user_user_followed_manga_user_followed_manga-library.html">user_followed_manga</a></li>
+      <li><a href="models_user_user_followed_users_user_followed_users/models_user_user_followed_users_user_followed_users-library.html">user_followed_users</a></li>
+</ol>
+
+  </div>
+
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div>
 
@@ -211,15 +371,16 @@ void printFilenames() async {
 <footer>
   <span class="no-break">
     mangadex_library
-      1.1.1
+      1.2.11
   </span>
 
   
 </footer>
 
 
-<script src="static-assets/highlight.pack.js"></script>
-<script src="static-assets/script.js"></script>
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/script.js?v1"></script>
 
 
 

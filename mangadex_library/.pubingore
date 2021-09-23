@@ -1,0 +1,4 @@
+testData.json
+.vscode/
+.dart_tool/
+pubspec.lock

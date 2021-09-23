@@ -15,11 +15,14 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:mangadex_library/models/common/allMangaReadingStatus.dart';
+import 'package:mangadex_library/models/common/mangaReadingStatus.dart';
 import 'package:mangadex_library/models/user/logged_user_details/logged_user_details.dart';
 import 'package:mangadex_library/models/user/user_followed_groups/user_followed_groups.dart';
 import 'package:mangadex_library/models/user/user_followed_manga/manga_check.dart';
 import 'package:mangadex_library/models/user/user_followed_users/user_followed_users.dart';
 
+import 'models/common/resultOk.dart';
 import 'models/cover/Cover.dart';
 import 'models/search/Search.dart';
 import 'models/chapter/ChapterData.dart';
@@ -60,6 +63,21 @@ Future<http.Response> getRefreshResponse(String refresh) async {
 Future<Login> refresh(String refreshToken) async {
   var response = await getRefreshResponse(refreshToken);
   return Login.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getLoggedUserDetailsResponse(String token) async {
+  final unencodedPath = '/user/me';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<UserDetails> getLoggedUserDetails(String token) async {
+  var response = await getLoggedUserDetailsResponse(token);
+  return UserDetails.fromJson(jsonDecode(response.body));
 }
 
 // Manga search related functions
@@ -359,19 +377,25 @@ Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
   }
 }
 
-Future<http.Response> getLoggedUserDetailsResponse(String token) async {
-  final unencodedPath = '/user/follows/user/me';
+Future<AllMangaReadingStatus> getAllMangaReadingStatus(String token) async {
+  var unencodedPath = '/manga/status';
   final uri = 'https://$authority$unencodedPath';
-  var response = await http.get(Uri.parse(uri), headers: {
+  var response = await http.post(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'
   });
-  return response;
+  return AllMangaReadingStatus.fromJson(jsonDecode(response.body));
 }
 
-Future<UserDetails> getLoggedUserDetails(String token, String groupId) async {
-  var response = await getLoggedUserDetailsResponse(token);
-  return UserDetails.fromJson(jsonDecode(response.body));
+Future<MangaReadingStatus> getMangaReadingStatus(
+    String token, String mangaId) async {
+  var unencodedPath = '/manga/$mangaId/status';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return MangaReadingStatus.fromJson(jsonDecode(response.body));
 }
 
 //Follow or unfollow a manga
@@ -393,6 +417,80 @@ Future<MangaCheck> unfollowManga(String token, String mangaId) async {
     HttpHeaders.authorizationHeader: 'Bearer $token'
   });
   return MangaCheck.fromJson(jsonDecode(response.body));
+}
+
+//Manga markers related
+
+Future<http.Response> getAllReadChapters(
+    String token, List<String> mangaIds) async {
+  // get all read chapters in the given mangaIds,
+  // please note it returns an http response since the response is not always of the same schema.
+  var unencodedPath = '/manga/read';
+  var _ids = '';
+  mangaIds.forEach((element) {
+    _ids = _ids + '&ids[]=$element';
+  });
+  print(_ids);
+  final uri = 'https://$authority/$unencodedPath?$_ids';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return response;
+}
+
+Future<ResultOk> markChapterRead(String token, String chapterId) async {
+  var unencodedPath = '/chapter/$chapterId/read';
+  final uri = 'https://$authority/$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return ResultOk.fromJson(jsonDecode(response.body));
+}
+
+Future<ResultOk> markChapterUnread(String token, String chapterId) async {
+  var unencodedPath = '/chapter/$chapterId/read';
+  final uri = 'https://$authority/$unencodedPath';
+  var response = await http.delete(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  });
+  return ResultOk.fromJson(jsonDecode(response.body));
+}
+
+Future<ResultOk> markMultileChaptersRead(
+    String token, String mangaId, List<String> chapterIds) async {
+  var idList = [];
+  chapterIds.forEach((element) {
+    idList.add(element);
+  });
+  var payload = {
+    'chapterIdsRead': chapterIds.toString(),
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  };
+  var unencodedPath = '/manga/$mangaId/read';
+  final uri = 'https://$authority/$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: payload);
+  return ResultOk.fromJson(jsonDecode(response.body));
+}
+
+Future<ResultOk> markMultileChaptersUnread(
+    String token, String mangaId, List<String> chapterIds) async {
+  var idList = [];
+  chapterIds.forEach((element) {
+    idList.add(element);
+  });
+  var payload = {
+    'chapterIdsRead': chapterIds.toString(),
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token'
+  };
+  var unencodedPath = '/manga/$mangaId/unread';
+  final uri = 'https://$authority/$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: payload);
+  return ResultOk.fromJson(jsonDecode(response.body));
 }
 
 // Base url class to parse base url
