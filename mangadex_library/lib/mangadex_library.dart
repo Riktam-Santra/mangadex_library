@@ -272,8 +272,11 @@ Future<String> getCoverArtUrl(String mangaID, {int? res}) async {
 }
 
 // User related functions
-Future<http.Response> getUserFollowedMangaResponse(String token) async {
-  final unencodedPath = '/user/follows/manga';
+Future<http.Response> getUserFollowedMangaResponse(String token,
+    {int? offset, int? limit}) async {
+  final _offset = '&offset=${offset ?? 0}';
+  final _limit = '&limit=${limit ?? 10}';
+  final unencodedPath = '/user/follows/manga?$_offset$_limit';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -302,13 +305,18 @@ Future<bool> checkIfUserFollowsManga(String token, String mangaId) async {
   }
 }
 
-Future<UserFollowedManga> getUserFollowedManga(String token) async {
-  var response = await getUserFollowedMangaResponse(token);
+Future<UserFollowedManga> getUserFollowedManga(String token,
+    {int? offset, int? limit}) async {
+  var response =
+      await getUserFollowedMangaResponse(token, offset: offset, limit: limit);
   return UserFollowedManga.fromJson(jsonDecode(response.body));
 }
 
-Future<http.Response> getUserFollowedUsersResponse(String token) async {
-  final unencodedPath = '/user/follows/user';
+Future<http.Response> getUserFollowedUsersResponse(String token,
+    {int? offset, int? limit}) async {
+  final _offset = '&offset=${offset ?? 0}';
+  final _limit = '&limit=${limit ?? 10}';
+  final unencodedPath = '/user/follows/user?$_offset$_limit';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -317,8 +325,10 @@ Future<http.Response> getUserFollowedUsersResponse(String token) async {
   return response;
 }
 
-Future<UserFollowedUsers> getUserFollowedUsers(String token) async {
-  var response = await getUserFollowedMangaResponse(token);
+Future<UserFollowedUsers> getUserFollowedUsers(String token,
+    {int? offset, int? limit}) async {
+  var response =
+      await getUserFollowedUsersResponse(token, offset: offset, limit: limit);
   return UserFollowedUsers.fromJson(jsonDecode(response.body));
 }
 
@@ -342,8 +352,11 @@ Future<bool> checkIfUserFollowsUser(String token, String userId) async {
   }
 }
 
-Future<http.Response> getUserFollowedGroupsResponse(String token) async {
-  final unencodedPath = '/user/follows/group';
+Future<http.Response> getUserFollowedGroupsResponse(String token,
+    {int? offset, int? limit}) async {
+  final _offset = '&offset=${offset ?? 0}';
+  final _limit = '&limit=${limit ?? 10}';
+  final unencodedPath = '/user/follows/group?$_offset$_limit';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -352,8 +365,13 @@ Future<http.Response> getUserFollowedGroupsResponse(String token) async {
   return response;
 }
 
-Future<UserFollowedGroups> getUserFollowedGroups(String token) async {
-  var response = await getUserFollowedMangaResponse(token);
+Future<UserFollowedGroups> getUserFollowedGroups(
+    String token, int? offset, int? limit) async {
+  var response = await getUserFollowedGroupsResponse(
+    token,
+    offset: offset,
+    limit: limit,
+  );
   return UserFollowedGroups.fromJson(jsonDecode(response.body));
 }
 

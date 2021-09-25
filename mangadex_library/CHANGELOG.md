@@ -151,3 +151,6 @@
 
 ## 1.2.11
  - added getAllReadChapters(), markChapterRead(), markChapterUnread(), markMultileChaptersRead() and markMultileChaptersUnread functions
+
+## 1.2.12
+ - added offset and limit parameters to getUserFollowedManga(),getUserFollowedGroups() and getUserFollowedUsers() functions
