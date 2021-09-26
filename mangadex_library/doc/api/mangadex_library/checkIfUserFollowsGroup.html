@@ -65,7 +65,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; checkIfUserFollowsGroup(String token, String groupId) async {
-  var response = await checkIfUserFollowsUserResponse(token, groupId);
+  var response = await checkIfUserFollowsGroupResponse(token, groupId);
   if (response.statusCode == 200) {
     return true;
   } else {
@@ -155,7 +155,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.12
+      1.2.13+1
   </span>
 
   

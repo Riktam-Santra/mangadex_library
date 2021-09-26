@@ -154,3 +154,9 @@
 
 ## 1.2.12
  - added offset and limit parameters to getUserFollowedManga(),getUserFollowedGroups() and getUserFollowedUsers() functions
+
+## 1.2.13
+ - fixed a few typos in the check functions for user followed responses.
+
+## 1.2.13+1
+ - fixed typos related to follow and unfollow manga

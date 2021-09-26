@@ -65,7 +65,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;MangaCheck&gt; unfollowManga(String token, String mangaId) async {
-  var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;follow&#39;;
+  var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;unfollow&#39;;
   final uri = &#39;https:&#47;&#47;$authority$unencodedPath&#39;;
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;,
@@ -156,7 +156,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.12
+      1.2.13+1
   </span>
 
   

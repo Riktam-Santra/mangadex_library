@@ -297,7 +297,7 @@ Future<http.Response> checkIfUserFollowsMangaResponse(
 }
 
 Future<bool> checkIfUserFollowsManga(String token, String mangaId) async {
-  var response = await checkIfUserFollowsUserResponse(token, mangaId);
+  var response = await checkIfUserFollowsMangaResponse(token, mangaId);
   if (response.statusCode == 200) {
     return true;
   } else {
@@ -387,7 +387,7 @@ Future<http.Response> checkIfUserFollowsGroupResponse(
 }
 
 Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
-  var response = await checkIfUserFollowsUserResponse(token, groupId);
+  var response = await checkIfUserFollowsGroupResponse(token, groupId);
   if (response.statusCode == 200) {
     return true;
   } else {
@@ -428,7 +428,7 @@ Future<MangaCheck> followManga(String token, String mangaId) async {
 }
 
 Future<MangaCheck> unfollowManga(String token, String mangaId) async {
-  var unencodedPath = '/manga/$mangaId/follow';
+  var unencodedPath = '/manga/$mangaId/unfollow';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
