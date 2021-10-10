@@ -160,3 +160,7 @@
 
 ## 1.2.13+1
  - fixed typos related to follow and unfollow manga
+
+## 1.2.14
+ - renamed function getAllMangaReadingStatus() to getAllUserMangaReadingStatus
+ - fixed type errors when paring json for function getAllUserMangaReadingStatus()

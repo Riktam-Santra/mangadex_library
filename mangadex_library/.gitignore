@@ -11,3 +11,4 @@ pubspec.lock
 
 # Custom Added
 testData.json
+test\mangadex_library_example.dart
