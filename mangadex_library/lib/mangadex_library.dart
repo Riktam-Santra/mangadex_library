@@ -15,38 +15,34 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/models/chapter/readChapters.dart';
-import 'package:mangadex_library/models/common/allMangaReadingStatus.dart';
-import 'package:mangadex_library/models/common/mangaReadingStatus.dart';
-import 'package:mangadex_library/models/user/logged_user_details/logged_user_details.dart';
-import 'package:mangadex_library/models/user/user_followed_groups/user_followed_groups.dart';
-import 'package:mangadex_library/models/user/user_followed_manga/manga_check.dart';
-import 'package:mangadex_library/models/user/user_followed_users/user_followed_users.dart';
+import 'package:mangadex_library/src/models/chapter/readChapters.dart';
+import 'package:mangadex_library/src/models/common/allMangaReadingStatus.dart';
+import 'package:mangadex_library/src/models/common/mangaReadingStatus.dart';
+import 'package:mangadex_library/src/models/common/reading_status.dart';
+import 'package:mangadex_library/src/models/user/user_followed_groups/user_followed_groups.dart';
+import 'package:mangadex_library/src/models/user/user_followed_manga/manga_check.dart';
+import 'package:mangadex_library/src/models/user/user_followed_users/user_followed_users.dart';
 
-import 'models/common/resultOk.dart';
-import 'models/cover/Cover.dart';
-import 'models/search/Search.dart';
-import 'models/chapter/ChapterData.dart';
-import 'models/login/Login.dart';
-import 'models/user/user_followed_manga/user_followed_manga.dart';
+import '/src/models/common/resultOk.dart';
+import '/src/models/cover/Cover.dart';
+import '/src/models/search/Search.dart';
+import '/src/models/chapter/ChapterData.dart';
+import '/src/models/login/Login.dart';
+import '/src/models/user/user_followed_manga/user_followed_manga.dart';
+import 'src/models/user/logged_user_details/logged_user_details.dart';
 
 final String authority = 'api.mangadex.org';
-
-late HttpClient client;
-
-HttpClient getClientFromSignedCerts() {
-  var securityContext = SecurityContext.defaultContext;
-  securityContext.setTrustedCertificates('certifs\isrgrootx1.pem');
-  return HttpClient(context: securityContext);
-}
 
 // User login related functions
 Future<http.Response> loginResponse(String username, String password) async {
   var unencodedPath = '/auth/login';
-  var response = await http.post(Uri.https(authority, unencodedPath),
-      headers: {'content-type': 'application/json'},
-      body: jsonEncode({'username': '$username', 'password': '$password'}));
-
+  var response = await http.post(
+    Uri.https(authority, unencodedPath),
+    headers: {'content-type': 'application/json'},
+    body: jsonEncode(
+      {'username': '$username', 'password': '$password'},
+    ),
+  );
   return response;
 }
 
@@ -423,11 +419,46 @@ Future<MangaReadingStatus> getMangaReadingStatus(
     String token, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/status';
   final uri = 'https://$authority$unencodedPath';
-  var response = await http.post(Uri.parse(uri), headers: {
+  var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'
   });
   return MangaReadingStatus.fromJson(jsonDecode(response.body));
+}
+
+Future<ResultOk> setMangaReadingStatus(
+    String token, String mangaId, ReadingStatus status) async {
+  var statusString = '';
+
+  switch (status) {
+    case ReadingStatus.completed:
+      statusString = 'completed';
+      break;
+    case ReadingStatus.dropped:
+      statusString = 'dropped';
+      break;
+    case ReadingStatus.on_hold:
+      statusString = 'on_hold';
+      break;
+    case ReadingStatus.plan_to_read:
+      statusString = 'plan_to_read';
+      break;
+    case ReadingStatus.re_reading:
+      statusString = 're_reading';
+      break;
+    case ReadingStatus.reading:
+      statusString = 'reading';
+      break;
+  }
+  var unencodedPath = '/manga/$mangaId/status';
+  final uri = 'https://$authority/$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $token',
+    'status': '$statusString',
+  });
+  print(response.body);
+  return ResultOk.fromJson(jsonDecode(response.body));
 }
 
 //Follow or unfollow a manga
@@ -503,7 +534,7 @@ Future<ResultOk> markChapterUnread(String token, String chapterId) async {
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
-Future<ResultOk> markMultileChaptersRead(
+Future<ResultOk> markMultipleChaptersRead(
     String token, String mangaId, List<String> chapterIds) async {
   var idList = [];
   chapterIds.forEach((element) {
@@ -520,7 +551,7 @@ Future<ResultOk> markMultileChaptersRead(
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
-Future<ResultOk> markMultileChaptersUnread(
+Future<ResultOk> markMultipleChaptersUnread(
     String token, String mangaId, List<String> chapterIds) async {
   var idList = [];
   chapterIds.forEach((element) {

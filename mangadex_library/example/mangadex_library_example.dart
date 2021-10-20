@@ -41,10 +41,10 @@ void main() async {
     print('Token: ' + token);
     print('Url: $baseUrl/$token/data/$chapHash/$filename');
     // the code below prints the file names of the 1st chapter
-    var a = JsonSearch();
-    var b = await a.getChapterFilenames('$chapId', false);
-    for (var i = 0; i < b.length; i++) {
-      print(b[i]);
+    var chapterFilenameList =
+        await JsonUtils.getChapterFilenames('$chapId', false);
+    for (var i = 0; i < chapterFilenameList.length; i++) {
+      print(chapterFilenameList[i]);
     }
   }
   var tokendata = await login('riksantra', 'Sikkim123.');
