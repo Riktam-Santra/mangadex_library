@@ -168,5 +168,8 @@
 ## 1.2.15
  - added getMangaReadingStatus() to get reading status of a certain manga ID.
  - added setMangaReadingStatus() to set reading status of a certain manga ID.
- - moved all model classes to src folder to make the code more organised
- - started work on wiki documentation on github (it will take time to finish it) https://github.com/Riktam-Santra/mangadex_library/wiki
+ - moved all model classes to src folder to make the code more organised.
+ - started work on wiki documentation on github (it will take time to finish it) https://github.com/Riktam-Santra/mangadex_library/wiki.
+
+## 1.2.16
+ - fixed a cast on null error in getAllReadChapters()

@@ -65,8 +65,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;ReadChapters&gt; getAllReadChapters(String token, String mangaId) async {
-  &#47;&#47; get all read chapters in the given mangaIds,
-  &#47;&#47; please note it returns an http response since the response is not always of the same schema.
+  &#47;&#47; get all read chapters for the given mangaId,
   var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;read&#39;;
   final uri = &#39;https:&#47;&#47;$authority&#47;$unencodedPath?&#39;;
   var response = await http.get(Uri.parse(uri), headers: {
@@ -161,7 +160,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.14
+      1.2.16
   </span>
 
   

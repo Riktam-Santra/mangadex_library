@@ -485,8 +485,7 @@ Future<MangaCheck> unfollowManga(String token, String mangaId) async {
 //Manga markers related
 
 Future<ReadChapters> getAllReadChapters(String token, String mangaId) async {
-  // get all read chapters in the given mangaIds,
-  // please note it returns an http response since the response is not always of the same schema.
+  // get all read chapters for the given mangaId,
   var unencodedPath = '/manga/$mangaId/read';
   final uri = 'https://$authority/$unencodedPath?';
   var response = await http.get(Uri.parse(uri), headers: {
