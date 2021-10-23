@@ -12,12 +12,7 @@ The library is currently in an 'under development' state and therefore doesn't c
 
 A quick demonstration of the API:
 
-```
-import 'package:mangadex_library/mangadex_library.dart' as lib;
-import 'package:mangadex_library/jsonSearchCommands.dart';
-
-import 'dart:convert';
-
+```dart
 import 'package:mangadex_library/mangadex_library.dart' as lib;
 import 'package:mangadex_library/jsonSearchCommands.dart';
 
@@ -35,7 +30,7 @@ void printFilenames() async {
   //two String parameters, username and password and returns
   //an instance of the Login class
   var loginData = await lib.login(username, password);
-  var token = loginData.token
+  var token = loginData!.token
       .session; // this sets the token variable to store the session token obtained using
   //the login function, it is a String value.
   // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
@@ -45,7 +40,8 @@ void printFilenames() async {
   // it returns a Search class instance
   // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
 
-  var mangaID = searchData.data[0].id; // this line gets the manga ID from the instance of the Search we just obtained
+  var mangaID = searchData!.data[0]
+      .id; // this line gets the manga ID from the instance of the Search we just obtained
   //for demonstration we are talking the manga ID of only the first search result
   //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
   //For example, chapter pages and thimbnails
@@ -54,12 +50,12 @@ void printFilenames() async {
       mangaID); //This function returns an instance of the ChapterData class,
   // it contains info on all the chapters of the manga ID it has been provided.
 
-  var chapterID = chapterData.result[0].data
-      .id; // This line sets the chapterID variable to the chapter id of
+  var chapterID = chapterData!
+      .data[0].id; // This line sets the chapterID variable to the chapter id of
   // the first chapter from the chapterData we just got.
   //Every chapter has a usique chapter ID and a chapter Hash
   //Chapter ID is required to access info of the desired chapter.
-  var chapterHash = chapterData.result[0].data.attributes
+  var chapterHash = chapterData.data[0].attributes
       .hash; // this variable stores the chapter hash of a chapter
   //Chapter Hash is required for requesting manga pages.
 
@@ -67,17 +63,17 @@ void printFilenames() async {
       chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
   //For now, there is only one base URL (https://uploads.mangadex.org)
   //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
-  jsonSearch jsonSearchInstance = new jsonSearch();
-  var filenames =
-      jsonSearchInstance.getChapterFilenames(chapterID, false);
+  var filenames = await JsonUtils.getChapterFilenames(chapterID, false);
 
   // the filenames variable stores the name of all files in a manga chapter
   // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
   for (var i = 0; i < filenames.length; i++) {
-    print(lib.ConstructUrl(chapterID, token, chapterHash, filenames[i], false));
+    print(lib.constructPageUrl(
+        chapterID, token, chapterHash, filenames[i], false));
   }
   // this for loop prints the url to all the pages in the provided chapters.
 }
+
 
 ```
 

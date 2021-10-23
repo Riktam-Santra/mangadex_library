@@ -1,4 +1,4 @@
-import 'package:mangadex_library/src/models/common/relationships.dart';
+import 'package:mangadex_library/models/common/relationships.dart';
 
 class UserFollowedUsers {
   late final List<Data> data;

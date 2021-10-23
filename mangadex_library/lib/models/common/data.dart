@@ -1,5 +1,5 @@
-import 'package:mangadex_library/src/models/common/attributes.dart';
-import 'package:mangadex_library/src/models/common/relationships.dart';
+import 'package:mangadex_library/models/common/attributes.dart';
+import 'package:mangadex_library/models/common/relationships.dart';
 
 class Data {
   late final String id;

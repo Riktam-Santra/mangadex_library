@@ -52,10 +52,10 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
 <span class="name ">setMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
 <li><span class="parameter" id="setMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
-<li><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation">ReadingStatus</span> <span class="parameter-name">status</span></span></li>
+<li><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus-class.html">ReadingStatus</a>?</span> <span class="parameter-name">status</span></span></li>
 </ol>)
 
     </section>
@@ -66,29 +66,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;ResultOk&gt; setMangaReadingStatus(
-    String token, String mangaId, ReadingStatus status) async {
-  var statusString = &#39;&#39;;
-
-  switch (status) {
-    case ReadingStatus.completed:
-      statusString = &#39;completed&#39;;
-      break;
-    case ReadingStatus.dropped:
-      statusString = &#39;dropped&#39;;
-      break;
-    case ReadingStatus.on_hold:
-      statusString = &#39;on_hold&#39;;
-      break;
-    case ReadingStatus.plan_to_read:
-      statusString = &#39;plan_to_read&#39;;
-      break;
-    case ReadingStatus.re_reading:
-      statusString = &#39;re_reading&#39;;
-      break;
-    case ReadingStatus.reading:
-      statusString = &#39;reading&#39;;
-      break;
-  }
+    String token, String mangaId, ReadingStatus? status) async {
+  var statusString = status != null ? parseStatusFromEnum(status) : &#39;&#39;;
   var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;status&#39;;
   final uri = &#39;https:&#47;&#47;$authority&#47;$unencodedPath&#39;;
   var response = await http.post(Uri.parse(uri), headers: {
@@ -165,7 +144,9 @@
   <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
+  <li><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+  <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/search.html">search</a></li>
   <li><a href="../mangadex_library/searchResponse.html">searchResponse</a></li>
   <li><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></li>
@@ -185,7 +166,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.16
+      1.2.17
   </span>
 
   

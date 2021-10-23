@@ -173,3 +173,11 @@
 
 ## 1.2.16
  - fixed a cast on null error in getAllReadChapters()
+
+## 1.2.17
+ - revoked the move of all models into src/ folder (see point 3 of 1.2.15).
+ - added enum ReadingStatus to keep the values of reading status fixed.
+ - added removeMangaReadingStatus() to remove the reading status of a manga but still keep it as followed.
+ - using followManga() now automatically sets the reading status for the manga as 'reading', this can can be changed to other status by supplying the optional ReadingStatus enum. It is not possible to asign a null value to the status, this can be done using the removeMangaReadingStatus().
+ - using unfollowManga() now first removes the reading status and then unfollows the manga (just to be on the safe side).
+ - changed class name JsonSearchCommands() to JsonUtils(), the class can no longer be instantiated since all of it's functions are now static.

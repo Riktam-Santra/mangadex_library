@@ -187,8 +187,8 @@
 </dd>
 
         <dt id="followManga" class="callable">
-  <span class="name"><a href="../mangadex_library/followManga.html">followManga</a></span><span class="signature">(<wbr><span class="parameter" id="followManga-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="followManga-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MangaCheck</span>&gt;</span></span>
+  <span class="name"><a href="../mangadex_library/followManga.html">followManga</a></span><span class="signature">(<wbr><span class="parameter" id="followManga-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="followManga-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="followManga-param-status">{<span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus-class.html">ReadingStatus</a>?</span> <span class="parameter-name">status</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_manga_manga_check/MangaCheck-class.html">MangaCheck</a></span>&gt;</span></span>
   </span>
   
 
@@ -214,7 +214,7 @@
 
         <dt id="getAllReadChapters" class="callable">
   <span class="name"><a href="../mangadex_library/getAllReadChapters.html">getAllReadChapters</a></span><span class="signature">(<wbr><span class="parameter" id="getAllReadChapters-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="getAllReadChapters-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ReadChapters</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_chapter_readChapters/ReadChapters-class.html">ReadChapters</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -240,7 +240,7 @@
 
         <dt id="getAllUserMangaReadingStatus" class="callable">
   <span class="name"><a href="../mangadex_library/getAllUserMangaReadingStatus.html">getAllUserMangaReadingStatus</a></span><span class="signature">(<wbr><span class="parameter" id="getAllUserMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">AllMangaReadingStatus</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_allMangaReadingStatus/AllMangaReadingStatus-class.html">AllMangaReadingStatus</a></span>&gt;</span></span>
   </span>
   
 
@@ -279,7 +279,7 @@
 
         <dt id="getChapters" class="callable">
   <span class="name"><a href="../mangadex_library/getChapters.html">getChapters</a></span><span class="signature">(<wbr><span class="parameter" id="getChapters-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChapters-param-offset">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getChapters-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ChapterData?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_chapter_ChapterData/ChapterData-class.html">ChapterData</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -305,7 +305,7 @@
 
         <dt id="getCoverArt" class="callable">
   <span class="name"><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArt-param-mangaID"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaID</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Cover?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_cover_Cover/Cover-class.html">Cover</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -344,7 +344,7 @@
 
         <dt id="getLoggedUserDetails" class="callable">
   <span class="name"><a href="../mangadex_library/getLoggedUserDetails.html">getLoggedUserDetails</a></span><span class="signature">(<wbr><span class="parameter" id="getLoggedUserDetails-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserDetails</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_logged_user_details_logged_user_details/UserDetails-class.html">UserDetails</a></span>&gt;</span></span>
   </span>
   
 
@@ -370,7 +370,7 @@
 
         <dt id="getMangaReadingStatus" class="callable">
   <span class="name"><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></span><span class="signature">(<wbr><span class="parameter" id="getMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="getMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MangaReadingStatus</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_mangaReadingStatus/MangaReadingStatus-class.html">MangaReadingStatus</a></span>&gt;</span></span>
   </span>
   
 
@@ -396,7 +396,7 @@
 
         <dt id="getUserFollowedGroups" class="callable">
   <span class="name"><a href="../mangadex_library/getUserFollowedGroups.html">getUserFollowedGroups</a></span><span class="signature">(<wbr><span class="parameter" id="getUserFollowedGroups-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="getUserFollowedGroups-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getUserFollowedGroups-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserFollowedGroups</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_groups_user_followed_groups/UserFollowedGroups-class.html">UserFollowedGroups</a></span>&gt;</span></span>
   </span>
   
 
@@ -422,7 +422,7 @@
 
         <dt id="getUserFollowedManga" class="callable">
   <span class="name"><a href="../mangadex_library/getUserFollowedManga.html">getUserFollowedManga</a></span><span class="signature">(<wbr><span class="parameter" id="getUserFollowedManga-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="getUserFollowedManga-param-offset">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getUserFollowedManga-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserFollowedManga</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_manga_user_followed_manga/UserFollowedManga-class.html">UserFollowedManga</a></span>&gt;</span></span>
   </span>
   
 
@@ -448,7 +448,7 @@
 
         <dt id="getUserFollowedUsers" class="callable">
   <span class="name"><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></span><span class="signature">(<wbr><span class="parameter" id="getUserFollowedUsers-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="getUserFollowedUsers-param-offset">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getUserFollowedUsers-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserFollowedUsers</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_users_user_followed_users/UserFollowedUsers-class.html">UserFollowedUsers</a></span>&gt;</span></span>
   </span>
   
 
@@ -474,7 +474,7 @@
 
         <dt id="login" class="callable">
   <span class="name"><a href="../mangadex_library/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-username"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span><span class="parameter" id="login-param-password"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Login?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_login_Login/Login-class.html">Login</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -500,7 +500,7 @@
 
         <dt id="markChapterRead" class="callable">
   <span class="name"><a href="../mangadex_library/markChapterRead.html">markChapterRead</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterRead-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="markChapterRead-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
   </span>
   
 
@@ -513,7 +513,7 @@
 
         <dt id="markChapterUnread" class="callable">
   <span class="name"><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterUnread-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="markChapterUnread-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
   </span>
   
 
@@ -526,7 +526,7 @@
 
         <dt id="markMultipleChaptersRead" class="callable">
   <span class="name"><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersRead-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-chapterIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
   </span>
   
 
@@ -539,7 +539,20 @@
 
         <dt id="markMultipleChaptersUnread" class="callable">
   <span class="name"><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersUnread-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-chapterIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
+        <dt id="parseStatusFromEnum" class="callable">
+  <span class="name"><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></span><span class="signature">(<wbr><span class="parameter" id="parseStatusFromEnum-param-status"><span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus-class.html">ReadingStatus</a></span> <span class="parameter-name">status</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span>
   </span>
   
 
@@ -552,7 +565,20 @@
 
         <dt id="refresh" class="callable">
   <span class="name"><a href="../mangadex_library/refresh.html">refresh</a></span><span class="signature">(<wbr><span class="parameter" id="refresh-param-refreshToken"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">refreshToken</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Login</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_login_Login/Login-class.html">Login</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
+        <dt id="removeMangaReadingStatus" class="callable">
+  <span class="name"><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></span><span class="signature">(<wbr><span class="parameter" id="removeMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="removeMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_manga_manga_check/MangaCheck-class.html">MangaCheck</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -565,7 +591,7 @@
 
         <dt id="search" class="callable">
   <span class="name"><a href="../mangadex_library/search.html">search</a></span><span class="signature">(<wbr><span class="parameter" id="search-param-query"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">query</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Search?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_search_Search/Search-class.html">Search</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -590,8 +616,8 @@
 </dd>
 
         <dt id="setMangaReadingStatus" class="callable">
-  <span class="name"><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></span><span class="signature">(<wbr><span class="parameter" id="setMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="setMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation">ReadingStatus</span> <span class="parameter-name">status</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ResultOk</span>&gt;</span></span>
+  <span class="name"><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></span><span class="signature">(<wbr><span class="parameter" id="setMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="setMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus-class.html">ReadingStatus</a>?</span> <span class="parameter-name">status</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
   </span>
   
 
@@ -604,7 +630,7 @@
 
         <dt id="unfollowManga" class="callable">
   <span class="name"><a href="../mangadex_library/unfollowManga.html">unfollowManga</a></span><span class="signature">(<wbr><span class="parameter" id="unfollowManga-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="unfollowManga-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MangaCheck</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_manga_manga_check/MangaCheck-class.html">MangaCheck</a></span>&gt;</span></span>
   </span>
   
 
@@ -639,8 +665,34 @@
     <h5><span class="package-name">mangadex_library</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
+      <li><a href="../models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></li>
+      <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
+      <li><a href="../models_common_attributes/models_common_attributes-library.html">attributes</a></li>
+      <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
+      <li><a href="../models_chapter_chapterData/models_chapter_chapterData-library.html">chapterData</a></li>
+      <li><a href="../models_cover_Cover/models_cover_Cover-library.html">Cover</a></li>
+      <li><a href="../models_common_data/models_common_data-library.html">data</a></li>
+      <li><a href="../models_common_description/models_common_description-library.html">description</a></li>
       <li><a href="../jsonSearchCommands/jsonSearchCommands-library.html">jsonSearchCommands</a></li>
+      <li><a href="../models_user_logged_user_details_logged_user_details/models_user_logged_user_details_logged_user_details-library.html">logged_user_details</a></li>
+      <li><a href="../models_login_Login/models_login_Login-library.html">Login</a></li>
+      <li><a href="../models_user_user_followed_manga_manga_check/models_user_user_followed_manga_manga_check-library.html">manga_check</a></li>
       <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+      <li><a href="../models_common_mangaReadingStatus/models_common_mangaReadingStatus-library.html">mangaReadingStatus</a></li>
+      <li><a href="../models_common_name/models_common_name-library.html">name</a></li>
+      <li><a href="../models_chapter_readChapters/models_chapter_readChapters-library.html">readChapters</a></li>
+      <li><a href="../models_common_reading_status/models_common_reading_status-library.html">reading_status</a></li>
+      <li><a href="../models_common_relationships/models_common_relationships-library.html">relationships</a></li>
+      <li><a href="../models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
+      <li><a href="../models_search_Search/models_search_Search-library.html">Search</a></li>
+      <li><a href="../models_common_singleChapterData/models_common_singleChapterData-library.html">singleChapterData</a></li>
+      <li><a href="../models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
+      <li><a href="../models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></li>
+      <li><a href="../models_common_tags/models_common_tags-library.html">tags</a></li>
+      <li><a href="../models_common_title/models_common_title-library.html">title</a></li>
+      <li><a href="../models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></li>
+      <li><a href="../models_user_user_followed_manga_user_followed_manga/models_user_user_followed_manga_user_followed_manga-library.html">user_followed_manga</a></li>
+      <li><a href="../models_user_user_followed_users_user_followed_users/models_user_user_followed_users_user_followed_users-library.html">user_followed_users</a></li>
 </ol>
 
   </div>
@@ -693,7 +745,9 @@
   <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
+  <li><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+  <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/search.html">search</a></li>
   <li><a href="../mangadex_library/searchResponse.html">searchResponse</a></li>
   <li><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></li>
@@ -710,7 +764,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.16
+      1.2.17
   </span>
 
   

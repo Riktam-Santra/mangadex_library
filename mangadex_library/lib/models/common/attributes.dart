@@ -1,7 +1,7 @@
-import 'package:mangadex_library/src/models/common/alt_titles.dart';
-import 'package:mangadex_library/src/models/common/description.dart';
-import 'package:mangadex_library/src/models/common/tags.dart';
-import 'package:mangadex_library/src/models/common/title.dart';
+import 'package:mangadex_library/models/common/alt_titles.dart';
+import 'package:mangadex_library/models/common/description.dart';
+import 'package:mangadex_library/models/common/tags.dart';
+import 'package:mangadex_library/models/common/title.dart';
 
 class Attributes {
   late final Title title;

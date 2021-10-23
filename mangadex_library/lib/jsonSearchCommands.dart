@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/src/models/common/singleMangaData.dart';
+import 'package:mangadex_library/models/common/singleMangaData.dart';
 
-import 'src/models/common/singleChapterData.dart';
+import '/models/common/singleChapterData.dart';
 
 abstract class JsonUtils {
   static var authority = 'api.mangadex.org';

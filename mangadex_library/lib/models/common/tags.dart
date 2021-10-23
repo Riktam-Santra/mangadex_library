@@ -1,4 +1,4 @@
-import 'package:mangadex_library/src/models/common/tag_attributes.dart';
+import 'package:mangadex_library/models/common/tag_attributes.dart';
 
 class Tags {
   late final String id;

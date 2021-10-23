@@ -1,4 +1,4 @@
-import 'package:mangadex_library/src/models/common/data.dart';
+import 'package:mangadex_library/models/common/data.dart';
 
 class SingleMangaData {
   late final String result;

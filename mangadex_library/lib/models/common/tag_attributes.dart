@@ -1,4 +1,4 @@
-import 'package:mangadex_library/src/models/common/name.dart';
+import 'package:mangadex_library/models/common/name.dart';
 
 class TagAttributes {
   late final Name name;
