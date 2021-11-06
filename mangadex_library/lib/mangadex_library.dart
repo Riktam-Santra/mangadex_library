@@ -608,3 +608,17 @@ class BaseUrl {
     baseUrl = json['baseUrl'];
   }
 }
+
+//Reporting success or failure on receiving an image
+Future<void> reportImageStatus(
+    String pageUrl, bool success, bool cached, int bytes, int duration) async {
+  final uri = 'https://api.mangadex.network/report';
+  await http.post(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    'url': pageUrl,
+    'success': '$success',
+    'cached': '$cached',
+    'bytes': '$bytes',
+    'duration': '$duration',
+  });
+}

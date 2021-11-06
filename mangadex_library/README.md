@@ -1,12 +1,15 @@
 A [dart library](https://pub.dev/packages/mangadex_library) to facilitate easier access to the [mangadex API](https://api.mangadex.org)
 
-## WARNING In progress library
+## WARNING! In progress library
 
 The library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:
  - Get login refresh and session tokens
  - Search for Mangas
  - Get Manga thumbnails/covers
  - Retieve Manga pages
+ - Get logged in user data
+ - Check/Follow/Unfollow a Manga/Group/User
+ - Set/Get the reading status of a manga for the logged in user
 
 ## Quickstart
 
@@ -78,4 +81,5 @@ void printFilenames() async {
 ```
 
 ## Documentation
-The documentation is still to be created, for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc) can be found in the doc/api/ folder.
+The documentation is still under progress using the [wiki](), I have planned to put in a detailed one and so it will take time.
+ for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc) can be found in the doc/api/ folder.

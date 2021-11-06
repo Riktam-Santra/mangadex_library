@@ -181,3 +181,9 @@
  - using followManga() now automatically sets the reading status for the manga as 'reading', this can can be changed to other status by supplying the optional ReadingStatus enum. It is not possible to asign a null value to the status, this can be done using the removeMangaReadingStatus().
  - using unfollowManga() now first removes the reading status and then unfollows the manga (just to be on the safe side).
  - changed class name JsonSearchCommands() to JsonUtils(), the class can no longer be instantiated since all of it's functions are now static.
+
+## 1.2.18
+ - fixed a typo which broke getCoverArtUrl() function when requesting for different resolutions.
+
+## 1.2.19
+ - added reportImageStatus() function, read [here](https://api.mangadex.org/docs.html#section/Report) to understand it's use.<br> *Note: this is **not** the user image reporting function but rather to report whether an image was successfully recieved from the server or not.*

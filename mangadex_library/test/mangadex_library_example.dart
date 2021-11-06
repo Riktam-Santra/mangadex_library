@@ -8,8 +8,8 @@ void main() {
 void printFilenames() async {
   // this function, needs a mangadex account username and password supplied
   // to retrive login token
-  var username = 'USERNAME'; // Put your username here
-  var password = 'PASSWORD'; // Put your password here
+  var username = 'riksantra'; // Put your username here
+  var password = 'Sikkim123.'; // Put your password here
 
   //The line below uses the login function and takes in
   //two String parameters, username and password and returns
@@ -29,8 +29,7 @@ void printFilenames() async {
       .id; // this line gets the manga ID from the instance of the Search we just obtained
   //for demonstration we are talking the manga ID of only the first search result
   //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
-  //For example, chapter pages and thimbnails
-
+  //For example, chapter pages and thumbnails.
   var chapterData = await lib.getChapters(
       mangaID); //This function returns an instance of the ChapterData class,
   // it contains info on all the chapters of the manga ID it has been provided.
@@ -46,8 +45,7 @@ void printFilenames() async {
 
   var baseUrl = await lib.getBaseUrl(
       chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
-  //For now, there is only one base URL (https://uploads.mangadex.org)
-  //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
+  //BaseUrl always require a chapter ID to obtain an address.
   var filenames = await JsonUtils.getChapterFilenames(chapterID, false);
 
   // the filenames variable stores the name of all files in a manga chapter
