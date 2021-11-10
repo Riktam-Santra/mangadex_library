@@ -480,11 +480,11 @@ Future<MangaCheck> followManga(String token, String mangaId,
 Future<MangaCheck> unfollowManga(String token, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/unfollow';
   final uri = 'https://$authority$unencodedPath';
-  try {
-    await removeMangaReadingStatus(token, mangaId);
-  } catch (e) {
-    print("couldn't remove manga reading status for manga $mangaId");
-  }
+  // try {
+  //   await removeMangaReadingStatus(token, mangaId);
+  // } catch (e) {
+  //   print("couldn't remove manga reading status for manga $mangaId");
+  // }
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'

@@ -8,8 +8,8 @@ void main() {
 void printFilenames() async {
   // this function, needs a mangadex account username and password supplied
   // to retrive login token
-  var username = 'riksantra'; // Put your username here
-  var password = 'Sikkim123.'; // Put your password here
+  var username = 'USERNAME'; // Put your username here
+  var password = 'PASSWORD'; // Put your password here
 
   //The line below uses the login function and takes in
   //two String parameters, username and password and returns

@@ -187,3 +187,6 @@
 
 ## 1.2.19
  - added reportImageStatus() function, read [here](https://api.mangadex.org/docs.html#section/Report) to understand it's use.<br> *Note: this is **not** the user image reporting function but rather to report whether an image was successfully recieved from the server or not.*
+
+## 1.2.20
+ - using unfollowManga() no longer removes the manga status first.
