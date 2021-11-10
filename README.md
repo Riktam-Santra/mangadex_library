@@ -81,5 +81,5 @@ void printFilenames() async {
 ```
 
 ## Documentation
-The documentation is still under progress using the [wiki](), I have planned to put in a detailed one and so it will take time.
+The documentation is still under progress using the [wiki](https://github.com/Riktam-Santra/mangadex_library/wiki), I have planned to put in a detailed one and so it will take time.
  for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc) can be found in the doc/api/ folder.
