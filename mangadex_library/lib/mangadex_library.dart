@@ -402,8 +402,10 @@ Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
 
 //reading status related
 
-Future<http.Response> getAllMangaReadingStatusResponse(String token) async {
-  var unencodedPath = '/manga/status';
+Future<http.Response> getAllMangaReadingStatusResponse(
+    String token, String status) async {
+  var unencodedPath =
+      status == '' ? '/manga/status' : '/manga/status?status=$status';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -412,8 +414,13 @@ Future<http.Response> getAllMangaReadingStatusResponse(String token) async {
   return response;
 }
 
-Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String token) async {
-  var data = await getAllMangaReadingStatusResponse(token);
+Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String token,
+    {ReadingStatus? readingStatus}) async {
+  var status = '';
+  if (readingStatus != null) {
+    status = parseStatusFromEnum(readingStatus);
+  }
+  var data = await getAllMangaReadingStatusResponse(token, status);
   return AllMangaReadingStatus.fromJson(jsonDecode(data.body));
 }
 
