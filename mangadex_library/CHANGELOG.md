@@ -193,3 +193,6 @@
 
 ## 1.2.21
  - getAllUserMangaReadingStatus() now takes in an optional ReadingStatus parameter to get manga with only a certain reading status.
+
+## 1.2.22
+ - fixed a type error in AllMangaReadingStatus model class while parsing data.
