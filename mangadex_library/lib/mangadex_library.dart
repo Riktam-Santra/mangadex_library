@@ -439,12 +439,15 @@ Future<ResultOk> setMangaReadingStatus(
     String token, String mangaId, ReadingStatus? status) async {
   var statusString = status != null ? parseStatusFromEnum(status) : '';
   var unencodedPath = '/manga/$mangaId/status';
-  final uri = 'https://$authority/$unencodedPath';
-  var response = await http.post(Uri.parse(uri), headers: {
-    HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token',
-    'status': '$statusString',
-  });
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.post(Uri.parse(uri),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+      },
+      body: jsonEncode({
+        'status': '$statusString',
+      }));
   print(response.body);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
@@ -474,8 +477,7 @@ Future<MangaCheck> followManga(String token, String mangaId,
 
   try {
     //set manga reading status by default
-    await setMangaReadingStatus(
-        token, mangaId, status ?? ReadingStatus.reading);
+    await setMangaReadingStatus(token, mangaId, status);
     print(
         'set reading status as \'${status != null ? status.toString() : 'reading'}\' for manga $mangaId');
   } catch (e) {
@@ -487,11 +489,11 @@ Future<MangaCheck> followManga(String token, String mangaId,
 Future<MangaCheck> unfollowManga(String token, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/unfollow';
   final uri = 'https://$authority$unencodedPath';
-  // try {
-  //   await removeMangaReadingStatus(token, mangaId);
-  // } catch (e) {
-  //   print("couldn't remove manga reading status for manga $mangaId");
-  // }
+  try {
+    await removeMangaReadingStatus(token, mangaId);
+  } catch (e) {
+    print("couldn't remove manga reading status for manga $mangaId");
+  }
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'

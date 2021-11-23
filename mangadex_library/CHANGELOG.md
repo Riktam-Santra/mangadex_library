@@ -196,3 +196,6 @@
 
 ## 1.2.22
  - fixed a type error in AllMangaReadingStatus model class while parsing data.
+
+## 1.2.23
+ - fixed setMangaReadingStatus function.
