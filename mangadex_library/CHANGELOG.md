@@ -201,4 +201,4 @@
  - fixed setMangaReadingStatus function.
 
 ## 1.2.24
- - fixed issues with markChapterRead() and markChapterUnread().
+ - fixed issues with markChapterRead(), markChapterUnread(), getAllReadChapters(), getAllReadChaptersForAListOfManga() and markMultipleChaptersRead().

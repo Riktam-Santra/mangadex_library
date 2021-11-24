@@ -506,7 +506,7 @@ Future<MangaCheck> unfollowManga(String token, String mangaId) async {
 Future<ReadChapters?> getAllReadChapters(String token, String mangaId) async {
   // get all read chapters for the given mangaId,
   var unencodedPath = '/manga/$mangaId/read';
-  final uri = 'https://$authority/$unencodedPath?';
+  final uri = 'https://$authority$unencodedPath?';
 
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -530,7 +530,7 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
     _ids = _ids + '&ids[]=$element';
   });
   print(_ids);
-  final uri = 'https://$authority/$unencodedPath?$_ids';
+  final uri = 'https://$authority$unencodedPath?$_ids';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -540,19 +540,20 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
 
 Future<ResultOk> markChapterRead(String token, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
-  final uri = 'https://$authority/$unencodedPath';
+  final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
       },
       body: jsonEncode({'id': '$chapterId'}));
+  print(response.body);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
 Future<ResultOk> markChapterUnread(String token, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
-  final uri = 'https://$authority/$unencodedPath';
+  final uri = 'https://$authority$unencodedPath';
   var response = await http.delete(Uri.parse(uri),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
@@ -574,7 +575,7 @@ Future<ResultOk> markMultipleChaptersRead(
     HttpHeaders.authorizationHeader: 'Bearer $token'
   };
   var unencodedPath = '/manga/$mangaId/read';
-  final uri = 'https://$authority/$unencodedPath';
+  final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: payload);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
@@ -591,7 +592,7 @@ Future<ResultOk> markMultipleChaptersUnread(
     HttpHeaders.authorizationHeader: 'Bearer $token'
   };
   var unencodedPath = '/manga/$mangaId/unread';
-  final uri = 'https://$authority/$unencodedPath';
+  final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: payload);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
