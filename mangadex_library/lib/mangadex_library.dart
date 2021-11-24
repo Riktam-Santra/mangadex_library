@@ -541,20 +541,24 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
 Future<ResultOk> markChapterRead(String token, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority/$unencodedPath';
-  var response = await http.get(Uri.parse(uri), headers: {
-    HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
-  });
+  var response = await http.post(Uri.parse(uri),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      },
+      body: jsonEncode({'id': '$chapterId'}));
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
 Future<ResultOk> markChapterUnread(String token, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority/$unencodedPath';
-  var response = await http.delete(Uri.parse(uri), headers: {
-    HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
-  });
+  var response = await http.delete(Uri.parse(uri),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $token'
+      },
+      body: jsonEncode({'id': '$chapterId'}));
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 

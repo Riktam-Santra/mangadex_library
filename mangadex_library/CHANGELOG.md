@@ -199,3 +199,6 @@
 
 ## 1.2.23
  - fixed setMangaReadingStatus function.
+
+## 1.2.24
+ - fixed issues with markChapterRead() and markChapterUnread().
