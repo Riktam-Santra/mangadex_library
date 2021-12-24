@@ -202,3 +202,6 @@
 
 ## 1.2.24
  - fixed issues with markChapterRead(), markChapterUnread(), getAllReadChapters(), getAllReadChaptersForAListOfManga() and markMultipleChaptersRead().
+
+## 1.2.25
+ - removed option to set manga reading status for a manga as null.
