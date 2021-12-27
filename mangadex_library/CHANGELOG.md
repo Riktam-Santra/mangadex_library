@@ -1,207 +1,272 @@
 ## 1.0.0
 
- - First release
+- First release
 
 ## 1.0.1
- - Minor fixes.
+
+- Minor fixes.
 
 ## 1.0.2
 
- - Added JsonSearchCommands.dart, contains a few handy functions.
- - Added getFileNames function to JsonSearchCommands, can return all the filenames of a specific chapter if chapter data and chapter ID is provided
+- Added JsonSearchCommands.dart, contains a few handy functions.
+- Added getFileNames function to JsonSearchCommands, can return all the filenames of a specific chapter if chapter data and chapter ID is provided
 
 ## 1.0.3
- - Added getChapterDataByChapterId function, returns an instance of Result class with chapter data of the chapter ID provided inside it. It requires a ChapterData instance.
+
+- Added getChapterDataByChapterId function, returns an instance of Result class with chapter data of the chapter ID provided inside it. It requires a ChapterData instance.
 
 ## 1.0.4
- - Chapter class name changed to ChapterData.
+
+- Chapter class name changed to ChapterData.
 
 ## 1.0.5
- - Added ConstructThumbUrl function, it returns the uri to a thumbnail in the form of a String, it requires manga ID and cover filename.
+
+- Added ConstructThumbUrl function, it returns the uri to a thumbnail in the form of a String, it requires manga ID and cover filename.
 
 ## 1.0.6
- - Changed class name jsonSearch to JsonSearch in jsonSearchCommands.dart
- - Cdded a Quickstart in README.md until proper documentation is created.
+
+- Changed class name jsonSearch to JsonSearch in jsonSearchCommands.dart
+- Cdded a Quickstart in README.md until proper documentation is created.
 
 ## 1.0.7
- - Cdded getCoverArt function to retrieve cover art details.
+
+- Cdded getCoverArt function to retrieve cover art details.
 
 ## 1.0.8
- - Fixed issues while retireving cover art.
+
+- Fixed issues while retireving cover art.
 
 ## 1.0.9
- - Added resolution options to getCoverArtUrl. Can be '256', '512' or null
+
+- Added resolution options to getCoverArtUrl. Can be '256', '512' or null
 
 ## 1.1.0
- - Now prints 'Rate limit exceeded' if the rate limit is exceeded by the requests.
+
+- Now prints 'Rate limit exceeded' if the rate limit is exceeded by the requests.
 
 ## 1.1.1
- - All the functions that are to return a value are now nullable, that is if the results are empty (for example you search for a manga and no manga is found) the function will return null and print the results were not found.
+
+- All the functions that are to return a value are now nullable, that is if the results are empty (for example you search for a manga and no manga is found) the function will return null and print the results were not found.
 
 ## 1.1.2
- - Minor fixes
+
+- Minor fixes
 
 ## 1.1.3
- - Minor info changes
+
+- Minor info changes
 
 ## 1.1.4
- - Disabled description class for TagAttributes because of an error, shouldn't be a concern as long as the description of a tag isn't required (note: the description here isn't the manga description.)
+
+- Disabled description class for TagAttributes because of an error, shouldn't be a concern as long as the description of a tag isn't required (note: the description here isn't the manga description.)
 
 ## 1.1.5
- - Minor fixes
+
+- Minor fixes
 
 ## 1.1.6
- - getCoverArtUrl() no longer returns a nullable String.
+
+- getCoverArtUrl() no longer returns a nullable String.
 
 ## 1.1.7
- -  getChapterDataByChapterId() and  getMangaDataByMangaId() both shifted to jsonSearchCommands. None of them require a Chapter instance as a parameter anymore and are now Future functions.
+
+- getChapterDataByChapterId() and getMangaDataByMangaId() both shifted to jsonSearchCommands. None of them require a Chapter instance as a parameter anymore and are now Future functions.
 
 ## 1.1.8
- - added null handling for Login class.
+
+- added null handling for Login class.
 
 ## 1.1.9
- - added refresh function to refresh token, returns a Login instance.
+
+- added refresh function to refresh token, returns a Login instance.
 
 ## 1.2.0
- - minor fixes related to refresh.
+
+- minor fixes related to refresh.
 
 ## 1.2.1
- - added options to set a limit and offset for getChapters function.
+
+- added options to set a limit and offset for getChapters function.
 
 ## 1.2.2
- - added function getUserFollowedManga() to retrieve followed manga by the logged in user.
+
+- added function getUserFollowedManga() to retrieve followed manga by the logged in user.
 
 ## 1.2.3
- - added function checkIfUserFollowsManga() to check if a users follows a certain manga.
- - added function getUserFollowedUsers() to retrieve followed users by the logged in user.
- - added function checkIfUserFollowsUser() to check if a users follows a certain user.
- - added function getUserFollowedGroups() to retrieve followed groups by the logged in user.
- - added function checkIfUserFollowsGroup() to check if a users follows a certain group.
- - added function getLoggedUserDetails() to get the profile details of the logged in user.
+
+- added function checkIfUserFollowsManga() to check if a users follows a certain manga.
+- added function getUserFollowedUsers() to retrieve followed users by the logged in user.
+- added function checkIfUserFollowsUser() to check if a users follows a certain user.
+- added function getUserFollowedGroups() to retrieve followed groups by the logged in user.
+- added function checkIfUserFollowsGroup() to check if a users follows a certain group.
+- added function getLoggedUserDetails() to get the profile details of the logged in user.
 
 ## 1.2.4
- - fixed issues related to all the user specific functions in 1.2.3
+
+- fixed issues related to all the user specific functions in 1.2.3
 
 ## 1.2.5
- - Added followManga() and unfollowManga() functions to follow / unfollow a manga.
+
+- Added followManga() and unfollowManga() functions to follow / unfollow a manga.
 
 ## 1.2.6
- - the functions checkIfUserFollowsManga() checkIfUserFollowsUser() and checkIfUserFollowsGroup() now return a bool rather than a MangaCheck.
+
+- the functions checkIfUserFollowsManga() checkIfUserFollowsUser() and checkIfUserFollowsGroup() now return a bool rather than a MangaCheck.
 
 ## 1.2.7
- - minor bug fixes.
+
+- minor bug fixes.
 
 ## 1.2.7+1
- - minor bug fixes
 
-## 1.2.7+2 
- - fixed bug where search would return null despite having results.
+- minor bug fixes
+
+## 1.2.7+2
+
+- fixed bug where search would return null despite having results.
 
 ## 1.2.8
- - Model classes updated and rearranged according to the JSON structure changes in Mangadex API 5.2.35.
+
+- Model classes updated and rearranged according to the JSON structure changes in Mangadex API 5.2.35.
 
 ## 1.2.8+1
+
 - Fixed problems with JsonSearch.
 
 ## 1.2.8+2
- - Changed Cover model class according to Mangadex API update 5.2.35
 
-## 1.2.8+3 
- - User data models related changes according to Mangadex API update 5.2.35
+- Changed Cover model class according to Mangadex API update 5.2.35
+
+## 1.2.8+3
+
+- User data models related changes according to Mangadex API update 5.2.35
 
 ## 1.2.9
- - fixed all major bugs related to Mangadex API update 5.2.35
+
+- fixed all major bugs related to Mangadex API update 5.2.35
 
 ## 1.2.9+1
- - minor bug fixes related to login.
+
+- minor bug fixes related to login.
 
 ## 1.2.9+2
- - even more bug fixes related to chapterData.
+
+- even more bug fixes related to chapterData.
 
 ## 1.2.9+3
- - more bug fixes related to chapterData.
+
+- more bug fixes related to chapterData.
 
 ## 1.2.9+4
- - fixed errors in model classes(again)
+
+- fixed errors in model classes(again)
 
 ## 1.2.9+5
- - tried fixing the data model for getMangaDataByMangaId()
+
+- tried fixing the data model for getMangaDataByMangaId()
 
 ## 1.2.9+6
- - finally fixed the data model for getMangaDataByMangaId()
-  
+
+- finally fixed the data model for getMangaDataByMangaId()
+
 ## 1.2.9+7
- - fixed issues related to getChapterFilenames() in JsonSearch
+
+- fixed issues related to getChapterFilenames() in JsonSearch
 
 ## 1.2.10
- - added getAllMangaReadingStatus() and getMangaReadingStatus() functions
- - fixed getLoggedUserDetails() function
+
+- added getAllMangaReadingStatus() and getMangaReadingStatus() functions
+- fixed getLoggedUserDetails() function
 
 ## 1.2.10+1
- - minor changes related to UserDetails model class.
+
+- minor changes related to UserDetails model class.
 
 ## 1.2.10+2
- - more changes related to UserDetails model class.
+
+- more changes related to UserDetails model class.
 
 ## 1.2.10+3
- - more changes related to UserDetails model class.
+
+- more changes related to UserDetails model class.
 
 ## 1.2.10+4
- - more changes related to UserDetails model class (I swear it's working this time)
+
+- more changes related to UserDetails model class (I swear it's working this time)
 
 ## 1.2.11
- - added getAllReadChapters(), markChapterRead(), markChapterUnread(), markMultileChaptersRead() and markMultileChaptersUnread functions
+
+- added getAllReadChapters(), markChapterRead(), markChapterUnread(), markMultileChaptersRead() and markMultileChaptersUnread functions
 
 ## 1.2.12
- - added offset and limit parameters to getUserFollowedManga(),getUserFollowedGroups() and getUserFollowedUsers() functions
+
+- added offset and limit parameters to getUserFollowedManga(),getUserFollowedGroups() and getUserFollowedUsers() functions
 
 ## 1.2.13
- - fixed a few typos in the check functions for user followed responses.
+
+- fixed a few typos in the check functions for user followed responses.
 
 ## 1.2.13+1
- - fixed typos related to follow and unfollow manga
+
+- fixed typos related to follow and unfollow manga
 
 ## 1.2.14
- - renamed function getAllMangaReadingStatus() to getAllUserMangaReadingStatus
- - fixed type errors when paring json for function getAllUserMangaReadingStatus()
+
+- renamed function getAllMangaReadingStatus() to getAllUserMangaReadingStatus
+- fixed type errors when paring json for function getAllUserMangaReadingStatus()
 
 ## 1.2.15
- - added getMangaReadingStatus() to get reading status of a certain manga ID.
- - added setMangaReadingStatus() to set reading status of a certain manga ID.
- - moved all model classes to src folder to make the code more organised.
- - started work on wiki documentation on github (it will take time to finish it) https://github.com/Riktam-Santra/mangadex_library/wiki.
+
+- added getMangaReadingStatus() to get reading status of a certain manga ID.
+- added setMangaReadingStatus() to set reading status of a certain manga ID.
+- moved all model classes to src folder to make the code more organised.
+- started work on wiki documentation on github (it will take time to finish it) https://github.com/Riktam-Santra/mangadex_library/wiki.
 
 ## 1.2.16
- - fixed a cast on null error in getAllReadChapters()
+
+- fixed a cast on null error in getAllReadChapters()
 
 ## 1.2.17
- - revoked the move of all models into src/ folder (see point 3 of 1.2.15).
- - added enum ReadingStatus to keep the values of reading status fixed.
- - added removeMangaReadingStatus() to remove the reading status of a manga but still keep it as followed.
- - using followManga() now automatically sets the reading status for the manga as 'reading', this can can be changed to other status by supplying the optional ReadingStatus enum. It is not possible to asign a null value to the status, this can be done using the removeMangaReadingStatus().
- - using unfollowManga() now first removes the reading status and then unfollows the manga (just to be on the safe side).
- - changed class name JsonSearchCommands() to JsonUtils(), the class can no longer be instantiated since all of it's functions are now static.
+
+- revoked the move of all models into src/ folder (see point 3 of 1.2.15).
+- added enum ReadingStatus to keep the values of reading status fixed.
+- added removeMangaReadingStatus() to remove the reading status of a manga but still keep it as followed.
+- using followManga() now automatically sets the reading status for the manga as 'reading', this can can be changed to other status by supplying the optional ReadingStatus enum. It is not possible to asign a null value to the status, this can be done using the removeMangaReadingStatus().
+- using unfollowManga() now first removes the reading status and then unfollows the manga (just to be on the safe side).
+- changed class name JsonSearchCommands() to JsonUtils(), the class can no longer be instantiated since all of it's functions are now static.
 
 ## 1.2.18
- - fixed a typo which broke getCoverArtUrl() function when requesting for different resolutions.
+
+- fixed a typo which broke getCoverArtUrl() function when requesting for different resolutions.
 
 ## 1.2.19
- - added reportImageStatus() function, read [here](https://api.mangadex.org/docs.html#section/Report) to understand it's use.<br> *Note: this is **not** the user image reporting function but rather to report whether an image was successfully recieved from the server or not.*
+
+- added reportImageStatus() function, read [here](https://api.mangadex.org/docs.html#section/Report) to understand it's use.<br> _Note: this is **not** the user image reporting function but rather to report whether an image was successfully recieved from the server or not._
 
 ## 1.2.20
- - using unfollowManga() no longer removes the manga status first.
+
+- using unfollowManga() no longer removes the manga status first.
 
 ## 1.2.21
- - getAllUserMangaReadingStatus() now takes in an optional ReadingStatus parameter to get manga with only a certain reading status.
+
+- getAllUserMangaReadingStatus() now takes in an optional ReadingStatus parameter to get manga with only a certain reading status.
 
 ## 1.2.22
- - fixed a type error in AllMangaReadingStatus model class while parsing data.
+
+- fixed a type error in AllMangaReadingStatus model class while parsing data.
 
 ## 1.2.23
- - fixed setMangaReadingStatus function.
+
+- fixed setMangaReadingStatus function.
 
 ## 1.2.24
- - fixed issues with markChapterRead(), markChapterUnread(), getAllReadChapters(), getAllReadChaptersForAListOfManga() and markMultipleChaptersRead().
+
+- fixed issues with markChapterRead(), markChapterUnread(), getAllReadChapters(), getAllReadChaptersForAListOfManga() and markMultipleChaptersRead().
 
 ## 1.2.25
- - removed option to set manga reading status for a manga as null.
+
+- removed option to set manga reading status for a manga as null.
+
+## 1.2.26
+
+- fixed unfollowManga() not unfollowing manga.

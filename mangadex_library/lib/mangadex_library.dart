@@ -1,12 +1,10 @@
 ///////////////////////////////////////////////////////////
-// The library currently only supports search, login, getting token,
-// getting chapters data using the manga ID, and finally using the
-// login token to get base url used to retireve pages.
+// The library currently supports all the basic features for managing the user's library, browsing manga and retrieve manga pages.
 // To see an example of retrieving pages, have a look at the
-// mangadex_library_test.dart file.
+// /test/mangadex_library_example.dart file.
 //
 // the documentation of this library will be updated in a while
-// there aren't much features yet
+// the library ISN'T complete with all the features yet
 // but they will be added eventually.
 ///////////////////////////////////////////////////////////
 
@@ -487,7 +485,7 @@ Future<MangaCheck> followManga(String token, String mangaId,
 }
 
 Future<MangaCheck> unfollowManga(String token, String mangaId) async {
-  var unencodedPath = '/manga/$mangaId/unfollow';
+  var unencodedPath = '/manga/$mangaId/follow';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
