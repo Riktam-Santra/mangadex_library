@@ -1,4 +1,9 @@
-testData.json
-.vscode/
 .dart_tool/
+.packages
+.vscode/
+build/
+
 pubspec.lock
+
+testData.json
+test\mangadex_library_example.dart
