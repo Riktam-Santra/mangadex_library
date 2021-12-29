@@ -270,3 +270,10 @@
 ## 1.2.26
 
 - fixed unfollowManga() not unfollowing manga.
+
+## 1.2.27
+
+- getChapters() now supports the following parameters:
+  ids, groups, title, uploader, manga, volume, chapter, translated language, original language, excluded original language, content rating, include future updates, created at since, updated at since, published at since, includes.
+- added enums:
+  ContentRating, FutureUpdates and LanguageCodes.

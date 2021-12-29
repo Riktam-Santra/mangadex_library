@@ -15,6 +15,9 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:mangadex_library/models/chapter/readChapters.dart';
 import 'package:mangadex_library/models/common/allMangaReadingStatus.dart';
+import 'package:mangadex_library/models/common/content_rating.dart';
+import 'package:mangadex_library/models/common/future_updates.dart';
+import 'package:mangadex_library/models/common/language_codes.dart';
 import 'package:mangadex_library/models/common/mangaReadingStatus.dart';
 import 'package:mangadex_library/models/common/reading_status.dart';
 import 'package:mangadex_library/models/user/user_followed_groups/user_followed_groups.dart';
@@ -141,13 +144,16 @@ Future<Search?> search(String query) async {
 
 //Manga chapters related functions
 Future<http.Response> getChaptersResponse(String mangaId,
-    {String? ids,
+    {List<String>? ids,
     String? title,
-    String? groups,
+    List<String>? groups,
     String? uploader,
     String? volume,
     String? chapter,
-    String? translatedLanguage,
+    List<LanguageCodes>? translatedLanguage,
+    List<LanguageCodes>? originalLanguage,
+    List<LanguageCodes>? excludedOriginalLanguage,
+    List<ContentRating>? contentRating,
     String? createdAtSince,
     String? updatedAtSince,
     String? publishedAtSince,
@@ -158,15 +164,52 @@ Future<http.Response> getChaptersResponse(String mangaId,
   var MangaId = mangaId;
   var Limit = limit != null ? '&limit=$limit' : '&limit=10';
   var Offset = offset != null ? '&offset=$offset' : '&offset=0';
-  var Ids = ids != null ? '&ids[]=$ids' : '';
+  var Ids = '';
+  if (ids != null) {
+    ids.forEach((element) {
+      Ids = Ids + '&ids[]=$element';
+    });
+  }
   var Title = title != null ? '&title=$title' : '';
-  var Groups = groups != null ? '&groups[]=$groups' : '';
+  var Groups = '';
+  if (groups != null) {
+    groups.forEach((element) {
+      Groups = Groups + '&groups[]=$element';
+    });
+  }
   var Uploader = uploader != null ? '&uploader=$uploader' : '';
   var Volume = volume != null ? '&volume=$volume' : '';
   var Chapter = chapter != null ? '&chapter=$chapter' : '';
-  var TranslatedLanguage = translatedLanguage != null
-      ? '&translatedLanguage[]=$translatedLanguage'
-      : '';
+
+  var TranslatedLanguage = '';
+  if (translatedLanguage != null) {
+    translatedLanguage.forEach((element) {
+      TranslatedLanguage = TranslatedLanguage +
+          '&translatedLanguage[]=${parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var OriginalLanguage = '';
+  if (originalLanguage != null) {
+    originalLanguage.forEach((element) {
+      OriginalLanguage = OriginalLanguage +
+          '&originalLanguage[]=${parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var ExcludedOriginalLanguage = '';
+  if (excludedOriginalLanguage != null) {
+    excludedOriginalLanguage.forEach((element) {
+      ExcludedOriginalLanguage = ExcludedOriginalLanguage +
+          '&excludedOriginalLanguage[]=${parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var Contentrating = '';
+  if (contentRating != null) {
+    contentRating.forEach((element) {
+      Contentrating = Contentrating +
+          '&contentRating[]=${parseContentRatingFromEnum(element)}';
+    });
+  }
+
   var CreatedAtSince =
       createdAtSince != null ? '&createdAtSince=$createdAtSince' : '';
   var UpdatedAtSince =
@@ -177,29 +220,63 @@ Future<http.Response> getChaptersResponse(String mangaId,
 
   final url =
       'https://$authority$unencodedPath?&manga=$MangaId$Limit$Offset$Ids$Title$Groups$Uploader$Volume$Chapter$TranslatedLanguage$CreatedAtSince$UpdatedAtSince$PublishedAtSince$Includes';
-
+  print('Url: $url');
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
-  print(url);
   return response;
 }
 
 Future<ChapterData?> getChapters(String mangaId,
-    {int? offset, int? limit}) async {
+    {List<String>? ids,
+    String? title,
+    List<String>? groups,
+    String? uploader,
+    String? volume,
+    String? chapter,
+    List<LanguageCodes>? translatedLanguage,
+    List<LanguageCodes>? originalLanguage,
+    List<LanguageCodes>? excludedOriginalLanguage,
+    List<ContentRating>? contentRating,
+    String? createdAtSince,
+    String? updatedAtSince,
+    String? publishedAtSince,
+    String? includes,
+    int? limit,
+    int? offset}) async {
   var _chapterOffset = offset ?? 0;
   var _ChapterLimit = limit ?? 10;
-  var response = await getChaptersResponse(mangaId,
-      offset: _chapterOffset, limit: _ChapterLimit);
+  var response = await getChaptersResponse(
+    mangaId,
+    offset: _chapterOffset,
+    limit: _ChapterLimit,
+    ids: ids,
+    title: title,
+    groups: groups,
+    uploader: uploader,
+    volume: volume,
+    chapter: chapter,
+    translatedLanguage: translatedLanguage,
+    originalLanguage: originalLanguage,
+    excludedOriginalLanguage: excludedOriginalLanguage,
+    contentRating: contentRating,
+    createdAtSince: createdAtSince,
+    updatedAtSince: updatedAtSince,
+    publishedAtSince: publishedAtSince,
+  );
   var headers = response.headers;
   if (headers['x-ratelimit-remaining'] == '0') {
     print('Rate Limit Exceeded.');
   } else {
-    var data = ChapterData.fromJson(jsonDecode(response.body));
-    if (data.data.isNotEmpty) {
-      return data;
-    } else {
-      print(
-          'chapter with the manga ID $mangaId not found. Make sure the manga id isn\'t an empty String.');
+    try {
+      var data = ChapterData.fromJson(jsonDecode(response.body));
+      if (data.data.isNotEmpty) {
+        return data;
+      } else {
+        print(
+            'chapter with the manga ID $mangaId not found. Make sure the manga id isn\'t an empty String.');
+      }
+    } catch (e) {
+      print(response.body);
     }
   }
 }
@@ -604,6 +681,51 @@ String parseStatusFromEnum(ReadingStatus status) {
       return 're_reading';
     case ReadingStatus.reading:
       return 'reading';
+  }
+}
+
+String parseLanguageCodeFromEnum(LanguageCodes code) {
+  switch (code) {
+    case LanguageCodes.en:
+      return 'en';
+    case LanguageCodes.es:
+      return 'es';
+    case LanguageCodes.es_la:
+      return 'es-la';
+    case LanguageCodes.ja_ro:
+      return 'ja-ro';
+    case LanguageCodes.ko_ro:
+      return 'ko-ro';
+    case LanguageCodes.pt_br:
+      return 'pt-br';
+    case LanguageCodes.zh:
+      return 'zh';
+    case LanguageCodes.zh_hk:
+      return 'zh-hk';
+    case LanguageCodes.zh_ro:
+      return 'zh-ro';
+  }
+}
+
+String parseContentRatingFromEnum(ContentRating rating) {
+  switch (rating) {
+    case ContentRating.erotica:
+      return 'erotica';
+    case ContentRating.pornographic:
+      return 'pornographic';
+    case ContentRating.safe:
+      return 'safe';
+    case ContentRating.suggestive:
+      return 'suggestive';
+  }
+}
+
+String parseFutureUpdatesFromEnum(FutureUpdates update) {
+  switch (update) {
+    case FutureUpdates.enable:
+      return '1';
+    case FutureUpdates.disable:
+      return '2';
   }
 }
 
