@@ -61,14 +61,18 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Cover.fromJson(Map&lt;String, dynamic&gt; json) {
-  data = &lt;Data&gt;[];
-  json[&#39;data&#39;]!.forEach((v) {
-    data.add(Data.fromJson(v));
-  });
+  try {
+    data = &lt;Data&gt;[];
+    json[&#39;data&#39;]!.forEach((v) {
+      data.add(Data.fromJson(v));
+    });
 
-  limit = json[&#39;limit&#39;] ?? 0;
-  offset = json[&#39;offset&#39;] ?? 0;
-  total = json[&#39;total&#39;] ?? 0;
+    limit = json[&#39;limit&#39;] ?? 0;
+    offset = json[&#39;offset&#39;] ?? 0;
+    total = json[&#39;total&#39;] ?? 0;
+  } on Exception catch (e) {
+    throw MangadexServerException(json);
+  }
 }</code></pre>
 </section>
 
@@ -130,7 +134,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.27
+      1.2.28
   </span>
 
   

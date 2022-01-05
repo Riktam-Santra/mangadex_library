@@ -62,15 +62,19 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Search.fromJson(Map&lt;String, dynamic&gt; json) {
   result = json[&#39;result&#39;] ?? &#39;&#39;;
-  response = json[&#39;response&#39;] ?? &#39;&#39;;
-  data = &lt;Data&gt;[];
-  json[&#39;data&#39;]!.forEach((v) {
-    data.add(Data.fromJson(v));
-  });
+  if (result == &#39;ok&#39;) {
+    response = json[&#39;response&#39;] ?? &#39;&#39;;
+    data = &lt;Data&gt;[];
+    json[&#39;data&#39;]!.forEach((v) {
+      data.add(Data.fromJson(v));
+    });
 
-  limit = json[&#39;limit&#39;] ?? 0;
-  offset = json[&#39;offset&#39;] ?? 0;
-  total = json[&#39;total&#39;] ?? 0;
+    limit = json[&#39;limit&#39;] ?? 0;
+    offset = json[&#39;offset&#39;] ?? 0;
+    total = json[&#39;total&#39;] ?? 0;
+  } else {
+    throw MangadexServerException(json);
+  }
 }</code></pre>
 </section>
 
@@ -134,7 +138,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.27
+      1.2.28
   </span>
 
   

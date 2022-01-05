@@ -1,3 +1,4 @@
+import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/data.dart';
 
 class Search {
@@ -10,14 +11,18 @@ class Search {
   Search(this.data, this.limit, this.offset, this.total);
   Search.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    data = <Data>[];
-    json['data']!.forEach((v) {
-      data.add(Data.fromJson(v));
-    });
+    if (result == 'ok') {
+      response = json['response'] ?? '';
+      data = <Data>[];
+      json['data']!.forEach((v) {
+        data.add(Data.fromJson(v));
+      });
 
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
+      limit = json['limit'] ?? 0;
+      offset = json['offset'] ?? 0;
+      total = json['total'] ?? 0;
+    } else {
+      throw MangadexServerException(json);
+    }
   }
 }

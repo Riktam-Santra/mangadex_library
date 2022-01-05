@@ -1,3 +1,5 @@
+import 'package:mangadex_library/mangadexServerException.dart';
+
 class Login {
   late final String result;
   late final Token token;
@@ -7,8 +9,7 @@ class Login {
     if (result == 'ok') {
       token = Token.fromJson(json['token']!);
     } else {
-      print(json.toString());
-      print(result);
+      throw MangadexServerException(json);
     }
   }
 }

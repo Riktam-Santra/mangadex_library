@@ -1,3 +1,4 @@
+import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
 
 class Cover {
@@ -7,14 +8,18 @@ class Cover {
   late int total;
   Cover(this.data, this.limit, this.offset, this.total);
   Cover.fromJson(Map<String, dynamic> json) {
-    data = <Data>[];
-    json['data']!.forEach((v) {
-      data.add(Data.fromJson(v));
-    });
+    try {
+      data = <Data>[];
+      json['data']!.forEach((v) {
+        data.add(Data.fromJson(v));
+      });
 
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
+      limit = json['limit'] ?? 0;
+      offset = json['offset'] ?? 0;
+      total = json['total'] ?? 0;
+    } on Exception catch (e) {
+      throw MangadexServerException(json);
+    }
   }
 }
 

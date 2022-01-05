@@ -1,3 +1,4 @@
+import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
 
 class UserDetails {
@@ -8,8 +9,12 @@ class UserDetails {
   UserDetails(this.result, this.data);
   UserDetails.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    data = Data.fromjson(json['data']!);
+    if (result == 'ok') {
+      response = json['response'] ?? '';
+      data = Data.fromjson(json['data']!);
+    } else {
+      throw MangadexServerException(json);
+    }
   }
 }
 

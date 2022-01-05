@@ -62,8 +62,12 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">UserDetails.fromJson(Map&lt;String, dynamic&gt; json) {
   result = json[&#39;result&#39;] ?? &#39;&#39;;
-  response = json[&#39;response&#39;] ?? &#39;&#39;;
-  data = Data.fromjson(json[&#39;data&#39;]!);
+  if (result == &#39;ok&#39;) {
+    response = json[&#39;response&#39;] ?? &#39;&#39;;
+    data = Data.fromjson(json[&#39;data&#39;]!);
+  } else {
+    throw MangadexServerException(json);
+  }
 }</code></pre>
 </section>
 
@@ -124,7 +128,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.27
+      1.2.28
   </span>
 
   

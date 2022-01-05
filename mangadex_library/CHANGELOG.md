@@ -277,3 +277,9 @@
   ids, groups, title, uploader, manga, volume, chapter, translated language, original language, excluded original language, content rating, include future updates, created at since, updated at since, published at since, includes.
 - added enums:
   ContentRating, FutureUpdates and LanguageCodes.
+
+## 1.2.28
+
+- added MangadexServerException to handle server exceptions
+- every function now throws a MnagadexServerException that can be caught and will contain a ServerException class which will have error details as returned by the server (including the response code).
+- updated /test/mangadex_library_example.dart with error handling.

@@ -65,8 +65,7 @@
   if (result == &#39;ok&#39;) {
     token = Token.fromJson(json[&#39;token&#39;]!);
   } else {
-    print(json.toString());
-    print(result);
+    throw MangadexServerException(json);
   }
 }</code></pre>
 </section>
@@ -127,7 +126,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.27
+      1.2.28
   </span>
 
   

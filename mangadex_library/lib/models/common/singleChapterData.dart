@@ -1,3 +1,4 @@
+import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/chapter/chapterData.dart';
 
 class SingleChapterData {
@@ -7,6 +8,10 @@ class SingleChapterData {
   SingleChapterData(this.result, this.response, this.data);
   SingleChapterData.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    data = Data.fromJson(json['data']);
+    if (result == 'ok') {
+      data = Data.fromJson(json['data']);
+    } else {
+      throw MangadexServerException(json);
+    }
   }
 }
