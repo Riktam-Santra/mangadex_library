@@ -31,6 +31,8 @@ import '/models/chapter/ChapterData.dart';
 import '/models/login/Login.dart';
 import '/models/user/user_followed_manga/user_followed_manga.dart';
 import '/models/user/logged_user_details/logged_user_details.dart';
+import 'models/at-home/singleChapterData.dart';
+import 'models/common/singleMangaData.dart';
 
 final String authority = 'api.mangadex.org';
 
@@ -140,6 +142,12 @@ Future<Search?> search(String query) async {
     var data = Search.fromJson(jsonDecode(response.body));
     return data;
   }
+}
+
+Future<SingleMangaData> getMangaDataByMangaId(String mangaId) async {
+  var unencodedPath = '/manga/$mangaId';
+  var response = await http.get(Uri.http(authority, unencodedPath));
+  return SingleMangaData.fromJson(jsonDecode(response.body));
 }
 
 //Manga chapters related functions
@@ -281,6 +289,13 @@ Future<ChapterData?> getChapters(String mangaId,
   }
 }
 
+Future<SingleChapterData> getChapterDataByChapterId(String chapterId) async {
+  var unencodedPath = '/at-home/server/$chapterId';
+  var response = await http.get(Uri.https(authority, unencodedPath));
+  var result = SingleChapterData.fromJson(jsonDecode(response.body));
+  return result;
+}
+
 // Functions to get base url for a chapter ID
 Future<http.Response> getBaseUrlResponse(String chapterId) async {
   var unencodedPath = '/at-home/server/$chapterId';
@@ -306,11 +321,21 @@ Future<BaseUrl?> getBaseUrl(
 }
 
 // A function to create URl to a manga page
-Future<String> constructPageUrl(String chapterId, String token,
-    String chapterHash, String filename, bool dataSaver) async {
-  var baseUrl = await getBaseUrl(chapterId);
+String constructPageUrl(String baseUrl, String token, bool dataSaver,
+    String chapterHash, String filename) {
   var dataMode = dataSaver ? 'data-saver' : 'data';
-  return '${baseUrl!.baseUrl}/$token/$dataMode/$chapterHash/$filename';
+  return '$baseUrl/$token/$dataMode/$chapterHash/$filename';
+}
+
+// A function to easily get the chapter filenames just using the chapter ID.
+Future<List<String>> getChapterFilenames(
+    String chapterId, bool isDataSaverMode) async {
+  var response = await getChapterDataByChapterId(chapterId);
+  if (isDataSaverMode == true) {
+    return response.chapter.dataSaver;
+  } else {
+    return response.chapter.data;
+  }
 }
 
 // Manga cover art related functions

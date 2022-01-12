@@ -18,7 +18,7 @@ class UserFollowedManga {
       limit = json['limit'] ?? 0;
       offset = json['offset'] ?? 0;
       total = json['total'] ?? 0;
-    } on Exception catch (e) {
+    } on Exception {
       throw MangadexServerException(json);
     }
   }

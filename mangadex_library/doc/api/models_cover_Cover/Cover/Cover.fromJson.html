@@ -70,7 +70,7 @@
     limit = json[&#39;limit&#39;] ?? 0;
     offset = json[&#39;offset&#39;] ?? 0;
     total = json[&#39;total&#39;] ?? 0;
-  } on Exception catch (e) {
+  } on Exception {
     throw MangadexServerException(json);
   }
 }</code></pre>
@@ -134,7 +134,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.28
+      1.2.29
   </span>
 
   

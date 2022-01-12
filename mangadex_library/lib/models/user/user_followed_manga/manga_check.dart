@@ -8,7 +8,7 @@ class MangaCheck {
   MangaCheck.fromJson(Map<String, dynamic> json) {
     try {
       result = json['result'] ?? '';
-    } on Exception catch (e) {
+    } on Exception {
       throw MangadexServerException(json);
     }
   }

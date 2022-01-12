@@ -281,5 +281,12 @@
 ## 1.2.28
 
 - added MangadexServerException to handle server exceptions
-- every function now throws a MnagadexServerException that can be caught and will contain a ServerException class which will have error details as returned by the server (including the response code).
+- every model class now throws a MangadexServerException that can be caught and will contain a ServerException class which will have error details as returned by the server (including the response code).
 - updated /test/mangadex_library_example.dart with error handling.
+
+## 1.2.29
+
+- Updated according to the changes in Mangadex API update [5.4.8](https://discord.com/channels/403905762268545024/839817812012826644/929319168958955554)
+- getChapterDataByChapterID() function is now to be used to get chapter filenames, base url and chapter hash.
+- **Removed** class JsonUtils.
+- Moved getChapterFilenames(), getChapterDataByChapterId() and getMangaDataByMangaId() functions to mangadex_library.dart.

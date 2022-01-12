@@ -63,7 +63,7 @@
   <pre class="language-dart"><code class="language-dart">MangaCheck.fromJson(Map&lt;String, dynamic&gt; json) {
   try {
     result = json[&#39;result&#39;] ?? &#39;&#39;;
-  } on Exception catch (e) {
+  } on Exception {
     throw MangadexServerException(json);
   }
 }</code></pre>
@@ -124,7 +124,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.28
+      1.2.29
   </span>
 
   

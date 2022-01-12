@@ -174,8 +174,8 @@
 </dd>
 
         <dt id="constructPageUrl" class="callable">
-  <span class="name"><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></span><span class="signature">(<wbr><span class="parameter" id="constructPageUrl-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span>, </span><span class="parameter" id="constructPageUrl-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span>, </span><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  <span class="name"><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></span><span class="signature">(<wbr><span class="parameter" id="constructPageUrl-param-baseUrl"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">baseUrl</span>, </span><span class="parameter" id="constructPageUrl-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span>, </span><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>
   </span>
   
 
@@ -277,6 +277,32 @@
 
 </dd>
 
+        <dt id="getChapterDataByChapterId" class="callable">
+  <span class="name"><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></span><span class="signature">(<wbr><span class="parameter" id="getChapterDataByChapterId-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_at-home_singleChapterData/SingleChapterData-class.html">SingleChapterData</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
+        <dt id="getChapterFilenames" class="callable">
+  <span class="name"><a href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></span><span class="signature">(<wbr><span class="parameter" id="getChapterFilenames-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span>, </span><span class="parameter" id="getChapterFilenames-param-isDataSaverMode"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDataSaverMode</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
         <dt id="getChapters" class="callable">
   <span class="name"><a href="../mangadex_library/getChapters.html">getChapters</a></span><span class="signature">(<wbr><span class="parameter" id="getChapters-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChapters-param-ids">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getChapters-param-title"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="getChapters-param-groups"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span><span class="parameter" id="getChapters-param-uploader"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span><span class="parameter" id="getChapters-param-volume"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span><span class="parameter" id="getChapters-param-chapter"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span><span class="parameter" id="getChapters-param-translatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span><span class="parameter" id="getChapters-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="getChapters-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span><span class="parameter" id="getChapters-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="getChapters-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="getChapters-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="getChapters-param-publishedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span><span class="parameter" id="getChapters-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getChapters-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getChapters-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_chapter_ChapterData/ChapterData-class.html">ChapterData</a>?</span>&gt;</span></span>
@@ -358,6 +384,19 @@
         <dt id="getLoggedUserDetailsResponse" class="callable">
   <span class="name"><a href="../mangadex_library/getLoggedUserDetailsResponse.html">getLoggedUserDetailsResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getLoggedUserDetailsResponse-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.3/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
+        <dt id="getMangaDataByMangaId" class="callable">
+  <span class="name"><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></span><span class="signature">(<wbr><span class="parameter" id="getMangaDataByMangaId-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_singleMangaData/SingleMangaData-class.html">SingleMangaData</a></span>&gt;</span></span>
   </span>
   
 
@@ -720,8 +759,8 @@
       <li><a href="../models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></li>
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_common_attributes/models_common_attributes-library.html">attributes</a></li>
+      <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
       <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
-      <li><a href="../models_chapter_chapterData/models_chapter_chapterData-library.html">chapterData</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
       <li><a href="../models_cover_Cover/models_cover_Cover-library.html">Cover</a></li>
       <li><a href="../models_common_data/models_common_data-library.html">data</a></li>
@@ -742,7 +781,7 @@
       <li><a href="../models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
       <li><a href="../models_search_Search/models_search_Search-library.html">Search</a></li>
       <li><a href="../models_common_serverException/models_common_serverException-library.html">serverException</a></li>
-      <li><a href="../models_common_singleChapterData/models_common_singleChapterData-library.html">singleChapterData</a></li>
+      <li><a href="../models_at-home_singleChapterData/models_at-home_singleChapterData-library.html">singleChapterData</a></li>
       <li><a href="../models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
       <li><a href="../models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></li>
       <li><a href="../models_common_tags/models_common_tags-library.html">tags</a></li>
@@ -781,6 +820,8 @@
   <li><a href="../mangadex_library/getAllUserMangaReadingStatus.html">getAllUserMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
   <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
+  <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
+  <li><a href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></li>
   <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
   <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
   <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
@@ -788,6 +829,7 @@
   <li><a href="../mangadex_library/getCoverArtUrl.html">getCoverArtUrl</a></li>
   <li><a href="../mangadex_library/getLoggedUserDetails.html">getLoggedUserDetails</a></li>
   <li><a href="../mangadex_library/getLoggedUserDetailsResponse.html">getLoggedUserDetailsResponse</a></li>
+  <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
   <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
   <li><a href="../mangadex_library/getUserFollowedGroups.html">getUserFollowedGroups</a></li>
@@ -825,7 +867,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.28
+      1.2.29
   </span>
 
   

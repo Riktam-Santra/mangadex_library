@@ -1,6 +1,5 @@
 import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/mangadex_library.dart' as lib;
-import 'package:mangadex_library/jsonSearchCommands.dart';
 
 void main() {
   printFilenames();
@@ -41,20 +40,18 @@ void printFilenames() async {
     // the first chapter from the chapterData we just got.
     //Every chapter has a usique chapter ID and a chapter Hash
     //Chapter ID is required to access info of the desired chapter.
-    var chapterHash = chapterData.data[0].attributes
-        .hash; // this variable stores the chapter hash of a chapter
     //Chapter Hash is required for requesting manga pages.
-
-    var baseUrl = await lib.getBaseUrl(
-        chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
-    //BaseUrl always require a chapter ID to obtain an address.
-    var filenames = await JsonUtils.getChapterFilenames(chapterID, false);
-
+    var singleChapterData = await lib.getChapterDataByChapterId(chapterID);
+    var filenames = singleChapterData.chapter.data;
+    var baseUrl = singleChapterData.baseUrl;
     // the filenames variable stores the name of all files in a manga chapter
-    // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
     for (var i = 0; i < filenames.length; i++) {
       print(lib.constructPageUrl(
-          chapterID, token, chapterHash, filenames[i], false));
+          baseUrl,
+          token,
+          true,
+          singleChapterData.chapter.hash,
+          singleChapterData.chapter.dataSaver[i]));
     }
     // this for loop prints the url to all the pages in the provided chapters.
   } on MangadexServerException catch (e) {

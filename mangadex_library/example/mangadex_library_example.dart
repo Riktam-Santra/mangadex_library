@@ -1,5 +1,4 @@
 import 'package:mangadex_library/mangadex_library.dart';
-import 'package:mangadex_library/jsonSearchCommands.dart';
 
 void main() async {
   // The code below is to demonstrate the search() function,
@@ -41,8 +40,7 @@ void main() async {
     print('Token: ' + token);
     print('Url: $baseUrl/$token/data/$chapHash/$filename');
     // the code below prints the file names of the 1st chapter
-    var chapterFilenameList =
-        await JsonUtils.getChapterFilenames('$chapId', false);
+    var chapterFilenameList = await getChapterFilenames('$chapId', false);
     for (var i = 0; i < chapterFilenameList.length; i++) {
       print(chapterFilenameList[i]);
     }
