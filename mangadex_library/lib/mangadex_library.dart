@@ -16,10 +16,13 @@ import 'package:http/http.dart' as http;
 import 'package:mangadex_library/models/chapter/readChapters.dart';
 import 'package:mangadex_library/models/common/allMangaReadingStatus.dart';
 import 'package:mangadex_library/models/common/content_rating.dart';
-import 'package:mangadex_library/models/common/future_updates.dart';
+import 'package:mangadex_library/enum_utils.dart';
 import 'package:mangadex_library/models/common/language_codes.dart';
 import 'package:mangadex_library/models/common/mangaReadingStatus.dart';
+import 'package:mangadex_library/models/common/manga_status.dart';
+import 'package:mangadex_library/models/common/publication_demographic.dart';
 import 'package:mangadex_library/models/common/reading_status.dart';
+import 'package:mangadex_library/models/common/tag_modes.dart';
 import 'package:mangadex_library/models/user/user_followed_groups/user_followed_groups.dart';
 import 'package:mangadex_library/models/user/user_followed_manga/manga_check.dart';
 import 'package:mangadex_library/models/user/user_followed_users/user_followed_users.dart';
@@ -32,6 +35,7 @@ import '/models/login/Login.dart';
 import '/models/user/user_followed_manga/user_followed_manga.dart';
 import '/models/user/logged_user_details/logged_user_details.dart';
 import 'models/at-home/singleChapterData.dart';
+import 'models/common/base_url.dart';
 import 'models/common/singleMangaData.dart';
 
 final String authority = 'api.mangadex.org';
@@ -89,52 +93,180 @@ Future<UserDetails> getLoggedUserDetails(String token) async {
 }
 
 // Manga search related functions
-Future<http.Response> searchResponse(String query,
-    {String? includedTagsMode,
-    String? artists,
-    String? publicationDemographic,
-    String? includedTags,
-    String? ids,
-    String? excludedTags,
-    String? excludedTagsMode,
-    String? status,
-    String? contentRating,
-    String? limit,
-    String? originalLanguage,
-    String? authors}) async {
+Future<http.Response> searchResponse({
+  String? query,
+  int? limit,
+  int? offset,
+  List<String>? authors,
+  List<String>? artists,
+  int? year,
+  List<String>? includedTags,
+  TagsMode? includedTagsMode,
+  List<String>? excludedTags,
+  TagsMode? excludedTagsMode,
+  List<MangaStatus>? status,
+  List<LanguageCodes>? originalLanguage,
+  List<LanguageCodes>? excludedOriginalLanguages,
+  List<LanguageCodes>? availableTranslatedLanguage,
+  List<PublicDemographic>? publicationDemographic,
+  List<String>? ids,
+  List<ContentRating>? contentRating,
+  String? createdAtSince,
+  String? updatedAtSince,
+  List<String>? includes,
+  String? group,
+}) async {
   var unencodedPath = '/manga';
-  var Title = '&title=$query';
-  var IncludedTagsMode = includedTagsMode != null
-      ? '&includedTagsMode=$includedTagsMode'
-      : '&includedTagsMode=AND';
-  var Artists = artists != null ? '&artists[]=$artists' : '';
-  var PublicationDemographic = publicationDemographic != null
-      ? '&publicationDemographic[]=$publicationDemographic'
-      : '';
-  var IncludedTags =
-      includedTags != null ? '&includedTags[]=$includedTags' : '';
-  var Ids = ids != null ? '&ids[]=$ids' : '';
-  var ExcludedTags =
-      excludedTags != null ? '&excludedTags[]=$excludedTags' : '';
-  var ExcludedTagsMode = excludedTagsMode != null
-      ? '&excludedTagsMode=$excludedTagsMode'
-      : '&excludedTagsMode=OR';
-  var Status = status != null ? '&status[]=$status' : '';
-  var ContentRating =
-      contentRating != null ? '&contentRating[]=$contentRating' : '';
-  var Limit = limit != null ? '&limit=$limit' : '&limit=10';
-  var OriginalLanguage =
-      originalLanguage != null ? '&originalLanguage[]=$originalLanguage' : '';
-  var Authors = authors != null ? '&authors[]=$authors' : '';
+  var Title = query != null ? '&title=$query' : '';
+  var Authors = '';
+  if (authors != null) {
+    authors.forEach((element) {
+      Authors = Authors + '&authors[]=$element';
+    });
+  }
+  var Limit = limit != null ? '&limit=$limit' : '';
+  var Offset = offset != null ? '&offset=$offset' : '';
+  var Artists = '';
+  if (artists != null) {
+    artists.forEach((element) {
+      Artists = Artists + '&artists[]=$element';
+    });
+  }
+  var Year = year != null ? '&year=$year' : '';
+  var IncludedTags = '';
+  if (includedTags != null) {
+    includedTags.forEach((element) {
+      IncludedTags = IncludedTags + '&includedTages[]=$element';
+    });
+  }
+  var PublicationDemographic = '';
+  if (publicationDemographic != null) {
+    publicationDemographic.forEach((element) {
+      PublicationDemographic = PublicationDemographic +
+          '&publicationDemographic[]=${EnumUtils.parsePublicDemographicFromEnum(element)}';
+    });
+  }
+  var IncludedTagsMode = '';
+  if (includedTagsMode != null) {
+    IncludedTagsMode = EnumUtils.parseTagModeFromEnum(includedTagsMode);
+  }
+  var ExcludedTags = '';
+  if (excludedTags != null) {
+    excludedTags.forEach((element) {
+      ExcludedTags = ExcludedTags + '&excludedTags[]=$element';
+    });
+  }
+  var ExcludedTagsMode = '';
+  if (excludedTagsMode != null) {
+    ExcludedTagsMode = EnumUtils.parseTagModeFromEnum(excludedTagsMode);
+  }
+  var Status = '';
+  if (status != null) {
+    status.forEach((element) {
+      Status =
+          Status + '&status[]=${EnumUtils.parseMangaStatusFromEnum(element)}';
+    });
+  }
+
+  var OriginalLanguage = '';
+  if (originalLanguage != null) {
+    originalLanguage.forEach((element) {
+      OriginalLanguage = OriginalLanguage +
+          '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var ExcludedOriginalLanguage = '';
+  if (excludedOriginalLanguages != null) {
+    excludedOriginalLanguages.forEach((element) {
+      ExcludedOriginalLanguage = ExcludedOriginalLanguage +
+          '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var AvailableTranslatedLanguage = '';
+  if (availableTranslatedLanguage != null) {
+    availableTranslatedLanguage.forEach((element) {
+      AvailableTranslatedLanguage = AvailableTranslatedLanguage +
+          '&availableTranslatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
+    });
+  }
+
+  var Ids = '';
+  if (ids != null) {
+    ids.forEach((element) {
+      Ids = Ids + '&ids[]=$element';
+    });
+  }
+  var contentrating = '';
+  if (contentRating != null) {
+    contentRating.forEach((element) {
+      contentrating = contentrating +
+          '&contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}';
+    });
+  }
+  var Includes = '';
+  if (includes != null) {
+    includes.forEach((element) {
+      Includes = Includes + '&included[]=$element';
+    });
+  }
+  var CreatedAtSince =
+      createdAtSince != null ? '&createdAtSince=$createdAtSince' : '';
+  var UpdatedAtSince =
+      updatedAtSince != null ? '&updatedAtSince=$updatedAtSince' : '';
+  var Group = group != null ? '&group=$group' : '';
   final url =
-      'https://$authority$unencodedPath?$Title$IncludedTagsMode$Artists$PublicationDemographic$IncludedTags$Ids$ExcludedTags$ExcludedTagsMode$Status$ContentRating$Limit$OriginalLanguage$Authors';
+      'https://$authority$unencodedPath?$Title$Limit$Offset$Authors$Artists$Year$IncludedTags$IncludedTagsMode$ExcludedTags$ExcludedTagsMode$Status$OriginalLanguage$ExcludedOriginalLanguage$AvailableTranslatedLanguage$PublicationDemographic$Ids$contentrating$CreatedAtSince$UpdatedAtSince$Includes$Group';
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
 }
 
-Future<Search?> search(String query) async {
-  var response = await searchResponse(query);
+Future<Search?> search({
+  String? query,
+  int? limit,
+  int? offset,
+  List<String>? authors,
+  List<String>? artists,
+  int? year,
+  List<String>? includedTags,
+  TagsMode? includedTagsMode,
+  List<String>? excludedTags,
+  TagsMode? excludedTagsMode,
+  List<MangaStatus>? status,
+  List<LanguageCodes>? originalLanguage,
+  List<LanguageCodes>? excludedOriginalLanguages,
+  List<LanguageCodes>? availableTranslatedLanguage,
+  List<PublicDemographic>? publicationDemographic,
+  List<String>? ids,
+  List<ContentRating>? contentRating,
+  String? createdAtSince,
+  String? updatedAtSince,
+  List<String>? includes,
+  String? group,
+}) async {
+  var response = await searchResponse(
+    query: query,
+    limit: limit,
+    offset: offset,
+    authors: authors,
+    artists: artists,
+    year: year,
+    includedTags: includedTags,
+    includedTagsMode: includedTagsMode,
+    excludedTags: excludedTags,
+    excludedTagsMode: excludedTagsMode,
+    status: status,
+    originalLanguage: originalLanguage,
+    excludedOriginalLanguages: excludedOriginalLanguages,
+    availableTranslatedLanguage: availableTranslatedLanguage,
+    publicationDemographic: publicationDemographic,
+    ids: ids,
+    contentRating: contentRating,
+    createdAtSince: createdAtSince,
+    updatedAtSince: updatedAtSince,
+    includes: includes,
+    group: group,
+  );
   var headers = response.headers;
   if (headers['x-ratelimit-remaining'] == '0') {
     print('Rate Limit Exceeded.');
@@ -193,28 +325,28 @@ Future<http.Response> getChaptersResponse(String mangaId,
   if (translatedLanguage != null) {
     translatedLanguage.forEach((element) {
       TranslatedLanguage = TranslatedLanguage +
-          '&translatedLanguage[]=${parseLanguageCodeFromEnum(element)}';
+          '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
   var OriginalLanguage = '';
   if (originalLanguage != null) {
     originalLanguage.forEach((element) {
       OriginalLanguage = OriginalLanguage +
-          '&originalLanguage[]=${parseLanguageCodeFromEnum(element)}';
+          '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
   var ExcludedOriginalLanguage = '';
   if (excludedOriginalLanguage != null) {
     excludedOriginalLanguage.forEach((element) {
       ExcludedOriginalLanguage = ExcludedOriginalLanguage +
-          '&excludedOriginalLanguage[]=${parseLanguageCodeFromEnum(element)}';
+          '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
   var Contentrating = '';
   if (contentRating != null) {
     contentRating.forEach((element) {
       Contentrating = Contentrating +
-          '&contentRating[]=${parseContentRatingFromEnum(element)}';
+          '&contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}';
     });
   }
 
@@ -228,7 +360,7 @@ Future<http.Response> getChaptersResponse(String mangaId,
 
   final url =
       'https://$authority$unencodedPath?&manga=$MangaId$Limit$Offset$Ids$Title$Groups$Uploader$Volume$Chapter$TranslatedLanguage$CreatedAtSince$UpdatedAtSince$PublishedAtSince$Includes';
-  print('Url: $url');
+  print('url');
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
@@ -275,16 +407,12 @@ Future<ChapterData?> getChapters(String mangaId,
   if (headers['x-ratelimit-remaining'] == '0') {
     print('Rate Limit Exceeded.');
   } else {
-    try {
-      var data = ChapterData.fromJson(jsonDecode(response.body));
-      if (data.data.isNotEmpty) {
-        return data;
-      } else {
-        print(
-            'chapter with the manga ID $mangaId not found. Make sure the manga id isn\'t an empty String.');
-      }
-    } catch (e) {
-      print(response.body);
+    var data = ChapterData.fromJson(jsonDecode(response.body));
+    if (data.data.isNotEmpty) {
+      return data;
+    } else {
+      print(
+          'chapter with the manga ID $mangaId not found. Make sure the manga id isn\'t an empty String.');
     }
   }
 }
@@ -518,7 +646,7 @@ Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String token,
     {ReadingStatus? readingStatus}) async {
   var status = '';
   if (readingStatus != null) {
-    status = parseStatusFromEnum(readingStatus);
+    status = EnumUtils.parseStatusFromEnum(readingStatus);
   }
   var data = await getAllMangaReadingStatusResponse(token, status);
   return AllMangaReadingStatus.fromJson(jsonDecode(data.body));
@@ -537,7 +665,8 @@ Future<MangaReadingStatus> getMangaReadingStatus(
 
 Future<ResultOk> setMangaReadingStatus(
     String token, String mangaId, ReadingStatus? status) async {
-  var statusString = status != null ? parseStatusFromEnum(status) : 'reading';
+  var statusString =
+      status != null ? EnumUtils.parseStatusFromEnum(status) : 'reading';
   var unencodedPath = '/manga/$mangaId/status';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri),
@@ -548,7 +677,6 @@ Future<ResultOk> setMangaReadingStatus(
       body: jsonEncode({
         'status': '$statusString',
       }));
-  print(response.body);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
@@ -607,12 +735,7 @@ Future<ReadChapters?> getAllReadChapters(String token, String mangaId) async {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.authorizationHeader: 'Bearer $token'
   });
-  try {
-    return ReadChapters.fromJson(jsonDecode(response.body));
-  } catch (e) {
-    print(response);
-    print(e.toString());
-  }
+  return ReadChapters.fromJson(jsonDecode(response.body));
 }
 
 Future<http.Response> getAllReadChaptersForAListOfManga(
@@ -624,7 +747,6 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
   mangaIds.forEach((element) {
     _ids = _ids + '&ids[]=$element';
   });
-  print(_ids);
   final uri = 'https://$authority$unencodedPath?$_ids';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -642,7 +764,6 @@ Future<ResultOk> markChapterRead(String token, String chapterId) async {
         HttpHeaders.authorizationHeader: 'Bearer $token'
       },
       body: jsonEncode({'id': '$chapterId'}));
-  print(response.body);
   return ResultOk.fromJson(jsonDecode(response.body));
 }
 
@@ -690,77 +811,6 @@ Future<ResultOk> markMultipleChaptersUnread(
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: payload);
   return ResultOk.fromJson(jsonDecode(response.body));
-}
-
-String parseStatusFromEnum(ReadingStatus status) {
-  switch (status) {
-    case ReadingStatus.completed:
-      return 'completed';
-    case ReadingStatus.dropped:
-      return 'dropped';
-    case ReadingStatus.on_hold:
-      return 'on_hold';
-    case ReadingStatus.plan_to_read:
-      return 'plan_to_read';
-    case ReadingStatus.re_reading:
-      return 're_reading';
-    case ReadingStatus.reading:
-      return 'reading';
-  }
-}
-
-String parseLanguageCodeFromEnum(LanguageCodes code) {
-  switch (code) {
-    case LanguageCodes.en:
-      return 'en';
-    case LanguageCodes.es:
-      return 'es';
-    case LanguageCodes.es_la:
-      return 'es-la';
-    case LanguageCodes.ja_ro:
-      return 'ja-ro';
-    case LanguageCodes.ko_ro:
-      return 'ko-ro';
-    case LanguageCodes.pt_br:
-      return 'pt-br';
-    case LanguageCodes.zh:
-      return 'zh';
-    case LanguageCodes.zh_hk:
-      return 'zh-hk';
-    case LanguageCodes.zh_ro:
-      return 'zh-ro';
-  }
-}
-
-String parseContentRatingFromEnum(ContentRating rating) {
-  switch (rating) {
-    case ContentRating.erotica:
-      return 'erotica';
-    case ContentRating.pornographic:
-      return 'pornographic';
-    case ContentRating.safe:
-      return 'safe';
-    case ContentRating.suggestive:
-      return 'suggestive';
-  }
-}
-
-String parseFutureUpdatesFromEnum(FutureUpdates update) {
-  switch (update) {
-    case FutureUpdates.enable:
-      return '1';
-    case FutureUpdates.disable:
-      return '2';
-  }
-}
-
-// Base url class to parse base url
-class BaseUrl {
-  late final String baseUrl;
-  BaseUrl(this.baseUrl);
-  BaseUrl.fromJson(Map<String, dynamic> json) {
-    baseUrl = json['baseUrl'];
-  }
 }
 
 //Reporting success or failure on receiving an image

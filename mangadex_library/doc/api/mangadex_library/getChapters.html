@@ -120,16 +120,12 @@
   if (headers[&#39;x-ratelimit-remaining&#39;] == &#39;0&#39;) {
     print(&#39;Rate Limit Exceeded.&#39;);
   } else {
-    try {
-      var data = ChapterData.fromJson(jsonDecode(response.body));
-      if (data.data.isNotEmpty) {
-        return data;
-      } else {
-        print(
-            &#39;chapter with the manga ID $mangaId not found. Make sure the manga id isn\&#39;t an empty String.&#39;);
-      }
-    } catch (e) {
-      print(response.body);
+    var data = ChapterData.fromJson(jsonDecode(response.body));
+    if (data.data.isNotEmpty) {
+      return data;
+    } else {
+      print(
+          &#39;chapter with the manga ID $mangaId not found. Make sure the manga id isn\&#39;t an empty String.&#39;);
     }
   }
 }</code></pre>
@@ -154,8 +150,6 @@
 
     <h5>mangadex_library library</h5>
     <ol>
-  <li class="section-title"><a href="../mangadex_library/mangadex_library-library.html#classes">Classes</a></li>
-  <li><a href="../mangadex_library/BaseUrl-class.html">BaseUrl</a></li>
 
 
 
@@ -202,10 +196,6 @@
   <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-  <li><a href="../mangadex_library/parseContentRatingFromEnum.html">parseContentRatingFromEnum</a></li>
-  <li><a href="../mangadex_library/parseFutureUpdatesFromEnum.html">parseFutureUpdatesFromEnum</a></li>
-  <li><a href="../mangadex_library/parseLanguageCodeFromEnum.html">parseLanguageCodeFromEnum</a></li>
-  <li><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/reportImageStatus.html">reportImageStatus</a></li>
@@ -228,7 +218,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.29
+      1.2.30
   </span>
 
   

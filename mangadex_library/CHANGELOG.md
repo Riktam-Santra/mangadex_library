@@ -290,3 +290,14 @@
 - getChapterDataByChapterID() function is now to be used to get chapter filenames, base url and chapter hash.
 - **Removed** class JsonUtils.
 - Moved getChapterFilenames(), getChapterDataByChapterId() and getMangaDataByMangaId() functions to mangadex_library.dart.
+
+## 1.2.30
+
+- Added all filter parameters for search function.
+- **Search function parameters changed to named functions.** Previously `search('manga name')`, now `search(query: 'manga name')`
+- All parameters are now optional for search function. Query parameter is no longer required to use search functions.
+- Created enums MangaStatus, PublicationDemographic, TagsMode to fix values for search parameters.
+- Created abstract class EnumUtils.
+- All fuctions used to parse enums to Strings and vice versa are transferred to EnumUtils.
+- **Deleted** JsonUtils class.
+- Created Model class for BaseUrl returned by `getBaseUrl()` to parse response from get /at-home/server endpoint. `ConstructPageUrl()` can be used to construct page urls using data provided by the BaseUrl class.

@@ -68,7 +68,7 @@
     {ReadingStatus? readingStatus}) async {
   var status = &#39;&#39;;
   if (readingStatus != null) {
-    status = parseStatusFromEnum(readingStatus);
+    status = EnumUtils.parseStatusFromEnum(readingStatus);
   }
   var data = await getAllMangaReadingStatusResponse(token, status);
   return AllMangaReadingStatus.fromJson(jsonDecode(data.body));
@@ -94,8 +94,6 @@
 
     <h5>mangadex_library library</h5>
     <ol>
-  <li class="section-title"><a href="../mangadex_library/mangadex_library-library.html#classes">Classes</a></li>
-  <li><a href="../mangadex_library/BaseUrl-class.html">BaseUrl</a></li>
 
 
 
@@ -142,10 +140,6 @@
   <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-  <li><a href="../mangadex_library/parseContentRatingFromEnum.html">parseContentRatingFromEnum</a></li>
-  <li><a href="../mangadex_library/parseFutureUpdatesFromEnum.html">parseFutureUpdatesFromEnum</a></li>
-  <li><a href="../mangadex_library/parseLanguageCodeFromEnum.html">parseLanguageCodeFromEnum</a></li>
-  <li><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/reportImageStatus.html">reportImageStatus</a></li>
@@ -168,7 +162,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.29
+      1.2.30
   </span>
 
   

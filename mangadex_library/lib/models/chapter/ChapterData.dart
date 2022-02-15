@@ -1,3 +1,4 @@
+import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
 
 class ChapterData {
@@ -7,15 +8,19 @@ class ChapterData {
   late final int total;
   ChapterData(this.data, this.limit, this.offset, this.total);
   ChapterData.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data.add(Data.fromJson(v));
-      });
+    try {
+      if (json['data'] != null) {
+        data = <Data>[];
+        json['data'].forEach((v) {
+          data.add(Data.fromJson(v));
+        });
+      }
+      limit = json['limit'] ?? '';
+      offset = json['offset'] ?? '';
+      total = json['total'] ?? '';
+    } on Exception {
+      throw MangadexServerException(json);
     }
-    limit = json['limit'] ?? '';
-    offset = json['offset'] ?? '';
-    total = json['total'] ?? '';
   }
 }
 

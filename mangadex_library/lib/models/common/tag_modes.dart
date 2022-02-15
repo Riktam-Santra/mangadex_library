@@ -1,0 +1,4 @@
+enum TagsMode {
+  Or,
+  And,
+}

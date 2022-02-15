@@ -6,7 +6,7 @@ void main() async {
   // It prints the title and Manga ID of all manga found
 
   var query = 'oregairu'; // Put your search query here.
-  var searchData = await search(query);
+  var searchData = await search(query: query);
   print('Title and ID of all manga found: \n');
   if (searchData != null) {
     for (var i = 0; i < searchData.data.length; i++) {

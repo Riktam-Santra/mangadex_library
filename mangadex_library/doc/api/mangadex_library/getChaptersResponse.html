@@ -121,28 +121,28 @@
   if (translatedLanguage != null) {
     translatedLanguage.forEach((element) {
       TranslatedLanguage = TranslatedLanguage +
-          &#39;&amp;translatedLanguage[]=${parseLanguageCodeFromEnum(element)}&#39;;
+          &#39;&amp;translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
   var OriginalLanguage = &#39;&#39;;
   if (originalLanguage != null) {
     originalLanguage.forEach((element) {
       OriginalLanguage = OriginalLanguage +
-          &#39;&amp;originalLanguage[]=${parseLanguageCodeFromEnum(element)}&#39;;
+          &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
   var ExcludedOriginalLanguage = &#39;&#39;;
   if (excludedOriginalLanguage != null) {
     excludedOriginalLanguage.forEach((element) {
       ExcludedOriginalLanguage = ExcludedOriginalLanguage +
-          &#39;&amp;excludedOriginalLanguage[]=${parseLanguageCodeFromEnum(element)}&#39;;
+          &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
   var Contentrating = &#39;&#39;;
   if (contentRating != null) {
     contentRating.forEach((element) {
       Contentrating = Contentrating +
-          &#39;&amp;contentRating[]=${parseContentRatingFromEnum(element)}&#39;;
+          &#39;&amp;contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}&#39;;
     });
   }
 
@@ -156,7 +156,7 @@
 
   final url =
       &#39;https:&#47;&#47;$authority$unencodedPath?&amp;manga=$MangaId$Limit$Offset$Ids$Title$Groups$Uploader$Volume$Chapter$TranslatedLanguage$CreatedAtSince$UpdatedAtSince$PublishedAtSince$Includes&#39;;
-  print(&#39;Url: $url&#39;);
+  print(&#39;url&#39;);
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;});
   return response;
@@ -182,8 +182,6 @@
 
     <h5>mangadex_library library</h5>
     <ol>
-  <li class="section-title"><a href="../mangadex_library/mangadex_library-library.html#classes">Classes</a></li>
-  <li><a href="../mangadex_library/BaseUrl-class.html">BaseUrl</a></li>
 
 
 
@@ -230,10 +228,6 @@
   <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-  <li><a href="../mangadex_library/parseContentRatingFromEnum.html">parseContentRatingFromEnum</a></li>
-  <li><a href="../mangadex_library/parseFutureUpdatesFromEnum.html">parseFutureUpdatesFromEnum</a></li>
-  <li><a href="../mangadex_library/parseLanguageCodeFromEnum.html">parseLanguageCodeFromEnum</a></li>
-  <li><a href="../mangadex_library/parseStatusFromEnum.html">parseStatusFromEnum</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/reportImageStatus.html">reportImageStatus</a></li>
@@ -256,7 +250,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.29
+      1.2.30
   </span>
 
   
