@@ -294,7 +294,7 @@
 ## 1.2.30
 
 - Added all filter parameters for search function.
-- **Search function parameters changed to named functions.** Previously `search('manga name')`, now `search(query: 'manga name')`
+- **Search function parameters changed to named parameters.** Previously `search('manga name')`, now `search(query: 'manga name')`
 - All parameters are now optional for search function. Query parameter is no longer required to use search functions.
 - Created enums MangaStatus, PublicationDemographic, TagsMode to fix values for search parameters.
 - Created abstract class EnumUtils.
