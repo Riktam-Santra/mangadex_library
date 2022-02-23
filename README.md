@@ -38,8 +38,7 @@ void printFilenames() async {
   //the login function, it is a String value.
   // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
 
-  var searchData = await lib.search(
-      'oregairu'); //This is a search function that queries mangadex for the name of a manga
+  var searchData = await lib.search(query: 'oregairu'); //This is a search function that queries mangadex for the name of a manga
   // it returns a Search class instance
   // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
 
