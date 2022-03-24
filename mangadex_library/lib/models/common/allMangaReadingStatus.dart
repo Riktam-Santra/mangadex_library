@@ -1,3 +1,4 @@
+///@nodoc
 class AllMangaReadingStatus {
   late String result;
   late Map<String, dynamic> statuses;

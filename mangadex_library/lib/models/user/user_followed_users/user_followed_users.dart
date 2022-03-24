@@ -1,6 +1,7 @@
-import 'package:mangadex_library/mangadexServerException.dart';
+///@nodoc
 import 'package:mangadex_library/models/common/relationships.dart';
 
+///@nodoc
 class UserFollowedUsers {
   late final List<Data> data;
   late final int limit;
@@ -8,22 +9,19 @@ class UserFollowedUsers {
   late final int total;
   UserFollowedUsers(this.data, this.limit, this.offset, this.total);
   UserFollowedUsers.fromJson(Map<String, dynamic> json) {
-    try {
-      data = <Data>[];
+    data = <Data>[];
 
-      json['data']!.forEach((v) {
-        data.add(Data.fromJson(v));
-      });
+    json['data']!.forEach((v) {
+      data.add(Data.fromJson(v));
+    });
 
-      limit = json['limit'] ?? 0;
-      offset = json['offset'] ?? 0;
-      total = json['total'] ?? 0;
-    } on Exception {
-      throw MangadexServerException(json);
-    }
+    limit = json['limit'] ?? 0;
+    offset = json['offset'] ?? 0;
+    total = json['total'] ?? 0;
   }
 }
 
+///@nodoc
 class Data {
   late final String id;
   late final String type;
@@ -41,6 +39,7 @@ class Data {
   }
 }
 
+///@nodoc
 class Attributes {
   late final String username;
   late final Role roles;
@@ -53,6 +52,7 @@ class Attributes {
   }
 }
 
+///@nodoc
 class Role {
   late final List<String> roles;
   Role(this.roles);

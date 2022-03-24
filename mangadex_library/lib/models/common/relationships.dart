@@ -1,3 +1,4 @@
+///@nodoc
 class Relationship {
   late final String id;
   late final String type;

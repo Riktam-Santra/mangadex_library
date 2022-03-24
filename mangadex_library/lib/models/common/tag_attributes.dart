@@ -1,3 +1,4 @@
+///@nodoc
 import 'package:mangadex_library/models/common/name.dart';
 
 class TagAttributes {

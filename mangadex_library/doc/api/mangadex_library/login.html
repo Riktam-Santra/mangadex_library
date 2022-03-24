@@ -52,25 +52,27 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_login_Login/Login-class.html">Login</a>?</span>&gt;</span></span>
-<span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-username"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span></li>
-<li><span class="parameter" id="login-param-password"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Login</span>&gt;</span></span>
+<span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-username"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span></li>
+<li><span class="parameter" id="login-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Returns the a <code>Login</code> class instance with a JWT session and refresh token for <code>username</code>.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Login?&gt; login(String username, String password) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Login&gt; login(String username, String password) async {
   var response = await loginResponse(username, password);
-  var headers = response.headers;
-  if (headers[&#39;x-ratelimit-remaining&#39;] == &#39;0&#39;) {
-    print(&#39;Rate Limit Exceeded.&#39;);
-  } else {
+  try {
     return Login.fromJson(jsonDecode(response.body));
+  } catch (e) {
+    throw MangadexServerException(jsonDecode(response.body));
   }
 }</code></pre>
 </section>

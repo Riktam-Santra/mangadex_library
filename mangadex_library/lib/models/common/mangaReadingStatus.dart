@@ -1,3 +1,4 @@
+///@nodoc
 class MangaReadingStatus {
   late String result;
   late String status;

@@ -58,8 +58,8 @@
 </ul>
 <h2 id="quickstart">Quickstart</h2>
 <p>A quick demonstration of the API:</p>
-<pre class="language-dart"><code class="language-dart">import 'package:mangadex_library/mangadex_library.dart' as lib;
-import 'package:mangadex_library/jsonSearchCommands.dart';
+<pre class="language-dart"><code class="language-dart">import 'package:mangadex_library/mangadexServerException.dart';
+import 'package:mangadex_library/mangadex_library.dart' as lib;
 
 void main() {
   printFilenames();
@@ -74,56 +74,59 @@ void printFilenames() async {
   //The line below uses the login function and takes in
   //two String parameters, username and password and returns
   //an instance of the Login class
-  var loginData = await lib.login(username, password);
-  var token = loginData!.token
-      .session; // this sets the token variable to store the session token obtained using
-  //the login function, it is a String value.
-  // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
+  try {
+    var loginData = await lib.login(username, password);
+    var token = loginData.token
+        .session; // this sets the token variable to store the session token obtained using
+    //the login function, it is a String value.
+    // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
 
-  var searchData = await lib.search(
-      'oregairu'); //This is a search function that queries mangadex for the name of a manga
-  // it returns a Search class instance
-  // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
+    var searchData = await lib.search(
+        query:
+            'oregairu'); //This is a search function that queries mangadex for the name of a manga
+    // it returns a Search class instance
+    // For now, it searches for the Oregairu manga. You may replace the String value with your desired query.
 
-  var mangaID = searchData!.data[0]
-      .id; // this line gets the manga ID from the instance of the Search we just obtained
-  //for demonstration we are talking the manga ID of only the first search result
-  //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
-  //For example, chapter pages and thimbnails
+    var mangaID = searchData.data[0]
+        .id; // this line gets the manga ID from the instance of the Search we just obtained
+    //for demonstration we are talking the manga ID of only the first search result
+    //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
+    //For example, chapter pages and thumbnails.
+    var chapterData = await lib.getChapters(
+        mangaID); //This function returns an instance of the ChapterData class,
+    // it contains info on all the chapters of the manga ID it has been provided.
 
-  var chapterData = await lib.getChapters(
-      mangaID); //This function returns an instance of the ChapterData class,
-  // it contains info on all the chapters of the manga ID it has been provided.
-
-  var chapterID = chapterData!
-      .data[0].id; // This line sets the chapterID variable to the chapter id of
-  // the first chapter from the chapterData we just got.
-  //Every chapter has a usique chapter ID and a chapter Hash
-  //Chapter ID is required to access info of the desired chapter.
-  var chapterHash = chapterData.data[0].attributes
-      .hash; // this variable stores the chapter hash of a chapter
-  //Chapter Hash is required for requesting manga pages.
-
-  var baseUrl = await lib.getBaseUrl(
-      chapterID); // This variable stores the baseUrl(Authority) to the chapter we are looking for
-  //For now, there is only one base URL (https://uploads.mangadex.org)
-  //However, there maybe more than one base URls in the future. BaseUrl always requires chapter ID to obtain an address.
-  var filenames = await JsonUtils.getChapterFilenames(chapterID, false);
-
-  // the filenames variable stores the name of all files in a manga chapter
-  // using the getChapterFileNames function provided in the jsonSearchCommands.dart file.
-  for (var i = 0; i &lt; filenames.length; i++) {
-    print(lib.constructPageUrl(
-        chapterID, token, chapterHash, filenames[i], false));
+    var chapterID = chapterData.data[0]
+        .id; // This line sets the chapterID variable to the chapter id of
+    // the first chapter from the chapterData we just got.
+    //Every chapter has a usique chapter ID and a chapter Hash
+    //Chapter ID is required to access info of the desired chapter.
+    //Chapter Hash is required for requesting manga pages.
+    var singleChapterData = await lib.getChapterDataByChapterId(chapterID);
+    var filenames = singleChapterData.chapter.data;
+    var baseUrl = singleChapterData.baseUrl;
+    // the filenames variable stores the name of all files in a manga chapter
+    for (var i = 0; i &lt; filenames.length; i++) {
+      print(lib.constructPageUrl(
+          baseUrl,
+          token,
+          true,
+          singleChapterData.chapter.hash,
+          singleChapterData.chapter.dataSaver[i]));
+    }
+    // this for loop prints the url to all the pages in the provided chapters.
+  } on MangadexServerException catch (e) {
+    e.info.errors.forEach((error) {
+      print(error
+          .title); // print error details if a server exception occurs (like invalid username or password)
+      print(error.detail);
+    });
   }
-  // this for loop prints the url to all the pages in the provided chapters.
 }
-
-
 </code></pre>
 <h2 id="documentation">Documentation</h2>
 <p>The documentation is still under progress using the <a href="">wiki</a>, I have planned to put in a detailed one and so it will take time.
- for now the generated html docs using <a href="https://pub.dev/packages/dartdoc">dartdoc</a> can be found in the doc/api/ folder.</p>
+for now the generated html docs using <a href="https://pub.dev/packages/dartdoc">dartdoc</a> can be found in the doc/api/ folder.</p>
 </section>
 
 
@@ -139,20 +142,6 @@ void printFilenames() async {
 
           <dt id="alt_titles">
   <span class="name"><a href="models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="attributes">
-  <span class="name"><a href="models_common_attributes/models_common_attributes-library.html">attributes</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="base_url">
-  <span class="name"><a href="models_common_base_url/models_common_base_url-library.html">base_url</a></span> 
 
 </dt>
 <dd> 
@@ -186,20 +175,6 @@ void printFilenames() async {
 <dd> 
 </dd>
 
-          <dt id="Cover">
-  <span class="name"><a href="models_cover_Cover/models_cover_Cover-library.html">Cover</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="data">
-  <span class="name"><a href="models_common_data/models_common_data-library.html">data</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
           <dt id="description">
   <span class="name"><a href="models_common_description/models_common_description-library.html">description</a></span> 
 
@@ -223,13 +198,6 @@ void printFilenames() async {
 
           <dt id="language_codes">
   <span class="name"><a href="models_common_language_codes/models_common_language_codes-library.html">language_codes</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="logged_user_details">
-  <span class="name"><a href="models_user_logged_user_details_logged_user_details/models_user_logged_user_details_logged_user_details-library.html">logged_user_details</a></span> 
 
 </dt>
 <dd> 
@@ -260,8 +228,7 @@ void printFilenames() async {
   <span class="name"><a href="mangadex_library/mangadex_library-library.html">mangadex_library</a></span> 
 
 </dt>
-<dd>////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////// 
+<dd>A simple library to facilitate easier access to the mangadex REST API (<a href="https://api.mangadex.org">https://api.mangadex.org</a>) for flutter and dart apps <a href="mangadex_library/mangadex_library-library.html">[...]</a>
 </dd>
 
           <dt id="mangadexServerException">
@@ -320,13 +287,6 @@ void printFilenames() async {
 <dd> 
 </dd>
 
-          <dt id="Search">
-  <span class="name"><a href="models_search_Search/models_search_Search-library.html">Search</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
           <dt id="serverException">
   <span class="name"><a href="models_common_serverException/models_common_serverException-library.html">serverException</a></span> 
 
@@ -348,13 +308,6 @@ void printFilenames() async {
 <dd> 
 </dd>
 
-          <dt id="tag_attributes">
-  <span class="name"><a href="models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
           <dt id="tag_modes">
   <span class="name"><a href="models_common_tag_modes/models_common_tag_modes-library.html">tag_modes</a></span> 
 
@@ -362,36 +315,8 @@ void printFilenames() async {
 <dd> 
 </dd>
 
-          <dt id="tags">
-  <span class="name"><a href="models_common_tags/models_common_tags-library.html">tags</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
           <dt id="title">
   <span class="name"><a href="models_common_title/models_common_title-library.html">title</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="user_followed_groups">
-  <span class="name"><a href="models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="user_followed_manga">
-  <span class="name"><a href="models_user_user_followed_manga_user_followed_manga/models_user_user_followed_manga_user_followed_manga-library.html">user_followed_manga</a></span> 
-
-</dt>
-<dd> 
-</dd>
-
-          <dt id="user_followed_users">
-  <span class="name"><a href="models_user_user_followed_users_user_followed_users/models_user_user_followed_users_user_followed_users-library.html">user_followed_users</a></span> 
 
 </dt>
 <dd> 
@@ -419,19 +344,14 @@ void printFilenames() async {
       <li class="section-title">Libraries</li>
       <li><a href="models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></li>
       <li><a href="models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
-      <li><a href="models_common_attributes/models_common_attributes-library.html">attributes</a></li>
-      <li><a href="models_common_base_url/models_common_base_url-library.html">base_url</a></li>
       <li><a href="models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
       <li><a href="models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
       <li><a href="models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
-      <li><a href="models_cover_Cover/models_cover_Cover-library.html">Cover</a></li>
-      <li><a href="models_common_data/models_common_data-library.html">data</a></li>
       <li><a href="models_common_description/models_common_description-library.html">description</a></li>
       <li><a href="enum_utils/enum_utils-library.html">enum_utils</a></li>
       <li><a href="models_common_future_updates/models_common_future_updates-library.html">future_updates</a></li>
       <li><a href="models_common_language_codes/models_common_language_codes-library.html">language_codes</a></li>
-      <li><a href="models_user_logged_user_details_logged_user_details/models_user_logged_user_details_logged_user_details-library.html">logged_user_details</a></li>
       <li><a href="models_login_Login/models_login_Login-library.html">Login</a></li>
       <li><a href="models_user_user_followed_manga_manga_check/models_user_user_followed_manga_manga_check-library.html">manga_check</a></li>
       <li><a href="models_common_manga_status/models_common_manga_status-library.html">manga_status</a></li>
@@ -444,17 +364,11 @@ void printFilenames() async {
       <li><a href="models_common_reading_status/models_common_reading_status-library.html">reading_status</a></li>
       <li><a href="models_common_relationships/models_common_relationships-library.html">relationships</a></li>
       <li><a href="models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
-      <li><a href="models_search_Search/models_search_Search-library.html">Search</a></li>
       <li><a href="models_common_serverException/models_common_serverException-library.html">serverException</a></li>
       <li><a href="models_at-home_singleChapterData/models_at-home_singleChapterData-library.html">singleChapterData</a></li>
       <li><a href="models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
-      <li><a href="models_common_tag_attributes/models_common_tag_attributes-library.html">tag_attributes</a></li>
       <li><a href="models_common_tag_modes/models_common_tag_modes-library.html">tag_modes</a></li>
-      <li><a href="models_common_tags/models_common_tags-library.html">tags</a></li>
       <li><a href="models_common_title/models_common_title-library.html">title</a></li>
-      <li><a href="models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></li>
-      <li><a href="models_user_user_followed_manga_user_followed_manga/models_user_user_followed_manga_user_followed_manga-library.html">user_followed_manga</a></li>
-      <li><a href="models_user_user_followed_users_user_followed_users/models_user_user_followed_users_user_followed_users-library.html">user_followed_users</a></li>
 </ol>
 
   </div>

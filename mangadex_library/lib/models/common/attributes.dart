@@ -1,3 +1,4 @@
+///@nodoc
 import 'package:mangadex_library/models/common/alt_titles.dart';
 import 'package:mangadex_library/models/common/description.dart';
 import 'package:mangadex_library/models/common/tags.dart';

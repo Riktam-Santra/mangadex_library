@@ -1,3 +1,4 @@
+///@nodoc
 enum LanguageCodes {
   en, // English
   zh, // Simplified Chinese

@@ -52,28 +52,31 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.3/http/Response-class.html">Response</a></span>&gt;</span></span>
-<span class="name ">getCoverArtResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArtResponse-param-mangaID"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaID</span>, </span></li>
-<li><span class="parameter" id="getCoverArtResponse-param-coverID">[<span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">coverID</span>, </span></li>
-<li><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span></li>
-<li><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>]</span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.3/http/Response-class.html">Response</a></span>&gt;</span></span>
+<span class="name ">getCoverArtResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArtResponse-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<li><span class="parameter" id="getCoverArtResponse-param-coverId">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">coverId</span>, </span></li>
+<li><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span></li>
+<li><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>]</span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>returns an https response with cover art details for a manga with given <code>mangaId</code> or uuid</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;http.Response&gt; getCoverArtResponse(
-  String mangaID, [
-  String? coverID,
+  String mangaId, [
+  String? coverId,
   int limit = 10,
   int offset = 0,
 ]) async {
-  final mangas = &#39;&amp;manga[]=$mangaID&#39;;
-  final covers = coverID != null ? &#39;&amp;cover[]=$coverID&#39; : &#39;&#39;;
+  final mangas = &#39;&amp;manga[]=$mangaId&#39;;
+  final covers = coverId != null ? &#39;&amp;cover[]=$coverId&#39; : &#39;&#39;;
   final uri =
       &#39;https:&#47;&#47;$authority&#47;cover?limit=$limit&amp;offset=$offset$mangas$covers&#39;;
   var response = await http.get(Uri.parse(uri),

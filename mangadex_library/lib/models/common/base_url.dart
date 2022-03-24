@@ -1,3 +1,4 @@
+///@nodoc
 import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/chapter.dart';
 

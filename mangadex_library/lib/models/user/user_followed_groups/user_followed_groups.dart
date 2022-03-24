@@ -1,6 +1,7 @@
-import 'package:mangadex_library/mangadexServerException.dart';
+///@nodoc
 import 'package:mangadex_library/models/common/relationships.dart';
 
+///@nodoc
 class UserFollowedGroups {
   late final List<Data> data;
   late final int limit;
@@ -8,22 +9,19 @@ class UserFollowedGroups {
   late final int total;
   UserFollowedGroups(this.data, this.limit, this.offset, this.total);
   UserFollowedGroups.fromJson(Map<String, dynamic> json) {
-    try {
-      data = <Data>[];
-      if (json['data'] != null) {
-        json['data'].forEach((v) {
-          data.add(Data.fromJson(v));
-        });
-      }
-      limit = json['limit'] ?? 0;
-      offset = json['offset'] ?? 0;
-      total = json['total'] ?? 0;
-    } on Exception {
-      throw MangadexServerException(json);
+    data = <Data>[];
+    if (json['data'] != null) {
+      json['data'].forEach((v) {
+        data.add(Data.fromJson(v));
+      });
     }
+    limit = json['limit'] ?? 0;
+    offset = json['offset'] ?? 0;
+    total = json['total'] ?? 0;
   }
 }
 
+///@nodoc
 class Data {
   late final String id;
   late final String type;
@@ -41,6 +39,7 @@ class Data {
   }
 }
 
+///@nodoc
 class Attributes {
   late final String name;
   late final String website;

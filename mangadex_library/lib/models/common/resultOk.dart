@@ -1,9 +1,9 @@
-class ResultOk {
+class Result {
   late String result;
 
-  ResultOk({required this.result});
+  Result({required this.result});
 
-  ResultOk.fromJson(Map<String, dynamic> json) {
+  Result.fromJson(Map<String, dynamic> json) {
     result = json['result'];
   }
 

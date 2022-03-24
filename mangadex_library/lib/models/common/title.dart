@@ -1,3 +1,4 @@
+///@nodoc
 class Title {
   late final String en;
   late final String fr;

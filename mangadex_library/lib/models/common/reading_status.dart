@@ -1,3 +1,4 @@
+///@nodoc
 enum ReadingStatus {
   reading,
   on_hold,

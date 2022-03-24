@@ -1,3 +1,4 @@
+///@nodoc
 enum MangaStatus {
   ongoing,
   completed,

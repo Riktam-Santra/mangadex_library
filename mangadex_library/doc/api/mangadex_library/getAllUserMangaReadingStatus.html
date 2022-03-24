@@ -52,13 +52,18 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_allMangaReadingStatus/AllMangaReadingStatus-class.html">AllMangaReadingStatus</a></span>&gt;</span></span>
-<span class="name ">getAllUserMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllUserMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="getAllUserMangaReadingStatus-param-readingStatus">{<span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus.html">ReadingStatus</a>?</span> <span class="parameter-name">readingStatus</span>}</span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">AllMangaReadingStatus</span>&gt;</span></span>
+<span class="name ">getAllUserMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllUserMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="getAllUserMangaReadingStatus-param-readingStatus">{<span class="type-annotation">ReadingStatus?</span> <span class="parameter-name">readingStatus</span>}</span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Returns a <code>AllMangaReadingStatus</code> class instance containing all reading statuses of all manga
+followed by the user identified by the <code>token</code>
+The <code>token</code> can be obtained using the login() function.</p>
+</section>
 
 
     
@@ -70,8 +75,12 @@
   if (readingStatus != null) {
     status = EnumUtils.parseStatusFromEnum(readingStatus);
   }
-  var data = await getAllMangaReadingStatusResponse(token, status);
-  return AllMangaReadingStatus.fromJson(jsonDecode(data.body));
+  var response = await getAllMangaReadingStatusResponse(token, status);
+  try {
+    return AllMangaReadingStatus.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

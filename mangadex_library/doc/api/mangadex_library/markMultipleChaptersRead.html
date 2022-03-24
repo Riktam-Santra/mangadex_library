@@ -52,20 +52,23 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
-<span class="name ">markMultipleChaptersRead</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markMultipleChaptersRead-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="markMultipleChaptersRead-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
-<li><span class="parameter" id="markMultipleChaptersRead-param-chapterIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
+<span class="name ">markMultipleChaptersRead</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markMultipleChaptersRead-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="markMultipleChaptersRead-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<li><span class="parameter" id="markMultipleChaptersRead-param-chapterIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Mark a multiple chapters in the list of <code>chapterIds</code> or uuids as READ</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;ResultOk&gt; markMultipleChaptersRead(
+  <pre class="language-dart"><code class="language-dart">Future&lt;Result&gt; markMultipleChaptersRead(
     String token, String mangaId, List&lt;String&gt; chapterIds) async {
   var idList = [];
   chapterIds.forEach((element) {
@@ -79,7 +82,11 @@
   var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;read&#39;;
   final uri = &#39;https:&#47;&#47;$authority$unencodedPath&#39;;
   var response = await http.post(Uri.parse(uri), headers: payload);
-  return ResultOk.fromJson(jsonDecode(response.body));
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

@@ -1,3 +1,4 @@
+///@nodoc
 import 'package:mangadex_library/models/common/attributes.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
 

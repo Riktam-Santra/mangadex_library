@@ -301,3 +301,11 @@
 - All fuctions used to parse enums to Strings and vice versa are transferred to EnumUtils.
 - **Deleted** JsonUtils class.
 - Created Model class for BaseUrl returned by `getBaseUrl()` to parse response from get /at-home/server endpoint. `ConstructPageUrl()` can be used to construct page urls using data provided by the BaseUrl class.
+
+## 1.3.0
+
+- Added proper comment documentation to all functions.
+- Renamed ResultOk model class to Result.
+- **Deleted** the MangaCheck model class, replaced by Result class.
+- All functions now throw the MangadexServerException exception rather than the model classes themselves.
+- Moved mangadex_library_example from /test to /example directory.

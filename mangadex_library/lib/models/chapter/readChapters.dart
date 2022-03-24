@@ -1,5 +1,4 @@
-import 'package:mangadex_library/mangadexServerException.dart';
-
+///@nodoc
 class ReadChapters {
   late String result;
   late List<String> data;
@@ -7,12 +6,8 @@ class ReadChapters {
   ReadChapters({required this.result, required this.data});
 
   ReadChapters.fromJson(Map<String, dynamic> json) {
-    try {
-      result = json['result'] ?? '';
-      data = (json['data'] ?? []).cast<String>();
-    } on Exception {
-      throw MangadexServerException(json);
-    }
+    result = json['result'] ?? '';
+    data = (json['data'] ?? []).cast<String>();
   }
 
   Map<String, dynamic> toJson() {

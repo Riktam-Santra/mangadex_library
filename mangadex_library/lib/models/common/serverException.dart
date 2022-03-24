@@ -1,3 +1,4 @@
+///@nodoc
 class ServerException {
   late String result;
   late List<Error> errors;

@@ -52,14 +52,18 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_groups_user_followed_groups/UserFollowedGroups-class.html">UserFollowedGroups</a></span>&gt;</span></span>
-<span class="name ">getUserFollowedGroups</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUserFollowedGroups-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="getUserFollowedGroups-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
-<li><span class="parameter" id="getUserFollowedGroups-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserFollowedGroups</span>&gt;</span></span>
+<span class="name ">getUserFollowedGroups</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUserFollowedGroups-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="getUserFollowedGroups-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="getUserFollowedGroups-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Returns a <code>UserFollowedGroups</code> class instance with details of the all the Groups that the user follows,
+the <code>token</code> is the session token obtained using the login() function</p>
+</section>
 
 
     
@@ -72,7 +76,11 @@
     offset: offset,
     limit: limit,
   );
-  return UserFollowedGroups.fromJson(jsonDecode(response.body));
+  try {
+    return UserFollowedGroups.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

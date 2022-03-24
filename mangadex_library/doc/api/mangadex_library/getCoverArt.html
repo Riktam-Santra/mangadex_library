@@ -52,24 +52,27 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_cover_Cover/Cover-class.html">Cover</a>?</span>&gt;</span></span>
-<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaID"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaID</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Cover</span>&gt;</span></span>
+<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>returns an <code>Cover</code> class instance containing cover
+art details for a manga with given <code>mangaId</code> or uuid</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Cover?&gt; getCoverArt(String mangaID) async {
-  var response = await getCoverArtResponse(mangaID);
-  var headers = response.headers;
-  if (headers[&#39;x-ratelimit-remaining&#39;] == &#39;0&#39;) {
-    print(&#39;Rate Limit Exceeded.&#39;);
-  } else {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Cover&gt; getCoverArt(String mangaId) async {
+  var response = await getCoverArtResponse(mangaId);
+  try {
     return Cover.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
   }
 }</code></pre>
 </section>

@@ -52,20 +52,23 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_user_followed_manga_manga_check/MangaCheck-class.html">MangaCheck</a>?</span>&gt;</span></span>
-<span class="name ">removeMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="removeMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="removeMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
+<span class="name ">removeMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="removeMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="removeMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Set the reading status for a certain manga
+If no reading status is supplied to it, the reading status is set as 'reading'</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;MangaCheck?&gt; removeMangaReadingStatus(
-    String token, String mangaId) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Result&gt; removeMangaReadingStatus(String token, String mangaId) async {
   var statusString = &#39;&#39;;
   var unencodedPath = &#39;&#47;manga&#47;$mangaId&#47;status&#39;;
   final uri = &#39;https:&#47;&#47;$authority$unencodedPath&#39;;
@@ -74,7 +77,11 @@
     HttpHeaders.authorizationHeader: &#39;Bearer $token&#39;,
     &#39;status&#39;: &#39;$statusString&#39;,
   });
-  return MangaCheck.fromJson(jsonDecode(response.body));
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

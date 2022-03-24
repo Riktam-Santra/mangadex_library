@@ -1,4 +1,6 @@
 import 'package:mangadex_library/mangadexServerException.dart';
+
+///@nodoc
 import 'package:mangadex_library/models/common/data.dart';
 
 class SingleMangaData {

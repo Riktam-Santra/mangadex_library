@@ -1,6 +1,7 @@
-import 'package:mangadex_library/mangadexServerException.dart';
+///@nodoc
 import 'package:mangadex_library/models/common/relationships.dart';
 
+///@nodoc
 class UserDetails {
   late final String result;
   late final String response;
@@ -9,15 +10,12 @@ class UserDetails {
   UserDetails(this.result, this.data);
   UserDetails.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    if (result == 'ok') {
-      response = json['response'] ?? '';
-      data = Data.fromjson(json['data']!);
-    } else {
-      throw MangadexServerException(json);
-    }
+    response = json['response'] ?? '';
+    data = Data.fromjson(json['data']!);
   }
 }
 
+///@nodoc
 class Data {
   late final String id;
   late final String type;
@@ -35,6 +33,7 @@ class Data {
   }
 }
 
+///@nodoc
 class Attributes {
   late final String username;
   late final List<String> roles;

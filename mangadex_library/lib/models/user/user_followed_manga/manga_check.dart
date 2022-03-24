@@ -1,15 +1,10 @@
-import 'package:mangadex_library/mangadexServerException.dart';
-
+///@nodoc
 class MangaCheck {
   late String result;
 
   MangaCheck(this.result);
 
   MangaCheck.fromJson(Map<String, dynamic> json) {
-    try {
-      result = json['result'] ?? '';
-    } on Exception {
-      throw MangadexServerException(json);
-    }
+    result = json['result'] ?? '';
   }
 }

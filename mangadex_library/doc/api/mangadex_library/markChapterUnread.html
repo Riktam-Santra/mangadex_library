@@ -52,19 +52,22 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
-<span class="name ">markChapterUnread</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markChapterUnread-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="markChapterUnread-param-chapterId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
+<span class="name ">markChapterUnread</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markChapterUnread-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="markChapterUnread-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Mark a chapter identified by it's <code>chapterId</code> or uuid as UNREAD</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;ResultOk&gt; markChapterUnread(String token, String chapterId) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Result&gt; markChapterUnread(String token, String chapterId) async {
   var unencodedPath = &#39;&#47;chapter&#47;$chapterId&#47;read&#39;;
   final uri = &#39;https:&#47;&#47;$authority$unencodedPath&#39;;
   var response = await http.delete(Uri.parse(uri),
@@ -73,7 +76,11 @@
         HttpHeaders.authorizationHeader: &#39;Bearer $token&#39;
       },
       body: jsonEncode({&#39;id&#39;: &#39;$chapterId&#39;}));
-  return ResultOk.fromJson(jsonDecode(response.body));
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

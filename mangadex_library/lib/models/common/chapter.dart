@@ -1,3 +1,4 @@
+///@nodoc
 class Chapter {
   late String hash;
   late List<String> data;

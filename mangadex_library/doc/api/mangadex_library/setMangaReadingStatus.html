@@ -52,20 +52,24 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/ResultOk-class.html">ResultOk</a></span>&gt;</span></span>
-<span class="name ">setMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
-<li><span class="parameter" id="setMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
-<li><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus.html">ReadingStatus</a>?</span> <span class="parameter-name">status</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
+<span class="name ">setMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMangaReadingStatus-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<li><span class="parameter" id="setMangaReadingStatus-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<li><span class="parameter" id="setMangaReadingStatus-param-status"><span class="type-annotation">ReadingStatus?</span> <span class="parameter-name">status</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Set the reading status for a certain manga
+If no reading status is supplied to it, the reading status is set as 'reading'</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;ResultOk&gt; setMangaReadingStatus(
+  <pre class="language-dart"><code class="language-dart">Future&lt;Result&gt; setMangaReadingStatus(
     String token, String mangaId, ReadingStatus? status) async {
   var statusString =
       status != null ? EnumUtils.parseStatusFromEnum(status) : &#39;reading&#39;;
@@ -79,7 +83,11 @@
       body: jsonEncode({
         &#39;status&#39;: &#39;$statusString&#39;,
       }));
-  return ResultOk.fromJson(jsonDecode(response.body));
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 

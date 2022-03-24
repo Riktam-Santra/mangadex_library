@@ -52,12 +52,16 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_user_logged_user_details_logged_user_details/UserDetails-class.html">UserDetails</a></span>&gt;</span></span>
-<span class="name ">getLoggedUserDetails</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getLoggedUserDetails-param-token"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserDetails</span>&gt;</span></span>
+<span class="name ">getLoggedUserDetails</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getLoggedUserDetails-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span></span></li>
 </ol>)
 
     </section>
     
+<section class="desc markdown">
+  <p>Gets the account details of the user and returns the data
+in a <code>UserDetails</code> class instance</p>
+</section>
 
 
     
@@ -65,7 +69,11 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;UserDetails&gt; getLoggedUserDetails(String token) async {
   var response = await getLoggedUserDetailsResponse(token);
-  return UserDetails.fromJson(jsonDecode(response.body));
+  try {
+    return UserDetails.fromJson(jsonDecode(response.body));
+  } catch (e) {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 
