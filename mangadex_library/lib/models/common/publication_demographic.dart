@@ -1,4 +1,3 @@
-///@nodoc
 enum PublicDemographic {
   shounen,
   shoujo,

@@ -7,6 +7,9 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:mangadex_library/models/common/visibility.dart';
+import 'package:mangadex_library/models/custom_lists/custom_list_confirmation.dart';
+import 'package:mangadex_library/models/user/user_feed/user_feed.dart';
 
 import 'mangadexServerException.dart';
 import 'enum_utils.dart';
@@ -37,7 +40,7 @@ final String authority = 'api.mangadex.org';
 
 // User login related functions
 
-/// Returns the an http request of a JWT token for [username].
+/// Returns the a http request of a JWT token for [username].
 ///
 /// Will return null if the requests fails.
 Future<http.Response> loginResponse(String username, String password) async {
@@ -62,13 +65,13 @@ Future<Login> login(String username, String password) async {
   }
 }
 
-/// Takes in a [refresh] token and returns a *http response* of a new refresh token
-Future<http.Response> getRefreshResponse(String refresh) async {
+/// Takes in a [refreshToken] token and returns a *http response* of a new refresh token
+Future<http.Response> getRefreshResponse(String refreshToken) async {
   final unencodedPath = '/auth/refresh';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-      body: jsonEncode({'token': '$refresh'}));
+      body: jsonEncode({'token': '$refreshToken'}));
   return response;
 }
 
@@ -83,21 +86,21 @@ Future<Login> refresh(String refreshToken) async {
   }
 }
 
-/// Returns a http response of the user details associated with the [token]
-Future<http.Response> getLoggedUserDetailsResponse(String token) async {
+/// Returns a http response of the user details associated with the [sessionToken]
+Future<http.Response> getLoggedUserDetailsResponse(String sessionToken) async {
   final unencodedPath = '/user/me';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
 /// Gets the account details of the user and returns the data
 /// in a [UserDetails] class instance
-Future<UserDetails> getLoggedUserDetails(String token) async {
-  var response = await getLoggedUserDetailsResponse(token);
+Future<UserDetails> getLoggedUserDetails(String sessionToken) async {
+  var response = await getLoggedUserDetailsResponse(sessionToken);
   try {
     return UserDetails.fromJson(jsonDecode(response.body));
   } catch (e) {
@@ -471,14 +474,14 @@ Future<BaseUrl> getBaseUrl(
   }
 }
 
-/// Uses [baseUrl], [token], [chapterHash] and [filename]
+/// Uses [baseUrl], [sessionToken], [chapterHash] and [filename]
 /// and returns a [String] containing the full constructed address to the page
 /// base url can be obtained from the [getBaseUrl] function, the token using the login() function
 /// chapterHash and filename can both be obtained via [getChapterDataByChapterId]
-String constructPageUrl(String baseUrl, String token, bool dataSaver,
+String constructPageUrl(String baseUrl, String sessionToken, bool dataSaver,
     String chapterHash, String filename) {
   var dataMode = dataSaver ? 'data-saver' : 'data';
-  return '$baseUrl/$token/$dataMode/$chapterHash/$filename';
+  return '$baseUrl/$sessionToken/$dataMode/$chapterHash/$filename';
 }
 
 /// Gets the chapter filenames just using the [chapterId] of a chapter.
@@ -495,7 +498,7 @@ Future<List<String>> getChapterFilenames(
 
 // Manga cover art related functions
 
-///returns an https response with cover art details for a manga with given [mangaId] or uuid
+///returns a https response with cover art details for a manga with given [mangaId] or uuid
 Future<http.Response> getCoverArtResponse(
   String mangaId, [
   String? coverId,
@@ -543,9 +546,9 @@ Future<String> getCoverArtUrl(String mangaId, {int? res}) async {
 
 // User related functions
 
-/// Get an http response of the all the Manga user follows,
-/// the [token] is the session token obtained using the login() function
-Future<http.Response> getUserFollowedMangaResponse(String token,
+/// Get a http response of the all the Manga user follows,
+/// the [sessionToken] is the session token obtained using the login() function
+Future<http.Response> getUserFollowedMangaResponse(String sessionToken,
     {int? offset, int? limit}) async {
   final _offset = '&offset=${offset ?? 0}';
   final _limit = '&limit=${limit ?? 10}';
@@ -553,28 +556,29 @@ Future<http.Response> getUserFollowedMangaResponse(String token,
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
-///Simply check if the user identified by the current session [token]
+///Simply check if the user identified by the current session [sessionToken]
 ///follows a manga with [mangaId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsMangaResponse(
-    String token, String mangaId) async {
+    String sessionToken, String mangaId) async {
   final unencodedPath = '/user/follows/manga/$mangaId';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
-///Simply check if the user identified by the current session [token]
+///Simply check if the user identified by the current session [sessionToken]
 ///follows a manga with [mangaId] or uuid and return a boolean
-Future<bool> checkIfUserFollowsManga(String token, String mangaId) async {
-  var response = await checkIfUserFollowsMangaResponse(token, mangaId);
+Future<bool> checkIfUserFollowsManga(
+    String sessionToken, String mangaId) async {
+  var response = await checkIfUserFollowsMangaResponse(sessionToken, mangaId);
   if (response.statusCode == 200) {
     return true;
   } else if (response.statusCode == 404) {
@@ -585,11 +589,11 @@ Future<bool> checkIfUserFollowsManga(String token, String mangaId) async {
 }
 
 /// Returns a [UserFollowedManga] class instance of all the Manga the user follows,
-/// the [token] is the session token obtained using the login() function
-Future<UserFollowedManga> getUserFollowedManga(String token,
+/// the [sessionToken] is the session token obtained using the login() function
+Future<UserFollowedManga> getUserFollowedManga(String sessionToken,
     {int? offset, int? limit}) async {
-  var response =
-      await getUserFollowedMangaResponse(token, offset: offset, limit: limit);
+  var response = await getUserFollowedMangaResponse(sessionToken,
+      offset: offset, limit: limit);
   try {
     return UserFollowedManga.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -598,8 +602,8 @@ Future<UserFollowedManga> getUserFollowedManga(String token,
 }
 
 /// Returns a http response of the all the Users that the user follows,
-/// the [token] is the session token obtained using the[login] function
-Future<http.Response> getUserFollowedUsersResponse(String token,
+/// the [sessionToken] is the session token obtained using the[login] function
+Future<http.Response> getUserFollowedUsersResponse(String sessionToken,
     {int? offset, int? limit}) async {
   final _offset = '&offset=${offset ?? 0}';
   final _limit = '&limit=${limit ?? 10}';
@@ -607,17 +611,17 @@ Future<http.Response> getUserFollowedUsersResponse(String token,
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
 /// Returns a [UserFollowedUsers] class instance with details of the all the Users that the user follows,
-/// the [token] is the session token obtained using the login() function
-Future<UserFollowedUsers> getUserFollowedUsers(String token,
+/// the [sessionToken] is the session token obtained using the login() function
+Future<UserFollowedUsers> getUserFollowedUsers(String sessionToken,
     {int? offset, int? limit}) async {
-  var response =
-      await getUserFollowedUsersResponse(token, offset: offset, limit: limit);
+  var response = await getUserFollowedUsersResponse(sessionToken,
+      offset: offset, limit: limit);
   try {
     return UserFollowedUsers.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -625,23 +629,23 @@ Future<UserFollowedUsers> getUserFollowedUsers(String token,
   }
 }
 
-///Returns a http response of whether the user identified by the current session [token]
+///Returns a http response of whether the user identified by the current session [sessionToken]
 ///follows a User with [userId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsUserResponse(
-    String token, String userId) async {
+    String sessionToken, String userId) async {
   final unencodedPath = '/user/follows/user/$userId';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
-///Simply check if the user identified by the current session [token]
+///Simply check if the user identified by the current session [sessionToken]
 ///follows a User with [userId] or uuid and return a bool
-Future<bool> checkIfUserFollowsUser(String token, String userId) async {
-  var response = await checkIfUserFollowsUserResponse(token, userId);
+Future<bool> checkIfUserFollowsUser(String sessionToken, String userId) async {
+  var response = await checkIfUserFollowsUserResponse(sessionToken, userId);
   if (response.statusCode == 200) {
     return true;
   } else if (response.statusCode == 404) {
@@ -652,8 +656,8 @@ Future<bool> checkIfUserFollowsUser(String token, String userId) async {
 }
 
 /// Returns a http response with details of the all the Groups that the user follows,
-/// the [token] is the session token obtained using the login() function
-Future<http.Response> getUserFollowedGroupsResponse(String token,
+/// the [sessionToken] is the session token obtained using the login() function
+Future<http.Response> getUserFollowedGroupsResponse(String sessionToken,
     {int? offset, int? limit}) async {
   final _offset = '&offset=${offset ?? 0}';
   final _limit = '&limit=${limit ?? 10}';
@@ -661,17 +665,17 @@ Future<http.Response> getUserFollowedGroupsResponse(String token,
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
 /// Returns a [UserFollowedGroups] class instance with details of the all the Groups that the user follows,
-/// the [token] is the session token obtained using the login() function
+/// the [sessionToken] is the session token obtained using the login() function
 Future<UserFollowedGroups> getUserFollowedGroups(
-    String token, int? offset, int? limit) async {
+    String sessionToken, int? offset, int? limit) async {
   var response = await getUserFollowedGroupsResponse(
-    token,
+    sessionToken,
     offset: offset,
     limit: limit,
   );
@@ -682,23 +686,24 @@ Future<UserFollowedGroups> getUserFollowedGroups(
   }
 }
 
-///Simply check if the user identified by the current session [token]
+///Simply check if the user identified by the current session [sessionToken]
 ///follows a Group with [groupId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsGroupResponse(
-    String token, String groupId) async {
+    String sessionToken, String groupId) async {
   final unencodedPath = '/user/follows/group/$groupId';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
-///Simply check if the user identified by the current session [token]
+///Simply check if the user identified by the current session [sessionToken]
 ///follows a Group with [groupId] or uuid and return a http response
-Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
-  var response = await checkIfUserFollowsGroupResponse(token, groupId);
+Future<bool> checkIfUserFollowsGroup(
+    String sessionToken, String groupId) async {
+  var response = await checkIfUserFollowsGroupResponse(sessionToken, groupId);
   if (response.statusCode == 200) {
     return true;
   } else if (response.statusCode == 404) {
@@ -708,33 +713,89 @@ Future<bool> checkIfUserFollowsGroup(String token, String groupId) async {
   }
 }
 
+///Returns a http response containing the user feed for the user
+///identified by the [sessionToken].
+Future<http.Response> getUserFeedResponse(String sessionToken) async {
+  final unencodedPath = '/user/follows/manga/feed';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
+  });
+  return response;
+}
+
+/// Gets the current User Feed for the user identified
+/// by [sessionToken] and returns the data in a
+/// [UserFeed] class instance.
+Future<UserFeed> getUserFeed(String sessionToken) async {
+  var response = await getUserFeedResponse(sessionToken);
+  try {
+    return UserFeed.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+/// Gets the [limit] number of custom lists from [offset]
+/// in the list of Custom Lists of the user identified
+/// by the [sessionToken] and returns a http response
+/// containing the data.
+Future<http.Response> getLoggedInUserCustomListsResponse(
+    String sessionToken, int? limit, int? offset) async {
+  var _limit = limit == null ? '' : '?limit=$limit';
+  var _offset = offset == null ? '' : '&offset=$offset';
+  final unencodedPath = '/user/list';
+  final uri = 'https://$authority$unencodedPath$_limit$_offset';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
+  });
+  return response;
+}
+
+/// Gets the [limit] number of custom lists from [offset]
+/// in the list of Custom Lists of the user identified
+/// by the [sessionToken] and returns a [CustomListResponse]
+/// class instance containing all the lists and their data.
+Future<CustomListResponse> getLoggedInUserCustomLists(
+    String sessionToken, int? limit, int? offset) async {
+  var response =
+      await getLoggedInUserCustomListsResponse(sessionToken, limit, offset);
+  try {
+    return CustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
 //reading status related
 
-///Returns an http response containing all reading statuses of all manga
-///followed by the user identified by the [token]
-///The [token] can be obtained using the login() function.
+///Returns a http response containing all reading statuses of all manga
+///followed by the user identified by the [sessionToken]
+///The [sessionToken] can be obtained using the login() function.
 Future<http.Response> getAllMangaReadingStatusResponse(
-    String token, String? status) async {
+    String sessionToken, String? status) async {
   var unencodedPath =
       status == null ? '/manga/status' : '/manga/status?status=$status';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
 ///Returns a [AllMangaReadingStatus] class instance containing all reading statuses of all manga
-///followed by the user identified by the [token]
-///The [token] can be obtained using the login() function.
-Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String token,
+///followed by the user identified by the [sessionToken]
+///The [sessionToken] can be obtained using the login() function.
+Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String sessionToken,
     {ReadingStatus? readingStatus}) async {
   var status = '';
   if (readingStatus != null) {
     status = EnumUtils.parseStatusFromEnum(readingStatus);
   }
-  var response = await getAllMangaReadingStatusResponse(token, status);
+  var response = await getAllMangaReadingStatusResponse(sessionToken, status);
   try {
     return AllMangaReadingStatus.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -745,12 +806,12 @@ Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String token,
 /// Returns a [MangaReadingStatus] class instance containing the reading status
 /// of a particular manga identified by [mangaId] or uuid
 Future<MangaReadingStatus> getMangaReadingStatus(
-    String token, String mangaId) async {
+    String sessionToken, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/status';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   try {
     return MangaReadingStatus.fromJson(jsonDecode(response.body));
@@ -762,7 +823,7 @@ Future<MangaReadingStatus> getMangaReadingStatus(
 /// Set the reading status for a certain manga
 /// If no reading status is supplied to it, the reading status is set as 'reading'
 Future<Result> setMangaReadingStatus(
-    String token, String mangaId, ReadingStatus? status) async {
+    String sessionToken, String mangaId, ReadingStatus? status) async {
   var statusString =
       status != null ? EnumUtils.parseStatusFromEnum(status) : 'reading';
   var unencodedPath = '/manga/$mangaId/status';
@@ -770,7 +831,7 @@ Future<Result> setMangaReadingStatus(
   var response = await http.post(Uri.parse(uri),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
       },
       body: jsonEncode({
         'status': '$statusString',
@@ -784,13 +845,14 @@ Future<Result> setMangaReadingStatus(
 
 /// Set the reading status for a certain manga
 /// If no reading status is supplied to it, the reading status is set as 'reading'
-Future<Result> removeMangaReadingStatus(String token, String mangaId) async {
+Future<Result> removeMangaReadingStatus(
+    String sessionToken, String mangaId) async {
   var statusString = '';
   var unencodedPath = '/manga/$mangaId/status';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token',
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
     'status': '$statusString',
   });
   try {
@@ -805,16 +867,16 @@ Future<Result> removeMangaReadingStatus(String token, String mangaId) async {
 ///Follow a manga identified by [mangaId] and optionally set a reading status for it.
 ///
 ///If no [readingStatus] is specified, the reading status is set to 'reading' by default
-Future<Result> followManga(String token, String mangaId,
+Future<Result> followManga(String sessionToken, String mangaId,
     {ReadingStatus? readingStatus}) async {
   var unencodedPath = '/manga/$mangaId/follow';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   try {
-    await setMangaReadingStatus(token, mangaId, readingStatus);
+    await setMangaReadingStatus(sessionToken, mangaId, readingStatus);
   } on Exception {
     print("couldn't set reading status for manga $mangaId");
   }
@@ -826,12 +888,12 @@ Future<Result> followManga(String token, String mangaId,
 }
 
 /// Unfollow a manga identified by [mangaId] or uuid
-Future<Result> unfollowManga(String token, String mangaId) async {
+Future<Result> unfollowManga(String sessionToken, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/follow';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.delete(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   try {
     return Result.fromJson(jsonDecode(response.body));
@@ -844,13 +906,14 @@ Future<Result> unfollowManga(String token, String mangaId) async {
 
 ///Returns a [ReadChapters] class instance containing details
 ///of all read chapters of a manga
-Future<ReadChapters> getAllReadChapters(String token, String mangaId) async {
+Future<ReadChapters> getAllReadChapters(
+    String sessionToken, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/read';
   final uri = 'https://$authority$unencodedPath?';
 
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   try {
     return ReadChapters.fromJson(jsonDecode(response.body));
@@ -859,10 +922,10 @@ Future<ReadChapters> getAllReadChapters(String token, String mangaId) async {
   }
 }
 
-///Returns an http response with details of all read chapters in the list of given [mangaIds] or uuids,
+///Returns a http response with details of all read chapters in the list of given [mangaIds] or uuids,
 ///please note it returns a http response since the response is not always of the same schema.
 Future<http.Response> getAllReadChaptersForAListOfManga(
-    String token, List<String> mangaIds) async {
+    String sessionToken, List<String> mangaIds) async {
   var unencodedPath = '/manga/read';
   var _ids = '';
   mangaIds.forEach((element) {
@@ -871,19 +934,19 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
   final uri = 'https://$authority$unencodedPath?$_ids';
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   });
   return response;
 }
 
 ///Mark a chapter identified by it's [chapterId] or uuid as READ
-Future<Result> markChapterRead(String token, String chapterId) async {
+Future<Result> markChapterRead(String sessionToken, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader: 'Bearer $token'
+        HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
       },
       body: jsonEncode({'id': '$chapterId'}));
   try {
@@ -894,13 +957,13 @@ Future<Result> markChapterRead(String token, String chapterId) async {
 }
 
 ///Mark a chapter identified by it's [chapterId] or uuid as UNREAD
-Future<Result> markChapterUnread(String token, String chapterId) async {
+Future<Result> markChapterUnread(String sessionToken, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.delete(Uri.parse(uri),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader: 'Bearer $token'
+        HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
       },
       body: jsonEncode({'id': '$chapterId'}));
   try {
@@ -910,9 +973,9 @@ Future<Result> markChapterUnread(String token, String chapterId) async {
   }
 }
 
-///Mark a multiple chapters in the list of [chapterIds] or uuids as READ
+///Marks multiple chapters in the list of [chapterIds] or uuids as READ
 Future<Result> markMultipleChaptersRead(
-    String token, String mangaId, List<String> chapterIds) async {
+    String sessionToken, String mangaId, List<String> chapterIds) async {
   var idList = [];
   chapterIds.forEach((element) {
     idList.add(element);
@@ -920,7 +983,7 @@ Future<Result> markMultipleChaptersRead(
   var payload = {
     'chapterIdsRead': chapterIds.toString(),
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   };
   var unencodedPath = '/manga/$mangaId/read';
   final uri = 'https://$authority$unencodedPath';
@@ -932,9 +995,9 @@ Future<Result> markMultipleChaptersRead(
   }
 }
 
-///Mark a multiple chapters in the list of [chapterIds] or uuids as UNREAD
+///Marks multiple chapters in the list of [chapterIds] or uuids as UNREAD
 Future<Result> markMultipleChaptersUnread(
-    String token, String mangaId, List<String> chapterIds) async {
+    String sessionToken, String mangaId, List<String> chapterIds) async {
   var idList = [];
   chapterIds.forEach((element) {
     idList.add(element);
@@ -942,13 +1005,299 @@ Future<Result> markMultipleChaptersUnread(
   var payload = {
     'chapterIdsRead': chapterIds.toString(),
     HttpHeaders.contentTypeHeader: 'application/json',
-    HttpHeaders.authorizationHeader: 'Bearer $token'
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
   };
   var unencodedPath = '/manga/$mangaId/unread';
   final uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: payload);
   try {
     return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+//Custom Lists related
+
+///Creates a custom list with the name [listName] and
+///sets visibility to either [Visibility.private] or
+///[Visibility.public] and adds all mangas IDs / UUIDs
+///in the [mangaIds] list and returns a http response
+///containing data of the list created.
+Future<http.Response> createCustomListResponse(
+    String sessionToken,
+    String listName,
+    Visibility visibility,
+    List<String> mangaIds,
+    int version) async {
+  var payload = {HttpHeaders.authorizationHeader: 'Bearer $sessionToken'};
+  var body = {
+    'name': listName,
+    'visibility': EnumUtils.parseVisibilityFromEnum(visibility),
+    'manga': mangaIds,
+    'version': version,
+  };
+  var unencodedPath = '/list';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.post(Uri.parse(uri), headers: payload, body: body);
+}
+
+///Creates a custom list with the name [listName] and
+///sets visibility to either [Visibility.private] or
+///[Visibility.public] and adds all mangas IDs / UUIDs
+///in the [mangaIds] list and returns a [CustomListResponse]
+///class instance containing data of the list created.
+Future<CustomListResponse> createCustomList(
+    String sessionToken,
+    String listName,
+    Visibility visibility,
+    List<String> mangaIds,
+    int version) async {
+  var response = await createCustomListResponse(
+      sessionToken, listName, visibility, mangaIds, version);
+  try {
+    return CustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Gets the data of the custom list identified by it's [listId]
+///or list uuid and returns a http response containing the data.
+
+Future<http.Response> getCustomListResponse(String listId) async {
+  var unencodedPath = '/list/$listId';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.get(Uri.parse(uri));
+}
+
+///Gets the data of the customList identified by it's [listId]
+///or list uuid and returns a [CustomListResponse]containing the data.
+Future<CustomListResponse> getCustomList(String listId) async {
+  var response = await getCustomListResponse(listId);
+  try {
+    return CustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+/// Updates an existing custom list identified by its [listId] or UUID
+/// only if the user identified by the [sessionToken] has permission to
+/// update the list and returns the updated data in a http response.
+Future<http.Response> updateCustomListResponse(
+    String sessionToken,
+    String listId,
+    String listName,
+    Visibility visibility,
+    List<String> mangaIds,
+    int version) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var body = {
+    'name': listName,
+    'visibility': EnumUtils.parseVisibilityFromEnum(visibility),
+    'manga': mangaIds,
+    'version': version,
+  };
+  var unencodedPath = '/list';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.put(Uri.parse(uri), headers: payload, body: body);
+}
+
+/// Updates an existing custom list identified by its [listId] or UUID
+/// only if the user identified by the [sessionToken] has permission to
+/// update the list and returns the updated data in a [CustomListResponse]
+/// class instance.
+Future<CustomListResponse> updateCustomList(
+    String sessionToken,
+    String listId,
+    String listName,
+    Visibility visibility,
+    List<String> mangaIds,
+    int version) async {
+  var response = await updateCustomListResponse(
+      sessionToken, listId, listName, visibility, mangaIds, version);
+  try {
+    return CustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+/// Deletes a list identified by it's [listId] only
+/// if the user identified by the [sessionToken] is
+/// eligible to do so and retuns a http response.
+Future<http.Response> deleteCustomListResponse(
+  String sessionToken,
+  String listId,
+) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var unencodedPath = '/list/$listId';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.delete(Uri.parse(uri), headers: payload);
+}
+
+/// Deletes a list identified by it's [listId] only
+/// if the user identified by the [sessionToken] is
+/// eligible to do so and retuns a [Result] instance
+/// containing info on whether the request was successful.
+Future<Result> deleteCustomList(String sessionToken, String listId) async {
+  var response = await deleteCustomListResponse(sessionToken, listId);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Makes the user identified by the [sessionToken] follow
+///a custom list identified by it's [listId] and returns a
+///http response.
+Future<http.Response> followCustomListResponse(
+  String sessionToken,
+  String listId,
+) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var unencodedPath = '/list/$listId/follow';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.post(Uri.parse(uri), headers: payload);
+}
+
+///Makes the user identified by the [sessionToken] follow
+///a custom list identified by it's [listId] and returns a
+///[Result] class instance containing info on whether the request was successful.
+Future<Result> followCustomList(String sessionToken, String listId) async {
+  var response = await followCustomListResponse(sessionToken, listId);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Makes the user identified by the [sessionToken] unfollow
+///a custom list identified by it's [listId] and returns a
+///http response.
+Future<http.Response> unfollowCustomListResponse(
+  String sessionToken,
+  String listId,
+) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var unencodedPath = '/list/$listId/follow';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.delete(Uri.parse(uri), headers: payload);
+}
+
+///Makes the user identified by the [sessionToken] unfollow
+///a custom list identified by it's [listId] and returns a
+///[Result] class instance containing info on whether the request was successful.
+Future<Result> unfollowCustomList(String sessionToken, String listId) async {
+  var response = await unfollowCustomListResponse(sessionToken, listId);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Adds a manga identified by it's [mangaId] / UUID to a custom list identified by
+///it's [listId] if the user identified by the [sessionToken]
+///has the permission to do so and returns a http response.
+Future<http.Response> addMangaToCustomListResponse(
+  String sessionToken,
+  String mangaId,
+  String listId,
+) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var unencodedPath = '/manga/$mangaId/list/$listId';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.post(Uri.parse(uri), headers: payload);
+}
+
+///Adds a manga identified by it's [mangaId] / UUID to a custom list identified by
+///it's [listId] if the user identified by the [sessionToken]
+///has the permission to do so and returns a [Result]
+///class instance containing info on whether the request was successful.
+Future<Result> addMangaToCustomList(
+    String sessionToken, String mangaId, String listId) async {
+  var response =
+      await addMangaToCustomListResponse(sessionToken, mangaId, listId);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Removes a manga identified by it's [mangaId] / UUID to a custom list identified by
+///it's [listId] if the user identified by the [sessionToken]
+///has the permission to do so and returns a http response.
+Future<http.Response> removeMangaFromCustomListResponse(
+  String sessionToken,
+  String mangaId,
+  String listId,
+) async {
+  var payload = {
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+    HttpHeaders.contentTypeHeader: 'application/json',
+  };
+  var unencodedPath = '/manga/$mangaId/list/$listId';
+  final uri = 'https://$authority$unencodedPath';
+  return await http.delete(Uri.parse(uri), headers: payload);
+}
+
+///Removes a manga identified by it's [mangaId] / UUID to a custom list identified by
+///it's [listId] if the user identified by the [sessionToken]
+///has the permission to do so and returns a [Result] class instance
+///containing info on whether the request was successful.
+Future<Result> removeMangaFromCustomList(
+    String sessionToken, String mangaId, String listId) async {
+  var response =
+      await removeMangaFromCustomListResponse(sessionToken, mangaId, listId);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+///Get's [limit] number of PUBLIC custom lists of a user identified by
+///it's [userId] counting from list [offset] and returns a http response.
+Future<http.Response> getUserCustomListsResponse(
+    String userId, int? limit, int? offset) async {
+  var _limit = limit == null ? '' : '&limit=$limit';
+  var _offset = offset == null ? '' : '&offset=$offset';
+  final unencodedPath = '/user/$userId/list';
+  final uri = 'https://$authority$unencodedPath?$_limit$_offset';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+  });
+  return response;
+}
+
+///Get's [limit] number of PUBLIC custom lists of a user identified by
+///it's [userId] counting from list [offset] and returns a
+///[CustomListResponse] class instance containing the details of the lists.
+Future<CustomListResponse> getUserCustomLists(
+    String userId, int? limit, int? offset) async {
+  var response = await getUserCustomListsResponse(userId, limit, offset);
+  try {
+    return CustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }

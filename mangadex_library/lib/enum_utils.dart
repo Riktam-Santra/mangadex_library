@@ -1,6 +1,7 @@
 import 'package:mangadex_library/models/common/manga_status.dart';
 import 'package:mangadex_library/models/common/publication_demographic.dart';
 import 'package:mangadex_library/models/common/tag_modes.dart';
+import 'package:mangadex_library/models/common/visibility.dart';
 
 import 'models/common/content_rating.dart';
 import 'models/common/future_updates.dart';
@@ -104,6 +105,15 @@ abstract class EnumUtils {
         return 'shoujo';
       case PublicDemographic.shounen:
         return 'shounen';
+    }
+  }
+
+  static String parseVisibilityFromEnum(Visibility visibility) {
+    switch (visibility) {
+      case Visibility.private:
+        return 'private';
+      case Visibility.public:
+        return 'public';
     }
   }
 }

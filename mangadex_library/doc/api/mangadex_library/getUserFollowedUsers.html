@@ -53,7 +53,7 @@
         
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">UserFollowedUsers</span>&gt;</span></span>
-<span class="name ">getUserFollowedUsers</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUserFollowedUsers-param-token"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">token</span>, </span></li>
+<span class="name ">getUserFollowedUsers</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUserFollowedUsers-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="getUserFollowedUsers-param-offset">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
 <li><span class="parameter" id="getUserFollowedUsers-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>}</span></li>
 </ol>)
@@ -62,17 +62,17 @@
     
 <section class="desc markdown">
   <p>Returns a <code>UserFollowedUsers</code> class instance with details of the all the Users that the user follows,
-the <code>token</code> is the session token obtained using the login() function</p>
+the <code>sessionToken</code> is the session token obtained using the login() function</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;UserFollowedUsers&gt; getUserFollowedUsers(String token,
+  <pre class="language-dart"><code class="language-dart">Future&lt;UserFollowedUsers&gt; getUserFollowedUsers(String sessionToken,
     {int? offset, int? limit}) async {
-  var response =
-      await getUserFollowedUsersResponse(token, offset: offset, limit: limit);
+  var response = await getUserFollowedUsersResponse(sessionToken,
+      offset: offset, limit: limit);
   try {
     return UserFollowedUsers.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -108,6 +108,8 @@ the <code>token</code> is the session token obtained using the login() function<
   <li><a href="../mangadex_library/authority.html">authority</a></li>
 
   <li class="section-title"><a href="../mangadex_library/mangadex_library-library.html#functions">Functions</a></li>
+  <li><a href="../mangadex_library/addMangaToCustomList.html">addMangaToCustomList</a></li>
+  <li><a href="../mangadex_library/addMangaToCustomListResponse.html">addMangaToCustomListResponse</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsGroup.html">checkIfUserFollowsGroup</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsGroupResponse.html">checkIfUserFollowsGroupResponse</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsManga.html">checkIfUserFollowsManga</a></li>
@@ -115,6 +117,12 @@ the <code>token</code> is the session token obtained using the login() function<
   <li><a href="../mangadex_library/checkIfUserFollowsUser.html">checkIfUserFollowsUser</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsUserResponse.html">checkIfUserFollowsUserResponse</a></li>
   <li><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></li>
+  <li><a href="../mangadex_library/createCustomList.html">createCustomList</a></li>
+  <li><a href="../mangadex_library/createCustomListResponse.html">createCustomListResponse</a></li>
+  <li><a href="../mangadex_library/deleteCustomList.html">deleteCustomList</a></li>
+  <li><a href="../mangadex_library/deleteCustomListResponse.html">deleteCustomListResponse</a></li>
+  <li><a href="../mangadex_library/followCustomList.html">followCustomList</a></li>
+  <li><a href="../mangadex_library/followCustomListResponse.html">followCustomListResponse</a></li>
   <li><a href="../mangadex_library/followManga.html">followManga</a></li>
   <li><a href="../mangadex_library/getAllMangaReadingStatusResponse.html">getAllMangaReadingStatusResponse</a></li>
   <li><a href="../mangadex_library/getAllReadChapters.html">getAllReadChapters</a></li>
@@ -129,11 +137,19 @@ the <code>token</code> is the session token obtained using the login() function<
   <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
   <li><a href="../mangadex_library/getCoverArtResponse.html">getCoverArtResponse</a></li>
   <li><a href="../mangadex_library/getCoverArtUrl.html">getCoverArtUrl</a></li>
+  <li><a href="../mangadex_library/getCustomList.html">getCustomList</a></li>
+  <li><a href="../mangadex_library/getCustomListResponse.html">getCustomListResponse</a></li>
+  <li><a href="../mangadex_library/getLoggedInUserCustomLists.html">getLoggedInUserCustomLists</a></li>
+  <li><a href="../mangadex_library/getLoggedInUserCustomListsResponse.html">getLoggedInUserCustomListsResponse</a></li>
   <li><a href="../mangadex_library/getLoggedUserDetails.html">getLoggedUserDetails</a></li>
   <li><a href="../mangadex_library/getLoggedUserDetailsResponse.html">getLoggedUserDetailsResponse</a></li>
   <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
   <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+  <li><a href="../mangadex_library/getUserCustomLists.html">getUserCustomLists</a></li>
+  <li><a href="../mangadex_library/getUserCustomListsResponse.html">getUserCustomListsResponse</a></li>
+  <li><a href="../mangadex_library/getUserFeed.html">getUserFeed</a></li>
+  <li><a href="../mangadex_library/getUserFeedResponse.html">getUserFeedResponse</a></li>
   <li><a href="../mangadex_library/getUserFollowedGroups.html">getUserFollowedGroups</a></li>
   <li><a href="../mangadex_library/getUserFollowedGroupsResponse.html">getUserFollowedGroupsResponse</a></li>
   <li><a href="../mangadex_library/getUserFollowedManga.html">getUserFollowedManga</a></li>
@@ -147,12 +163,18 @@ the <code>token</code> is the session token obtained using the login() function<
   <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
   <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+  <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
+  <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
   <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/reportImageStatus.html">reportImageStatus</a></li>
   <li><a href="../mangadex_library/search.html">search</a></li>
   <li><a href="../mangadex_library/searchResponse.html">searchResponse</a></li>
   <li><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></li>
+  <li><a href="../mangadex_library/unfollowCustomList.html">unfollowCustomList</a></li>
+  <li><a href="../mangadex_library/unfollowCustomListResponse.html">unfollowCustomListResponse</a></li>
   <li><a href="../mangadex_library/unfollowManga.html">unfollowManga</a></li>
+  <li><a href="../mangadex_library/updateCustomList.html">updateCustomList</a></li>
+  <li><a href="../mangadex_library/updateCustomListResponse.html">updateCustomListResponse</a></li>
 
 
 
@@ -168,7 +190,7 @@ the <code>token</code> is the session token obtained using the login() function<
 <footer>
   <span class="no-break">
     mangadex_library
-      1.2.30
+      1.3.1
   </span>
 
   

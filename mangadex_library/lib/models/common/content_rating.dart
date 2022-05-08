@@ -1,4 +1,3 @@
-///@nodoc
 enum ContentRating {
   safe,
   suggestive,

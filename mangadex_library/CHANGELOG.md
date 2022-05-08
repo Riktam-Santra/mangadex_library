@@ -309,3 +309,9 @@
 - **Deleted** the MangaCheck model class, replaced by Result class.
 - All functions now throw the MangadexServerException exception rather than the model classes themselves.
 - Moved mangadex_library_example from /test to /example directory.
+
+## 1.3.1 (Handling for Custom List Endpoints)
+- Added getUserFeed() function to get User's feed and return the data in a UserFeed class instance.
+- Added functions: getLoggedInUserCustomLists(), getUserCustomLists(), createCustomList(), getCustomList(),updateCustomList(), deleteCustomList(), followCustomList(), unfollowCustomList(), addMangaToCustomList(), removeMangaFromCustomList(), getUserCustomLists().
+- Created enum Visibility.
+- Created enum_utls function parseVisibilityFromEnum().
