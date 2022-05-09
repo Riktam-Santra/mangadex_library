@@ -134,6 +134,7 @@ Future<http.Response> searchResponse({
   String? updatedAtSince,
   List<String>? includes,
   String? group,
+  Map<String, dynamic>? order,
 }) async {
   var unencodedPath = '/manga';
   var Title = query != null ? '&title=$query' : '';
@@ -233,8 +234,11 @@ Future<http.Response> searchResponse({
   var UpdatedAtSince =
       updatedAtSince != null ? '&updatedAtSince=$updatedAtSince' : '';
   var Group = group != null ? '&group=$group' : '';
+  var Order = order != null
+      ? '&order[${order.entries.first}]=${order[order.entries.first]}'
+      : '&order[recentlyUpdated]=desc';
   final url =
-      'https://$authority$unencodedPath?$Title$Limit$Offset$Authors$Artists$Year$IncludedTags$IncludedTagsMode$ExcludedTags$ExcludedTagsMode$Status$OriginalLanguage$ExcludedOriginalLanguage$AvailableTranslatedLanguage$PublicationDemographic$Ids$contentrating$CreatedAtSince$UpdatedAtSince$Includes$Group';
+      'https://$authority$unencodedPath?$Title$Limit$Offset$Authors$Artists$Year$IncludedTags$IncludedTagsMode$ExcludedTags$ExcludedTagsMode$Status$OriginalLanguage$ExcludedOriginalLanguage$AvailableTranslatedLanguage$PublicationDemographic$Ids$contentrating$CreatedAtSince$UpdatedAtSince$Includes$Group$Order';
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
@@ -265,6 +269,7 @@ Future<Search> search({
   String? updatedAtSince, // should be of format DD-MM-YYYY
   List<String>? includes,
   String? group,
+  Map<String, dynamic>? order,
 }) async {
   var response = await searchResponse(
     query: query,

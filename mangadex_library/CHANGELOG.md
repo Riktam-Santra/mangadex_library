@@ -328,3 +328,6 @@
 
 ## 1.3.4
 - Fixed even more problems with AuthorInfo model class.
+
+## 1.3.5
+- Added Order parameter to search() function.
