@@ -1,10 +1,10 @@
 ///@nodoc
-class CustomListResponse {
+class SingleCustomListResponse {
   late String result;
   late String response;
   late Data data;
-  CustomListResponse(this.result, this.response, this.data);
-  CustomListResponse.fromJson(Map<String, dynamic> json) {
+  SingleCustomListResponse(this.result, this.response, this.data);
+  SingleCustomListResponse.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
     response = json['response'] ?? '';
     if (json['data'] != null) {

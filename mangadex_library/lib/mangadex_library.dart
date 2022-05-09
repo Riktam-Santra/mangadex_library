@@ -7,6 +7,8 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:mangadex_library/models/author/author_info.dart';
+import 'package:mangadex_library/models/author/author_search_results.dart';
 import 'package:mangadex_library/models/common/visibility.dart';
 import 'package:mangadex_library/models/custom_lists/custom_list_confirmation.dart';
 import 'package:mangadex_library/models/user/user_feed/user_feed.dart';
@@ -756,14 +758,14 @@ Future<http.Response> getLoggedInUserCustomListsResponse(
 
 /// Gets the [limit] number of custom lists from [offset]
 /// in the list of Custom Lists of the user identified
-/// by the [sessionToken] and returns a [CustomListResponse]
+/// by the [sessionToken] and returns a [SingleCustomListResponse]
 /// class instance containing all the lists and their data.
-Future<CustomListResponse> getLoggedInUserCustomLists(
+Future<SingleCustomListResponse> getLoggedInUserCustomLists(
     String sessionToken, int? limit, int? offset) async {
   var response =
       await getLoggedInUserCustomListsResponse(sessionToken, limit, offset);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
@@ -1045,9 +1047,9 @@ Future<http.Response> createCustomListResponse(
 ///Creates a custom list with the name [listName] and
 ///sets visibility to either [Visibility.private] or
 ///[Visibility.public] and adds all mangas IDs / UUIDs
-///in the [mangaIds] list and returns a [CustomListResponse]
+///in the [mangaIds] list and returns a [SingleCustomListResponse]
 ///class instance containing data of the list created.
-Future<CustomListResponse> createCustomList(
+Future<SingleCustomListResponse> createCustomList(
     String sessionToken,
     String listName,
     Visibility visibility,
@@ -1056,7 +1058,7 @@ Future<CustomListResponse> createCustomList(
   var response = await createCustomListResponse(
       sessionToken, listName, visibility, mangaIds, version);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
@@ -1072,11 +1074,11 @@ Future<http.Response> getCustomListResponse(String listId) async {
 }
 
 ///Gets the data of the customList identified by it's [listId]
-///or list uuid and returns a [CustomListResponse]containing the data.
-Future<CustomListResponse> getCustomList(String listId) async {
+///or list uuid and returns a [SingleCustomListResponse]containing the data.
+Future<SingleCustomListResponse> getCustomList(String listId) async {
   var response = await getCustomListResponse(listId);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
@@ -1109,9 +1111,9 @@ Future<http.Response> updateCustomListResponse(
 
 /// Updates an existing custom list identified by its [listId] or UUID
 /// only if the user identified by the [sessionToken] has permission to
-/// update the list and returns the updated data in a [CustomListResponse]
+/// update the list and returns the updated data in a [SingleCustomListResponse]
 /// class instance.
-Future<CustomListResponse> updateCustomList(
+Future<SingleCustomListResponse> updateCustomList(
     String sessionToken,
     String listId,
     String listName,
@@ -1121,7 +1123,7 @@ Future<CustomListResponse> updateCustomList(
   var response = await updateCustomListResponse(
       sessionToken, listId, listName, visibility, mangaIds, version);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
@@ -1292,12 +1294,75 @@ Future<http.Response> getUserCustomListsResponse(
 
 ///Get's [limit] number of PUBLIC custom lists of a user identified by
 ///it's [userId] counting from list [offset] and returns a
-///[CustomListResponse] class instance containing the details of the lists.
-Future<CustomListResponse> getUserCustomLists(
+///[SingleCustomListResponse] class instance containing the details of the lists.
+Future<SingleCustomListResponse> getUserCustomLists(
     String userId, int? limit, int? offset) async {
   var response = await getUserCustomListsResponse(userId, limit, offset);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+//Author related
+
+Future<http.Response> searchAuthorResponse(
+  String? name,
+  int? limit,
+  int? offset,
+  List<String>? ids,
+  List<String>? includes,
+) async {
+  var _name = (name == null) ? '' : '&name=$name';
+  var _limit = (limit == null) ? '' : '&limit=$limit';
+  var _offset = (offset == null) ? '' : '&offset=$offset';
+  var _ids = '';
+  if (ids != null) {
+    ids.forEach((element) {
+      _ids = _ids + '&ids[]=$element';
+    });
+  }
+  var _includes = '';
+  if (includes != null) {
+    includes.forEach((element) {
+      _includes = _includes + '&includes[]=$element';
+    });
+  }
+
+  final unencodedPath = '/author';
+  final uri =
+      'https://$authority$unencodedPath?$_name$_limit$_offset$_ids$_includes';
+  var response = http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+  });
+  return response;
+}
+
+Future<AuthorSearchResult> searchAuthor(
+  String? name,
+  int? limit,
+  int? offset,
+  List<String>? ids,
+  List<String>? includes,
+) async {
+  var response = await searchAuthorResponse(name, limit, offset, ids, includes);
+  return AuthorSearchResult.fromJson(jsonDecode(response.body));
+}
+
+Future<http.Response> getAuthorByIdResponse(String authorId) async {
+  final unencodedPath = '/author/$authorId';
+  final uri = 'https://$authority$unencodedPath';
+  var response = http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+  });
+  return response;
+}
+
+Future<AuthorInfo> getAuthorById(String authorId) async {
+  var response = await getAuthorByIdResponse(authorId);
+  try {
+    return AuthorInfo.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }

@@ -315,3 +315,9 @@
 - Added functions: getLoggedInUserCustomLists(), getUserCustomLists(), createCustomList(), getCustomList(),updateCustomList(), deleteCustomList(), followCustomList(), unfollowCustomList(), addMangaToCustomList(), removeMangaFromCustomList(), getUserCustomLists().
 - Created enum Visibility.
 - Created enum_utls function parseVisibilityFromEnum().
+
+## 1.3.2 (Stared Function for Author Data)
+- Added model class AuthorSearchResult.
+- Added function searchAuthor() to search for authors, returns a AuthorSearchResult class instance.
+- Added function getAuthorById() to get author data by their UUID, returns an AuthorInfo class Instance.
+**Note:** documentation has not been updated for this patch, it will be updated after all features of the /author endpoint implemented.
