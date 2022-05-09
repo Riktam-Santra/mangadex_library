@@ -36,7 +36,7 @@ class Data {
 class Attributes {
   late String name;
   late String? imageUrl;
-  late List<String> biography;
+  late Map<String, dynamic> biography;
   late String twitter;
   late String pixiv;
   late String melonBook;
@@ -77,7 +77,7 @@ class Attributes {
   Attributes.fromJson(Map<String, dynamic> json) {
     name = json['name'] ?? '';
     imageUrl = json['imageUrl'] ?? '';
-    biography = json['biography'] ?? '';
+    biography = json['biography'] ?? {};
     twitter = json['twitter'] ?? '';
     pixiv = json['pixiv'] ?? '';
     melonBook = json['melonBook'] ?? '';
@@ -93,7 +93,7 @@ class Attributes {
     website = json['website'] ?? '';
     createdAt = json['createdAt'] ?? '';
     updateAt = json['updateAt'] ?? '';
-    version = json[version] ?? 0;
+    version = json['version'] ?? 0;
   }
 }
 
