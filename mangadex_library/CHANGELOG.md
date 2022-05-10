@@ -331,3 +331,6 @@
 
 ## 1.3.5
 - Added Order parameter to search() function.
+
+## 1.3.6
+- Removed 'biography' field from AuthorInfo model class until a known bug is solved.
