@@ -334,3 +334,6 @@
 
 ## 1.3.6
 - Removed 'biography' field from AuthorInfo model class until a known bug is solved.
+
+## 1.3.7
+- Added documentation for all functions added since 1.3.1

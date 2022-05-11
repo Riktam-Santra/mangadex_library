@@ -11,6 +11,7 @@ import 'package:mangadex_library/models/author/author_info.dart';
 import 'package:mangadex_library/models/author/author_search_results.dart';
 import 'package:mangadex_library/models/common/visibility.dart';
 import 'package:mangadex_library/models/custom_lists/custom_list_confirmation.dart';
+import 'package:mangadex_library/models/login/token_check.dart';
 import 'package:mangadex_library/models/user/user_feed/user_feed.dart';
 
 import 'mangadexServerException.dart';
@@ -84,6 +85,29 @@ Future<Login> refresh(String refreshToken) async {
   try {
     return Login.fromJson(jsonDecode(response.body));
   } catch (e) {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
+/// Returns an http response with data on whether the [sessionToken] is authenticated and the
+/// user's permissions.
+Future<http.Response> checkTokenResponse(String sessionToken) async {
+  final unencodedPath = '/auth/check';
+  final uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
+  });
+  return response;
+}
+
+/// Returns an [AuthenticationCheck] class instance with data on whether the [sessionToken] is authenticated and the
+/// user's permissions.
+Future<AuthenticationCheck> checkToken(String sessionToken) async {
+  var response = await checkTokenResponse(sessionToken);
+  try {
+    return AuthenticationCheck.fromJson(jsonDecode(response.body));
+  } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
 }
@@ -1312,6 +1336,7 @@ Future<SingleCustomListResponse> getUserCustomLists(
 
 //Author related
 
+/// Search for an author by the author's [name] and return [limit] number of results (10 by default) in a http response.
 Future<http.Response> searchAuthorResponse(
   String? name,
   int? limit,
@@ -1344,6 +1369,8 @@ Future<http.Response> searchAuthorResponse(
   return response;
 }
 
+/// Search for an author by the author's [name] and return [limit] number of results (10 by default)
+/// in an [AuthorSearchResult] class instance.
 Future<AuthorSearchResult> searchAuthor(
   String? name,
   int? limit,
@@ -1355,6 +1382,7 @@ Future<AuthorSearchResult> searchAuthor(
   return AuthorSearchResult.fromJson(jsonDecode(response.body));
 }
 
+///Get details of an author identified by the author's [authorId] or UUID nad return the data as an http response.
 Future<http.Response> getAuthorByIdResponse(String authorId) async {
   final unencodedPath = '/author/$authorId';
   final uri = 'https://$authority$unencodedPath';
@@ -1364,6 +1392,8 @@ Future<http.Response> getAuthorByIdResponse(String authorId) async {
   return response;
 }
 
+///Get details of an author identified by the author's [authorId] or UUID nad return the data
+///in an [AuthorInfo] class instance.
 Future<AuthorInfo> getAuthorById(String authorId) async {
   var response = await getAuthorByIdResponse(authorId);
   try {

@@ -52,7 +52,7 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CustomListResponse</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
 <span class="name ">createCustomList</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createCustomList-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="createCustomList-param-listName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listName</span>, </span></li>
 <li><span class="parameter" id="createCustomList-param-visibility"><span class="type-annotation"><a href="../models_common_visibility/Visibility.html">Visibility</a></span> <span class="parameter-name">visibility</span>, </span></li>
@@ -66,7 +66,7 @@
   <p>Creates a custom list with the name <code>listName</code> and
 sets visibility to either <a href="../models_common_visibility/Visibility.html">Visibility.private</a> or
 <a href="../models_common_visibility/Visibility.html">Visibility.public</a> and adds all mangas IDs / UUIDs
-in the <code>mangaIds</code> list and returns a <code>CustomListResponse</code>
+in the <code>mangaIds</code> list and returns a <code>SingleCustomListResponse</code>
 class instance containing data of the list created.</p>
 </section>
 
@@ -74,7 +74,7 @@ class instance containing data of the list created.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;CustomListResponse&gt; createCustomList(
+  <pre class="language-dart"><code class="language-dart">Future&lt;SingleCustomListResponse&gt; createCustomList(
     String sessionToken,
     String listName,
     Visibility visibility,
@@ -83,7 +83,7 @@ class instance containing data of the list created.</p>
   var response = await createCustomListResponse(
       sessionToken, listName, visibility, mangaIds, version);
   try {
-    return CustomListResponse.fromJson(jsonDecode(response.body));
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
@@ -125,6 +125,8 @@ class instance containing data of the list created.</p>
   <li><a href="../mangadex_library/checkIfUserFollowsMangaResponse.html">checkIfUserFollowsMangaResponse</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsUser.html">checkIfUserFollowsUser</a></li>
   <li><a href="../mangadex_library/checkIfUserFollowsUserResponse.html">checkIfUserFollowsUserResponse</a></li>
+  <li><a href="../mangadex_library/checkToken.html">checkToken</a></li>
+  <li><a href="../mangadex_library/checkTokenResponse.html">checkTokenResponse</a></li>
   <li><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></li>
   <li><a href="../mangadex_library/createCustomList.html">createCustomList</a></li>
   <li><a href="../mangadex_library/createCustomListResponse.html">createCustomListResponse</a></li>
@@ -137,6 +139,8 @@ class instance containing data of the list created.</p>
   <li><a href="../mangadex_library/getAllReadChapters.html">getAllReadChapters</a></li>
   <li><a href="../mangadex_library/getAllReadChaptersForAListOfManga.html">getAllReadChaptersForAListOfManga</a></li>
   <li><a href="../mangadex_library/getAllUserMangaReadingStatus.html">getAllUserMangaReadingStatus</a></li>
+  <li><a href="../mangadex_library/getAuthorById.html">getAuthorById</a></li>
+  <li><a href="../mangadex_library/getAuthorByIdResponse.html">getAuthorByIdResponse</a></li>
   <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
   <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
   <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
@@ -177,6 +181,8 @@ class instance containing data of the list created.</p>
   <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/reportImageStatus.html">reportImageStatus</a></li>
   <li><a href="../mangadex_library/search.html">search</a></li>
+  <li><a href="../mangadex_library/searchAuthor.html">searchAuthor</a></li>
+  <li><a href="../mangadex_library/searchAuthorResponse.html">searchAuthorResponse</a></li>
   <li><a href="../mangadex_library/searchResponse.html">searchResponse</a></li>
   <li><a href="../mangadex_library/setMangaReadingStatus.html">setMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/unfollowCustomList.html">unfollowCustomList</a></li>
@@ -199,7 +205,7 @@ class instance containing data of the list created.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.1
+      1.3.7
   </span>
 
   
