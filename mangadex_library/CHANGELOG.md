@@ -337,3 +337,6 @@
 
 ## 1.3.7
 - Added documentation for all functions added since 1.3.1
+
+## 1.3.8
+- Added logout() function for endpoint /auth/logout

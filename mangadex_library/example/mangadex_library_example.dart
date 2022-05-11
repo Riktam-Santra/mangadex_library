@@ -47,6 +47,7 @@ void printFilenames() async {
     var baseUrl = singleChapterData.baseUrl;
     // the filenames variable stores the name of all files in a manga chapter
     for (var i = 0; i < filenames.length; i++) {
+      // this for loop prints the url to all the pages in the provided chapters.
       print(lib.constructPageUrl(
           baseUrl,
           token,
@@ -54,7 +55,8 @@ void printFilenames() async {
           singleChapterData.chapter.hash,
           singleChapterData.chapter.dataSaver[i]));
     }
-    // this for loop prints the url to all the pages in the provided chapters.
+
+    await lib.logout(loginData.token.session); //finally log out the user.
   } on MangadexServerException catch (e) {
     e.info.errors.forEach((error) {
       print(error

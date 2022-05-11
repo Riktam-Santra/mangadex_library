@@ -2,13 +2,17 @@ A [dart library](https://pub.dev/packages/mangadex_library) to facilitate easier
 
 ## WARNING! In progress library
 
-The library is currently in an 'under development' state and therefore doesn't contain many of the features, they will be added in the future. At the current state of the library, it is able to:
+The library is currently in an **under development and gradually changing** state and therefore doesn't contain many of the features and new features and bugs are added often, they will be added in the future. At the current state of the library, it is able to:
 
 - Get login refresh and session tokens
+- Logout user
 - Search for Mangas
 - Get Manga thumbnails/covers
 - Retieve Manga pages
 - Get logged in user data
+- Get a user's details
+- Get an author's details
+- Manage Custom Lists
 - Check/Follow/Unfollow a Manga/Group/User
 - Set/Get the reading status of a manga for the logged in user
 
@@ -66,6 +70,7 @@ void printFilenames() async {
     var baseUrl = singleChapterData.baseUrl;
     // the filenames variable stores the name of all files in a manga chapter
     for (var i = 0; i < filenames.length; i++) {
+      // this for loop prints the url to all the pages in the provided chapters.
       print(lib.constructPageUrl(
           baseUrl,
           token,
@@ -73,7 +78,8 @@ void printFilenames() async {
           singleChapterData.chapter.hash,
           singleChapterData.chapter.dataSaver[i]));
     }
-    // this for loop prints the url to all the pages in the provided chapters.
+
+    await lib.logout(loginData.token.session); //finally log out the user.
   } on MangadexServerException catch (e) {
     e.info.errors.forEach((error) {
       print(error
@@ -86,5 +92,5 @@ void printFilenames() async {
 
 ## Documentation
 
-The documentation is still under progress using the [wiki](), I have planned to put in a detailed one and so it will take time.
+The documentation is still under progress using the [wiki](https://github.com/Riktam-Santra/mangadex_library/wiki), I have planned to put in a detailed one and so it will take time.
 for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc) can be found in the doc/api/ folder.

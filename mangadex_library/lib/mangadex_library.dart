@@ -134,6 +134,25 @@ Future<UserDetails> getLoggedUserDetails(String sessionToken) async {
   }
 }
 
+Future<http.Response> logoutResponse(String sessionToken) async {
+  var unencodedPath = '/auth/login';
+  var uri = 'https://$authority$unencodedPath';
+  var response = await http.post(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+    HttpHeaders.authorizationHeader: 'Bearer $sessionToken'
+  });
+  return response;
+}
+
+Future<Result> logout(String sessionToken) async {
+  var response = await logoutResponse(sessionToken);
+  try {
+    return Result.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}
+
 // Manga search related functions
 
 Future<http.Response> searchResponse({
