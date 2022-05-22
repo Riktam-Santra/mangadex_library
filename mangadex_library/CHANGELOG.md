@@ -340,3 +340,6 @@
 
 ## 1.3.8
 - Added logout() function for endpoint /auth/logout
+
+## 1.3.9
+- Added getScanlationGroupResponse(), getScanlationGroup(), getScanlationGroupById(), getScanlationGroupByIdResponse(), createScanlationGroupResponse(), and createScanlationGroupResponse() functions.

@@ -274,6 +274,34 @@ containing data of the list created.
 
 </dd>
 
+        <dt id="createScanlationGroup" class="callable">
+  <span class="name"><a href="../mangadex_library/createScanlationGroup.html">createScanlationGroup</a></span><span class="signature">(<wbr><span class="parameter" id="createScanlationGroup-param-name">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="createScanlationGroup-param-website"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">website</span>, </span><span class="parameter" id="createScanlationGroup-param-ircServer"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">ircServer</span>, </span><span class="parameter" id="createScanlationGroup-param-ircChannel"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">ircChannel</span>, </span><span class="parameter" id="createScanlationGroup-param-discord"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">discord</span>, </span><span class="parameter" id="createScanlationGroup-param-contactEmail"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contactEmail</span>, </span><span class="parameter" id="createScanlationGroup-param-description"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">description</span>, </span><span class="parameter" id="createScanlationGroup-param-twitter"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">twitter</span>, </span><span class="parameter" id="createScanlationGroup-param-mangaUpdates"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaUpdates</span>, </span><span class="parameter" id="createScanlationGroup-param-inactive"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">inactive</span>, </span><span class="parameter" id="createScanlationGroup-param-publishDelay"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">publishDelay</span>, </span><span class="parameter" id="createScanlationGroup-param-sessionToken"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_scanlation_scanlation/Scanlation-class.html">Scanlation</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates  a Scanlation Group managed by the user identified by it's <code>sessionToken</code> or UUID
+and returns an http response containing the group's information after being created. 
+  
+
+</dd>
+
+        <dt id="createScanlationGroupResponse" class="callable">
+  <span class="name"><a href="../mangadex_library/createScanlationGroupResponse.html">createScanlationGroupResponse</a></span><span class="signature">(<wbr><span class="parameter" id="createScanlationGroupResponse-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-website"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">website</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-ircServer"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">ircServer</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-ircChannel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">ircChannel</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-discord"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">discord</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-contactEmail"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contactEmail</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-description"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">description</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-twitter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">twitter</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-mangaUpdates"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaUpdates</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-inactive"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">inactive</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-publishDelay"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">publishDelay</span>, </span><span class="parameter" id="createScanlationGroupResponse-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates  a Scanlation Group managed by the user identified by it's <code>sessionToken</code> or UUID
+and returns an http response containing the group's information after being created. 
+  
+
+</dd>
+
         <dt id="deleteCustomList" class="callable">
   <span class="name"><a href="../mangadex_library/deleteCustomList.html">deleteCustomList</a></span><span class="signature">(<wbr><span class="parameter" id="deleteCustomList-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="deleteCustomList-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
@@ -680,6 +708,61 @@ of a particular manga identified by <code>mangaId</code> or uuid
 </dt>
 <dd>
   Takes in a <code>refreshToken</code> token and returns a <em>http response</em> of a new refresh token 
+  
+
+</dd>
+
+        <dt id="getScanlationGroup" class="callable">
+  <span class="name"><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroup-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getScanlationGroup-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroup-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroup-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroup-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroup-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroup-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_scanlation_scanlationsResult/ScanlationsResult-class.html">ScanlationsResult</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Search for a scanlation group with the <code>name</code> and returns <code>limit</code> number of results
+from <code>offset</code> which may focus on the given <code>focussedLanguage</code> and returns a
+<a href="../models_scanlation_scanlationsResult/ScanlationsResult-class.html">ScanlationsResult</a> class instance that contains all the information. 
+  
+
+</dd>
+
+        <dt id="getScanlationGroupById" class="callable">
+  <span class="name"><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroupById-param-groupId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">groupId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_scanlation_scanlation/Scanlation-class.html">Scanlation</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns an <a href="../models_scanlation_scanlation/Scanlation-class.html">Scanlation</a> class instance containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID 
+  
+
+</dd>
+
+        <dt id="getScanlationGroupByIdResponse" class="callable">
+  <span class="name"><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroupByIdResponse-param-groupId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">groupId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns an http response containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID 
+  
+
+</dd>
+
+        <dt id="getScanlationGroupResponse" class="callable">
+  <span class="name"><a href="../mangadex_library/getScanlationGroupResponse.html">getScanlationGroupResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroupResponse-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Search for a scanlation group with the <code>name</code> and returns <code>limit</code> number of results
+from <code>offset</code> which may focus on the given <code>focussedLanguage</code> and returns a http response. 
   
 
 </dd>
@@ -1173,8 +1256,8 @@ update the list and returns the updated data in a http response.
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_author_author_info/models_author_author_info-library.html">author_info</a></li>
       <li><a href="../models_author_author_search_results/models_author_author_search_results-library.html">author_search_results</a></li>
-      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
+      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
       <li><a href="../models_custom_lists_custom_list_confirmation/models_custom_lists_custom_list_confirmation-library.html">custom_list_confirmation</a></li>
@@ -1194,6 +1277,8 @@ update the list and returns the updated data in a http response.
       <li><a href="../models_common_reading_status/models_common_reading_status-library.html">reading_status</a></li>
       <li><a href="../models_common_relationships/models_common_relationships-library.html">relationships</a></li>
       <li><a href="../models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
+      <li><a href="../models_scanlation_scanlation/models_scanlation_scanlation-library.html">scanlation</a></li>
+      <li><a href="../models_scanlation_scanlationsResult/models_scanlation_scanlationsResult-library.html">scanlationsResult</a></li>
       <li><a href="../models_common_serverException/models_common_serverException-library.html">serverException</a></li>
       <li><a href="../models_at-home_singleChapterData/models_at-home_singleChapterData-library.html">singleChapterData</a></li>
       <li><a href="../models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
@@ -1230,6 +1315,8 @@ update the list and returns the updated data in a http response.
   <li><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></li>
   <li><a href="../mangadex_library/createCustomList.html">createCustomList</a></li>
   <li><a href="../mangadex_library/createCustomListResponse.html">createCustomListResponse</a></li>
+  <li><a href="../mangadex_library/createScanlationGroup.html">createScanlationGroup</a></li>
+  <li><a href="../mangadex_library/createScanlationGroupResponse.html">createScanlationGroupResponse</a></li>
   <li><a href="../mangadex_library/deleteCustomList.html">deleteCustomList</a></li>
   <li><a href="../mangadex_library/deleteCustomListResponse.html">deleteCustomListResponse</a></li>
   <li><a href="../mangadex_library/followCustomList.html">followCustomList</a></li>
@@ -1259,6 +1346,10 @@ update the list and returns the updated data in a http response.
   <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
   <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
   <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+  <li><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></li>
+  <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
+  <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
+  <li><a href="../mangadex_library/getScanlationGroupResponse.html">getScanlationGroupResponse</a></li>
   <li><a href="../mangadex_library/getUserCustomLists.html">getUserCustomLists</a></li>
   <li><a href="../mangadex_library/getUserCustomListsResponse.html">getUserCustomListsResponse</a></li>
   <li><a href="../mangadex_library/getUserFeed.html">getUserFeed</a></li>
@@ -1304,7 +1395,7 @@ update the list and returns the updated data in a http response.
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.8
+      1.3.9
   </span>
 
   
