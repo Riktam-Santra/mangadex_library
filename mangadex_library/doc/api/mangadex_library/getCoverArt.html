@@ -53,22 +53,37 @@
         
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Cover</span>&gt;</span></span>
-<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span></span></li>
+<span class="name ">getCoverArt</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArt-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-coverIds">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">coverIds</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="getCoverArt-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span></li>
 </ol>)
 
     </section>
     
 <section class="desc markdown">
   <p>returns an <code>Cover</code> class instance containing cover
-art details for a manga with given <code>mangaId</code> or uuid</p>
+art details for a manga with given <code>mangaIds</code> or uuid</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Cover&gt; getCoverArt(String mangaId) async {
-  var response = await getCoverArtResponse(mangaId);
+  <pre class="language-dart"><code class="language-dart">Future&lt;Cover&gt; getCoverArt(
+  List&lt;String&gt; mangaIds, [
+  List&lt;String&gt;? coverIds,
+  List&lt;String&gt;? uploaders,
+  List&lt;String&gt;? locales,
+  Map&lt;String, dynamic&gt;? order,
+  int? limit,
+  int? offset,
+]) async {
+  var response = await getCoverArtResponse(
+      mangaIds, coverIds, uploaders, locales, order, limit, offset);
   try {
     return Cover.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -200,7 +215,7 @@ art details for a manga with given <code>mangaId</code> or uuid</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.9
+      1.3.10
   </span>
 
   

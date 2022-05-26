@@ -100,65 +100,65 @@
     int? limit,
     int? offset}) async {
   var unencodedPath = &#39;&#47;chapter&#39;;
-  var MangaId = mangaId;
-  var Limit = limit != null ? &#39;&amp;limit=$limit&#39; : &#39;&amp;limit=10&#39;;
-  var Offset = offset != null ? &#39;&amp;offset=$offset&#39; : &#39;&amp;offset=0&#39;;
-  var Ids = &#39;&#39;;
+  var _mangaId = mangaId;
+  var _limit = limit != null ? &#39;&amp;limit=$limit&#39; : &#39;&amp;limit=10&#39;;
+  var _offset = offset != null ? &#39;&amp;offset=$offset&#39; : &#39;&amp;offset=0&#39;;
+  var _ids = &#39;&#39;;
   if (ids != null) {
     ids.forEach((element) {
-      Ids = Ids + &#39;&amp;ids[]=$element&#39;;
+      _ids = _ids + &#39;&amp;ids[]=$element&#39;;
     });
   }
-  var Title = title != null ? &#39;&amp;title=$title&#39; : &#39;&#39;;
-  var Groups = &#39;&#39;;
+  var _title = title != null ? &#39;&amp;title=$title&#39; : &#39;&#39;;
+  var _groups = &#39;&#39;;
   if (groups != null) {
     groups.forEach((element) {
-      Groups = Groups + &#39;&amp;groups[]=$element&#39;;
+      _groups = _groups + &#39;&amp;groups[]=$element&#39;;
     });
   }
-  var Uploader = uploader != null ? &#39;&amp;uploader=$uploader&#39; : &#39;&#39;;
-  var Volume = volume != null ? &#39;&amp;volume=$volume&#39; : &#39;&#39;;
-  var Chapter = chapter != null ? &#39;&amp;chapter=$chapter&#39; : &#39;&#39;;
+  var _uploader = uploader != null ? &#39;&amp;uploader=$uploader&#39; : &#39;&#39;;
+  var _volume = volume != null ? &#39;&amp;volume=$volume&#39; : &#39;&#39;;
+  var _chapter = chapter != null ? &#39;&amp;chapter=$chapter&#39; : &#39;&#39;;
 
-  var TranslatedLanguage = &#39;&#39;;
+  var _translatedLanguage = &#39;&#39;;
   if (translatedLanguage != null) {
     translatedLanguage.forEach((element) {
-      TranslatedLanguage = TranslatedLanguage +
+      _translatedLanguage = _translatedLanguage +
           &#39;&amp;translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
-  var OriginalLanguage = &#39;&#39;;
+  var _originalLanguage = &#39;&#39;;
   if (originalLanguage != null) {
     originalLanguage.forEach((element) {
-      OriginalLanguage = OriginalLanguage +
+      _originalLanguage = _originalLanguage +
           &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
-  var ExcludedOriginalLanguage = &#39;&#39;;
+  var _excludedOriginalLanguage = &#39;&#39;;
   if (excludedOriginalLanguage != null) {
     excludedOriginalLanguage.forEach((element) {
-      ExcludedOriginalLanguage = ExcludedOriginalLanguage +
+      _excludedOriginalLanguage = _excludedOriginalLanguage +
           &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
     });
   }
-  var Contentrating = &#39;&#39;;
+  var _contentrating = &#39;&#39;;
   if (contentRating != null) {
     contentRating.forEach((element) {
-      Contentrating = Contentrating +
+      _contentrating = _contentrating +
           &#39;&amp;contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}&#39;;
     });
   }
 
-  var CreatedAtSince =
+  var _createdAtSince =
       createdAtSince != null ? &#39;&amp;createdAtSince=$createdAtSince&#39; : &#39;&#39;;
-  var UpdatedAtSince =
+  var _updatedAtSince =
       updatedAtSince != null ? &#39;&amp;updatedAtSince=$updatedAtSince&#39; : &#39;&#39;;
-  var PublishedAtSince =
+  var _publishedAtSince =
       publishedAtSince != null ? &#39;&amp;publishedAtSince=$publishedAtSince&#39; : &#39;&#39;;
-  var Includes = includes != null ? &#39;&amp;includes[]=$includes&#39; : &#39;&#39;;
+  var _includes = includes != null ? &#39;&amp;includes[]=$includes&#39; : &#39;&#39;;
 
   final url =
-      &#39;https:&#47;&#47;$authority$unencodedPath?&amp;manga=$MangaId$Limit$Offset$Ids$Title$Groups$Uploader$Volume$Chapter$TranslatedLanguage$CreatedAtSince$UpdatedAtSince$PublishedAtSince$Includes&#39;;
+      &#39;https:&#47;&#47;$authority$unencodedPath?&amp;manga=$_mangaId$_limit$_offset$_ids$_title$_groups$_uploader$_volume$_chapter$_translatedLanguage$_createdAtSince$_updatedAtSince$_publishedAtSince$_includes&#39;;
   print(&#39;url&#39;);
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;});
@@ -289,7 +289,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.9
+      1.3.10
   </span>
 
   

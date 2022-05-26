@@ -53,7 +53,7 @@
         
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
-<span class="name ">getCoverArtUrl</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArtUrl-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<span class="name ">getCoverArtUrl</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCoverArtUrl-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaId</span>, </span></li>
 <li><span class="parameter" id="getCoverArtUrl-param-res">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">res</span>}</span></li>
 </ol>)
 
@@ -71,7 +71,7 @@ The <code>res</code> parameter only supports values 256 and 512</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getCoverArtUrl(String mangaId, {int? res}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getCoverArtUrl(List&lt;String&gt; mangaId, {int? res}) async {
   var reso = res ?? &#39;&#39;;
   var data = await getCoverArt(mangaId);
 
@@ -207,7 +207,7 @@ The <code>res</code> parameter only supports values 256 and 512</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.9
+      1.3.10
   </span>
 
   

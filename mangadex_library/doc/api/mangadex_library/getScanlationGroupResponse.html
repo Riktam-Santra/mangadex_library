@@ -101,11 +101,11 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
     });
   }
   var _order = &#39;&#39;;
-  if (order != null) {
-    order.entries.forEach((element) {
-      _order = _order + &#39;&amp;order[$element]=${order[element]}&#39;;
-    });
-  }
+  (order != null)
+      ? order.entries.forEach((element) {
+          _order = _order + &#39;&amp;order[$element]=${order[element]}&#39;;
+        })
+      : _order = &#39;&amp;order[latestUploadedChapter]=desc&#39;;
 
   var unenecodedPath = &#39;&#47;group&#39;;
   var uri =
@@ -239,7 +239,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.9
+      1.3.10
   </span>
 
   

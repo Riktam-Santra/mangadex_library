@@ -14,9 +14,11 @@ class Search {
 
     response = json['response'] ?? '';
     data = <Data>[];
-    json['data']!.forEach((v) {
-      data.add(Data.fromJson(v));
-    });
+    if (json['dara'] != null) {
+      json['data'].forEach((v) {
+        data.add(Data.fromJson(v));
+      });
+    }
 
     limit = json['limit'] ?? 0;
     offset = json['offset'] ?? 0;

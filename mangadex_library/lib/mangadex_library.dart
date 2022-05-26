@@ -158,7 +158,7 @@ Future<Result> logout(String sessionToken) async {
 // Manga search related functions
 
 Future<http.Response> searchResponse({
-  String? query,
+  String? title,
   int? limit,
   int? offset,
   List<String>? authors,
@@ -180,110 +180,111 @@ Future<http.Response> searchResponse({
   List<String>? includes,
   String? group,
   Map<String, dynamic>? order,
+  bool? hasAvailableChapters,
 }) async {
   var unencodedPath = '/manga';
-  var Title = query != null ? '&title=$query' : '';
-  var Authors = '';
+  var _title = title != null ? '&title=$title' : '';
+  var _authors = '';
   if (authors != null) {
     authors.forEach((element) {
-      Authors = Authors + '&authors[]=$element';
+      _authors = _authors + '&authors[]=$element';
     });
   }
-  var Limit = limit != null ? '&limit=$limit' : '';
-  var Offset = offset != null ? '&offset=$offset' : '';
-  var Artists = '';
+  var _limit = limit != null ? '&limit=$limit' : '';
+  var _offset = offset != null ? '&offset=$offset' : '';
+  var _artists = '';
   if (artists != null) {
     artists.forEach((element) {
-      Artists = Artists + '&artists[]=$element';
+      _artists = _artists + '&artists[]=$element';
     });
   }
-  var Year = year != null ? '&year=$year' : '';
-  var IncludedTags = '';
+  var _year = year != null ? '&year=$year' : '';
+  var _includedTags = '';
   if (includedTags != null) {
     includedTags.forEach((element) {
-      IncludedTags = IncludedTags + '&includedTages[]=$element';
+      _includedTags = _includedTags + '&includedTags[]=$element';
     });
   }
-  var PublicationDemographic = '';
+  var _publicationDemographic = '';
   if (publicationDemographic != null) {
     publicationDemographic.forEach((element) {
-      PublicationDemographic = PublicationDemographic +
+      _publicationDemographic = _publicationDemographic +
           '&publicationDemographic[]=${EnumUtils.parsePublicDemographicFromEnum(element)}';
     });
   }
-  var IncludedTagsMode = '';
+  var _includedTagsMode = '';
   if (includedTagsMode != null) {
-    IncludedTagsMode = EnumUtils.parseTagModeFromEnum(includedTagsMode);
+    _includedTagsMode = EnumUtils.parseTagModeFromEnum(includedTagsMode);
   }
-  var ExcludedTags = '';
+  var _excludedTags = '';
   if (excludedTags != null) {
     excludedTags.forEach((element) {
-      ExcludedTags = ExcludedTags + '&excludedTags[]=$element';
+      _excludedTags = _excludedTags + '&excludedTags[]=$element';
     });
   }
-  var ExcludedTagsMode = '';
+  var _excludedTagsMode = '';
   if (excludedTagsMode != null) {
-    ExcludedTagsMode = EnumUtils.parseTagModeFromEnum(excludedTagsMode);
+    _excludedTagsMode = EnumUtils.parseTagModeFromEnum(excludedTagsMode);
   }
-  var Status = '';
+  var _status = '';
   if (status != null) {
     status.forEach((element) {
-      Status =
-          Status + '&status[]=${EnumUtils.parseMangaStatusFromEnum(element)}';
+      _status =
+          _status + '&status[]=${EnumUtils.parseMangaStatusFromEnum(element)}';
     });
   }
 
-  var OriginalLanguage = '';
+  var _originalLanguage = '';
   if (originalLanguage != null) {
     originalLanguage.forEach((element) {
-      OriginalLanguage = OriginalLanguage +
+      _originalLanguage = _originalLanguage +
           '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
-  var ExcludedOriginalLanguage = '';
+  var _excludedOriginalLanguage = '';
   if (excludedOriginalLanguages != null) {
     excludedOriginalLanguages.forEach((element) {
-      ExcludedOriginalLanguage = ExcludedOriginalLanguage +
+      _excludedOriginalLanguage = _excludedOriginalLanguage +
           '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
-  var AvailableTranslatedLanguage = '';
+  var _availableTranslatedLanguage = '';
   if (availableTranslatedLanguage != null) {
     availableTranslatedLanguage.forEach((element) {
-      AvailableTranslatedLanguage = AvailableTranslatedLanguage +
+      _availableTranslatedLanguage = _availableTranslatedLanguage +
           '&availableTranslatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
 
-  var Ids = '';
+  var _ids = '';
   if (ids != null) {
     ids.forEach((element) {
-      Ids = Ids + '&ids[]=$element';
+      _ids = _ids + '&ids[]=$element';
     });
   }
-  var contentrating = '';
+  var _contentRating = '';
   if (contentRating != null) {
     contentRating.forEach((element) {
-      contentrating = contentrating +
+      _contentRating = _contentRating +
           '&contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}';
     });
   }
-  var Includes = '';
+  var _includes = '';
   if (includes != null) {
     includes.forEach((element) {
-      Includes = Includes + '&included[]=$element';
+      _includes = _includes + '&included[]=$element';
     });
   }
-  var CreatedAtSince =
+  var _createdAtSince =
       createdAtSince != null ? '&createdAtSince=$createdAtSince' : '';
-  var UpdatedAtSince =
+  var _updatedAtSince =
       updatedAtSince != null ? '&updatedAtSince=$updatedAtSince' : '';
-  var Group = group != null ? '&group=$group' : '';
-  var Order = order != null
+  var _group = group != null ? '&group=$group' : '';
+  var _order = order != null
       ? '&order[${order.entries.first}]=${order[order.entries.first]}'
-      : '&order[recentlyUpdated]=desc';
+      : '&order[latestUploadedChapter]=desc';
   final url =
-      'https://$authority$unencodedPath?$Title$Limit$Offset$Authors$Artists$Year$IncludedTags$IncludedTagsMode$ExcludedTags$ExcludedTagsMode$Status$OriginalLanguage$ExcludedOriginalLanguage$AvailableTranslatedLanguage$PublicationDemographic$Ids$contentrating$CreatedAtSince$UpdatedAtSince$Includes$Group$Order';
+      'https://$authority$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order';
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
@@ -317,7 +318,7 @@ Future<Search> search({
   Map<String, dynamic>? order,
 }) async {
   var response = await searchResponse(
-    query: query,
+    title: query,
     limit: limit,
     offset: offset,
     authors: authors,
@@ -380,65 +381,65 @@ Future<http.Response> getChaptersResponse(String mangaId,
     int? limit,
     int? offset}) async {
   var unencodedPath = '/chapter';
-  var MangaId = mangaId;
-  var Limit = limit != null ? '&limit=$limit' : '&limit=10';
-  var Offset = offset != null ? '&offset=$offset' : '&offset=0';
-  var Ids = '';
+  var _mangaId = mangaId;
+  var _limit = limit != null ? '&limit=$limit' : '&limit=10';
+  var _offset = offset != null ? '&offset=$offset' : '&offset=0';
+  var _ids = '';
   if (ids != null) {
     ids.forEach((element) {
-      Ids = Ids + '&ids[]=$element';
+      _ids = _ids + '&ids[]=$element';
     });
   }
-  var Title = title != null ? '&title=$title' : '';
-  var Groups = '';
+  var _title = title != null ? '&title=$title' : '';
+  var _groups = '';
   if (groups != null) {
     groups.forEach((element) {
-      Groups = Groups + '&groups[]=$element';
+      _groups = _groups + '&groups[]=$element';
     });
   }
-  var Uploader = uploader != null ? '&uploader=$uploader' : '';
-  var Volume = volume != null ? '&volume=$volume' : '';
-  var Chapter = chapter != null ? '&chapter=$chapter' : '';
+  var _uploader = uploader != null ? '&uploader=$uploader' : '';
+  var _volume = volume != null ? '&volume=$volume' : '';
+  var _chapter = chapter != null ? '&chapter=$chapter' : '';
 
-  var TranslatedLanguage = '';
+  var _translatedLanguage = '';
   if (translatedLanguage != null) {
     translatedLanguage.forEach((element) {
-      TranslatedLanguage = TranslatedLanguage +
+      _translatedLanguage = _translatedLanguage +
           '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
-  var OriginalLanguage = '';
+  var _originalLanguage = '';
   if (originalLanguage != null) {
     originalLanguage.forEach((element) {
-      OriginalLanguage = OriginalLanguage +
+      _originalLanguage = _originalLanguage +
           '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
-  var ExcludedOriginalLanguage = '';
+  var _excludedOriginalLanguage = '';
   if (excludedOriginalLanguage != null) {
     excludedOriginalLanguage.forEach((element) {
-      ExcludedOriginalLanguage = ExcludedOriginalLanguage +
+      _excludedOriginalLanguage = _excludedOriginalLanguage +
           '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
     });
   }
-  var Contentrating = '';
+  var _contentrating = '';
   if (contentRating != null) {
     contentRating.forEach((element) {
-      Contentrating = Contentrating +
+      _contentrating = _contentrating +
           '&contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}';
     });
   }
 
-  var CreatedAtSince =
+  var _createdAtSince =
       createdAtSince != null ? '&createdAtSince=$createdAtSince' : '';
-  var UpdatedAtSince =
+  var _updatedAtSince =
       updatedAtSince != null ? '&updatedAtSince=$updatedAtSince' : '';
-  var PublishedAtSince =
+  var _publishedAtSince =
       publishedAtSince != null ? '&publishedAtSince=$publishedAtSince' : '';
-  var Includes = includes != null ? '&includes[]=$includes' : '';
+  var _includes = includes != null ? '&includes[]=$includes' : '';
 
   final url =
-      'https://$authority$unencodedPath?&manga=$MangaId$Limit$Offset$Ids$Title$Groups$Uploader$Volume$Chapter$TranslatedLanguage$CreatedAtSince$UpdatedAtSince$PublishedAtSince$Includes';
+      'https://$authority$unencodedPath?&manga=$_mangaId$_limit$_offset$_ids$_title$_groups$_uploader$_volume$_chapter$_translatedLanguage$_createdAtSince$_updatedAtSince$_publishedAtSince$_includes';
   print('url');
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
@@ -550,26 +551,68 @@ Future<List<String>> getChapterFilenames(
 
 // Manga cover art related functions
 
-///returns a https response with cover art details for a manga with given [mangaId] or uuid
+///returns a https response with cover art details for a manga with given [mangaIds] or uuid
 Future<http.Response> getCoverArtResponse(
-  String mangaId, [
-  String? coverId,
-  int limit = 10,
-  int offset = 0,
+  List<String> mangaIds, [
+  List<String>? coverIds,
+  List<String>? uploaders,
+  List<String>? locales,
+  Map<String, dynamic>? order,
+  int? limit = 10,
+  int? offset = 0,
 ]) async {
-  final mangas = '&manga[]=$mangaId';
-  final covers = coverId != null ? '&cover[]=$coverId' : '';
+  var _mangasIds = '';
+  mangaIds.forEach((element) {
+    _mangasIds = _mangasIds + '&manga[]=$element';
+  });
+  var _coverIds = '';
+  if (coverIds != null) {
+    coverIds.forEach((element) {
+      _coverIds = _coverIds + '&cover[]=$element';
+    });
+  }
+  var _uploaders = '';
+  if (uploaders != null) {
+    uploaders.forEach((element) {
+      _uploaders = _uploaders + '&uploaders[]=$element';
+    });
+  }
+  var _locales = '';
+  if (locales != null) {
+    locales.forEach((element) {
+      _locales = _locales + '&locales[]=$element';
+    });
+  }
+  var _order = '';
+  if (order != null) {
+    order.entries.forEach((element) {
+      _order = _order + '&order[$element]=${order[element]}';
+    });
+  } else {
+    _order =
+        '&order[createdAt]=asc' '&order[updatedAt]=asc' '&order[volume]=asc';
+  }
   final uri =
-      'https://$authority/cover?limit=$limit&offset=$offset$mangas$covers';
-  var response = await http.get(Uri.parse(uri),
-      headers: {HttpHeaders.contentTypeHeader: 'application/json'});
+      'https://$authority/cover?limit=$limit&offset=$offset$_mangasIds$_coverIds$_locales$_uploaders$_order';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+  });
   return response;
 }
 
 ///returns an [Cover] class instance containing cover
-///art details for a manga with given [mangaId] or uuid
-Future<Cover> getCoverArt(String mangaId) async {
-  var response = await getCoverArtResponse(mangaId);
+///art details for a manga with given [mangaIds] or uuid
+Future<Cover> getCoverArt(
+  List<String> mangaIds, [
+  List<String>? coverIds,
+  List<String>? uploaders,
+  List<String>? locales,
+  Map<String, dynamic>? order,
+  int? limit,
+  int? offset,
+]) async {
+  var response = await getCoverArtResponse(
+      mangaIds, coverIds, uploaders, locales, order, limit, offset);
   try {
     return Cover.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -584,7 +627,7 @@ Future<Cover> getCoverArt(String mangaId) async {
 ///The [res] parameter only supports values 256 and 512
 ///
 ///The resolution remains unchanged if any other value of [res] is given.
-Future<String> getCoverArtUrl(String mangaId, {int? res}) async {
+Future<String> getCoverArtUrl(List<String> mangaId, {int? res}) async {
   var reso = res ?? '';
   var data = await getCoverArt(mangaId);
 
@@ -1456,11 +1499,11 @@ Future<http.Response> getScanlationGroupResponse({
     });
   }
   var _order = '';
-  if (order != null) {
-    order.entries.forEach((element) {
-      _order = _order + '&order[$element]=${order[element]}';
-    });
-  }
+  (order != null)
+      ? order.entries.forEach((element) {
+          _order = _order + '&order[$element]=${order[element]}';
+        })
+      : _order = '&order[latestUploadedChapter]=desc';
 
   var unenecodedPath = '/group';
   var uri =

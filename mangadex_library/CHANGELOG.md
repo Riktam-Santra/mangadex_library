@@ -343,3 +343,8 @@
 
 ## 1.3.9
 - Added getScanlationGroupResponse(), getScanlationGroup(), getScanlationGroupById(), getScanlationGroupByIdResponse(), createScanlationGroupResponse(), and createScanlationGroupResponse() functions.
+
+## 1.3.10
+- Fixed critical searchResponse() and getScanlationGroupResponse() related [issues](https://github.com/Riktam-Santra/mangadex_library/issues/2). 
+- getCoverArt() and getCoverArtResponse() now take in mangaIds and coverIds parameters as `List<String>` which was previously just String values.
+- added locales, uploaders, order, limit, offset parameters to getCoverArt() and getCoverArtResponse
