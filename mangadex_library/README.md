@@ -15,6 +15,7 @@ The library is currently in an **under development and gradually changing** stat
 - Manage Custom Lists
 - Check/Follow/Unfollow a Manga/Group/User
 - Set/Get the reading status of a manga for the logged in user
+- Get, Create and Delete Scanlation Groups
 
 ## Quickstart
 
