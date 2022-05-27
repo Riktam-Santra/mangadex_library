@@ -66,7 +66,7 @@
   attributes = Attributes.fromJson(json[&#39;attributes&#39;]);
   relationships = [];
   if (json[&#39;relationships&#39;] != null) {
-    relationships = json[&#39;relationships&#39;].forEach((e) {
+    json[&#39;relationships&#39;].forEach((e) {
       relationships.add(RelationShip.fromJson(e));
     });
   }
@@ -131,7 +131,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.10
+      1.3.11
   </span>
 
   

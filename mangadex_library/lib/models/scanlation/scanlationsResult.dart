@@ -34,7 +34,7 @@ class Data {
     attributes = Attributes.fromJson(json['attributes']);
     relationships = [];
     if (json['relationships'] != null) {
-      relationships = json['relationships'].forEach((e) {
+      json['relationships'].forEach((e) {
         relationships.add(RelationShip.fromJson(e));
       });
     }
@@ -81,7 +81,13 @@ class Attributes {
       this.updatedAt);
   Attributes.fromJson(Map<String, dynamic> json) {
     name = json['name'] ?? '';
-    altNames = json['altNames'] ?? {};
+    altNames = json['altNames'] == null
+        ? (json['altNames'] as List<dynamic>)
+            .map((e) => (e as Map<String, dynamic>).cast<String, String>())
+            .toList()
+        : [
+            {'': ''},
+          ];
     website = json['website'] ?? '';
     ircServer = json['ircServer'] ?? '';
     discord = json['discord'] ?? '';

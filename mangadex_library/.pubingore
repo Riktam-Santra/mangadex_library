@@ -6,4 +6,4 @@ build/
 pubspec.lock
 
 testData.json
-test\mangadex_library_example.dart
+sampledata.json
