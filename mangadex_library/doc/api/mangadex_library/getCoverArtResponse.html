@@ -58,8 +58,8 @@
 <li><span class="parameter" id="getCoverArtResponse-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span></li>
 <li><span class="parameter" id="getCoverArtResponse-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span></li>
 <li><span class="parameter" id="getCoverArtResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span></li>
-<li><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span></li>
-<li><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span> = <span class="default-value">0</span>]</span></li>
+<li><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span></li>
 </ol>)
 
     </section>
@@ -80,9 +80,11 @@ filtered by a list of <code>uploaders</code> and <code>locales</code></p>
   List&lt;String&gt;? uploaders,
   List&lt;String&gt;? locales,
   Map&lt;String, dynamic&gt;? order,
-  int? limit = 10,
-  int? offset = 0,
+  int? limit,
+  int? offset,
 ]) async {
+  var _limit = limit == null ? &#39;?limit=10&#39; : &#39;?limit=$limit&#39;;
+  var _offset = offset == null ? &#39;&amp;offset=0&#39; : &#39;&amp;offset=$offset&#39;;
   var _mangasIds = &#39;&#39;;
   mangaIds.forEach((element) {
     _mangasIds = _mangasIds + &#39;&amp;manga[]=$element&#39;;
@@ -115,7 +117,8 @@ filtered by a list of <code>uploaders</code> and <code>locales</code></p>
         &#39;&amp;order[createdAt]=asc&#39; &#39;&amp;order[updatedAt]=asc&#39; &#39;&amp;order[volume]=asc&#39;;
   }
   final uri =
-      &#39;https:&#47;&#47;$authority&#47;cover?limit=$limit&amp;offset=$offset$_mangasIds$_coverIds$_locales$_uploaders$_order&#39;;
+      &#39;https:&#47;&#47;$authority&#47;cover$_limit$_offset$_mangasIds$_coverIds$_locales$_uploaders$_order&#39;;
+  print(uri);
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;,
   });
@@ -246,7 +249,7 @@ filtered by a list of <code>uploaders</code> and <code>locales</code></p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.11
+      1.3.13
   </span>
 
   

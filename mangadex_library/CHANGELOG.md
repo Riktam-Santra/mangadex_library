@@ -348,6 +348,7 @@
 - Fixed critical searchResponse() and getScanlationGroupResponse() related [issues](https://github.com/Riktam-Santra/mangadex_library/issues/2). 
 - getCoverArt() and getCoverArtResponse() now take in mangaIds and coverIds parameters as `List<String>` which was previously just String values.
 - added locales, uploaders, order, limit, offset parameters to getCoverArt() and getCoverArtResponse
+- changed search() function's **query parameter name to 'title'**
 
 ## 1.3.11
 - Fixed multiple problems with json parsing in the Data class under [scanlationsResult.dart](https://github.com/Riktam-Santra/mangadex_library/blob/main/mangadex_library/lib/models/scanlation/scanlationsResult.dart)
@@ -357,3 +358,6 @@
 - Removed package 'test' as a dependency due to incompability with flutter.
 - Slightly updated the documentation.
 - Deleted /test/test.dart
+
+## 1.3.13
+- Fixed getCoverArt() function where limit and offset were set to null.

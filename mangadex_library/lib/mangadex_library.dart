@@ -565,9 +565,11 @@ Future<http.Response> getCoverArtResponse(
   List<String>? uploaders,
   List<String>? locales,
   Map<String, dynamic>? order,
-  int? limit = 10,
-  int? offset = 0,
+  int? limit,
+  int? offset,
 ]) async {
+  var _limit = limit == null ? '?limit=10' : '?limit=$limit';
+  var _offset = offset == null ? '&offset=0' : '&offset=$offset';
   var _mangasIds = '';
   mangaIds.forEach((element) {
     _mangasIds = _mangasIds + '&manga[]=$element';
@@ -600,7 +602,8 @@ Future<http.Response> getCoverArtResponse(
         '&order[createdAt]=asc' '&order[updatedAt]=asc' '&order[volume]=asc';
   }
   final uri =
-      'https://$authority/cover?limit=$limit&offset=$offset$_mangasIds$_coverIds$_locales$_uploaders$_order';
+      'https://$authority/cover$_limit$_offset$_mangasIds$_coverIds$_locales$_uploaders$_order';
+  print(uri);
   var response = await http.get(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
   });
@@ -620,6 +623,7 @@ Future<Cover> getCoverArt(
 ]) async {
   var response = await getCoverArtResponse(
       mangaIds, coverIds, uploaders, locales, order, limit, offset);
+  print(response.body);
   try {
     return Cover.fromJson(jsonDecode(response.body));
   } on Exception {
