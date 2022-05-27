@@ -361,3 +361,7 @@
 
 ## 1.3.13
 - Fixed getCoverArt() function where limit and offset were set to null.
+
+## 1.3.14
+- Fixed getCoverArtUrl() function adding `[]` brackets around the manga id it was supplied to.
+- getCoverArt() now returns a `List<String>` (previously) `String`.

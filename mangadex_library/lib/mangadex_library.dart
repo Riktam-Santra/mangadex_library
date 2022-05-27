@@ -631,23 +631,28 @@ Future<Cover> getCoverArt(
   }
 }
 
-///Directly get Cover art details of a manga with [mangaId]
+///Directly get Cover art details of a manga with [mangaIds]
 ///and return a [String] containing a url to the cover page
 ///
 ///The [res] parameter can be used to change resolution of the cover art obtained
 ///The [res] parameter only supports values 256 and 512
 ///
 ///The resolution remains unchanged if any other value of [res] is given.
-Future<String> getCoverArtUrl(List<String> mangaId, {int? res}) async {
+Future<List<String>> getCoverArtUrl(List<String> mangaIds, {int? res}) async {
+  var urls = <String>[];
   var reso = res ?? '';
-  var data = await getCoverArt(mangaId);
+  var data = await getCoverArt(mangaIds);
 
   var filename = data.data[0].attributes.fileName;
-  if (reso == 256 || reso == 512) {
-    return 'https://uploads.mangadex.org/covers/$mangaId/$filename.$reso.jpg';
-  } else {
-    return 'https://uploads.mangadex.org/covers/$mangaId/$filename';
-  }
+  mangaIds.forEach((element) {
+    if (reso == 256 || reso == 512) {
+      urls.add(
+          'https://uploads.mangadex.org/covers/$element/$filename.$reso.jpg');
+    } else {
+      urls.add('https://uploads.mangadex.org/covers/$element/$filename');
+    }
+  });
+  return urls;
 }
 
 // User related functions
