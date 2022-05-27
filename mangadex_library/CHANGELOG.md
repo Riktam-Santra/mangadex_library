@@ -352,3 +352,8 @@
 ## 1.3.11
 - Fixed multiple problems with json parsing in the Data class under [scanlationsResult.dart](https://github.com/Riktam-Santra/mangadex_library/blob/main/mangadex_library/lib/models/scanlation/scanlationsResult.dart)
 - Added /test/test.dart for testing.
+
+## 1.3.12 
+- Removed package 'test' as a dependency due to incompability with flutter.
+- Slightly updated the documentation.
+- Deleted /test/test.dart

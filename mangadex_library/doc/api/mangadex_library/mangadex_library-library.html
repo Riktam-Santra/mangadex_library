@@ -524,8 +524,8 @@ returns a <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">Li
 
 </dt>
 <dd>
-  gets <code>limit</code> number of chapters for the given <code>mangaId</code> or uuid
-Returns the manga data in a <code>ChapterData</code> class instance 
+  gets <code>limit</code> number of chapters and their data for the given <code>mangaId</code> or uuid,
+mangas can be filtered by their <code>groups</code>, <code>uploader</code>, <code>volume</code>, or <code>chapter</code>. <a href="../mangadex_library/getChapters.html">[...]</a>
   
 
 </dd>
@@ -565,7 +565,9 @@ art details for a manga with given <code>mangaIds</code> or uuid
 
 </dt>
 <dd>
-  returns a https response with cover art details for a manga with given <code>mangaIds</code> or uuid 
+  returns a https response with cover art details for a manga with given <code>mangaIds</code> or uuid,
+it can also take multiple <code>coverIds</code> and get their details at once, cover arts can also be
+filtered by a list of <code>uploaders</code> and <code>locales</code> 
   
 
 </dd>
@@ -1148,7 +1150,7 @@ in an <a href="../models_author_author_search_results/AuthorSearchResult-class.h
 
 </dt>
 <dd>
-  Set the reading status for a certain manga
+  Set the reading status for a certain manga to <code>status</code>
 If no reading status is supplied to it, the reading status is set as 'reading' 
   
 
@@ -1256,8 +1258,8 @@ update the list and returns the updated data in a http response.
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_author_author_info/models_author_author_info-library.html">author_info</a></li>
       <li><a href="../models_author_author_search_results/models_author_author_search_results-library.html">author_search_results</a></li>
-      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
+      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
       <li><a href="../models_custom_lists_custom_list_confirmation/models_custom_lists_custom_list_confirmation-library.html">custom_list_confirmation</a></li>

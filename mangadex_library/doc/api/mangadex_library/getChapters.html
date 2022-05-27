@@ -75,8 +75,11 @@
     </section>
     
 <section class="desc markdown">
-  <p>gets <code>limit</code> number of chapters for the given <code>mangaId</code> or uuid
-Returns the manga data in a <code>ChapterData</code> class instance</p>
+  <p>gets <code>limit</code> number of chapters and their data for the given <code>mangaId</code> or uuid,
+mangas can be filtered by their <code>groups</code>, <code>uploader</code>, <code>volume</code>, or <code>chapter</code>.</p>
+<p>They can also be filtered by their <code>translatedLanguage</code>, <code>originalLanguage</code>, <code>excludedOriginalLanguage</code>,
+and even their <code>contentRating</code> or by date with <code>createdAtSince</code>, <code>updatedAtSince</code>, <code>publishedAtSince</code> parameters.</p>
+<p>Returns the manga data in a <code>ChapterData</code> class instance.</p>
 </section>
 
 

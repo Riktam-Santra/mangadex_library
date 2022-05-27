@@ -446,8 +446,13 @@ Future<http.Response> getChaptersResponse(String mangaId,
   return response;
 }
 
-///gets [limit] number of chapters for the given [mangaId] or uuid
-///Returns the manga data in a [ChapterData] class instance
+///gets [limit] number of chapters and their data for the given [mangaId] or uuid,
+///mangas can be filtered by their [groups], [uploader], [volume], or [chapter].
+///
+///They can also be filtered by their [translatedLanguage], [originalLanguage], [excludedOriginalLanguage],
+///and even their [contentRating] or by date with [createdAtSince], [updatedAtSince], [publishedAtSince] parameters.
+///
+///Returns the manga data in a [ChapterData] class instance.
 Future<ChapterData> getChapters(String mangaId,
     {List<String>? ids,
     String? title,
@@ -551,7 +556,9 @@ Future<List<String>> getChapterFilenames(
 
 // Manga cover art related functions
 
-///returns a https response with cover art details for a manga with given [mangaIds] or uuid
+///returns a https response with cover art details for a manga with given [mangaIds] or uuid,
+///it can also take multiple [coverIds] and get their details at once, cover arts can also be
+///filtered by a list of [uploaders] and [locales]
 Future<http.Response> getCoverArtResponse(
   List<String> mangaIds, [
   List<String>? coverIds,
@@ -915,7 +922,7 @@ Future<MangaReadingStatus> getMangaReadingStatus(
   }
 }
 
-/// Set the reading status for a certain manga
+/// Set the reading status for a certain manga to [status]
 /// If no reading status is supplied to it, the reading status is set as 'reading'
 Future<Result> setMangaReadingStatus(
     String sessionToken, String mangaId, ReadingStatus? status) async {
