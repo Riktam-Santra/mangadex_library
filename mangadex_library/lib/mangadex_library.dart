@@ -6,19 +6,19 @@ library mangadex_library;
 
 import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'package:mangadex_library/models/author/author_info.dart';
-import 'package:mangadex_library/models/author/author_search_results.dart';
-import 'package:mangadex_library/models/common/visibility.dart';
-import 'package:mangadex_library/models/custom_lists/custom_list_confirmation.dart';
-import 'package:mangadex_library/models/login/token_check.dart';
-import 'package:mangadex_library/models/scanlation/scanlation.dart';
-import 'package:mangadex_library/models/scanlation/scanlationsResult.dart';
-import 'package:mangadex_library/models/user/user_feed/user_feed.dart';
 
 import 'mangadexServerException.dart';
 import 'enum_utils.dart';
 
+import 'package:http/http.dart' as http;
+import '/models/author/author_info.dart';
+import '/models/author/author_search_results.dart';
+import '/models/common/visibility.dart';
+import '/models/custom_lists/custom_list_confirmation.dart';
+import '/models/login/token_check.dart';
+import '/models/scanlation/scanlation.dart';
+import '/models/scanlation/scanlationsResult.dart';
+import '/models/user/user_feed/user_feed.dart';
 import 'models/chapter/readChapters.dart';
 import 'models/common/allMangaReadingStatus.dart';
 import 'models/common/content_rating.dart';
@@ -552,6 +552,35 @@ Future<List<String>> getChapterFilenames(
   } else {
     return response.chapter.data;
   }
+}
+
+///Gets manga chapter and volume info of a manga identified by it's [mangaId],
+///which can be filtered by [groupIds] and [translatedLanguages]
+///
+///Note: This function DOES NOT have a model class to parse the data into since most of the data is
+///dynamic and doesn't have aboslute property names.
+Future<http.Response> getMangaAggregate(String mangaId,
+    {List<String>? groupIds, List<LanguageCodes>? translatedLanguages}) async {
+  var _groupIds = '';
+  var _translatedLanguages = '';
+  if (groupIds != null) {
+    groupIds.forEach((element) {
+      _groupIds = _groupIds + '&groups[]=$element';
+    });
+  }
+  if (translatedLanguages != null) {
+    translatedLanguages.forEach((element) {
+      _translatedLanguages = _translatedLanguages +
+          '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}';
+    });
+  }
+  var unencodedPath =
+      '/manga/$mangaId/aggregate?$_groupIds$_translatedLanguages';
+  var uri = 'https://$authority$unencodedPath';
+  var response = await http.get(Uri.parse(uri), headers: {
+    HttpHeaders.contentTypeHeader: 'application/json',
+  });
+  return response;
 }
 
 // Manga cover art related functions

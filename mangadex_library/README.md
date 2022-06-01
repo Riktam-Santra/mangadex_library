@@ -8,6 +8,7 @@ The library is currently in an **under development and gradually changing** stat
 - Logout user
 - Search for Mangas
 - Get Manga thumbnails/covers
+- Get manga chapters
 - Retieve Manga pages
 - Get logged in user data
 - Get a user's details

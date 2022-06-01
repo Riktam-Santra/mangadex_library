@@ -365,3 +365,6 @@
 ## 1.3.14
 - Fixed getCoverArtUrl() function adding `[]` brackets around the manga id it was supplied to.
 - getCoverArt() now returns a `List<String>` (previously) `String`.
+
+## 1.3.15
+- Added getMangaAggregate()
