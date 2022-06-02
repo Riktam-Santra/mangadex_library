@@ -19,7 +19,7 @@ void printFilenames() async {
     var token = loginData.token
         .session; // this sets the token variable to store the session token obtained using
     //the login function, it is a String value.
-    // The token is used to access various sections and therefore it is recommended to be made accessible at all times.
+    // The token is not required as of now but is only for demonstration of the login function.
 
     var searchData = await lib.search(
         query:
@@ -42,21 +42,13 @@ void printFilenames() async {
     //Every chapter has a usique chapter ID and a chapter Hash
     //Chapter ID is required to access info of the desired chapter.
     //Chapter Hash is required for requesting manga pages.
-    var singleChapterData = await lib.getChapterDataByChapterId(chapterID);
-    var filenames = singleChapterData.chapter.data;
-    var baseUrl = singleChapterData.baseUrl;
-    // the filenames variable stores the name of all files in a manga chapter
-    for (var i = 0; i < filenames.length; i++) {
-      // this for loop prints the url to all the pages in the provided chapters.
+    //All Chapter Hash and Chapter filenames can be requested by using the getBaseUrl() function
+    var baseUrl = await lib.getBaseUrl(chapterID);
+    //This look prints all urls to all the pages of the chapterID
+    baseUrl.chapter.dataSaver.forEach((filename) {
       print(lib.constructPageUrl(
-          baseUrl,
-          token,
-          true,
-          singleChapterData.chapter.hash,
-          singleChapterData.chapter.dataSaver[i]));
-    }
-
-    await lib.logout(loginData.token.session); //finally log out the user.
+          baseUrl.baseUrl, true, baseUrl.chapter.hash, filename));
+    });
   } on MangadexServerException catch (e) {
     e.info.errors.forEach((error) {
       print(error

@@ -536,10 +536,10 @@ Future<BaseUrl> getBaseUrl(
 /// and returns a [String] containing the full constructed address to the page
 /// base url can be obtained from the [getBaseUrl] function, the token using the login() function
 /// chapterHash and filename can both be obtained via [getChapterDataByChapterId]
-String constructPageUrl(String baseUrl, String sessionToken, bool dataSaver,
-    String chapterHash, String filename) {
+String constructPageUrl(
+    String baseUrl, bool dataSaver, String chapterHash, String filename) {
   var dataMode = dataSaver ? 'data-saver' : 'data';
-  return '$baseUrl/$sessionToken/$dataMode/$chapterHash/$filename';
+  return '$baseUrl/$dataMode/$chapterHash/$filename';
 }
 
 /// Gets the chapter filenames just using the [chapterId] of a chapter.

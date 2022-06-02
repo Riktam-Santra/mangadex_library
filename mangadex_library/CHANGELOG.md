@@ -364,7 +364,13 @@
 
 ## 1.3.14
 - Fixed getCoverArtUrl() function adding `[]` brackets around the manga id it was supplied to.
-- getCoverArt() now returns a `List<String>` (previously) `String`.
+- getCoverArt() now returns a `List<String>` (previously `String`).
 
 ## 1.3.15
-- Added getMangaAggregate()
+- Added getMangaAggregate() function to get details about the volumes and chapters of a manga.
+
+## 1.3.16
+- Fixed a typo in the Search.dart model class mentioned in one of the [issues](https://github.com/Riktam-Santra/mangadex_library/issues/3).
+- The constructPageUrl() function no longer required the session token argument.
+- Fixed a bug where the constructPageUrl() fuction returned forbidden addresses.
+- Updated the example on the readme page to the latest changes.

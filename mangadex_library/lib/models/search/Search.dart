@@ -14,7 +14,7 @@ class Search {
 
     response = json['response'] ?? '';
     data = <Data>[];
-    if (json['dara'] != null) {
+    if (json['data'] != null) {
       json['data'].forEach((v) {
         data.add(Data.fromJson(v));
       });
