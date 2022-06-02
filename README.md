@@ -74,7 +74,6 @@ void printFilenames() async {
       // this for loop prints the url to all the pages in the provided chapters.
       print(lib.constructPageUrl(
           baseUrl,
-          token,
           true,
           singleChapterData.chapter.hash,
           singleChapterData.chapter.dataSaver[i]));
