@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: 
-          cd mangadex_library
+          cd mangadex_library &&
           dart pub get
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
@@ -36,7 +36,7 @@ jobs:
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run:
-          cd mangadex_library
+          cd mangadex_library &&
           dart analyze
 
       # Your project will need to have tests in test/ and a dependency on
