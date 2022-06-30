@@ -7,9 +7,9 @@ name: Dart
 
 on:
   push:
-    branches: [ "main", "order-enums" ]
+    branches: ["order-enums" ]
   pull_request:
-    branches: [ "main","order-enums" ]
+    branches: ["order-enums" ]
 
 jobs:
   build:
@@ -44,4 +44,4 @@ jobs:
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
       - name: Run tests
-        run: cd mangadex_library && dart test test/test.dart
+        run: cd mangadex_library && dart test ./test/test.dart
