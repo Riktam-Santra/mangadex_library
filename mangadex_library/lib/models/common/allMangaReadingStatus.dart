@@ -5,6 +5,6 @@ class AllMangaReadingStatus {
   AllMangaReadingStatus(this.result, this.statuses);
   AllMangaReadingStatus.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    statuses = json['statuses']!;
+    statuses = json['statuses'] ?? {};
   }
 }

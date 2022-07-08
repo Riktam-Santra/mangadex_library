@@ -1,9 +1,0 @@
-.dart_tool/
-.packages
-.vscode/
-build/
-
-pubspec.lock
-
-testData.json
-sampledata.json

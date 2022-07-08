@@ -954,7 +954,7 @@ Future<http.Response> getAllMangaReadingStatusResponse(
 ///The [sessionToken] can be obtained using the login() function.
 Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String sessionToken,
     {ReadingStatus? readingStatus}) async {
-  var status = '';
+  String? status;
   if (readingStatus != null) {
     status = EnumUtils.parseStatusFromEnum(readingStatus);
   }

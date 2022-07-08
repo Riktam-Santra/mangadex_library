@@ -391,3 +391,6 @@
   ```
   I'll try to write the documentation specifically for this part for now but feel free to ping me if you need any help.
 - Created [order_enums.dart](/lib/models/common/order_enums.dart) to hold all possible order enums for order parameters of different functions.
+
+## 1.3.18
+- Fixed a null error in function getAllUserMangaReadingStatus() when not passing in any reading status.
