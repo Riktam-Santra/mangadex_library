@@ -374,3 +374,20 @@
 - The constructPageUrl() function no longer required the session token argument.
 - Fixed a bug where the constructPageUrl() fuction returned forbidden addresses.
 - Updated the example on the readme page to the latest changes.
+
+## 1.3.17
+- Added result and resource fields to ChapterData model class.
+- Order parameters of all functions now take a Map of Enums rather than String values, for example an order for search was previously
+  ```dart
+  search(
+    order: {'createdAt':'asc'},
+  );
+  ```
+  HAS BEEN CHANGED TO
+  ```dart
+  search(
+        orders: {SearchOrders.createdAt: OrderDirections.ascending},
+      );
+  ```
+  I'll try to write the documentation specifically for this part for now but feel free to ping me if you need any help.
+- Created [order_enums.dart](/lib/models/common/order_enums.dart) to hold all possible order enums for order parameters of different functions.

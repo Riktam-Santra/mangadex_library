@@ -59,7 +59,7 @@
 <li><span class="parameter" id="getScanlationGroupResponse-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span></li>
 <li><span class="parameter" id="getScanlationGroupResponse-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span></li>
 <li><span class="parameter" id="getScanlationGroupResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
-<li><span class="parameter" id="getScanlationGroupResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span></li>
+<li><span class="parameter" id="getScanlationGroupResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/ScanlationOrders.html">ScanlationOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span></li>
 </ol>)
 
     </section>
@@ -80,7 +80,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
   String? name,
   LanguageCodes? focussedLanguage,
   List&lt;String&gt;? includes,
-  Map&lt;String, String&gt;? order,
+  Map&lt;ScanlationOrders, OrderDirections&gt;? order,
 }) {
   var _limit = limit == null ? &#39;limit=10&#39; : &#39;limit=$limit&#39;;
   var _offset = offset == null ? &#39;&#39; : &#39;&amp;offset=$offset&#39;;
@@ -103,7 +103,8 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
   var _order = &#39;&#39;;
   (order != null)
       ? order.entries.forEach((element) {
-          _order = _order + &#39;&amp;order[$element]=${order[element]}&#39;;
+          _order = _order +
+              &#39;&amp;order[${EnumUtils.parseScanlationOrderEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}&#39;;
         })
       : _order = &#39;&amp;order[latestUploadedChapter]=desc&#39;;
 
@@ -240,7 +241,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.15
+      1.3.17
   </span>
 
   
