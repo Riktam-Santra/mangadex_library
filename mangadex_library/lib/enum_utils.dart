@@ -1,4 +1,5 @@
 import 'package:mangadex_library/models/common/manga_status.dart';
+import 'package:mangadex_library/models/common/order_enums.dart';
 import 'package:mangadex_library/models/common/publication_demographic.dart';
 import 'package:mangadex_library/models/common/tag_modes.dart';
 import 'package:mangadex_library/models/common/visibility.dart';
@@ -114,6 +115,79 @@ abstract class EnumUtils {
         return 'private';
       case Visibility.public:
         return 'public';
+    }
+  }
+
+  static String parseSearchOrdersFromEnum(SearchOrders order) {
+    switch (order) {
+      case SearchOrders.title:
+        return 'title';
+      case SearchOrders.year:
+        return 'year';
+      case SearchOrders.createdAt:
+        return 'createdAt';
+      case SearchOrders.updatedAt:
+        return 'updatedAt';
+      case SearchOrders.latestUploadedChapter:
+        return 'latestUploadedChapter';
+      case SearchOrders.followedCount:
+        return 'followedCount';
+      case SearchOrders.relevance:
+        return 'relevance';
+      case SearchOrders.rating:
+        return 'rating';
+    }
+  }
+
+  static String parseChapterOrdersFromEnum(ChapterOrders order) {
+    switch (order) {
+      case ChapterOrders.createdAt:
+        return 'createdAt';
+      case ChapterOrders.updatedAt:
+        return 'updatedAt';
+      case ChapterOrders.publishAt:
+        return 'publishAt';
+      case ChapterOrders.readableAt:
+        return 'readableAt';
+      case ChapterOrders.volume:
+        return 'volume';
+      case ChapterOrders.chapter:
+        return 'chapter';
+    }
+  }
+
+  static String parseCoverOrdersFromEnum(CoverOrders order) {
+    switch (order) {
+      case CoverOrders.createdAt:
+        return 'createdAt';
+      case CoverOrders.updatedAt:
+        return 'updatedAt';
+      case CoverOrders.volume:
+        return 'volume';
+    }
+  }
+
+  static String parseOrderDirectionFromEnum(OrderDirections direction) {
+    switch (direction) {
+      case OrderDirections.ascending:
+        return 'asc';
+      case OrderDirections.descending:
+        return 'desc';
+    }
+  }
+
+  static String parseScanlationOrderEnum(ScanlationOrders order) {
+    switch (order) {
+      case ScanlationOrders.name:
+        return 'name';
+      case ScanlationOrders.createdAt:
+        return 'createdAt';
+      case ScanlationOrders.updatedAt:
+        return 'updatedAt';
+      case ScanlationOrders.followedCount:
+        return 'followedCount';
+      case ScanlationOrders.relevance:
+        return 'relevance';
     }
   }
 }

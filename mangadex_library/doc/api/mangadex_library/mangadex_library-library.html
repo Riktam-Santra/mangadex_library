@@ -69,7 +69,7 @@
 
 </dt>
 <dd>
-   
+  
   <div class="features">final</div>
 
 </dd>
@@ -92,7 +92,7 @@
   Adds a manga identified by it's <code>mangaId</code> / UUID to a custom list identified by
 it's <code>listId</code> if the user identified by the <code>sessionToken</code>
 has the permission to do so and returns a <a href="../models_common_resultOk/Result-class.html">Result</a>
-class instance containing info on whether the request was successful. 
+class instance containing info on whether the request was successful.
   
 
 </dd>
@@ -107,7 +107,7 @@ class instance containing info on whether the request was successful.
 <dd>
   Adds a manga identified by it's <code>mangaId</code> / UUID to a custom list identified by
 it's <code>listId</code> if the user identified by the <code>sessionToken</code>
-has the permission to do so and returns a http response. 
+has the permission to do so and returns a http response.
   
 
 </dd>
@@ -121,7 +121,7 @@ has the permission to do so and returns a http response.
 </dt>
 <dd>
   Simply check if the user identified by the current session <code>sessionToken</code>
-follows a Group with <code>groupId</code> or uuid and return a http response 
+follows a Group with <code>groupId</code> or uuid and return a http response
   
 
 </dd>
@@ -135,7 +135,7 @@ follows a Group with <code>groupId</code> or uuid and return a http response
 </dt>
 <dd>
   Simply check if the user identified by the current session <code>sessionToken</code>
-follows a Group with <code>groupId</code> or uuid and return a http response 
+follows a Group with <code>groupId</code> or uuid and return a http response
   
 
 </dd>
@@ -149,7 +149,7 @@ follows a Group with <code>groupId</code> or uuid and return a http response
 </dt>
 <dd>
   Simply check if the user identified by the current session <code>sessionToken</code>
-follows a manga with <code>mangaId</code> or uuid and return a boolean 
+follows a manga with <code>mangaId</code> or uuid and return a boolean
   
 
 </dd>
@@ -163,7 +163,7 @@ follows a manga with <code>mangaId</code> or uuid and return a boolean
 </dt>
 <dd>
   Simply check if the user identified by the current session <code>sessionToken</code>
-follows a manga with <code>mangaId</code> or uuid and return a http response 
+follows a manga with <code>mangaId</code> or uuid and return a http response
   
 
 </dd>
@@ -177,7 +177,7 @@ follows a manga with <code>mangaId</code> or uuid and return a http response
 </dt>
 <dd>
   Simply check if the user identified by the current session <code>sessionToken</code>
-follows a User with <code>userId</code> or uuid and return a bool 
+follows a User with <code>userId</code> or uuid and return a bool
   
 
 </dd>
@@ -191,7 +191,7 @@ follows a User with <code>userId</code> or uuid and return a bool
 </dt>
 <dd>
   Returns a http response of whether the user identified by the current session <code>sessionToken</code>
-follows a User with <code>userId</code> or uuid and return a http response 
+follows a User with <code>userId</code> or uuid and return a http response
   
 
 </dd>
@@ -205,7 +205,7 @@ follows a User with <code>userId</code> or uuid and return a http response
 </dt>
 <dd>
   Returns an <a href="../models_login_token_check/AuthenticationCheck-class.html">AuthenticationCheck</a> class instance with data on whether the <code>sessionToken</code> is authenticated and the
-user's permissions. 
+user's permissions.
   
 
 </dd>
@@ -219,13 +219,13 @@ user's permissions.
 </dt>
 <dd>
   Returns an http response with data on whether the <code>sessionToken</code> is authenticated and the
-user's permissions. 
+user's permissions.
   
 
 </dd>
 
         <dt id="constructPageUrl" class="callable">
-  <span class="name"><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></span><span class="signature">(<wbr><span class="parameter" id="constructPageUrl-param-baseUrl"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">baseUrl</span>, </span><span class="parameter" id="constructPageUrl-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span>, </span><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span>)
+  <span class="name"><a href="../mangadex_library/constructPageUrl.html">constructPageUrl</a></span><span class="signature">(<wbr><span class="parameter" id="constructPageUrl-param-baseUrl"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">baseUrl</span>, </span><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span>, </span><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
   </span>
   
@@ -235,7 +235,7 @@ user's permissions.
   Uses <code>baseUrl</code>, <code>sessionToken</code>, <code>chapterHash</code> and <code>filename</code>
 and returns a <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing the full constructed address to the page
 base url can be obtained from the <a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a> function, the token using the login() function
-chapterHash and filename can both be obtained via <a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a> 
+chapterHash and filename can both be obtained via <a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a>
   
 
 </dd>
@@ -252,7 +252,7 @@ chapterHash and filename can both be obtained via <a href="../mangadex_library/g
 sets visibility to either <a href="../models_common_visibility/Visibility.html">Visibility.private</a> or
 <a href="../models_common_visibility/Visibility.html">Visibility.public</a> and adds all mangas IDs / UUIDs
 in the <code>mangaIds</code> list and returns a <code>SingleCustomListResponse</code>
-class instance containing data of the list created. 
+class instance containing data of the list created.
   
 
 </dd>
@@ -269,7 +269,7 @@ class instance containing data of the list created.
 sets visibility to either <a href="../models_common_visibility/Visibility.html">Visibility.private</a> or
 <a href="../models_common_visibility/Visibility.html">Visibility.public</a> and adds all mangas IDs / UUIDs
 in the <code>mangaIds</code> list and returns a http response
-containing data of the list created. 
+containing data of the list created.
   
 
 </dd>
@@ -283,7 +283,7 @@ containing data of the list created.
 </dt>
 <dd>
   Creates  a Scanlation Group managed by the user identified by it's <code>sessionToken</code> or UUID
-and returns an http response containing the group's information after being created. 
+and returns an http response containing the group's information after being created.
   
 
 </dd>
@@ -297,7 +297,7 @@ and returns an http response containing the group's information after being crea
 </dt>
 <dd>
   Creates  a Scanlation Group managed by the user identified by it's <code>sessionToken</code> or UUID
-and returns an http response containing the group's information after being created. 
+and returns an http response containing the group's information after being created.
   
 
 </dd>
@@ -313,7 +313,7 @@ and returns an http response containing the group's information after being crea
   Deletes a list identified by it's <code>listId</code> only
 if the user identified by the <code>sessionToken</code> is
 eligible to do so and retuns a <a href="../models_common_resultOk/Result-class.html">Result</a> instance
-containing info on whether the request was successful. 
+containing info on whether the request was successful.
   
 
 </dd>
@@ -328,7 +328,7 @@ containing info on whether the request was successful.
 <dd>
   Deletes a list identified by it's <code>listId</code> only
 if the user identified by the <code>sessionToken</code> is
-eligible to do so and retuns a http response. 
+eligible to do so and retuns a http response.
   
 
 </dd>
@@ -343,7 +343,7 @@ eligible to do so and retuns a http response.
 <dd>
   Makes the user identified by the <code>sessionToken</code> follow
 a custom list identified by it's <code>listId</code> and returns a
-<a href="../models_common_resultOk/Result-class.html">Result</a> class instance containing info on whether the request was successful. 
+<a href="../models_common_resultOk/Result-class.html">Result</a> class instance containing info on whether the request was successful.
   
 
 </dd>
@@ -358,7 +358,7 @@ a custom list identified by it's <code>listId</code> and returns a
 <dd>
   Makes the user identified by the <code>sessionToken</code> follow
 a custom list identified by it's <code>listId</code> and returns a
-http response. 
+http response.
   
 
 </dd>
@@ -371,7 +371,7 @@ http response.
 
 </dt>
 <dd>
-  Follow a manga identified by <code>mangaId</code> and optionally set a reading status for it. <a href="../mangadex_library/followManga.html">[...]</a>
+  Follow a manga identified by <code>mangaId</code> and optionally set a reading status for it.
   
 
 </dd>
@@ -386,7 +386,7 @@ http response.
 <dd>
   Returns a http response containing all reading statuses of all manga
 followed by the user identified by the <code>sessionToken</code>
-The <code>sessionToken</code> can be obtained using the login() function. 
+The <code>sessionToken</code> can be obtained using the login() function.
   
 
 </dd>
@@ -400,7 +400,7 @@ The <code>sessionToken</code> can be obtained using the login() function.
 </dt>
 <dd>
   Returns a <code>ReadChapters</code> class instance containing details
-of all read chapters of a manga 
+of all read chapters of a manga
   
 
 </dd>
@@ -414,7 +414,7 @@ of all read chapters of a manga
 </dt>
 <dd>
   Returns a http response with details of all read chapters in the list of given <code>mangaIds</code> or uuids,
-please note it returns a http response since the response is not always of the same schema. 
+please note it returns a http response since the response is not always of the same schema.
   
 
 </dd>
@@ -429,7 +429,7 @@ please note it returns a http response since the response is not always of the s
 <dd>
   Returns a <code>AllMangaReadingStatus</code> class instance containing all reading statuses of all manga
 followed by the user identified by the <code>sessionToken</code>
-The <code>sessionToken</code> can be obtained using the login() function. 
+The <code>sessionToken</code> can be obtained using the login() function.
   
 
 </dd>
@@ -443,7 +443,7 @@ The <code>sessionToken</code> can be obtained using the login() function.
 </dt>
 <dd>
   Get details of an author identified by the author's <code>authorId</code> or UUID nad return the data
-in an <a href="../models_author_author_info/AuthorInfo-class.html">AuthorInfo</a> class instance. 
+in an <a href="../models_author_author_info/AuthorInfo-class.html">AuthorInfo</a> class instance.
   
 
 </dd>
@@ -456,7 +456,7 @@ in an <a href="../models_author_author_info/AuthorInfo-class.html">AuthorInfo</a
 
 </dt>
 <dd>
-  Get details of an author identified by the author's <code>authorId</code> or UUID nad return the data as an http response. 
+  Get details of an author identified by the author's <code>authorId</code> or UUID nad return the data as an http response.
   
 
 </dd>
@@ -470,7 +470,7 @@ in an <a href="../models_author_author_info/AuthorInfo-class.html">AuthorInfo</a
 </dt>
 <dd>
   gets base URL of a chapter with the given <code>chapterId</code> or uuid
-Returns the Base Url data in a <code>BaseUrl</code> class instance 
+Returns the Base Url data in a <code>BaseUrl</code> class instance
   
 
 </dd>
@@ -483,7 +483,7 @@ Returns the Base Url data in a <code>BaseUrl</code> class instance
 
 </dt>
 <dd>
-  Returns a http response of Base URL for <code>chapterId</code> or uuid 
+  Returns a http response of Base URL for <code>chapterId</code> or uuid
   
 
 </dd>
@@ -497,7 +497,7 @@ Returns the Base Url data in a <code>BaseUrl</code> class instance
 </dt>
 <dd>
   gets details of a manga with the given <code>chapterId</code> or uuid
-Returns the manga data in a <code>SingleChapterData</code> class instance 
+Returns the manga data in a <code>SingleChapterData</code> class instance
   
 
 </dd>
@@ -511,13 +511,13 @@ Returns the manga data in a <code>SingleChapterData</code> class instance
 </dt>
 <dd>
   Gets the chapter filenames just using the <code>chapterId</code> of a chapter.
-returns a <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a> of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing all the file names of a chapter. 
+returns a <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a> of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing all the file names of a chapter.
   
 
 </dd>
 
         <dt id="getChapters" class="callable">
-  <span class="name"><a href="../mangadex_library/getChapters.html">getChapters</a></span><span class="signature">(<wbr><span class="parameter" id="getChapters-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChapters-param-ids">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getChapters-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="getChapters-param-groups"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span><span class="parameter" id="getChapters-param-uploader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span><span class="parameter" id="getChapters-param-volume"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span><span class="parameter" id="getChapters-param-chapter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span><span class="parameter" id="getChapters-param-translatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span><span class="parameter" id="getChapters-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="getChapters-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span><span class="parameter" id="getChapters-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="getChapters-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="getChapters-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="getChapters-param-publishedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span><span class="parameter" id="getChapters-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getChapters-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getChapters-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span>)
+  <span class="name"><a href="../mangadex_library/getChapters.html">getChapters</a></span><span class="signature">(<wbr><span class="parameter" id="getChapters-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChapters-param-ids">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getChapters-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="getChapters-param-groups"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span><span class="parameter" id="getChapters-param-uploader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span><span class="parameter" id="getChapters-param-volume"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span><span class="parameter" id="getChapters-param-chapter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span><span class="parameter" id="getChapters-param-translatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span><span class="parameter" id="getChapters-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="getChapters-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span><span class="parameter" id="getChapters-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="getChapters-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="getChapters-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="getChapters-param-publishedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span><span class="parameter" id="getChapters-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getChapters-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/ChapterOrders.html">ChapterOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span><span class="parameter" id="getChapters-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getChapters-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">ChapterData</span>&gt;</span></span>
   </span>
   
@@ -525,26 +525,26 @@ returns a <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">Li
 </dt>
 <dd>
   gets <code>limit</code> number of chapters and their data for the given <code>mangaId</code> or uuid,
-mangas can be filtered by their <code>groups</code>, <code>uploader</code>, <code>volume</code>, or <code>chapter</code>. <a href="../mangadex_library/getChapters.html">[...]</a>
+mangas can be filtered by their <code>groups</code>, <code>uploader</code>, <code>volume</code>, or <code>chapter</code>.
   
 
 </dd>
 
         <dt id="getChaptersResponse" class="callable">
-  <span class="name"><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getChaptersResponse-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChaptersResponse-param-ids">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getChaptersResponse-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="getChaptersResponse-param-groups"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span><span class="parameter" id="getChaptersResponse-param-uploader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span><span class="parameter" id="getChaptersResponse-param-volume"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span><span class="parameter" id="getChaptersResponse-param-chapter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span><span class="parameter" id="getChaptersResponse-param-translatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="getChaptersResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-publishedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getChaptersResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getChaptersResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span>)
+  <span class="name"><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getChaptersResponse-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="getChaptersResponse-param-ids">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getChaptersResponse-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="getChaptersResponse-param-groups"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span><span class="parameter" id="getChaptersResponse-param-uploader"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span><span class="parameter" id="getChaptersResponse-param-volume"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span><span class="parameter" id="getChaptersResponse-param-chapter"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span><span class="parameter" id="getChaptersResponse-param-translatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span><span class="parameter" id="getChaptersResponse-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="getChaptersResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-publishedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span><span class="parameter" id="getChaptersResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getChaptersResponse-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/ChapterOrders.html">ChapterOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span><span class="parameter" id="getChaptersResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getChaptersResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns the http response of a list of chapters for <code>mangaId</code> 
+  Returns the http response of a list of chapters for <code>mangaId</code>
   
 
 </dd>
 
         <dt id="getCoverArt" class="callable">
-  <span class="name"><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArt-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span><span class="parameter" id="getCoverArt-param-coverIds">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">coverIds</span>, </span><span class="parameter" id="getCoverArt-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span><span class="parameter" id="getCoverArt-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span><span class="parameter" id="getCoverArt-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span><span class="parameter" id="getCoverArt-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getCoverArt-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span>)
+  <span class="name"><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArt-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span><span class="parameter" id="getCoverArt-param-coverIds">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">coverIds</span>, </span><span class="parameter" id="getCoverArt-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span><span class="parameter" id="getCoverArt-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span><span class="parameter" id="getCoverArt-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/CoverOrders.html">CoverOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span><span class="parameter" id="getCoverArt-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getCoverArt-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Cover</span>&gt;</span></span>
   </span>
   
@@ -552,13 +552,13 @@ mangas can be filtered by their <code>groups</code>, <code>uploader</code>, <cod
 </dt>
 <dd>
   returns an <code>Cover</code> class instance containing cover
-art details for a manga with given <code>mangaIds</code> or uuid 
+art details for a manga with given <code>mangaIds</code> or uuid
   
 
 </dd>
 
         <dt id="getCoverArtResponse" class="callable">
-  <span class="name"><a href="../mangadex_library/getCoverArtResponse.html">getCoverArtResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArtResponse-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span><span class="parameter" id="getCoverArtResponse-param-coverIds">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">coverIds</span>, </span><span class="parameter" id="getCoverArtResponse-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span><span class="parameter" id="getCoverArtResponse-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span><span class="parameter" id="getCoverArtResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span>)
+  <span class="name"><a href="../mangadex_library/getCoverArtResponse.html">getCoverArtResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArtResponse-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span><span class="parameter" id="getCoverArtResponse-param-coverIds">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">coverIds</span>, </span><span class="parameter" id="getCoverArtResponse-param-uploaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">uploaders</span>, </span><span class="parameter" id="getCoverArtResponse-param-locales"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">locales</span>, </span><span class="parameter" id="getCoverArtResponse-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/CoverOrders.html">CoverOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span><span class="parameter" id="getCoverArtResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getCoverArtResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>]</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
   </span>
   
@@ -567,7 +567,7 @@ art details for a manga with given <code>mangaIds</code> or uuid
 <dd>
   returns a https response with cover art details for a manga with given <code>mangaIds</code> or uuid,
 it can also take multiple <code>coverIds</code> and get their details at once, cover arts can also be
-filtered by a list of <code>uploaders</code> and <code>locales</code> 
+filtered by a list of <code>uploaders</code> and <code>locales</code>
   
 
 </dd>
@@ -581,7 +581,7 @@ filtered by a list of <code>uploaders</code> and <code>locales</code>
 </dt>
 <dd>
   Directly get Cover art details of a manga with <code>mangaIds</code>
-and return a <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing a url to the cover page <a href="../mangadex_library/getCoverArtUrl.html">[...]</a>
+and return a <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing a url to the cover page
   
 
 </dd>
@@ -595,7 +595,7 @@ and return a <a href="https://api.flutter.dev/flutter/dart-core/String-class.htm
 </dt>
 <dd>
   Gets the data of the customList identified by it's <code>listId</code>
-or list uuid and returns a <code>SingleCustomListResponse</code>containing the data. 
+or list uuid and returns a <code>SingleCustomListResponse</code>containing the data.
   
 
 </dd>
@@ -609,7 +609,7 @@ or list uuid and returns a <code>SingleCustomListResponse</code>containing the d
 </dt>
 <dd>
   Gets the data of the custom list identified by it's <code>listId</code>
-or list uuid and returns a http response containing the data. 
+or list uuid and returns a http response containing the data.
   
 
 </dd>
@@ -625,7 +625,7 @@ or list uuid and returns a http response containing the data.
   Gets the <code>limit</code> number of custom lists from <code>offset</code>
 in the list of Custom Lists of the user identified
 by the <code>sessionToken</code> and returns a <code>SingleCustomListResponse</code>
-class instance containing all the lists and their data. 
+class instance containing all the lists and their data.
   
 
 </dd>
@@ -641,7 +641,7 @@ class instance containing all the lists and their data.
   Gets the <code>limit</code> number of custom lists from <code>offset</code>
 in the list of Custom Lists of the user identified
 by the <code>sessionToken</code> and returns a http response
-containing the data. 
+containing the data.
   
 
 </dd>
@@ -655,7 +655,7 @@ containing the data.
 </dt>
 <dd>
   Gets the account details of the user and returns the data
-in a <code>UserDetails</code> class instance 
+in a <code>UserDetails</code> class instance
   
 
 </dd>
@@ -668,7 +668,7 @@ in a <code>UserDetails</code> class instance
 
 </dt>
 <dd>
-  Returns a http response of the user details associated with the <code>sessionToken</code> 
+  Returns a http response of the user details associated with the <code>sessionToken</code>
   
 
 </dd>
@@ -682,7 +682,7 @@ in a <code>UserDetails</code> class instance
 </dt>
 <dd>
   Gets manga chapter and volume info of a manga identified by it's <code>mangaId</code>,
-which can be filtered by <code>groupIds</code> and <code>translatedLanguages</code> <a href="../mangadex_library/getMangaAggregate.html">[...]</a>
+which can be filtered by <code>groupIds</code> and <code>translatedLanguages</code>
   
 
 </dd>
@@ -696,7 +696,7 @@ which can be filtered by <code>groupIds</code> and <code>translatedLanguages</co
 </dt>
 <dd>
   gets details of a manga with the given <code>mangaId</code> or uuid
-Returns the manga data in a <a href="../models_common_singleMangaData/SingleMangaData-class.html">SingleMangaData</a> class instance 
+Returns the manga data in a <a href="../models_common_singleMangaData/SingleMangaData-class.html">SingleMangaData</a> class instance
   
 
 </dd>
@@ -710,7 +710,7 @@ Returns the manga data in a <a href="../models_common_singleMangaData/SingleMang
 </dt>
 <dd>
   Returns a <code>MangaReadingStatus</code> class instance containing the reading status
-of a particular manga identified by <code>mangaId</code> or uuid 
+of a particular manga identified by <code>mangaId</code> or uuid
   
 
 </dd>
@@ -723,13 +723,13 @@ of a particular manga identified by <code>mangaId</code> or uuid
 
 </dt>
 <dd>
-  Takes in a <code>refreshToken</code> token and returns a <em>http response</em> of a new refresh token 
+  Takes in a <code>refreshToken</code> token and returns a <em>http response</em> of a new refresh token
   
 
 </dd>
 
         <dt id="getScanlationGroup" class="callable">
-  <span class="name"><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroup-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getScanlationGroup-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroup-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroup-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroup-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroup-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroup-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
+  <span class="name"><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroup-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getScanlationGroup-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroup-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroup-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroup-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroup-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroup-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/ScanlationOrders.html">ScanlationOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_scanlation_scanlationsResult/ScanlationsResult-class.html">ScanlationsResult</a></span>&gt;</span></span>
   </span>
   
@@ -738,7 +738,7 @@ of a particular manga identified by <code>mangaId</code> or uuid
 <dd>
   Search for a scanlation group with the <code>name</code> and returns <code>limit</code> number of results
 from <code>offset</code> which may focus on the given <code>focussedLanguage</code> and returns a
-<a href="../models_scanlation_scanlationsResult/ScanlationsResult-class.html">ScanlationsResult</a> class instance that contains all the information. 
+<a href="../models_scanlation_scanlationsResult/ScanlationsResult-class.html">ScanlationsResult</a> class instance that contains all the information.
   
 
 </dd>
@@ -751,7 +751,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 
 </dt>
 <dd>
-  Returns an <a href="../models_scanlation_scanlation/Scanlation-class.html">Scanlation</a> class instance containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID 
+  Returns an <a href="../models_scanlation_scanlation/Scanlation-class.html">Scanlation</a> class instance containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID
   
 
 </dd>
@@ -764,13 +764,13 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 
 </dt>
 <dd>
-  Returns an http response containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID 
+  Returns an http response containing info of a Scanlation Group identified by it's <code>groupId</code> or UUID
   
 
 </dd>
 
         <dt id="getScanlationGroupResponse" class="callable">
-  <span class="name"><a href="../mangadex_library/getScanlationGroupResponse.html">getScanlationGroupResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroupResponse-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
+  <span class="name"><a href="../mangadex_library/getScanlationGroupResponse.html">getScanlationGroupResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getScanlationGroupResponse-param-limit">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span> = <span class="default-value">10</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-focussedLanguage"><span class="type-annotation"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a>?</span> <span class="parameter-name">focussedLanguage</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="getScanlationGroupResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/ScanlationOrders.html">ScanlationOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
   </span>
   
@@ -778,7 +778,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 </dt>
 <dd>
   Search for a scanlation group with the <code>name</code> and returns <code>limit</code> number of results
-from <code>offset</code> which may focus on the given <code>focussedLanguage</code> and returns a http response. 
+from <code>offset</code> which may focus on the given <code>focussedLanguage</code> and returns a http response.
   
 
 </dd>
@@ -793,7 +793,7 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 <dd>
   Get's <code>limit</code> number of PUBLIC custom lists of a user identified by
 it's <code>userId</code> counting from list <code>offset</code> and returns a
-<code>SingleCustomListResponse</code> class instance containing the details of the lists. 
+<code>SingleCustomListResponse</code> class instance containing the details of the lists.
   
 
 </dd>
@@ -807,7 +807,7 @@ it's <code>userId</code> counting from list <code>offset</code> and returns a
 </dt>
 <dd>
   Get's <code>limit</code> number of PUBLIC custom lists of a user identified by
-it's <code>userId</code> counting from list <code>offset</code> and returns a http response. 
+it's <code>userId</code> counting from list <code>offset</code> and returns a http response.
   
 
 </dd>
@@ -822,7 +822,7 @@ it's <code>userId</code> counting from list <code>offset</code> and returns a ht
 <dd>
   Gets the current User Feed for the user identified
 by <code>sessionToken</code> and returns the data in a
-<code>UserFeed</code> class instance. 
+<code>UserFeed</code> class instance.
   
 
 </dd>
@@ -836,7 +836,7 @@ by <code>sessionToken</code> and returns the data in a
 </dt>
 <dd>
   Returns a http response containing the user feed for the user
-identified by the <code>sessionToken</code>. 
+identified by the <code>sessionToken</code>.
   
 
 </dd>
@@ -850,7 +850,7 @@ identified by the <code>sessionToken</code>.
 </dt>
 <dd>
   Returns a <code>UserFollowedGroups</code> class instance with details of the all the Groups that the user follows,
-the <code>sessionToken</code> is the session token obtained using the login() function 
+the <code>sessionToken</code> is the session token obtained using the login() function
   
 
 </dd>
@@ -864,7 +864,7 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 </dt>
 <dd>
   Returns a http response with details of the all the Groups that the user follows,
-the <code>sessionToken</code> is the session token obtained using the login() function 
+the <code>sessionToken</code> is the session token obtained using the login() function
   
 
 </dd>
@@ -878,7 +878,7 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 </dt>
 <dd>
   Returns a <code>UserFollowedManga</code> class instance of all the Manga the user follows,
-the <code>sessionToken</code> is the session token obtained using the login() function 
+the <code>sessionToken</code> is the session token obtained using the login() function
   
 
 </dd>
@@ -892,7 +892,7 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 </dt>
 <dd>
   Get a http response of the all the Manga user follows,
-the <code>sessionToken</code> is the session token obtained using the login() function 
+the <code>sessionToken</code> is the session token obtained using the login() function
   
 
 </dd>
@@ -906,7 +906,7 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 </dt>
 <dd>
   Returns a <code>UserFollowedUsers</code> class instance with details of the all the Users that the user follows,
-the <code>sessionToken</code> is the session token obtained using the login() function 
+the <code>sessionToken</code> is the session token obtained using the login() function
   
 
 </dd>
@@ -920,7 +920,7 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 </dt>
 <dd>
   Returns a http response of the all the Users that the user follows,
-the <code>sessionToken</code> is the session token obtained using the<a href="../mangadex_library/login.html">login</a> function 
+the <code>sessionToken</code> is the session token obtained using the<a href="../mangadex_library/login.html">login</a> function
   
 
 </dd>
@@ -933,7 +933,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Returns the a <code>Login</code> class instance with a JWT session and refresh token for <code>username</code>. 
+  Returns the a <code>Login</code> class instance with a JWT session and refresh token for <code>username</code>.
   
 
 </dd>
@@ -946,7 +946,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Returns the a http request of a JWT token for <code>username</code>. <a href="../mangadex_library/loginResponse.html">[...]</a>
+  Returns the a http request of a JWT token for <code>username</code>.
   
 
 </dd>
@@ -959,7 +959,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-   
+  
   
 
 </dd>
@@ -972,7 +972,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-   
+  
   
 
 </dd>
@@ -985,7 +985,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Mark a chapter identified by it's <code>chapterId</code> or uuid as READ 
+  Mark a chapter identified by it's <code>chapterId</code> or uuid as READ
   
 
 </dd>
@@ -998,7 +998,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Mark a chapter identified by it's <code>chapterId</code> or uuid as UNREAD 
+  Mark a chapter identified by it's <code>chapterId</code> or uuid as UNREAD
   
 
 </dd>
@@ -1011,7 +1011,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Marks multiple chapters in the list of <code>chapterIds</code> or uuids as READ 
+  Marks multiple chapters in the list of <code>chapterIds</code> or uuids as READ
   
 
 </dd>
@@ -1024,7 +1024,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 
 </dt>
 <dd>
-  Marks multiple chapters in the list of <code>chapterIds</code> or uuids as UNREAD 
+  Marks multiple chapters in the list of <code>chapterIds</code> or uuids as UNREAD
   
 
 </dd>
@@ -1038,7 +1038,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 </dt>
 <dd>
   Takes in a refresh token and returns a <code>Login</code> class instance
-containing the new token 
+containing the new token
   
 
 </dd>
@@ -1054,7 +1054,7 @@ containing the new token
   Removes a manga identified by it's <code>mangaId</code> / UUID to a custom list identified by
 it's <code>listId</code> if the user identified by the <code>sessionToken</code>
 has the permission to do so and returns a <a href="../models_common_resultOk/Result-class.html">Result</a> class instance
-containing info on whether the request was successful. 
+containing info on whether the request was successful.
   
 
 </dd>
@@ -1069,7 +1069,7 @@ containing info on whether the request was successful.
 <dd>
   Removes a manga identified by it's <code>mangaId</code> / UUID to a custom list identified by
 it's <code>listId</code> if the user identified by the <code>sessionToken</code>
-has the permission to do so and returns a http response. 
+has the permission to do so and returns a http response.
   
 
 </dd>
@@ -1083,7 +1083,7 @@ has the permission to do so and returns a http response.
 </dt>
 <dd>
   Set the reading status for a certain manga
-If no reading status is supplied to it, the reading status is set as 'reading' 
+If no reading status is supplied to it, the reading status is set as 'reading'
   
 
 </dd>
@@ -1096,13 +1096,13 @@ If no reading status is supplied to it, the reading status is set as 'reading'
 
 </dt>
 <dd>
-  Report the mangadex at-home servers if a chapter page/image is unretrieveable 
+  Report the mangadex at-home servers if a chapter page/image is unretrieveable
   
 
 </dd>
 
         <dt id="search" class="callable">
-  <span class="name"><a href="../mangadex_library/search.html">search</a></span><span class="signature">(<wbr><span class="parameter" id="search-param-query">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">query</span>, </span><span class="parameter" id="search-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="search-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="search-param-authors"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span><span class="parameter" id="search-param-artists"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span><span class="parameter" id="search-param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="search-param-includedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span><span class="parameter" id="search-param-includedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">includedTagsMode</span>, </span><span class="parameter" id="search-param-excludedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span><span class="parameter" id="search-param-excludedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">excludedTagsMode</span>, </span><span class="parameter" id="search-param-status"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_manga_status/MangaStatus.html">MangaStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span><span class="parameter" id="search-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="search-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span><span class="parameter" id="search-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span><span class="parameter" id="search-param-publicationDemographic"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_publication_demographic/PublicDemographic.html">PublicDemographic</a></span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span><span class="parameter" id="search-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="search-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="search-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="search-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="search-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="search-param-group"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="search-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>}</span>)
+  <span class="name"><a href="../mangadex_library/search.html">search</a></span><span class="signature">(<wbr><span class="parameter" id="search-param-query">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">query</span>, </span><span class="parameter" id="search-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="search-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="search-param-authors"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span><span class="parameter" id="search-param-artists"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span><span class="parameter" id="search-param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="search-param-includedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span><span class="parameter" id="search-param-includedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">includedTagsMode</span>, </span><span class="parameter" id="search-param-excludedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span><span class="parameter" id="search-param-excludedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">excludedTagsMode</span>, </span><span class="parameter" id="search-param-status"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_manga_status/MangaStatus.html">MangaStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span><span class="parameter" id="search-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="search-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span><span class="parameter" id="search-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span><span class="parameter" id="search-param-publicationDemographic"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_publication_demographic/PublicDemographic.html">PublicDemographic</a></span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span><span class="parameter" id="search-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="search-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="search-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="search-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="search-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="search-param-group"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="search-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/SearchOrders.html">SearchOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Search</span>&gt;</span></span>
   </span>
   
@@ -1111,7 +1111,7 @@ If no reading status is supplied to it, the reading status is set as 'reading'
 <dd>
   Gets manga search results
 takes in optional parameters to filter out content
-and returns the query data in a <code>Search</code> class instance 
+and returns the query data in a <code>Search</code> class instance
   
 
 </dd>
@@ -1125,7 +1125,7 @@ and returns the query data in a <code>Search</code> class instance
 </dt>
 <dd>
   Search for an author by the author's <code>name</code> and return <code>limit</code> number of results (10 by default)
-in an <a href="../models_author_author_search_results/AuthorSearchResult-class.html">AuthorSearchResult</a> class instance. 
+in an <a href="../models_author_author_search_results/AuthorSearchResult-class.html">AuthorSearchResult</a> class instance.
   
 
 </dd>
@@ -1138,20 +1138,20 @@ in an <a href="../models_author_author_search_results/AuthorSearchResult-class.h
 
 </dt>
 <dd>
-  Search for an author by the author's <code>name</code> and return <code>limit</code> number of results (10 by default) in a http response. 
+  Search for an author by the author's <code>name</code> and return <code>limit</code> number of results (10 by default) in a http response.
   
 
 </dd>
 
         <dt id="searchResponse" class="callable">
-  <span class="name"><a href="../mangadex_library/searchResponse.html">searchResponse</a></span><span class="signature">(<wbr><span class="parameter" id="searchResponse-param-title">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="searchResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="searchResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="searchResponse-param-authors"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span><span class="parameter" id="searchResponse-param-artists"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span><span class="parameter" id="searchResponse-param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="searchResponse-param-includedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span><span class="parameter" id="searchResponse-param-includedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">includedTagsMode</span>, </span><span class="parameter" id="searchResponse-param-excludedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span><span class="parameter" id="searchResponse-param-excludedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">excludedTagsMode</span>, </span><span class="parameter" id="searchResponse-param-status"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_manga_status/MangaStatus.html">MangaStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span><span class="parameter" id="searchResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="searchResponse-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span><span class="parameter" id="searchResponse-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span><span class="parameter" id="searchResponse-param-publicationDemographic"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_publication_demographic/PublicDemographic.html">PublicDemographic</a></span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span><span class="parameter" id="searchResponse-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="searchResponse-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="searchResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="searchResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="searchResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="searchResponse-param-group"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="searchResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span><span class="parameter" id="searchResponse-param-hasAvailableChapters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">hasAvailableChapters</span>}</span>)
+  <span class="name"><a href="../mangadex_library/searchResponse.html">searchResponse</a></span><span class="signature">(<wbr><span class="parameter" id="searchResponse-param-title">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span><span class="parameter" id="searchResponse-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="searchResponse-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="searchResponse-param-authors"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span><span class="parameter" id="searchResponse-param-artists"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span><span class="parameter" id="searchResponse-param-year"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span><span class="parameter" id="searchResponse-param-includedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span><span class="parameter" id="searchResponse-param-includedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">includedTagsMode</span>, </span><span class="parameter" id="searchResponse-param-excludedTags"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span><span class="parameter" id="searchResponse-param-excludedTagsMode"><span class="type-annotation"><a href="../models_common_tag_modes/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">excludedTagsMode</span>, </span><span class="parameter" id="searchResponse-param-status"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_manga_status/MangaStatus.html">MangaStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span><span class="parameter" id="searchResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span><span class="parameter" id="searchResponse-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span><span class="parameter" id="searchResponse-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_language_codes/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span><span class="parameter" id="searchResponse-param-publicationDemographic"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_publication_demographic/PublicDemographic.html">PublicDemographic</a></span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span><span class="parameter" id="searchResponse-param-ids"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span><span class="parameter" id="searchResponse-param-contentRating"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_content_rating/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span><span class="parameter" id="searchResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span><span class="parameter" id="searchResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span><span class="parameter" id="searchResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span><span class="parameter" id="searchResponse-param-group"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span><span class="parameter" id="searchResponse-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/SearchOrders.html">SearchOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span><span class="parameter" id="searchResponse-param-hasAvailableChapters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">hasAvailableChapters</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.4/http/Response-class.html">Response</a></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-   
+  
   
 
 </dd>
@@ -1165,7 +1165,7 @@ in an <a href="../models_author_author_search_results/AuthorSearchResult-class.h
 </dt>
 <dd>
   Set the reading status for a certain manga to <code>status</code>
-If no reading status is supplied to it, the reading status is set as 'reading' 
+If no reading status is supplied to it, the reading status is set as 'reading'
   
 
 </dd>
@@ -1180,7 +1180,7 @@ If no reading status is supplied to it, the reading status is set as 'reading'
 <dd>
   Makes the user identified by the <code>sessionToken</code> unfollow
 a custom list identified by it's <code>listId</code> and returns a
-<a href="../models_common_resultOk/Result-class.html">Result</a> class instance containing info on whether the request was successful. 
+<a href="../models_common_resultOk/Result-class.html">Result</a> class instance containing info on whether the request was successful.
   
 
 </dd>
@@ -1195,7 +1195,7 @@ a custom list identified by it's <code>listId</code> and returns a
 <dd>
   Makes the user identified by the <code>sessionToken</code> unfollow
 a custom list identified by it's <code>listId</code> and returns a
-http response. 
+http response.
   
 
 </dd>
@@ -1208,7 +1208,7 @@ http response.
 
 </dt>
 <dd>
-  Unfollow a manga identified by <code>mangaId</code> or uuid 
+  Unfollow a manga identified by <code>mangaId</code> or uuid
   
 
 </dd>
@@ -1224,7 +1224,7 @@ http response.
   Updates an existing custom list identified by its <code>listId</code> or UUID
 only if the user identified by the <code>sessionToken</code> has permission to
 update the list and returns the updated data in a <code>SingleCustomListResponse</code>
-class instance. 
+class instance.
   
 
 </dd>
@@ -1239,7 +1239,7 @@ class instance.
 <dd>
   Updates an existing custom list identified by its <code>listId</code> or UUID
 only if the user identified by the <code>sessionToken</code> has permission to
-update the list and returns the updated data in a http response. 
+update the list and returns the updated data in a http response.
   
 
 </dd>
@@ -1272,8 +1272,8 @@ update the list and returns the updated data in a http response.
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_author_author_info/models_author_author_info-library.html">author_info</a></li>
       <li><a href="../models_author_author_search_results/models_author_author_search_results-library.html">author_search_results</a></li>
-      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
+      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
       <li><a href="../models_custom_lists_custom_list_confirmation/models_custom_lists_custom_list_confirmation-library.html">custom_list_confirmation</a></li>
@@ -1288,6 +1288,7 @@ update the list and returns the updated data in a http response.
       <li><a href="../mangadexServerException/mangadexServerException-library.html">mangadexServerException</a></li>
       <li><a href="../models_common_mangaReadingStatus/models_common_mangaReadingStatus-library.html">mangaReadingStatus</a></li>
       <li><a href="../models_common_name/models_common_name-library.html">name</a></li>
+      <li><a href="../models_common_order_enums/models_common_order_enums-library.html">order_enums</a></li>
       <li><a href="../models_common_publication_demographic/models_common_publication_demographic-library.html">publication_demographic</a></li>
       <li><a href="../models_chapter_readChapters/models_chapter_readChapters-library.html">readChapters</a></li>
       <li><a href="../models_common_reading_status/models_common_reading_status-library.html">reading_status</a></li>
@@ -1412,7 +1413,7 @@ update the list and returns the updated data in a http response.
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.15
+      1.3.17
   </span>
 
   

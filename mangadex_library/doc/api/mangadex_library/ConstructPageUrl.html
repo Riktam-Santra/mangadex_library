@@ -54,7 +54,6 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
 <span class="name ">constructPageUrl</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="constructPageUrl-param-baseUrl"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">baseUrl</span>, </span></li>
-<li><span class="parameter" id="constructPageUrl-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span>, </span></li>
 <li><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span></li>
 <li><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span></li>
@@ -73,10 +72,10 @@ chapterHash and filename can both be obtained via <a href="../mangadex_library/g
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String constructPageUrl(String baseUrl, String sessionToken, bool dataSaver,
-    String chapterHash, String filename) {
+  <pre class="language-dart"><code class="language-dart">String constructPageUrl(
+    String baseUrl, bool dataSaver, String chapterHash, String filename) {
   var dataMode = dataSaver ? &#39;data-saver&#39; : &#39;data&#39;;
-  return &#39;$baseUrl&#47;$sessionToken&#47;$dataMode&#47;$chapterHash&#47;$filename&#39;;
+  return &#39;$baseUrl&#47;$dataMode&#47;$chapterHash&#47;$filename&#39;;
 }</code></pre>
 </section>
 
@@ -204,7 +203,7 @@ chapterHash and filename can both be obtained via <a href="../mangadex_library/g
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.15
+      1.3.17
   </span>
 
   

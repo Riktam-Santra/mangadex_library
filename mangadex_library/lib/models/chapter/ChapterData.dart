@@ -2,12 +2,17 @@ import 'package:mangadex_library/models/common/relationships.dart';
 
 ///@nodoc
 class ChapterData {
+  late final String result;
+  late final String response;
   late final List<Data> data;
   late final int limit;
   late final int offset;
   late final int total;
-  ChapterData(this.data, this.limit, this.offset, this.total);
+  ChapterData(this.result, this.response, this.data, this.limit, this.offset,
+      this.total);
   ChapterData.fromJson(Map<String, dynamic> json) {
+    result = json['result'] ?? '';
+    response = json['response'] ?? '';
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {

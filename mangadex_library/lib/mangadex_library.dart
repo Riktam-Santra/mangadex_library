@@ -7,10 +7,13 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:mangadex_library/models/common/order_enums.dart';
+
 import 'mangadexServerException.dart';
 import 'enum_utils.dart';
 
 import 'package:http/http.dart' as http;
+
 import '/models/author/author_info.dart';
 import '/models/author/author_search_results.dart';
 import '/models/common/visibility.dart';
@@ -179,7 +182,7 @@ Future<http.Response> searchResponse({
   String? updatedAtSince,
   List<String>? includes,
   String? group,
-  Map<String, dynamic>? order,
+  Map<SearchOrders, OrderDirections>? orders,
   bool? hasAvailableChapters,
 }) async {
   var unencodedPath = '/manga';
@@ -280,9 +283,16 @@ Future<http.Response> searchResponse({
   var _updatedAtSince =
       updatedAtSince != null ? '&updatedAtSince=$updatedAtSince' : '';
   var _group = group != null ? '&group=$group' : '';
-  var _order = order != null
-      ? '&order[${order.entries.first}]=${order[order.entries.first]}'
-      : '&order[latestUploadedChapter]=desc';
+  var _order = '';
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          '&order[${EnumUtils.parseSearchOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
+    });
+  } else {
+    _order = '&order[latestUploadedChapter]=desc';
+  }
+
   final url =
       'https://$authority$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order';
   var response = await http.get(Uri.parse(url),
@@ -315,7 +325,7 @@ Future<Search> search({
   String? updatedAtSince, // should be of format DD-MM-YYYY
   List<String>? includes,
   String? group,
-  Map<String, dynamic>? order,
+  Map<SearchOrders, OrderDirections>? orders,
 }) async {
   var response = await searchResponse(
     title: query,
@@ -339,6 +349,7 @@ Future<Search> search({
     updatedAtSince: updatedAtSince,
     includes: includes,
     group: group,
+    orders: orders,
   );
   try {
     var data = Search.fromJson(jsonDecode(response.body));
@@ -363,23 +374,26 @@ Future<SingleMangaData> getMangaDataByMangaId(String mangaId) async {
 //Manga chapters related functions
 
 ///Returns the http response of a list of chapters for [mangaId]
-Future<http.Response> getChaptersResponse(String mangaId,
-    {List<String>? ids,
-    String? title,
-    List<String>? groups,
-    String? uploader,
-    String? volume,
-    String? chapter,
-    List<LanguageCodes>? translatedLanguage,
-    List<LanguageCodes>? originalLanguage,
-    List<LanguageCodes>? excludedOriginalLanguage,
-    List<ContentRating>? contentRating,
-    String? createdAtSince,
-    String? updatedAtSince,
-    String? publishedAtSince,
-    String? includes,
-    int? limit,
-    int? offset}) async {
+Future<http.Response> getChaptersResponse(
+  String mangaId, {
+  List<String>? ids,
+  String? title,
+  List<String>? groups,
+  String? uploader,
+  String? volume,
+  String? chapter,
+  List<LanguageCodes>? translatedLanguage,
+  List<LanguageCodes>? originalLanguage,
+  List<LanguageCodes>? excludedOriginalLanguage,
+  List<ContentRating>? contentRating,
+  String? createdAtSince,
+  String? updatedAtSince,
+  String? publishedAtSince,
+  String? includes,
+  Map<ChapterOrders, OrderDirections>? orders,
+  int? limit,
+  int? offset,
+}) async {
   var unencodedPath = '/chapter';
   var _mangaId = mangaId;
   var _limit = limit != null ? '&limit=$limit' : '&limit=10';
@@ -437,10 +451,17 @@ Future<http.Response> getChaptersResponse(String mangaId,
   var _publishedAtSince =
       publishedAtSince != null ? '&publishedAtSince=$publishedAtSince' : '';
   var _includes = includes != null ? '&includes[]=$includes' : '';
+  var _order = '';
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          '&order[${EnumUtils.parseChapterOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
+    });
+  }
 
   final url =
       'https://$authority$unencodedPath?&manga=$_mangaId$_limit$_offset$_ids$_title$_groups$_uploader$_volume$_chapter$_translatedLanguage$_createdAtSince$_updatedAtSince$_publishedAtSince$_includes';
-  print('url');
+  print(url);
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
@@ -468,6 +489,7 @@ Future<ChapterData> getChapters(String mangaId,
     String? updatedAtSince,
     String? publishedAtSince,
     String? includes,
+    Map<ChapterOrders, OrderDirections>? orders,
     int? limit,
     int? offset}) async {
   var _chapterOffset = offset ?? 0;
@@ -489,6 +511,7 @@ Future<ChapterData> getChapters(String mangaId,
     createdAtSince: createdAtSince,
     updatedAtSince: updatedAtSince,
     publishedAtSince: publishedAtSince,
+    orders: orders,
   );
   try {
     return ChapterData.fromJson(jsonDecode(response.body));
@@ -593,7 +616,7 @@ Future<http.Response> getCoverArtResponse(
   List<String>? coverIds,
   List<String>? uploaders,
   List<String>? locales,
-  Map<String, dynamic>? order,
+  Map<CoverOrders, OrderDirections>? orders,
   int? limit,
   int? offset,
 ]) async {
@@ -622,13 +645,13 @@ Future<http.Response> getCoverArtResponse(
     });
   }
   var _order = '';
-  if (order != null) {
-    order.entries.forEach((element) {
-      _order = _order + '&order[$element]=${order[element]}';
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          '&order[${EnumUtils.parseCoverOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
     });
   } else {
-    _order =
-        '&order[createdAt]=asc' '&order[updatedAt]=asc' '&order[volume]=asc';
+    _order = '&order[updatedAt]=desc';
   }
   final uri =
       'https://$authority/cover$_limit$_offset$_mangasIds$_coverIds$_locales$_uploaders$_order';
@@ -646,7 +669,7 @@ Future<Cover> getCoverArt(
   List<String>? coverIds,
   List<String>? uploaders,
   List<String>? locales,
-  Map<String, dynamic>? order,
+  Map<CoverOrders, OrderDirections>? order,
   int? limit,
   int? offset,
 ]) async {
@@ -1523,7 +1546,7 @@ Future<http.Response> getScanlationGroupResponse({
   String? name,
   LanguageCodes? focussedLanguage,
   List<String>? includes,
-  Map<String, String>? order,
+  Map<ScanlationOrders, OrderDirections>? order,
 }) {
   var _limit = limit == null ? 'limit=10' : 'limit=$limit';
   var _offset = offset == null ? '' : '&offset=$offset';
@@ -1546,7 +1569,8 @@ Future<http.Response> getScanlationGroupResponse({
   var _order = '';
   (order != null)
       ? order.entries.forEach((element) {
-          _order = _order + '&order[$element]=${order[element]}';
+          _order = _order +
+              '&order[${EnumUtils.parseScanlationOrderEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
         })
       : _order = '&order[latestUploadedChapter]=desc';
 
@@ -1568,7 +1592,7 @@ Future<ScanlationsResult> getScanlationGroup({
   String? name,
   LanguageCodes? focussedLanguage,
   List<String>? includes,
-  Map<String, String>? order,
+  Map<ScanlationOrders, OrderDirections>? order,
 }) async {
   var response = await getScanlationGroupResponse(
     limit: limit,

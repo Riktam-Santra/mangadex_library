@@ -74,7 +74,7 @@
 <li><span class="parameter" id="searchResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
 <li><span class="parameter" id="searchResponse-param-includes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
 <li><span class="parameter" id="searchResponse-param-group"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span></li>
-<li><span class="parameter" id="searchResponse-param-order"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-orders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_order_enums/SearchOrders.html">SearchOrders</a></span>, <span class="type-parameter"><a href="../models_common_order_enums/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span></li>
 <li><span class="parameter" id="searchResponse-param-hasAvailableChapters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">hasAvailableChapters</span>}</span></li>
 </ol>)
 
@@ -107,7 +107,7 @@
   String? updatedAtSince,
   List&lt;String&gt;? includes,
   String? group,
-  Map&lt;String, dynamic&gt;? order,
+  Map&lt;SearchOrders, OrderDirections&gt;? orders,
   bool? hasAvailableChapters,
 }) async {
   var unencodedPath = &#39;&#47;manga&#39;;
@@ -208,9 +208,16 @@
   var _updatedAtSince =
       updatedAtSince != null ? &#39;&amp;updatedAtSince=$updatedAtSince&#39; : &#39;&#39;;
   var _group = group != null ? &#39;&amp;group=$group&#39; : &#39;&#39;;
-  var _order = order != null
-      ? &#39;&amp;order[${order.entries.first}]=${order[order.entries.first]}&#39;
-      : &#39;&amp;order[latestUploadedChapter]=desc&#39;;
+  var _order = &#39;&#39;;
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          &#39;&amp;order[${EnumUtils.parseSearchOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}&#39;;
+    });
+  } else {
+    _order = &#39;&amp;order[latestUploadedChapter]=desc&#39;;
+  }
+
   final url =
       &#39;https:&#47;&#47;$authority$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order&#39;;
   var response = await http.get(Uri.parse(url),
@@ -343,7 +350,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.3.15
+      1.3.17
   </span>
 
   
