@@ -5,6 +5,10 @@ class AllMangaReadingStatus {
   AllMangaReadingStatus(this.result, this.statuses);
   AllMangaReadingStatus.fromJson(Map<String, dynamic> json) {
     result = json['result'] ?? '';
-    statuses = json['statuses'] ?? {};
+    if (json['statuses'].runtimeType != List) {
+      statuses = json['statuses'] ?? {};
+    } else {
+      statuses = {};
+    }
   }
 }

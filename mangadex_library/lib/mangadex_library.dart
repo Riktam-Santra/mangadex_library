@@ -567,6 +567,7 @@ String constructPageUrl(
 
 /// Gets the chapter filenames just using the [chapterId] of a chapter.
 /// returns a [List] of [String] containing all the file names of a chapter.
+@Deprecated('Use [getChapterDataByChapterId] instead')
 Future<List<String>> getChapterFilenames(
     String chapterId, bool isDataSaverMode) async {
   var response = await getChapterDataByChapterId(chapterId);

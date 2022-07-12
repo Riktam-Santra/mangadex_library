@@ -16,6 +16,7 @@ void printFilenames() async {
   //an instance of the Login class
   try {
     var loginData = await lib.login(username, password);
+    // ignore: unused_local_variable
     var token = loginData.token
         .session; // this sets the token variable to store the session token obtained using
     //the login function, it is a String value.

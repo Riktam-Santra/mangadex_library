@@ -393,4 +393,8 @@
 - Created [order_enums.dart](/lib/models/common/order_enums.dart) to hold all possible order enums for order parameters of different functions.
 
 ## 1.3.18
-- Fixed a null error in function getAllUserMangaReadingStatus() when not passing in any reading status.
+- Fixed a null error in function `getAllUserMangaReadingStatus()` when not passing in any reading status.
+
+## 1.3.19
+- `getChapterFilenames` is now **Depricated**. `getChapterDataByChapterId()` should be used instead.
+- Fixed a cast error in AllMangaReadingStatus model class.
