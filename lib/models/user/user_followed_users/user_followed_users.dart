@@ -19,6 +19,11 @@ class UserFollowedUsers {
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
   }
+  Map<String, dynamic> toJson() => {
+        'data': data.map((e) => e.toJson()).toString(),
+        'offset': offset.toString(),
+        'total': total.toString(),
+      };
 }
 
 ///@nodoc
@@ -37,6 +42,12 @@ class Data {
       relationships.add(Relationship.fromJson(v));
     });
   }
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'type': type,
+        'attributes': attributes.toJson(),
+        'relationships': relationships.map((e) => e.toJson()).toString(),
+      };
 }
 
 ///@nodoc
@@ -50,6 +61,11 @@ class Attributes {
     roles = Role.fromJson(json['roles']);
     version = json['version'] ?? 0;
   }
+  Map<String, dynamic> toJson() => {
+        'username': username,
+        'roles': roles.toJson(),
+        'version': version.toString(),
+      };
 }
 
 ///@nodoc
@@ -64,4 +80,7 @@ class Role {
       });
     }
   }
+  Map<String, dynamic> toJson() => {
+        'roles': roles,
+      };
 }

@@ -26,6 +26,7 @@ class Data {
   Map<String, dynamic> toJson() => {
         'id': id,
         'type': type,
-        'relationship': relationships.map((e) => e.toJson()),
+        'attributes': attributes.toJson(),
+        'relationship': relationships.map((e) => e.toJson()).toString(),
       };
 }

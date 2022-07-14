@@ -11,6 +11,10 @@ class SingleCustomListResponse {
       data = Data.fromJson(json['data']);
     }
   }
+  Map<String, dynamic> toJson() => {
+        'result': result,
+        'response': response,
+      };
 }
 
 class Data {
@@ -50,7 +54,7 @@ class Relationship {
   late String id;
   late String type;
   late String related;
-  late Object attributes;
+  late Map<String, dynamic> attributes;
   Relationship(this.id, this.type, this.related, this.attributes);
   Relationship.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
@@ -58,4 +62,10 @@ class Relationship {
     related = json['related'] ?? '';
     attributes = json['attributes'] ?? {};
   }
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'type': type,
+        'related': related,
+        'attributes': attributes,
+      };
 }

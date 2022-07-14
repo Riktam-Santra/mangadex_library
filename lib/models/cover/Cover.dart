@@ -18,7 +18,7 @@ class Cover {
     total = json['total'] ?? 0;
   }
   Map<String, dynamic> toJson() => {
-        'data': data.map((e) => e.toJson()),
+        'data': data.map((e) => e.toJson()).toString(),
         'limit': limit,
         'offset': offset,
         'total': total,
@@ -43,7 +43,7 @@ class Data {
   Map<String, dynamic> toJson() => {
         'id': id,
         'type': type,
-        'relationships': relationships.map((e) => e.toJson()),
+        'relationships': relationships.map((e) => e.toJson()).toString(),
         'attributes': attributes.toJson(),
       };
 }

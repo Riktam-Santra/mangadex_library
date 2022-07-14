@@ -13,6 +13,11 @@ class UserDetails {
     response = json['response'] ?? '';
     data = Data.fromjson(json['data']!);
   }
+  Map<String, dynamic> toJson() => {
+        'result': result,
+        'response': response,
+        'data': data.toJson(),
+      };
 }
 
 ///@nodoc
@@ -31,6 +36,12 @@ class Data {
       relationships.add(Relationship.fromJson(v));
     });
   }
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'type': type,
+        'attributes': attributes.toJson(),
+        'relationships': relationships.map((e) => e.toJson()).toString(),
+      };
 }
 
 ///@nodoc
@@ -47,4 +58,9 @@ class Attributes {
     });
     version = json['version'] ?? 0;
   }
+  Map<String, dynamic> toJson() => {
+        'username': username,
+        'roles': roles,
+        'version': version.toString(),
+      };
 }

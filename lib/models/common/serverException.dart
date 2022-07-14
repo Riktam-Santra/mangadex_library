@@ -13,7 +13,7 @@ class ServerException {
   }
   Map<String, dynamic> toJson() => {
         'result': result,
-        'errors': errors.map((e) => e.toJson()),
+        'errors': errors.map((e) => e.toJson()).toString(),
       };
 }
 

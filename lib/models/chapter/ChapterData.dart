@@ -26,7 +26,7 @@ class ChapterData {
   Map<String, dynamic> toJson() => {
         'result': result,
         'response': response,
-        'data': data.map((e) => e.toJson()),
+        'data': data.map((e) => e.toJson()).toString(),
         'limit': limit,
         'offset': offset,
         'total': total,
@@ -52,7 +52,7 @@ class Data {
         'id': id,
         'type': type,
         'attributes': attributes.toJson(),
-        'relationships': relationships.map((e) => e.toJson()),
+        'relationships': relationships.map((e) => e.toJson()).toString(),
       };
 }
 

@@ -7,5 +7,7 @@ class Result {
     result = json['result'];
   }
 
-  Map<String, dynamic> toJson() => {'result': result};
+  Map<String, dynamic> toJson() => {
+        'result': result,
+      };
 }

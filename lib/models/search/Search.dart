@@ -27,9 +27,9 @@ class Search {
   Map<String, dynamic> toJson() => {
         'result': result,
         'response': response,
-        'data': data.map((e) => e.toJson()),
-        'limit': limit,
-        'offset': offset,
-        'total': total,
+        'data': data.map((e) => e.toJson()).toString(),
+        'limit': limit.toString(),
+        'offset': offset.toString(),
+        'total': total.toString(),
       };
 }
