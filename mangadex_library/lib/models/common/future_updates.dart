@@ -1,4 +1,0 @@
-enum FutureUpdates {
-  enable,
-  disable,
-}
