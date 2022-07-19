@@ -1,14 +1,12 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'title.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class Title {
-  late final String en;
-  late final String fr;
-  Title(this.en, this.fr);
-  Title.fromJson(Map<String, dynamic> json) {
-    en = json['en'] ?? '';
-    fr = json['fr'] ?? '';
-  }
-  Map<String, dynamic> toJson() => {
-        'en': en,
-        'fr': fr,
-      };
+  final String? en;
+  final String? fr;
+  Title({required this.en, required this.fr});
+  factory Title.fromJson(Map<String, dynamic> json) => _$TitleFromJson(json);
+  Map<String, dynamic> toJson() => _$TitleToJson(this);
 }

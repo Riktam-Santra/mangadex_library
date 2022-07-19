@@ -1,77 +1,58 @@
 ///@nodoc
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
+part 'cover.g.dart';
 
+@JsonSerializable()
 class Cover {
-  late List<Data> data;
-  late int limit;
-  late int offset;
-  late int total;
-  Cover(this.data, this.limit, this.offset, this.total);
-  Cover.fromJson(Map<String, dynamic> json) {
-    data = <Data>[];
-    json['data']!.forEach((v) {
-      data.add(Data.fromJson(v));
-    });
-
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
-  Map<String, dynamic> toJson() => {
-        'data': data.map((e) => e.toJson()).toString(),
-        'limit': limit,
-        'offset': offset,
-        'total': total,
-      };
+  final List<Data> data;
+  final int limit;
+  final int offset;
+  final int total;
+  Cover({
+    required this.data,
+    required this.limit,
+    required this.offset,
+    required this.total,
+  });
+  factory Cover.fromJson(Map<String, dynamic> json) => _$CoverFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverToJson(this);
 }
 
+@JsonSerializable()
 class Data {
-  late String id;
-  late String type;
-  late List<Relationship> relationships;
-  late Attributes attributes;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    relationships = <Relationship>[];
-    json['relationships']!.forEach((v) {
-      relationships.add(Relationship.fromJson(v));
-    });
-    attributes = Attributes.fromJson(json['attributes']!);
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-        'attributes': attributes.toJson(),
-      };
+  final String id;
+  final String type;
+  final List<Relationship> relationships;
+  final Attributes attributes;
+  Data({
+    required this.id,
+    required this.type,
+    required this.attributes,
+    required this.relationships,
+  });
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
+@JsonSerializable()
 class Attributes {
-  late String volume;
-  late String fileName;
-  late String description;
-  late int version;
-  late String createdAt;
-  late String updatedAt;
-  Attributes(this.volume, this.fileName, this.description, this.version,
-      this.createdAt, this.updatedAt);
-  Attributes.fromJson(Map<String, dynamic> json) {
-    volume = json['volume'] ?? 'null';
-    fileName = json['fileName'] ?? 'null';
-    description = json['description'] ?? 'null';
-    version = json['version'] ?? 'null';
-    createdAt = json['createdAt'] ?? 'null';
-    updatedAt = json['updatedAt'] ?? 'null';
-  }
+  final String volume;
+  final String fileName;
+  final String description;
+  final int version;
+  final String createdAt;
+  final String updatedAt;
+  Attributes({
+    required this.volume,
+    required this.fileName,
+    required this.description,
+    required this.version,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'volume': volume,
-        'fileName': fileName,
-        'description': description,
-        'version': version,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-      };
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }

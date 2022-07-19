@@ -1,49 +1,39 @@
 ///@nodoc
-import 'package:mangadex_library/models/common/relationships.dart' as com_relay;
-import 'package:mangadex_library/models/scanlation/scanlationsResult.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:mangadex_library/models/scanlation/scanlations_result.dart';
+part 'user_followed_groups.g.dart';
 
-///@nodoc
+@JsonSerializable()
 class UserFollowedGroups {
-  late final List<Data> data;
-  late final int limit;
-  late final int offset;
-  late final int total;
-  UserFollowedGroups(this.data, this.limit, this.offset, this.total);
-  UserFollowedGroups.fromJson(Map<String, dynamic> json) {
-    data = <Data>[];
-    if (json['data'] != null) {
-      json['data'].forEach((v) {
-        data.add(Data.fromJson(v));
-      });
-    }
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
+  final List<Data> data;
+  final int limit;
+  final int offset;
+  final int total;
+  UserFollowedGroups({
+    required this.data,
+    required this.limit,
+    required this.offset,
+    required this.total,
+  });
+  factory UserFollowedGroups.fromJson(Map<String, dynamic> json) =>
+      _$UserFollowedGroupsFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFollowedGroupsToJson(this);
 }
 
-///@nodoc
+@JsonSerializable()
 class Data {
-  late final String id;
-  late final String type;
-  late final Attributes attributes;
-  late final List<com_relay.Relationship> relationships;
-  Data(this.id, this.type, this.attributes);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    attributes = Attributes.fromJson(json['attributes']!);
-    relationships = <com_relay.Relationship>[];
-    json['relationships']!.forEach((v) {
-      relationships.add(com_relay.Relationship.fromJson(v));
-    });
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
+  final String id;
+  final String type;
+  final Attributes attributes;
+  final List<Relationship> relationships;
+  Data({
+    required this.id,
+    required this.type,
+    required this.attributes,
+    required this.relationships,
+  });
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
 ///@nodoc

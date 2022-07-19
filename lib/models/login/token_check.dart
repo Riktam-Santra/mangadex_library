@@ -1,29 +1,20 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'token_check.g.dart';
+
+@JsonSerializable()
 class AuthenticationCheck {
-  late String result;
-  late bool isAuthenticated;
-  late List<String> roles;
-  late List<String> permissions;
-  AuthenticationCheck(
-      this.result, this.isAuthenticated, this.roles, this.permissions);
-  AuthenticationCheck.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    isAuthenticated = json['isAuthenticated'] ?? false;
-    roles = [];
-    if (json['roles'] != null) {
-      json['roles'].forEach((e) {
-        roles.add(e);
-      });
-    }
-    if (json['permissions'] != null) {
-      json['permissions'].forEach((e) {
-        roles.add(e);
-      });
-    }
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'isAuthenticated': isAuthenticated.toString(),
-        'roles': roles,
-        'permissions': permissions,
-      };
+  final String result;
+  final bool isAuthenticated;
+  final List<String> roles;
+  final List<String> permissions;
+  AuthenticationCheck({
+    required this.result,
+    required this.isAuthenticated,
+    required this.roles,
+    required this.permissions,
+  });
+  factory AuthenticationCheck.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticationCheckFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthenticationCheckToJson(this);
 }

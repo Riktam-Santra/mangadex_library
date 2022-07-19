@@ -1,14 +1,17 @@
+import 'package:json_annotation/json_annotation.dart';
+
 ///@nodoc
+part 'description.g.dart';
+
+@JsonSerializable()
 class Description {
-  late final String en;
-  late final String fr;
-  Description(this.en, this.fr);
-  Description.fromJson(Map<String, dynamic> json) {
-    en = json['en'] ?? '';
-    fr = json['fr'] ?? '';
-  }
-  Map<String, dynamic> toJson() => {
-        'en': en,
-        'fr': fr,
-      };
+  final String? en;
+  final String? fr;
+  Description({
+    required this.en,
+    required this.fr,
+  });
+  factory Description.fromJson(Map<String, dynamic> json) =>
+      _$DescriptionFromJson(json);
+  Map<String, dynamic> toJson() => _$DescriptionToJson(this);
 }

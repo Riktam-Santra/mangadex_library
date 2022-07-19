@@ -1,24 +1,20 @@
 ///@nodoc
-import 'package:mangadex_library/mangadexServerException.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/chapter.dart';
 
+part 'base_url.g.dart';
+
+@JsonSerializable()
 class BaseUrl {
-  late String result;
-  late String baseUrl;
-  late Chapter chapter;
-  BaseUrl(this.result, this.baseUrl);
-  BaseUrl.fromJson(Map<String, dynamic> json) {
-    try {
-      result = json['result'] ?? '';
-      baseUrl = json['baseUrl'] ?? '';
-      chapter = Chapter.fromJson(json['chapter']!);
-    } on Exception {
-      throw MangadexServerException(json);
-    }
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'baseUrl': baseUrl,
-        'chapter': chapter.toJson(),
-      };
+  final String result;
+  final String baseUrl;
+  final Chapter chapter;
+  BaseUrl({
+    required this.result,
+    required this.baseUrl,
+    required this.chapter,
+  });
+  factory BaseUrl.fromJson(Map<String, dynamic> json) =>
+      _$BaseUrlFromJson(json);
+  Map<String, dynamic> toJson() => _$BaseUrlToJson(this);
 }

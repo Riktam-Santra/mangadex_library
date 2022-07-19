@@ -1,26 +1,20 @@
 ///@nodoc
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/name.dart';
+part 'tag_attributes.g.dart';
 
-class TagAttributes {
-  late final Name name;
-  //late final Description description;
-  late final String group;
-  late final int version;
-  TagAttributes(this.name, /*this.description,*/ this.group, this.version);
-  TagAttributes.fromJson(Map<String, dynamic> json) {
-    if (json['name'] != null) {
-      name = Name.fromJson(json['name']);
-    }
-    // if (json['description'] != null) {
-    //   description = Description.fromJson(json['description']);
-    // }
-    group = json['group'] ?? '';
-    version = json['version'] ?? 1;
-  }
+@JsonSerializable()
+class Attributes {
+  final Name name;
+  // final Description description;
+  final String group;
+  final int version;
+  Attributes(
+      {required this.name,
+      /*required this.description,*/ required this.group,
+      required this.version});
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'name': name.toJson(),
-        'group': group,
-        'version': version.toString(),
-      };
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }

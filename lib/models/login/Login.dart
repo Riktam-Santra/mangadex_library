@@ -1,29 +1,28 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'login.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class Login {
-  late final String result;
-  late final Token token;
-  Login(this.result, this.token);
-  Login.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    token = Token.fromJson(json['token']!);
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'token': token.toJson(),
-      };
+  final String result;
+  final Token token;
+  Login({
+    required this.result,
+    required this.token,
+  });
+  factory Login.fromJson(Map<String, dynamic> json) => _$LoginFromJson(json);
+  Map<String, dynamic> toJson() => _$LoginToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Token {
-  late final String session;
-  late final String refresh;
-  Token(this.session, this.refresh);
-  Token.fromJson(Map<String, dynamic> json) {
-    session = json['session'] ?? '';
-    refresh = json['refresh'] ?? '';
-  }
-  Map<String, dynamic> toJson() => {
-        'session': session,
-        'refresh': refresh,
-      };
+  final String session;
+  final String refresh;
+  Token({
+    required this.session,
+    required this.refresh,
+  });
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
+  Map<String, dynamic> toJson() => _$TokenToJson(this);
 }

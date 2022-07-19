@@ -1,140 +1,21 @@
+import 'package:json_annotation/json_annotation.dart';
+import '../common/relationships.dart';
+import 'author_data.dart';
+part 'author_info.g.dart';
+
+///@nodoc
+@JsonSerializable()
 class AuthorInfo {
-  late String result;
-  late String response;
-  late Data data;
-  late List<Relationship> relationships;
-  AuthorInfo(this.result, this.response, this.data);
-  AuthorInfo.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    if (json['data'] != null) {
-      data = Data.fromJson(json['data']);
-    }
-    relationships = [];
-    if (json['relationships'] != null) {
-      json['relationships'].forEach((e) {
-        relationships.add(Relationship.fromJson(json['relationships']));
-      });
-    }
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
-}
-
-class Data {
-  late String id;
-  late String type;
-  late Attributes attributes;
-  Data(this.id, this.type, this.attributes);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    type = json['type'];
-    if (json['attributes'] != null) {
-      attributes = Attributes.fromJson(json['attributes']);
-    }
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-      };
-}
-
-class Attributes {
-  late String name;
-  late String? imageUrl;
-  late String twitter;
-  late String pixiv;
-  late String melonBook;
-  late String fanBox;
-  late String booth;
-  late String nicoVideo;
-  late String skeb;
-  late String fantia;
-  late String tumblr;
-  late String youtube;
-  late String weibo;
-  late String naver;
-  late String website;
-  late String createdAt;
-  late String updateAt;
-  late int version;
-  Attributes(
-      this.name,
-      this.imageUrl,
-      this.twitter,
-      this.pixiv,
-      this.melonBook,
-      this.fanBox,
-      this.booth,
-      this.nicoVideo,
-      this.skeb,
-      this.fantia,
-      this.tumblr,
-      this.youtube,
-      this.weibo,
-      this.naver,
-      this.website,
-      this.createdAt,
-      this.updateAt,
-      this.version);
-
-  Attributes.fromJson(Map<String, dynamic> json) {
-    name = json['name'] ?? '';
-    imageUrl = json['imageUrl'] ?? '';
-    twitter = json['twitter'] ?? '';
-    pixiv = json['pixiv'] ?? '';
-    melonBook = json['melonBook'] ?? '';
-    fanBox = json['fanBox'] ?? '';
-    booth = json['booth'] ?? '';
-    nicoVideo = json['nicoVideo'] ?? '';
-    skeb = json['skeb'] ?? '';
-    fantia = json['fantia'] ?? '';
-    tumblr = json['tumblr'] ?? '';
-    youtube = json['youtube'] ?? '';
-    weibo = json['weibo'] ?? '';
-    naver = json['naver'] ?? '';
-    website = json['website'] ?? '';
-    createdAt = json['createdAt'] ?? '';
-    updateAt = json['updateAt'] ?? '';
-    version = json['version'] ?? 0;
-  }
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'imageUrl': imageUrl,
-        'twitter': twitter,
-        'pixiv': pixiv,
-        'melonBook': melonBook,
-        'fanBox': fanBox,
-        'booth': booth,
-        'nicoVideo': nicoVideo,
-        'skeb': skeb,
-        'fantia': fantia,
-        'tumblr': tumblr,
-        'youtube': youtube,
-        'weibo': weibo,
-        'naver': naver,
-        'website': website,
-        'createdAt': createdAt,
-        'updateAt': updateAt,
-        'version': version.toString(),
-      };
-}
-
-class Relationship {
-  late String id;
-  late String type;
-  Relationship(this.id, this.type);
-  Relationship.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-      };
+  final String result;
+  final String response;
+  final Data data;
+  final List<Relationship> relationships;
+  AuthorInfo(
+      {required this.result,
+      required this.response,
+      required this.data,
+      required this.relationships});
+  factory AuthorInfo.fromJson(Map<String, dynamic> json) =>
+      _$AuthorInfoFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthorInfoToJson(this);
 }

@@ -1,28 +1,25 @@
-import 'scanlationsResult.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+import 'scanlations_result.dart';
+part 'scanlation.g.dart';
+
+@JsonSerializable()
 class Scanlation {
-  late String result;
-  late String response;
-  late Data data;
-  late int limit;
-  late int offset;
-  late int total;
-  Scanlation(this.result, this.response, this.data, this.limit, this.offset,
-      this.total);
-  Scanlation.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    data = Data.fromJson(json['data']);
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.toJson(),
-        'limit': limit.toString(),
-        'offset': offset.toString(),
-        'total': total.toString(),
-      };
+  final String result;
+  final String response;
+  final Data data;
+  final int limit;
+  final int offset;
+  final int total;
+  Scanlation({
+    required this.result,
+    required this.response,
+    required this.data,
+    required this.limit,
+    required this.offset,
+    required this.total,
+  });
+  factory Scanlation.fromJson(Map<String, dynamic> json) =>
+      _$ScanlationFromJson(json);
+  Map<String, dynamic> toJson() => _$ScanlationToJson(this);
 }

@@ -1,14 +1,17 @@
+import 'package:json_annotation/json_annotation.dart';
+
 ///@nodoc
+part 'relationships.g.dart';
+
+@JsonSerializable()
 class Relationship {
-  late final String id;
-  late final String type;
-  Relationship(this.id, this.type);
-  Relationship.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-      };
+  final String id;
+  final String type;
+  Relationship({
+    required this.id,
+    required this.type,
+  });
+  factory Relationship.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
 }

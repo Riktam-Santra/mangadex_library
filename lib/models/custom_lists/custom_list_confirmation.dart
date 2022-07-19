@@ -1,71 +1,66 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'custom_list_confirmation.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class SingleCustomListResponse {
-  late String result;
-  late String response;
-  late Data data;
-  SingleCustomListResponse(this.result, this.response, this.data);
-  SingleCustomListResponse.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    if (json['data'] != null) {
-      data = Data.fromJson(json['data']);
-    }
-  }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-      };
+  final String result;
+  final String response;
+  final Data data;
+  SingleCustomListResponse({
+    required this.result,
+    required this.response,
+    required this.data,
+  });
+  factory SingleCustomListResponse.fromJson(Map<String, dynamic> json) =>
+      _$SingleCustomListResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$SingleCustomListResponseToJson(this);
 }
 
+@JsonSerializable()
 class Data {
-  late String id;
-  late String type;
-  late Attributes attributes;
-  late List<Relationship> relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    if (json['attributes'] != null) {
-      attributes = Attributes.fromJson(json['attributes']);
-    }
-    relationships = [];
-    if (json['relationships'] != null) {
-      json['relationships'].forEach((e) {
-        relationships.add(Relationship.fromJson(e));
-      });
-    }
-  }
+  final String id;
+  final String type;
+  final Attributes attributes;
+  final List<Relationship> relationships;
+  Data({
+    required this.id,
+    required this.type,
+    required this.attributes,
+    required this.relationships,
+  });
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
+@JsonSerializable()
 class Attributes {
-  late String name;
-  late String visibility;
-  late int version;
-  Attributes(this.name, this.visibility, this.version);
-  Attributes.fromJson(Map<String, dynamic> json) {
-    name = json['name'] ?? '';
-    visibility = json['visibility'] ?? '';
-    version = json['version'] ?? 0;
-  }
+  final String name;
+  final String visibility;
+  final int version;
+  Attributes({
+    required this.name,
+    required this.visibility,
+    required this.version,
+  });
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }
 
+@JsonSerializable()
 class Relationship {
-  late String id;
-  late String type;
-  late String related;
-  late Map<String, dynamic> attributes;
-  Relationship(this.id, this.type, this.related, this.attributes);
-  Relationship.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    related = json['related'] ?? '';
-    attributes = json['attributes'] ?? {};
-  }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'related': related,
-        'attributes': attributes,
-      };
+  final String id;
+  final String type;
+  final String related;
+  final Map<String, dynamic> attributes;
+  Relationship({
+    required this.id,
+    required this.type,
+    required this.related,
+    required this.attributes,
+  });
+  factory Relationship.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
 }

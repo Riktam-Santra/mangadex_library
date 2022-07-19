@@ -1,22 +1,14 @@
 ///@nodoc
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/tag_attributes.dart';
+part 'tags.g.dart';
 
+@JsonSerializable()
 class Tags {
-  late final String id;
-  late final String type;
-  late final TagAttributes attributes;
-  Tags(this.id, this.type, this.attributes);
-  Tags.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    if (json['attributes'] != null) {
-      attributes = TagAttributes.fromJson(json['attributes']);
-    }
-  }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-      };
+  final String id;
+  final String type;
+  final Attributes attributes;
+  Tags({required this.id, required this.type, required this.attributes});
+  factory Tags.fromJson(Map<String, dynamic> json) => _$TagsFromJson(json);
+  Map<String, dynamic> toJson() => _$TagsToJson(this);
 }
