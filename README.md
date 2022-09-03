@@ -18,6 +18,9 @@ The library is currently in an **under development and gradually changing** stat
 - Set/Get the reading status of a manga for the logged in user
 - Get, Create and Delete Scanlation Groups
 
+## ToJson() model methods are NOT STABLE
+The toJson() methods of all json model classes are not stable, this is because mangadex returns a list type [] in case an object is empty, for example a description may become an empty list instead of an empty object if the description is empty.
+
 ## Quickstart
 
 A quick demonstration of the API:
