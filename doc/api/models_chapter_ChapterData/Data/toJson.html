@@ -21,8 +21,7 @@
 </head>
 
 
-<body data-base-href="../../"
-      data-using-base-href="false">
+<body data-base-href="../../" data-using-base-href="false">
 
 <div id="overlay-under-drawer"></div>
 
@@ -68,7 +67,7 @@
       &#39;id&#39;: id,
       &#39;type&#39;: type,
       &#39;attributes&#39;: attributes.toJson(),
-      &#39;relationships&#39;: relationships.map((e) =&gt; e.toJson()),
+      &#39;relationships&#39;: relationships.map((e) =&gt; e.toJson()).toString(),
     };</code></pre>
 </section>
 
@@ -131,7 +130,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.4.0
+      1.4.2
   </span>
 
   
@@ -140,7 +139,7 @@
 
 
 <script src="../../static-assets/highlight.pack.js?v1"></script>
-<script src="../../static-assets/script.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
 
 
 
