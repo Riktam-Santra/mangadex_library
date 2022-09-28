@@ -63,9 +63,11 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Map&lt;String, dynamic&gt; toJson() =&gt; {
-      &#39;result&#39;: result,
-    };</code></pre>
+  <pre class="language-dart"><code class="language-dart">Map&lt;String, dynamic&gt; toJson() {
+  final data = &lt;String, dynamic&gt;{};
+  data[&#39;result&#39;] = result;
+  return data;
+}</code></pre>
 </section>
 
 
@@ -124,7 +126,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.4.2
+      1.4.3
   </span>
 
   

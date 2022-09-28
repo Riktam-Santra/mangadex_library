@@ -406,3 +406,11 @@
 
 ## 1.4.1
 - Added `toJson()` to all model classes.
+
+## 1.4.2
+- There are now two functions for getting manga aggregate (previously one). `getMangaAggregateResponse()` for getting the response for the aggregate and `getMangaAggregate()` to get the data in an Aggregate model class.
+- Added Aggregate model class for `getMangaAggregate()` function.
+
+## 1.4.3
+- Fixed issues related to layout.
+- Added documentation for `getMangaAggregate()`.

@@ -580,11 +580,8 @@ Future<List<String>> getChapterFilenames(
   }
 }
 
-///Gets manga chapter and volume info of a manga identified by it's [mangaId],
+///Gets response of manga chapter and volume info of a manga identified by it's [mangaId],
 ///which can be filtered by [groupIds] and [translatedLanguages]
-///
-///Note: This function DOES NOT have a model class to parse the data into since most of the data is
-///dynamic and doesn't have aboslute property names.
 Future<http.Response> getMangaAggregateResponse(String mangaId,
     {List<String>? groupIds, List<LanguageCodes>? translatedLanguages}) async {
   var _groupIds = '';
@@ -609,6 +606,8 @@ Future<http.Response> getMangaAggregateResponse(String mangaId,
   return response;
 }
 
+///Gets response of manga chapter and volume info of a manga identified by it's [mangaId],
+///which can be filtered by [groupIds] and [translatedLanguages]
 Future<Aggregate> getMangaAggregate(String mangaId,
     {List<String>? groupIds, List<LanguageCodes>? translatedLanguages}) async {
   var response = await getMangaAggregateResponse(
