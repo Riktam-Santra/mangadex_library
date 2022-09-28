@@ -11,10 +11,4 @@ class SingleChapterData {
     baseUrl = json['baseUrl'] ?? '';
     chapter = Chapter.fromJson(json['chapter']!);
   }
-
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'baseUrl': baseUrl,
-        'chapter': chapter.toJson(),
-      };
 }

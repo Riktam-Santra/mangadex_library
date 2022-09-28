@@ -20,10 +20,4 @@ class AuthenticationCheck {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'isAuthenticated': isAuthenticated.toString(),
-        'roles': roles,
-        'permissions': permissions,
-      };
 }

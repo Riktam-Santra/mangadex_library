@@ -17,12 +17,6 @@ class AuthorInfo {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Data {
@@ -37,11 +31,6 @@ class Data {
       attributes = Attributes.fromJson(json['attributes']);
     }
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-      };
 }
 
 class Attributes {
@@ -103,26 +92,6 @@ class Attributes {
     updateAt = json['updateAt'] ?? '';
     version = json['version'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'imageUrl': imageUrl,
-        'twitter': twitter,
-        'pixiv': pixiv,
-        'melonBook': melonBook,
-        'fanBox': fanBox,
-        'booth': booth,
-        'nicoVideo': nicoVideo,
-        'skeb': skeb,
-        'fantia': fantia,
-        'tumblr': tumblr,
-        'youtube': youtube,
-        'weibo': weibo,
-        'naver': naver,
-        'website': website,
-        'createdAt': createdAt,
-        'updateAt': updateAt,
-        'version': version.toString(),
-      };
 }
 
 class Relationship {
@@ -133,8 +102,4 @@ class Relationship {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-      };
 }

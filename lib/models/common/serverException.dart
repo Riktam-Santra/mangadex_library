@@ -11,10 +11,6 @@ class ServerException {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'errors': errors.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Error {
@@ -29,10 +25,4 @@ class Error {
     title = json['title'] ?? '';
     detail = json['detail'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'status': status,
-        'title': title,
-        'detail': detail,
-      };
 }

@@ -23,14 +23,6 @@ class ChapterData {
     offset = json['offset'] ?? '';
     total = json['total'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.map((e) => e.toJson()).toString(),
-        'limit': limit,
-        'offset': offset,
-        'total': total,
-      };
 }
 
 class Data {
@@ -48,12 +40,6 @@ class Data {
       relationships.add(Relationship.fromJson(v));
     });
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Attributes {
@@ -86,7 +72,6 @@ class Attributes {
     title = json['title'] ?? '';
     translatedLanguage = json['translatedLanguage'] ?? '';
     hash = json['hash'] ?? '';
-    chapterData = [];
     if (json['data'] != null) {
       chapterData = List<String>.from(json['data']);
     }
@@ -98,17 +83,4 @@ class Attributes {
     updatedAt = json['updatedAt'] ?? '';
     version = json['version'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'volume': volume,
-        'chapter': chapter,
-        'title': title,
-        'translatedLanguage': translatedLanguage,
-        'hash': hash,
-        'data': chapterData,
-        'dataSaver': chapterDataSaver,
-        'publishAt': publishAt,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-        'version': version,
-      };
 }

@@ -20,21 +20,13 @@ class ScanlationsResult {
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.map((e) => e.toJson()).toString(),
-        'limit': limit.toString(),
-        'offset': offset.toString(),
-        'total': total.toString(),
-      };
 }
 
 class Data {
   late String id;
   late String type;
   late Attributes attributes;
-  late List<Relationship> relationships;
+  late List<RelationShip> relationships;
   Data(this.id, this.type, this.attributes, this.relationships);
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
@@ -43,16 +35,10 @@ class Data {
     relationships = [];
     if (json['relationships'] != null) {
       json['relationships'].forEach((e) {
-        relationships.add(Relationship.fromJson(e));
+        relationships.add(RelationShip.fromJson(e));
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Attributes {
@@ -123,43 +109,18 @@ class Attributes {
     createdAt = json['createdAt'] ?? '';
     updatedAt = json['updatedAt'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'altNames': altNames,
-        'website': website,
-        'ircServer': ircServer,
-        'discord': discord,
-        'contactEmail': contactEmail,
-        'description': description,
-        'twitter': twitter,
-        'mangaUpdates': mangaUpdates,
-        'focussedLanguage': focussedLanguage,
-        'locked': locked.toString(),
-        'official': official.toString(),
-        'inactive': inactive.toString(),
-        'publishDelay': publishDelay,
-        'version': version.toString(),
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-      };
 }
 
-class Relationship {
+class RelationShip {
   late String id;
   late String type;
   late String related;
   late Map<String, dynamic> attributes;
-  Relationship(this.id, this.type, this.related);
-  Relationship.fromJson(Map<String, dynamic> json) {
+  RelationShip(this.id, this.type, this.related);
+  RelationShip.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? '';
     type = json['type'] ?? '';
     related = json['related'] ?? '';
     attributes = json['attributes'] ?? {};
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'related': related,
-        'attributes': attributes,
-      };
 }

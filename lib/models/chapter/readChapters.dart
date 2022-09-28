@@ -10,8 +10,10 @@ class ReadChapters {
     data = (json['data'] ?? []).cast<String>();
   }
 
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['result'] = result;
+    data['data'] = data;
+    return data;
+  }
 }

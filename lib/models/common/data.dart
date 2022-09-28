@@ -23,10 +23,4 @@ class Data {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-        'relationship': relationships.map((e) => e.toJson()).toString(),
-      };
 }

@@ -7,9 +7,4 @@ class MangaReadingStatus {
     result = json['result'] ?? '';
     status = json['status'] ?? '';
   }
-
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'status': status,
-      };
 }

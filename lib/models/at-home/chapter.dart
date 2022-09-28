@@ -19,9 +19,4 @@ class Chapter {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'hash': hash,
-        'data': data,
-        'dataSaver': dataSaver,
-      };
 }

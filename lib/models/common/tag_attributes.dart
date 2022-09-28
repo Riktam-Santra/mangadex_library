@@ -17,10 +17,4 @@ class TagAttributes {
     group = json['group'] ?? '';
     version = json['version'] ?? 1;
   }
-
-  Map<String, dynamic> toJson() => {
-        'name': name.toJson(),
-        'group': group,
-        'version': version.toString(),
-      };
 }

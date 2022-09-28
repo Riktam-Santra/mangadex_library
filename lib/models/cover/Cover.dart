@@ -17,12 +17,6 @@ class Cover {
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'data': data.map((e) => e.toJson()).toString(),
-        'limit': limit,
-        'offset': offset,
-        'total': total,
-      };
 }
 
 class Data {
@@ -40,12 +34,6 @@ class Data {
     });
     attributes = Attributes.fromJson(json['attributes']!);
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-        'attributes': attributes.toJson(),
-      };
 }
 
 class Attributes {
@@ -65,13 +53,4 @@ class Attributes {
     createdAt = json['createdAt'] ?? 'null';
     updatedAt = json['updatedAt'] ?? 'null';
   }
-
-  Map<String, dynamic> toJson() => {
-        'volume': volume,
-        'fileName': fileName,
-        'description': description,
-        'version': version,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-      };
 }

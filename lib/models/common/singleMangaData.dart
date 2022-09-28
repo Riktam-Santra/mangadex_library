@@ -17,9 +17,4 @@ class SingleMangaData {
       throw MangadexServerException(json);
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.toJson(),
-      };
 }

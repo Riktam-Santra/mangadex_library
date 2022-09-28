@@ -1,5 +1,3 @@
-import 'package:mangadex_library/models/common/relationships.dart';
-
 ///@nodoc
 class UserFeed {
   late String result;
@@ -16,11 +14,6 @@ class UserFeed {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Data {
@@ -42,12 +35,6 @@ class Data {
       });
     }
   }
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-        'relationships': relationships.map((e) => e.toJson()).toString(),
-      };
 }
 
 class Attributes {
@@ -87,17 +74,14 @@ class Attributes {
     pages = json['pages'] ?? 0;
     version = json['version'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'volume': volume,
-        'chapter': chapter,
-        'title': title,
-        'translatedLanguage': translatedLanguage,
-        'externalUrl': externalUrl,
-        'publishAt': publishAt,
-        'readableAt': readableAt,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-        'pages': pages.toString(),
-        'version': version.toString(),
-      };
+}
+
+class Relationship {
+  late String id;
+  late String type;
+  Relationship(this.id, this.type);
+  Relationship.fromJson(Map<String, dynamic> json) {
+    id = json['id'] ?? '';
+    type = json['type'] ?? '';
+  }
 }

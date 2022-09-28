@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart';
 import 'package:mangadex_library/mangadex_library.dart';
+import 'package:mangadex_library/models/aggregate/Aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
 import 'package:test/test.dart';
 
@@ -9,6 +12,7 @@ void main() {
     test('Search function check with only query', () async {
       print('searching for manga with query value: $query');
       var data = await search(query: query);
+
       expect('ok', data.result);
     });
     test('Search function check with query and order', () async {
@@ -51,5 +55,11 @@ void main() {
       var data = await get(Uri.parse(pageUrl));
       expect(200, data.statusCode);
     });
+  });
+  test('Aggregate', () async {
+    var data =
+        await getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
+    print(data.body);
+    Aggregate.fromJson(jsonDecode(data.body));
   });
 }

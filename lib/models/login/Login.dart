@@ -7,10 +7,6 @@ class Login {
     result = json['result'] ?? '';
     token = Token.fromJson(json['token']!);
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'token': token.toJson(),
-      };
 }
 
 ///@nodoc
@@ -22,8 +18,4 @@ class Token {
     session = json['session'] ?? '';
     refresh = json['refresh'] ?? '';
   }
-  Map<String, dynamic> toJson() => {
-        'session': session,
-        'refresh': refresh,
-      };
 }

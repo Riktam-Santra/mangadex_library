@@ -11,8 +11,4 @@ class AllMangaReadingStatus {
       statuses = {};
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'statuses': statuses,
-      };
 }

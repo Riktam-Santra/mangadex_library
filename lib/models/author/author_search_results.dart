@@ -21,12 +21,4 @@ class AuthorSearchResult {
     offset = json['offset'] ?? 0;
     total = json['total'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'response': response,
-        'data': data.map((e) => e.toJson()).toString(),
-        'limit': limit.toString(),
-        'offset': offset.toString(),
-        'total': total.toString(),
-      };
 }

@@ -46,8 +46,10 @@ class Attributes {
         altTitles.add(AltTitles.fromJson(v));
       });
     }
-    if (json['description'] != null) {
+    if (json['description'] != null && json['description'] != '[]') {
       description = Description.fromJson(json['description']);
+    } else {
+      description = Description('', '');
     }
     isLocked = json['isLocked'] ?? true;
     originalLanguage = json['originalLanguage'] ?? '';
@@ -65,23 +67,6 @@ class Attributes {
     }
     createdAt = json['createdAt'] ?? '';
     updatedAt = json['updatedAt'] ?? '';
-    version = json['version'] ?? '';
+    version = json['version'] ?? 0;
   }
-  Map<String, dynamic> toJson() => {
-        'title': title.toJson(),
-        'altTitles': altTitles.map((e) => e.toJson()),
-        'description': description.toJson(),
-        'isLocked': isLocked.toString(),
-        'originalLanguage': originalLanguage,
-        'lastVolume': lastVolume,
-        'lastChapter': lastChapter,
-        'publicationDemographic': publicationDemographic,
-        'status': status,
-        'year': year.toString(),
-        'contentRating': contentRating,
-        'tags': tags.map((e) => e.toJson()).toString(),
-        'createdAt': createdAt,
-        'updatedAt': updatedAt,
-        'version': version.toString(),
-      };
 }

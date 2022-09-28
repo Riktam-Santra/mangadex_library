@@ -13,10 +13,4 @@ class Tags {
       attributes = TagAttributes.fromJson(json['attributes']);
     }
   }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-        'attributes': attributes.toJson(),
-      };
 }

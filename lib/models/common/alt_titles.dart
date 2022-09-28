@@ -7,9 +7,4 @@ class AltTitles {
     en = json['en'] ?? '';
     fr = json['fr'] ?? '';
   }
-
-  Map<String, dynamic> toJson() => {
-        'en': en,
-        'fr': fr,
-      };
 }

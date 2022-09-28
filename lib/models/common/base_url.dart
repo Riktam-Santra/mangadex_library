@@ -16,9 +16,4 @@ class BaseUrl {
       throw MangadexServerException(json);
     }
   }
-  Map<String, dynamic> toJson() => {
-        'result': result,
-        'baseUrl': baseUrl,
-        'chapter': chapter.toJson(),
-      };
 }
