@@ -7,6 +7,7 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:mangadex_library/models/aggregate/Aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
 
 import 'mangadexServerException.dart';
@@ -95,7 +96,7 @@ Future<Login> refresh(String refreshToken) async {
 }
 
 /// Returns an http response with data on whether the [sessionToken] is authenticated and the
-/// user's permissions.
+/// user has permissions.
 Future<http.Response> checkTokenResponse(String sessionToken) async {
   final unencodedPath = '/auth/check';
   final uri = 'https://$authority$unencodedPath';
@@ -295,9 +296,10 @@ Future<http.Response> searchResponse({
 
   final url =
       'https://$authority$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order';
-  var response = await http.get(Uri.parse(url),
+  var httpResponse = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
-  return response;
+  http.Response getResponse() => httpResponse;
+  return httpResponse;
 }
 
 ///Gets manga search results
@@ -583,7 +585,7 @@ Future<List<String>> getChapterFilenames(
 ///
 ///Note: This function DOES NOT have a model class to parse the data into since most of the data is
 ///dynamic and doesn't have aboslute property names.
-Future<http.Response> getMangaAggregate(String mangaId,
+Future<http.Response> getMangaAggregateResponse(String mangaId,
     {List<String>? groupIds, List<LanguageCodes>? translatedLanguages}) async {
   var _groupIds = '';
   var _translatedLanguages = '';
@@ -605,6 +607,20 @@ Future<http.Response> getMangaAggregate(String mangaId,
     HttpHeaders.contentTypeHeader: 'application/json',
   });
   return response;
+}
+
+Future<Aggregate> getMangaAggregate(String mangaId,
+    {List<String>? groupIds, List<LanguageCodes>? translatedLanguages}) async {
+  var response = await getMangaAggregateResponse(
+    mangaId,
+    groupIds: groupIds,
+    translatedLanguages: translatedLanguages,
+  );
+  try {
+    return Aggregate.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }
 
 // Manga cover art related functions

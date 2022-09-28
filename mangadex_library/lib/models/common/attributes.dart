@@ -46,8 +46,10 @@ class Attributes {
         altTitles.add(AltTitles.fromJson(v));
       });
     }
-    if (json['description'] != null) {
+    if (json['description'] != null && json['description'] != '[]') {
       description = Description.fromJson(json['description']);
+    } else {
+      description = Description('', '');
     }
     isLocked = json['isLocked'] ?? true;
     originalLanguage = json['originalLanguage'] ?? '';
@@ -65,6 +67,6 @@ class Attributes {
     }
     createdAt = json['createdAt'] ?? '';
     updatedAt = json['updatedAt'] ?? '';
-    version = json['version'] ?? '';
+    version = json['version'] ?? 0;
   }
 }
