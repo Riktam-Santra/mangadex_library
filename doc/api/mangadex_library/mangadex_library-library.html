@@ -991,33 +991,51 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 </dd>
 
         <dt id="markChapterRead" class="callable">
-  <span class="name"><a href="../mangadex_library/markChapterRead.html">markChapterRead</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markChapterRead-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
+  <span class="name deprecated"><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markChapterRead-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Mark a chapter identified by it's <code>chapterId</code> or uuid as READ
+  Mark a chapter identified by it's <code>chapterId</code> or uuid as READ <br><br>
+DEPRECATION WARNING: The end point <code>POST /chapter/{id}/read</code> is deprecated as is to be removed by 02-10-2022<br>
+Which makes this function deprecated and on schedule to be removed as well.
+  <div class="features">@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;Use [markChapterReadOrUnread] instead&#39;)</div>
+
+</dd>
+
+        <dt id="markChapterReadOrUnRead" class="callable">
+  <span class="name"><a href="../mangadex_library/markChapterReadOrUnRead.html">markChapterReadOrUnRead</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterReadOrUnRead-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markChapterReadOrUnRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markChapterReadOrUnRead-param-chapterIdsRead">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">chapterIdsRead</span>, </span><span class="parameter" id="markChapterReadOrUnRead-param-chapterIdsUnread"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">chapterIdsUnread</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Marks a chapter of a manga identified by it's <code>mangaId</code> as read or unread
+for user identified by their <code>sessionToken</code>.
   
 
 </dd>
 
         <dt id="markChapterUnread" class="callable">
-  <span class="name"><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterUnread-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markChapterUnread-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
+  <span class="name deprecated"><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markChapterUnread-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markChapterUnread-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Mark a chapter identified by it's <code>chapterId</code> or uuid as UNREAD
-  
+  Mark a chapter identified by it's <code>chapterId</code> or uuid as UNREAD <br><br>
+DEPRECATION WARNING: The end point <code>DELETE /chapter/{id}/read</code> is deprecated as is to be removed by 2-10-2022<br>
+Which makes this function deprecated and on schedule to be removed as well.
+  <div class="features">@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;Use [markChapterReadOrUnread] instead&#39;)</div>
 
 </dd>
 
         <dt id="markMultipleChaptersRead" class="callable">
-  <span class="name"><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-chapterIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
+  <span class="name deprecated"><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersRead-param-chapterIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
   </span>
   
@@ -1025,12 +1043,12 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 </dt>
 <dd>
   Marks multiple chapters in the list of <code>chapterIds</code> or uuids as READ
-  
+  <div class="features">@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;Use markChapterReadOrUnRead() instead&#39;)</div>
 
 </dd>
 
         <dt id="markMultipleChaptersUnread" class="callable">
-  <span class="name"><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersUnread-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-chapterIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
+  <span class="name deprecated"><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></span><span class="signature">(<wbr><span class="parameter" id="markMultipleChaptersUnread-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-mangaId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span><span class="parameter" id="markMultipleChaptersUnread-param-chapterIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">chapterIds</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
   </span>
   
@@ -1038,7 +1056,7 @@ the <code>sessionToken</code> is the session token obtained using the<a href="..
 </dt>
 <dd>
   Marks multiple chapters in the list of <code>chapterIds</code> or uuids as UNREAD
-  
+  <div class="features">@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;Use markChapterReadOrUnRead() instead&#39;)</div>
 
 </dd>
 
@@ -1286,8 +1304,8 @@ update the list and returns the updated data in a http response.
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_author_author_info/models_author_author_info-library.html">author_info</a></li>
       <li><a href="../models_author_author_search_results/models_author_author_search_results-library.html">author_search_results</a></li>
-      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
+      <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
       <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
       <li><a href="../models_custom_lists_custom_list_confirmation/models_custom_lists_custom_list_confirmation-library.html">custom_list_confirmation</a></li>
@@ -1397,10 +1415,11 @@ update the list and returns the updated data in a http response.
   <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
   <li><a href="../mangadex_library/logout.html">logout</a></li>
   <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
-  <li><a href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
-  <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
-  <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
-  <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
+  <li><a href="../mangadex_library/markChapterReadOrUnRead.html">markChapterReadOrUnRead</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
   <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
@@ -1428,7 +1447,7 @@ update the list and returns the updated data in a http response.
 <footer>
   <span class="no-break">
     mangadex_library
-      1.4.3
+      1.4.4
   </span>
 
   

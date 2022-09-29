@@ -30,7 +30,7 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">mangadex_library</a></li>
     <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-    <li class="self-crumb">markChapterRead function</li>
+    <li class="self-crumb"><span class="deprecated">markChapterRead</span> function</li>
   </ol>
   <div class="self-name">markChapterRead</div>
   <form class="search navbar-right" role="search">
@@ -50,23 +50,31 @@
 
     <section class="multi-line-signature">
         
+<div>
+  <ol class="annotation-list">
+    <li>@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;Use [markChapterReadOrUnread] instead&#39;)</li>
+  </ol>
+</div>
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../models_common_resultOk/Result-class.html">Result</a></span>&gt;</span></span>
-<span class="name ">markChapterRead</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markChapterRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
+<span class="name deprecated">markChapterRead</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="markChapterRead-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="markChapterRead-param-chapterId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterId</span></span></li>
 </ol>)
 
     </section>
     
 <section class="desc markdown">
-  <p>Mark a chapter identified by it's <code>chapterId</code> or uuid as READ</p>
+  <p>Mark a chapter identified by it's <code>chapterId</code> or uuid as READ <br><br>
+DEPRECATION WARNING: The end point <code>POST /chapter/{id}/read</code> is deprecated as is to be removed by 02-10-2022<br>
+Which makes this function deprecated and on schedule to be removed as well.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Result&gt; markChapterRead(String sessionToken, String chapterId) async {
+  <pre class="language-dart"><code class="language-dart">@Deprecated(&#39;Use [markChapterReadOrUnread] instead&#39;)
+Future&lt;Result&gt; markChapterRead(String sessionToken, String chapterId) async {
   var unencodedPath = &#39;&#47;chapter&#47;$chapterId&#47;read&#39;;
   final uri = &#39;https:&#47;&#47;$authority$unencodedPath&#39;;
   var response = await http.post(Uri.parse(uri),
@@ -96,7 +104,7 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../index.html">mangadex_library</a></li>
   <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-  <li class="self-crumb">markChapterRead function</li>
+  <li class="self-crumb"><span class="deprecated">markChapterRead</span> function</li>
 </ol>
 
 
@@ -174,10 +182,11 @@
   <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
   <li><a href="../mangadex_library/logout.html">logout</a></li>
   <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
-  <li><a href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
-  <li><a href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
-  <li><a href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
-  <li><a href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
+  <li><a href="../mangadex_library/markChapterReadOrUnRead.html">markChapterReadOrUnRead</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
+  <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
   <li><a href="../mangadex_library/refresh.html">refresh</a></li>
   <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
   <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
@@ -208,7 +217,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.4.3
+      1.4.4
   </span>
 
   

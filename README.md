@@ -2,7 +2,7 @@ A [dart library](https://pub.dev/packages/mangadex_library) to facilitate easier
 
 ## WARNING! In progress library
 
-The library is currently in an **under development and gradually changing** state and therefore doesn't contain many of the features and new features and bugs are added often, they will be added in the future. At the current state of the library, it is able to:
+The library is currently in an **under development and gradually changing** state and therefore doesn't contain many of the features and new features and bugs are added often. At the current state of the library, it is able to:
 
 - Get login refresh and session tokens
 - Logout user
