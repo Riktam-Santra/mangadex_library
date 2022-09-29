@@ -412,5 +412,9 @@
 - Added Aggregate model class for `getMangaAggregate()` function.
 
 ## 1.4.3
-- Fixed issues related to layout.
+- Fixed issues related to layout of the project structure.
 - Added documentation for `getMangaAggregate()`.
+
+## 1.4.4
+- `markChapterRead()` and `markChapterUnread()` are now deprecated as per the [Mangadex API version 5.7.1 changes](https://discord.com/channels/403905762268545024/839817812012826644/1023364755861291080), please use use `markChapterReadOrUnRead()` instead.
+- `markMultipleChaptersRead()` and `markMultipleChaptersUnread()` are now deprecated, please use use `markChapterReadOrUnRead()` instead.

@@ -1118,7 +1118,10 @@ Future<http.Response> getAllReadChaptersForAListOfManga(
   return response;
 }
 
-///Mark a chapter identified by it's [chapterId] or uuid as READ
+///Mark a chapter identified by it's [chapterId] or uuid as READ <br><br>
+///DEPRECATION WARNING: The end point `POST /chapter/{id}/read` is deprecated as is to be removed by 02-10-2022<br>
+///Which makes this function deprecated and on schedule to be removed as well.
+@Deprecated('Use [markChapterReadOrUnread] instead')
 Future<Result> markChapterRead(String sessionToken, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority$unencodedPath';
@@ -1135,7 +1138,10 @@ Future<Result> markChapterRead(String sessionToken, String chapterId) async {
   }
 }
 
-///Mark a chapter identified by it's [chapterId] or uuid as UNREAD
+///Mark a chapter identified by it's [chapterId] or uuid as UNREAD <br><br>
+///DEPRECATION WARNING: The end point `DELETE /chapter/{id}/read` is deprecated as is to be removed by 2-10-2022<br>
+///Which makes this function deprecated and on schedule to be removed as well.
+@Deprecated('Use [markChapterReadOrUnread] instead')
 Future<Result> markChapterUnread(String sessionToken, String chapterId) async {
   var unencodedPath = '/chapter/$chapterId/read';
   final uri = 'https://$authority$unencodedPath';
@@ -1152,7 +1158,45 @@ Future<Result> markChapterUnread(String sessionToken, String chapterId) async {
   }
 }
 
+/// Marks a chapter of a manga identified by it's [mangaId] as read or unread
+/// for user identified by their [sessionToken].
+///
+/// [chapterIdsRead] should be an
+/// array of chapterIDs to be marked as READ and [chapterIdsUnread] should be
+/// an array of chapterIDs to be marked as UNREAD.
+Future<Result> markChapterReadOrUnRead(String mangaId, String sessionToken,
+    {List<String>? chapterIdsRead, List<String>? chapterIdsUnread}) async {
+  if ((chapterIdsRead != null && chapterIdsRead.isEmpty) &&
+      (chapterIdsUnread != null && chapterIdsUnread.isEmpty)) {
+    throw Exception(
+        'Both chapterIdsRead and ChapterIdsUnread CANNOT be empty, atleast one list must be non-null and must have atleast one chapterID.');
+  } else {
+    chapterIdsRead = chapterIdsRead ?? [];
+    chapterIdsUnread = chapterIdsUnread ?? [];
+    var unencodedPath = '/manga/$mangaId/read';
+    var body = jsonEncode({
+      'chapterIdsRead': chapterIdsRead,
+      'chapterIdsUnread': chapterIdsUnread,
+    });
+    final uri = 'https://$authority$unencodedPath';
+    var response = await http.post(
+      Uri.parse(uri),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: 'Bearer $sessionToken',
+      },
+      body: body,
+    );
+    try {
+      return Result.fromJson(jsonDecode(response.body));
+    } on Exception {
+      throw MangadexServerException(jsonDecode(response.body));
+    }
+  }
+}
+
 ///Marks multiple chapters in the list of [chapterIds] or uuids as READ
+@Deprecated('Use markChapterReadOrUnRead() instead')
 Future<Result> markMultipleChaptersRead(
     String sessionToken, String mangaId, List<String> chapterIds) async {
   var idList = [];
@@ -1175,6 +1219,7 @@ Future<Result> markMultipleChaptersRead(
 }
 
 ///Marks multiple chapters in the list of [chapterIds] or uuids as UNREAD
+@Deprecated('Use markChapterReadOrUnRead() instead')
 Future<Result> markMultipleChaptersUnread(
     String sessionToken, String mangaId, List<String> chapterIds) async {
   var idList = [];
