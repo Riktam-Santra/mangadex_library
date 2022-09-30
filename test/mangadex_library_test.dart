@@ -59,7 +59,7 @@ void main() {
   test('Aggregate', () async {
     var data =
         await getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
-    print(data.body);
+    // print(data.body);
     Aggregate.fromJson(jsonDecode(data.body));
   });
 }

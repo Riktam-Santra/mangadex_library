@@ -46,7 +46,8 @@ class Attributes {
         altTitles.add(AltTitles.fromJson(v));
       });
     }
-    if (json['description'] != null && json['description'] != '[]') {
+    if (json['description'] != null &&
+        json['description'].runtimeType != List) {
       description = Description.fromJson(json['description']);
     } else {
       description = Description('', '');

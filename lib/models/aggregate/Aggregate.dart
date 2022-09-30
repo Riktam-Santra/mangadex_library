@@ -6,11 +6,9 @@ class Aggregate {
     result = json['result'] ?? '';
     volumes = <Volume>[];
     if (json['volumes'] != null) {
-      json['volumes'].forEach((s, e) {
+      json['volumes'].forEach((String s, e) {
         volumes.add(Volume.fromJson(e));
       });
-    } else {
-      print('null json xdxdxd');
     }
   }
 }

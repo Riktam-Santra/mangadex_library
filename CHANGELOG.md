@@ -418,3 +418,7 @@
 ## 1.4.4
 - `markChapterRead()` and `markChapterUnread()` are now deprecated as per the [Mangadex API version 5.7.1 changes](https://discord.com/channels/403905762268545024/839817812012826644/1023364755861291080), please use use `markChapterReadOrUnRead()` instead.
 - `markMultipleChaptersRead()` and `markMultipleChaptersUnread()` are now deprecated, please use use `markChapterReadOrUnRead()` instead.
+
+## 1.4.5
+- Fixed a json parsing problem with Aggregate model class.
+- Added a temporary fix to the Search function throwing exceptions when the description of a manga maybe an empty list instead of an empty object. An empty Description class is returned now.
