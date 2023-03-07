@@ -1,17 +1,30 @@
+// ignore_for_file: omit_local_variable_types
+
 import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:mangadex_library/mangadex_library.dart';
 import 'package:mangadex_library/models/aggregate/Aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
+import 'package:mangadex_library/models/search/Search.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('Retrieve urls', () async {
+    Search s = await search(includes: ['cover_art']);
+    List<String> ids = [for (final data in s.data) data.id];
+    for (String x in ids) {
+      print(x);
+    }
+    Map<String, String> map = await getCoverArtUrl(ids);
+
+    expect(true, map.isNotEmpty);
+  });
   group('Search Function', () {
     var query = 'oregairu';
     test('Search function check with only query', () async {
       print('searching for manga with query value: $query');
-      var data = await search(query: query);
+      Search data = await search(query: query);
 
       expect('ok', data.result);
     });

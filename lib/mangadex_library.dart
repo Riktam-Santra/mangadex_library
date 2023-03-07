@@ -276,7 +276,7 @@ Future<http.Response> searchResponse({
   var _includes = '';
   if (includes != null) {
     includes.forEach((element) {
-      _includes = _includes + '&included[]=$element';
+      _includes = _includes + '&includes[]=$element';
     });
   }
   var _createdAtSince =
@@ -463,7 +463,6 @@ Future<http.Response> getChaptersResponse(
 
   final url =
       'https://$authority$unencodedPath?&manga=$_mangaId$_limit$_offset$_ids$_title$_groups$_uploader$_volume$_chapter$_translatedLanguage$_createdAtSince$_updatedAtSince$_publishedAtSince$_includes';
-  print(url);
   var response = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
   return response;
@@ -637,7 +636,7 @@ Future<http.Response> getCoverArtResponse(
   int? offset,
 ]) async {
   var _limit = limit == null ? '?limit=10' : '?limit=$limit';
-  var _offset = offset == null ? '&offset=0' : '&offset=$offset';
+  var _offset = offset == null ? '' : '&offset=$offset';
   var _mangasIds = '';
   mangaIds.forEach((element) {
     _mangasIds = _mangasIds + '&manga[]=$element';
@@ -667,7 +666,7 @@ Future<http.Response> getCoverArtResponse(
           '&order[${EnumUtils.parseCoverOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
     });
   } else {
-    _order = '&order[updatedAt]=desc';
+    _order = '';
   }
   final uri =
       'https://$authority/cover$_limit$_offset$_mangasIds$_coverIds$_locales$_uploaders$_order';
@@ -681,17 +680,16 @@ Future<http.Response> getCoverArtResponse(
 ///returns an [Cover] class instance containing cover
 ///art details for a manga with given [mangaIds] or uuid
 Future<Cover> getCoverArt(
-  List<String> mangaIds, [
+  List<String> mangaIds, {
   List<String>? coverIds,
   List<String>? uploaders,
   List<String>? locales,
   Map<CoverOrders, OrderDirections>? order,
   int? limit,
   int? offset,
-]) async {
+}) async {
   var response = await getCoverArtResponse(
       mangaIds, coverIds, uploaders, locales, order, limit, offset);
-  print(response.body);
   try {
     return Cover.fromJson(jsonDecode(response.body));
   } on Exception {
@@ -706,21 +704,27 @@ Future<Cover> getCoverArt(
 ///The [res] parameter only supports values 256 and 512
 ///
 ///The resolution remains unchanged if any other value of [res] is given.
-Future<List<String>> getCoverArtUrl(List<String> mangaIds, {int? res}) async {
-  var urls = <String>[];
-  var reso = res ?? '';
-  var data = await getCoverArt(mangaIds);
 
-  var filename = data.data[0].attributes.fileName;
-  mangaIds.forEach((element) {
-    if (reso == 256 || reso == 512) {
-      urls.add(
-          'https://uploads.mangadex.org/covers/$element/$filename.$reso.jpg');
-    } else {
-      urls.add('https://uploads.mangadex.org/covers/$element/$filename');
-    }
-  });
-  return urls;
+Future<Map<String, String>> getCoverArtUrl(List<String> mangaIds,
+    {int? res}) async {
+  int reso = res ?? 0;
+  Search data = await search(ids: mangaIds, includes: ['cover_art']);
+
+  Map<String, String> map = {};
+
+  for (final manga in data.data) {
+    final searchVal = manga.relationships
+        .where((element) => element.attributes != null)
+        .toList();
+    map.addEntries(
+      [
+        MapEntry(manga.id, searchVal[0].attributes!.fileName),
+      ],
+    );
+    print(searchVal);
+  }
+
+  return map;
 }
 
 // User related functions

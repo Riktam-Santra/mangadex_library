@@ -422,3 +422,7 @@
 ## 1.4.5
 - Fixed a json parsing problem with Aggregate model class.
 - Added a temporary fix to the Search function throwing exceptions when the description of a manga maybe an empty list instead of an empty object. An empty Description class is returned now.
+
+## 1.4.6
+- Fixed a type in search function when using includes parameter
+- `getCoverArtUrl()` now uses the `/manga` endpoint and returns a `Map<String, String>` with manga ids mapped to their cover filenames in the format `{id: filename}` for example `{a9dd451c-3c45-4d66-a818-4e1b78855838: 70f84295-9515-4518-8699-bb85ec41ea98.jpg}`

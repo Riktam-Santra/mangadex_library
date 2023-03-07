@@ -1,10 +1,19 @@
+import 'package:mangadex_library/models/cover/Cover.dart';
+
 ///@nodoc
 class Relationship {
-  late final String id;
-  late final String type;
-  Relationship(this.id, this.type);
-  Relationship.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
+  final String id;
+  final String type;
+  final Attributes? attributes;
+  Relationship(this.id, this.type, this.attributes);
+  factory Relationship.fromJson(Map<String, dynamic> json) {
+    var ats = (json['attributes'] != null)
+        ? Attributes.fromJson(json['attributes'])
+        : null;
+    return Relationship(
+      json['id'] ?? '',
+      json['type'] ?? '',
+      ats,
+    );
   }
 }
