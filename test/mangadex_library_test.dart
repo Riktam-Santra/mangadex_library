@@ -12,12 +12,13 @@ import 'package:test/test.dart';
 
 void main() {
   test('Retrieve urls', () async {
-    Search s = await search(includes: ['cover_art']);
-    List<String> ids = [for (final data in s.data) data.id];
-    for (String x in ids) {
-      print(x);
-    }
-    Map<String, String> map = await getCoverArtUrlMap(ids);
+    Search s = await search(includes: [
+      'cover_art'
+    ], orders: {
+      SearchOrders.followedCount: OrderDirections.descending,
+    });
+
+    Map<String, String> map = await getCoverArtUrlMap(s);
 
     print(Utils.constructCoverPageUrl(map));
 

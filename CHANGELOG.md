@@ -430,3 +430,6 @@
 
 ## 1.4.7
 - made Utils class non abstract
+
+## 1.4.8
+- `getCoverArtUrlMap()` now takes in a `Search` class instance to get the filename urls of exactly the ids requested for. Previously wrong filenames were mapped to wrong ids.

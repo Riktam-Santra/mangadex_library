@@ -700,14 +700,15 @@ Future<Cover> getCoverArt(
 ///and return a [Map<String, String>] containing values with
 ///manga IDs mapped to their cover art filenames.
 
-Future<Map<String, String>> getCoverArtUrlMap(
-  List<String> mangaIds,
-) async {
-  var data = await search(ids: mangaIds, includes: ['cover_art']);
+Future<Map<String, String>> getCoverArtUrlMap(Search searchData) async {
+  // var data = await search(
+  //     ids: mangaIds,
+  //     includes: ['cover_art'],
+  //     orders: {SearchOrders.followedCount: OrderDirections.descending});
 
   var map = <String, String>{};
 
-  for (final manga in data.data) {
+  for (final manga in searchData.data) {
     final searchVal = manga.relationships
         .where((element) => element.attributes != null)
         .toList();
