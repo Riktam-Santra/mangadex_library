@@ -7,6 +7,7 @@ import 'package:mangadex_library/mangadex_library.dart';
 import 'package:mangadex_library/models/aggregate/Aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
 import 'package:mangadex_library/models/search/Search.dart';
+import 'package:mangadex_library/utils.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -16,7 +17,9 @@ void main() {
     for (String x in ids) {
       print(x);
     }
-    Map<String, String> map = await getCoverArtUrl(ids);
+    Map<String, String> map = await getCoverArtUrlMap(ids);
+
+    print(Utils.constructCoverPageUrl(map));
 
     expect(true, map.isNotEmpty);
   });

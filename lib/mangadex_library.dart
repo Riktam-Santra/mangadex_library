@@ -298,7 +298,6 @@ Future<http.Response> searchResponse({
       'https://$authority$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order';
   var httpResponse = await http.get(Uri.parse(url),
       headers: {HttpHeaders.contentTypeHeader: 'application/json'});
-  http.Response getResponse() => httpResponse;
   return httpResponse;
 }
 
@@ -698,19 +697,15 @@ Future<Cover> getCoverArt(
 }
 
 ///Directly get Cover art details of a manga with [mangaIds]
-///and return a [String] containing a url to the cover page
-///
-///The [res] parameter can be used to change resolution of the cover art obtained
-///The [res] parameter only supports values 256 and 512
-///
-///The resolution remains unchanged if any other value of [res] is given.
+///and return a [Map<String, String>] containing values with
+///manga IDs mapped to their cover art filenames.
 
-Future<Map<String, String>> getCoverArtUrl(List<String> mangaIds,
-    {int? res}) async {
-  int reso = res ?? 0;
-  Search data = await search(ids: mangaIds, includes: ['cover_art']);
+Future<Map<String, String>> getCoverArtUrlMap(
+  List<String> mangaIds,
+) async {
+  var data = await search(ids: mangaIds, includes: ['cover_art']);
 
-  Map<String, String> map = {};
+  var map = <String, String>{};
 
   for (final manga in data.data) {
     final searchVal = manga.relationships
@@ -721,8 +716,11 @@ Future<Map<String, String>> getCoverArtUrl(List<String> mangaIds,
         MapEntry(manga.id, searchVal[0].attributes!.fileName),
       ],
     );
-    print(searchVal);
   }
+
+  print('''
+Note this function only gives a Map of the manga ids mapped to their cover filenames.
+You must use constructPageUrl() in utils and pass the map to it to get the urls. ''');
 
   return map;
 }

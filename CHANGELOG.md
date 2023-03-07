@@ -425,4 +425,5 @@
 
 ## 1.4.6
 - Fixed a type in search function when using includes parameter
-- `getCoverArtUrl()` now uses the `/manga` endpoint and returns a `Map<String, String>` with manga ids mapped to their cover filenames in the format `{id: filename}` for example `{a9dd451c-3c45-4d66-a818-4e1b78855838: 70f84295-9515-4518-8699-bb85ec41ea98.jpg}`
+- `getCoverArtUrl()` has now been **renamed** to `getCoverArtUrlMap()` uses the `/manga` endpoint and returns a `Map<String, String>` with manga ids mapped to their cover filenames in the format `{id: filename}` for example `{a9dd451c-3c45-4d66-a818-4e1b78855838: 70f84295-9515-4518-8699-bb85ec41ea98.jpg}`
+- Created new `Utils` class which contains a `constructCoverPageUrl()` function which can take in these functions to automatically give you a list of type `List<String>` containing all the required urls.
