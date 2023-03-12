@@ -433,3 +433,9 @@
 
 ## 1.4.8
 - `getCoverArtUrlMap()` now takes in a `Search` class instance to get the filename urls of exactly the ids requested for. Previously wrong filenames were mapped to wrong ids.
+
+## 1.5 (**important**)
+- auto generated all models using json_serializable. One must be careful when using properties like `Description`, `Name` etc which should be an empty object if null but maybe be returned as a list by the server when empty and as an object when non-empty. Still waiting for this to get fixed.
+- made Utils class abstract
+- `getCoverArtUrlMap()` doesn't return a future any more, it now directly returns `Map<String, dynamic>` and takes in a `Search` class instance.
+- both `constructCoverPageUrl()` and `getCoverArtUrlMap()` have been shifted to utils class.

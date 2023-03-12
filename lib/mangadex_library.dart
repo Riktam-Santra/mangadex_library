@@ -7,7 +7,7 @@ library mangadex_library;
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:mangadex_library/models/aggregate/Aggregate.dart';
+import 'package:mangadex_library/models/aggregate/aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
 
 import 'mangadexServerException.dart';
@@ -15,35 +15,35 @@ import 'enum_utils.dart';
 
 import 'package:http/http.dart' as http;
 
-import '/models/author/author_info.dart';
-import '/models/author/author_search_results.dart';
-import '/models/common/visibility.dart';
-import '/models/custom_lists/custom_list_confirmation.dart';
-import '/models/login/token_check.dart';
-import '/models/scanlation/scanlation.dart';
-import '/models/scanlation/scanlationsResult.dart';
-import '/models/user/user_feed/user_feed.dart';
-import 'models/chapter/readChapters.dart';
-import 'models/common/allMangaReadingStatus.dart';
+import 'models/author/author_info.dart';
+import 'models/author/author_search_results.dart';
+import 'models/common/visibility.dart';
+import 'models/custom_lists/single_custom_list_response.dart';
+import 'models/login/token_check.dart';
+import 'models/scanlation/scanlation.dart';
+import 'models/scanlation/scanlations_result.dart';
+import 'models/user/user_feed/user_feed.dart';
+import 'models/chapter/read_chapters.dart';
+import 'models/common/all_manga_reading_status.dart';
 import 'models/common/content_rating.dart';
 import 'models/common/language_codes.dart';
-import 'models/common/mangaReadingStatus.dart';
+import 'models/common/manga_reading_status.dart';
 import 'models/common/manga_status.dart';
 import 'models/common/publication_demographic.dart';
 import 'models/common/reading_status.dart';
 import 'models/common/tag_modes.dart';
 import 'models/user/user_followed_groups/user_followed_groups.dart';
 import 'models/user/user_followed_users/user_followed_users.dart';
-import 'models/common/resultOk.dart';
-import 'models/cover/Cover.dart';
-import 'models/search/Search.dart';
-import 'models/chapter/ChapterData.dart';
-import 'models/login/Login.dart';
+import 'models/common/result_ok.dart';
+import 'models/cover/cover.dart';
+import 'models/search/search.dart';
+import 'models/chapter/chapter_data.dart';
+import 'models/login/login.dart';
 import 'models/user/user_followed_manga/user_followed_manga.dart';
 import 'models/user/logged_user_details/logged_user_details.dart';
-import 'models/at-home/singleChapterData.dart';
+import 'models/at-home/single_chapter_data.dart';
 import 'models/common/base_url.dart';
-import 'models/common/singleMangaData.dart';
+import 'models/common/single_manga_data.dart';
 
 final String authority = 'api.mangadex.org';
 
@@ -572,9 +572,9 @@ Future<List<String>> getChapterFilenames(
     String chapterId, bool isDataSaverMode) async {
   var response = await getChapterDataByChapterId(chapterId);
   if (isDataSaverMode == true) {
-    return response.chapter.dataSaver;
+    return response.chapter!.dataSaver!;
   } else {
-    return response.chapter.data;
+    return response.chapter!.data!;
   }
 }
 
@@ -700,7 +700,7 @@ Future<Cover> getCoverArt(
 ///and return a [Map<String, String>] containing values with
 ///manga IDs mapped to their cover art filenames.
 
-Future<Map<String, String>> getCoverArtUrlMap(Search searchData) async {
+Map<String, String> getCoverArtUrlMap(Search searchData) {
   // var data = await search(
   //     ids: mangaIds,
   //     includes: ['cover_art'],
@@ -708,13 +708,13 @@ Future<Map<String, String>> getCoverArtUrlMap(Search searchData) async {
 
   var map = <String, String>{};
 
-  for (final manga in searchData.data) {
+  for (final manga in searchData.data!) {
     final searchVal = manga.relationships
-        .where((element) => element.attributes != null)
+        ?.where((element) => element.attributes != null)
         .toList();
     map.addEntries(
       [
-        MapEntry(manga.id, searchVal[0].attributes!.fileName),
+        MapEntry(manga.id!, searchVal![0].attributes!.fileName!),
       ],
     );
   }
@@ -1566,8 +1566,8 @@ Future<http.Response> searchAuthorResponse(
 }
 
 /// Search for an author by the author's [name] and return [limit] number of results (10 by default)
-/// in an [AuthorSearchResult] class instance.
-Future<AuthorSearchResult> searchAuthor(
+/// in an [AuthorSearchResults] class instance.
+Future<AuthorSearchResults> searchAuthor(
   String? name,
   int? limit,
   int? offset,
@@ -1575,7 +1575,7 @@ Future<AuthorSearchResult> searchAuthor(
   List<String>? includes,
 ) async {
   var response = await searchAuthorResponse(name, limit, offset, ids, includes);
-  return AuthorSearchResult.fromJson(jsonDecode(response.body));
+  return AuthorSearchResults.fromJson(jsonDecode(response.body));
 }
 
 ///Get details of an author identified by the author's [authorId] or UUID nad return the data as an http response.

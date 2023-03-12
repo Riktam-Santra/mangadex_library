@@ -11,7 +11,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="../static-assets/github.css?v1">
   <link rel="stylesheet" href="../static-assets/styles.css?v1">
@@ -21,12 +21,12 @@
 </head>
 
 
-<body data-base-href="../" data-using-base-href="false">
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
 
 <div id="overlay-under-drawer"></div>
 
 <header id="title">
-  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">mangadex_library</a></li>
     <li class="self-crumb">future_updates library</li>
@@ -35,15 +35,24 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
 </header>
-
 <main>
 
-
   <div id="dartdoc-main-content" class="main-content">
+    
       <div>
 <h1><span class="kind-library">future_updates</span> library 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -91,42 +100,47 @@
     <h5><span class="package-name">mangadex_library</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
-      <li><a href="../models_aggregate_Aggregate/models_aggregate_Aggregate-library.html">Aggregate</a></li>
-      <li><a href="../models_common_allMangaReadingStatus/models_common_allMangaReadingStatus-library.html">allMangaReadingStatus</a></li>
+      <li><a href="../models_aggregate_aggregate/models_aggregate_aggregate-library.html">aggregate</a></li>
+      <li><a href="../models_common_all_manga_reading_status/models_common_all_manga_reading_status-library.html">all_manga_reading_status</a></li>
       <li><a href="../models_common_alt_titles/models_common_alt_titles-library.html">alt_titles</a></li>
       <li><a href="../models_author_author_info/models_author_author_info-library.html">author_info</a></li>
       <li><a href="../models_author_author_search_results/models_author_author_search_results-library.html">author_search_results</a></li>
       <li><a href="../models_at-home_chapter/models_at-home_chapter-library.html">chapter</a></li>
       <li><a href="../models_common_chapter/models_common_chapter-library.html">chapter</a></li>
-      <li><a href="../models_chapter_ChapterData/models_chapter_ChapterData-library.html">ChapterData</a></li>
+      <li><a href="../models_chapter_chapter_data/models_chapter_chapter_data-library.html">chapter_data</a></li>
       <li><a href="../models_common_content_rating/models_common_content_rating-library.html">content_rating</a></li>
-      <li><a href="../models_custom_lists_custom_list_confirmation/models_custom_lists_custom_list_confirmation-library.html">custom_list_confirmation</a></li>
       <li><a href="../models_common_description/models_common_description-library.html">description</a></li>
       <li><a href="../enum_utils/enum_utils-library.html">enum_utils</a></li>
       <li><a href="../models_common_future_updates/models_common_future_updates-library.html">future_updates</a></li>
       <li><a href="../models_common_language_codes/models_common_language_codes-library.html">language_codes</a></li>
-      <li><a href="../models_login_Login/models_login_Login-library.html">Login</a></li>
+      <li><a href="../models_login_login/models_login_login-library.html">login</a></li>
       <li><a href="../models_user_user_followed_manga_manga_check/models_user_user_followed_manga_manga_check-library.html">manga_check</a></li>
+      <li><a href="../models_common_manga_reading_status/models_common_manga_reading_status-library.html">manga_reading_status</a></li>
       <li><a href="../models_common_manga_status/models_common_manga_status-library.html">manga_status</a></li>
       <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
       <li><a href="../mangadexServerException/mangadexServerException-library.html">mangadexServerException</a></li>
-      <li><a href="../models_common_mangaReadingStatus/models_common_mangaReadingStatus-library.html">mangaReadingStatus</a></li>
+      <li><a href="../models_custom_lists_multiple_custom_lists_response/models_custom_lists_multiple_custom_lists_response-library.html">multiple_custom_lists_response</a></li>
       <li><a href="../models_common_name/models_common_name-library.html">name</a></li>
       <li><a href="../models_common_order_enums/models_common_order_enums-library.html">order_enums</a></li>
       <li><a href="../models_common_publication_demographic/models_common_publication_demographic-library.html">publication_demographic</a></li>
-      <li><a href="../models_chapter_readChapters/models_chapter_readChapters-library.html">readChapters</a></li>
+      <li><a href="../models_chapter_read_chapters/models_chapter_read_chapters-library.html">read_chapters</a></li>
       <li><a href="../models_common_reading_status/models_common_reading_status-library.html">reading_status</a></li>
       <li><a href="../models_common_relationships/models_common_relationships-library.html">relationships</a></li>
-      <li><a href="../models_common_resultOk/models_common_resultOk-library.html">resultOk</a></li>
+      <li><a href="../models_common_result_ok/models_common_result_ok-library.html">result_ok</a></li>
       <li><a href="../models_scanlation_scanlation/models_scanlation_scanlation-library.html">scanlation</a></li>
-      <li><a href="../models_scanlation_scanlationsResult/models_scanlation_scanlationsResult-library.html">scanlationsResult</a></li>
+      <li><a href="../models_scanlation_scanlations_result/models_scanlation_scanlations_result-library.html">scanlations_result</a></li>
+      <li><a href="../models_search_search/models_search_search-library.html">search</a></li>
+      <li><a href="../models_common_server_exception/models_common_server_exception-library.html">server_exception</a></li>
       <li><a href="../models_common_serverException/models_common_serverException-library.html">serverException</a></li>
-      <li><a href="../models_at-home_singleChapterData/models_at-home_singleChapterData-library.html">singleChapterData</a></li>
-      <li><a href="../models_common_singleMangaData/models_common_singleMangaData-library.html">singleMangaData</a></li>
+      <li><a href="../models_at-home_single_chapter_data/models_at-home_single_chapter_data-library.html">single_chapter_data</a></li>
+      <li><a href="../models_custom_lists_single_custom_list_response/models_custom_lists_single_custom_list_response-library.html">single_custom_list_response</a></li>
+      <li><a href="../models_common_single_manga_data/models_common_single_manga_data-library.html">single_manga_data</a></li>
       <li><a href="../models_common_tag_modes/models_common_tag_modes-library.html">tag_modes</a></li>
       <li><a href="../models_common_title/models_common_title-library.html">title</a></li>
       <li><a href="../models_login_token_check/models_login_token_check-library.html">token_check</a></li>
       <li><a href="../models_user_user_feed_user_feed/models_user_user_feed_user_feed-library.html">user_feed</a></li>
+      <li><a href="../models_user_user_followed_groups_user_followed_groups/models_user_user_followed_groups_user_followed_groups-library.html">user_followed_groups</a></li>
+      <li><a href="../utils/utils-library.html">utils</a></li>
       <li><a href="../models_common_visibility/models_common_visibility-library.html">visibility</a></li>
 </ol>
 
@@ -141,8 +155,8 @@
 
 
 
-  <li class="section-title"><a href="../models_common_future_updates/models_common_future_updates-library.html#enums">Enums</a></li>
-  <li><a href="../models_common_future_updates/FutureUpdates.html">FutureUpdates</a></li>
+      <li class="section-title"><a href="../models_common_future_updates/models_common_future_updates-library.html#enums">Enums</a></li>
+        <li><a href="../models_common_future_updates/FutureUpdates.html">FutureUpdates</a></li>
 
 
 </ol>
@@ -154,7 +168,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.4.4
+      1.5.0
   </span>
 
   

@@ -1,58 +1,47 @@
-///@nodoc
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
+part 'user_followed_groups.g.dart';
 
 ///@nodoc
+@JsonSerializable()
 class UserFollowedGroups {
-  late final List<Data> data;
-  late final int limit;
-  late final int offset;
-  late final int total;
+  final List<Data>? data;
+  final int? limit;
+  final int? offset;
+  final int? total;
   UserFollowedGroups(this.data, this.limit, this.offset, this.total);
-  UserFollowedGroups.fromJson(Map<String, dynamic> json) {
-    data = <Data>[];
-    if (json['data'] != null) {
-      json['data'].forEach((v) {
-        data.add(Data.fromJson(v));
-      });
-    }
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
+  factory UserFollowedGroups.fromJson(Map<String, dynamic> json) =>
+      _$UserFollowedGroupsFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFollowedGroupsToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Data {
-  late final String id;
-  late final String type;
-  late final Attributes attributes;
-  late final List<Relationship> relationships;
-  Data(this.id, this.type, this.attributes);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    attributes = Attributes.fromJson(json['attributes']!);
-    relationships = <Relationship>[];
-    json['relationships']!.forEach((v) {
-      relationships.add(Relationship.fromJson(v));
-    });
-  }
+  final String? id;
+  final String? type;
+  final Attributes? attributes;
+  final List<Relationship>? relationships;
+  Data(this.id, this.type, this.attributes, this.relationships);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Attributes {
-  late final String name;
-  late final String website;
-  late final String ircServer;
-  late final String ircChannel;
-  late final String discord;
-  late final String contactEmail;
-  late final String description;
-  late final bool locked;
-  late final bool official;
-  late final int version;
-  late final String createdAt;
-  late final String updatedAt;
+  final String? name;
+  final String? website;
+  final String? ircServer;
+  final String? ircChannel;
+  final String? discord;
+  final String? contactEmail;
+  final String? description;
+  final bool? locked;
+  final bool? official;
+  final int? version;
+  final String? createdAt;
+  final String? updatedAt;
   Attributes(
       this.name,
       this.website,
@@ -66,17 +55,7 @@ class Attributes {
       this.version,
       this.createdAt,
       this.updatedAt);
-  Attributes.fromJson(Map<String, dynamic> json) {
-    name = json['name'] ?? '';
-    website = json['website'] ?? '';
-    ircServer = json['ircServer'] ?? '';
-    ircChannel = json['ircChannel'] ?? '';
-    discord = json['discord'] ?? '';
-    contactEmail = json['contactEmail'] ?? '';
-    locked = json['locked'] ?? true;
-    official = json['official'] ?? true;
-    createdAt = json['createdAt'] ?? '';
-    updatedAt = json['updatedAt'] ?? '';
-    version = json['version'] ?? '';
-  }
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }

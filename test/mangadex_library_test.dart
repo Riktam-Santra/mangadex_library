@@ -4,9 +4,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:mangadex_library/mangadex_library.dart';
-import 'package:mangadex_library/models/aggregate/Aggregate.dart';
+import 'package:mangadex_library/models/aggregate/aggregate.dart';
 import 'package:mangadex_library/models/common/order_enums.dart';
-import 'package:mangadex_library/models/search/Search.dart';
+import 'package:mangadex_library/models/search/search.dart';
 import 'package:mangadex_library/utils.dart';
 import 'package:test/test.dart';
 
@@ -18,7 +18,7 @@ void main() {
       SearchOrders.followedCount: OrderDirections.descending,
     });
 
-    Map<String, String> map = await getCoverArtUrlMap(s);
+    Map<String, String> map = Utils.getCoverArtUrlMap(s);
 
     print(Utils.constructCoverPageUrl(map));
 
@@ -56,7 +56,7 @@ void main() {
     test('Fetch manga chapter data', () async {
       print('fetching manga details for manga with UUID: $mangaId');
       var data = await getChapters(mangaId);
-      chapterId = data.data[0].id;
+      chapterId = data.data![0].id!;
       expect('ok', data.result);
     });
     test('Get chapter by Id', () async {
@@ -64,8 +64,8 @@ void main() {
           'fetching chapter with UUID $chapterId for manga with UUID $mangaId');
       var data = await getChapterDataByChapterId(chapterId);
 
-      pageUrl = constructPageUrl(
-          data.baseUrl, true, data.chapter.hash, data.chapter.dataSaver.first);
+      pageUrl = constructPageUrl(data.baseUrl!, true, data.chapter!.hash!,
+          data.chapter!.dataSaver!.first);
       expect('ok', data.result);
     });
     test('Page fetch check', () async {

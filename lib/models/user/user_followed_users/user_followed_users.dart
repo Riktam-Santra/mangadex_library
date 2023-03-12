@@ -1,67 +1,51 @@
 ///@nodoc
+import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/models/common/relationships.dart';
+part 'user_followed_users.g.dart';
 
 ///@nodoc
+@JsonSerializable()
 class UserFollowedUsers {
-  late final List<Data> data;
-  late final int limit;
-  late final int offset;
-  late final int total;
+  final List<Data>? data;
+  final int? limit;
+  final int? offset;
+  final int? total;
   UserFollowedUsers(this.data, this.limit, this.offset, this.total);
-  UserFollowedUsers.fromJson(Map<String, dynamic> json) {
-    data = <Data>[];
-
-    json['data']!.forEach((v) {
-      data.add(Data.fromJson(v));
-    });
-
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
+  factory UserFollowedUsers.fromJson(Map<String, dynamic> json) =>
+      _$UserFollowedUsersFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFollowedUsersToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Data {
-  late final String id;
-  late final String type;
-  late final Attributes attributes;
-  late final List<Relationship> relationships;
-  Data(this.id, this.type, this.attributes);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-    attributes = Attributes.fromJson(json['attributes']);
-    relationships = <Relationship>[];
-    json['relationships']!.forEach((v) {
-      relationships.add(Relationship.fromJson(v));
-    });
-  }
+  final String? id;
+  final String? type;
+  final Attributes? attributes;
+  final List<Relationship>? relationships;
+  Data(this.id, this.type, this.attributes, this.relationships);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Attributes {
-  late final String username;
-  late final Role roles;
-  late final int version;
+  final String? username;
+  final Role? roles;
+  final int? version;
   Attributes(this.username, this.roles, this.version);
-  Attributes.fromJson(Map<String, dynamic> json) {
-    username = json['username'];
-    roles = Role.fromJson(json['roles']);
-    version = json['version'] ?? 0;
-  }
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }
 
 ///@nodoc
+@JsonSerializable()
 class Role {
-  late final List<String> roles;
+  final List<String>? roles;
   Role(this.roles);
-  Role.fromJson(Map<String, dynamic> json) {
-    roles = <String>[];
-    if (json['roles'] != null) {
-      json['roles'].forEach((v) {
-        roles.add(v);
-      });
-    }
-  }
+  factory Role.fromJson(Map<String, dynamic> json) => _$RoleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RoleToJson(this);
 }

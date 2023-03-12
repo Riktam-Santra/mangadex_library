@@ -1,18 +1,15 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'chapter.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class Chapter {
-  late String hash;
-  late List<String> data;
-  late List<String> dataSaver;
+  final String? hash;
+  final List<String>? data;
+  final List<String>? dataSaver;
   Chapter(this.hash, this.data, this.dataSaver);
-  Chapter.fromJson(Map<String, dynamic> json) {
-    hash = json['hash'] ?? '';
-    data = [];
-    json['data'].forEach((element) {
-      data.add(element);
-    });
-    dataSaver = [];
-    json['dataSaver'].forEach((element) {
-      dataSaver.add(element);
-    });
-  }
+  factory Chapter.fromJson(Map<String, dynamic> json) =>
+      _$ChapterFromJson(json);
+  Map<String, dynamic> toJson() => _$ChapterToJson(this);
 }

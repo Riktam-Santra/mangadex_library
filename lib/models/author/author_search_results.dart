@@ -1,24 +1,20 @@
-import 'author_info.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class AuthorSearchResult {
-  late String result;
-  late String response;
-  late List<Data> data;
-  late int limit;
-  late int offset;
-  late int total;
-  AuthorSearchResult(this.result, this.response, this.data);
-  AuthorSearchResult.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    data = [];
-    if (json['data'] != null) {
-      json['data'].forEach((e) {
-        data.add(Data.fromJson(e));
-      });
-    }
-    limit = json['limit'] ?? 0;
-    offset = json['offset'] ?? 0;
-    total = json['total'] ?? 0;
-  }
+import 'author_info.dart';
+part 'author_search_results.g.dart';
+
+///@nodoc
+@JsonSerializable()
+class AuthorSearchResults {
+  final String? result;
+  final String? response;
+  final List<Data>? data;
+  final int? limit;
+  final int? offset;
+  final int? total;
+  AuthorSearchResults(this.result, this.response, this.data, this.limit,
+      this.offset, this.total);
+  factory AuthorSearchResults.fromJson(Map<String, dynamic> json) =>
+      _$AuthorSearchResultsFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthorSearchResultsToJson(this);
 }

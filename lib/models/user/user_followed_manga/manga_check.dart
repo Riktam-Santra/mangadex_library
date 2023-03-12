@@ -1,10 +1,14 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'manga_check.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class MangaCheck {
-  late String result;
+  final String? result;
 
   MangaCheck(this.result);
 
-  MangaCheck.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-  }
+  factory MangaCheck.fromJson(Map<String, dynamic> json) =>
+      _$MangaCheckFromJson(json);
+  Map<String, dynamic> toJson() => _$MangaCheckToJson(this);
 }

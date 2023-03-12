@@ -1,10 +1,13 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'alt_titles.g.dart';
+
 ///@nodoc
+@JsonSerializable()
 class AltTitles {
-  late final String en;
-  late final String fr;
+  final String? en;
+  final String? fr;
   AltTitles(this.en, this.fr);
-  AltTitles.fromJson(Map<String, dynamic> json) {
-    en = json['en'] ?? '';
-    fr = json['fr'] ?? '';
-  }
+  factory AltTitles.fromJson(Map<String, dynamic> json) =>
+      _$AltTitlesFromJson(json);
+  Map<String, dynamic> toJson() => _$AltTitlesToJson(this);
 }

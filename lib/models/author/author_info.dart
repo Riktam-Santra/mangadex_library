@@ -1,57 +1,53 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'author_info.g.dart';
+
+///@nodoc
+@JsonSerializable()
 class AuthorInfo {
-  late String result;
-  late String response;
-  late Data data;
-  late List<Relationship> relationships;
-  AuthorInfo(this.result, this.response, this.data);
-  AuthorInfo.fromJson(Map<String, dynamic> json) {
-    result = json['result'] ?? '';
-    response = json['response'] ?? '';
-    if (json['data'] != null) {
-      data = Data.fromJson(json['data']);
-    }
-    relationships = [];
-    if (json['relationships'] != null) {
-      json['relationships'].forEach((e) {
-        relationships.add(Relationship.fromJson(json['relationships']));
-      });
-    }
-  }
+  final String? result;
+  final String? response;
+  final Data? data;
+  final List<Relationship>? relationships;
+  AuthorInfo(this.result, this.response, this.data, this.relationships);
+  factory AuthorInfo.fromJson(Map<String, dynamic> json) =>
+      _$AuthorInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthorInfoToJson(this);
 }
 
+///@nodoc
+@JsonSerializable()
 class Data {
-  late String id;
-  late String type;
-  late Attributes attributes;
+  final String? id;
+  final String? type;
+  final Attributes? attributes;
   Data(this.id, this.type, this.attributes);
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    type = json['type'];
-    if (json['attributes'] != null) {
-      attributes = Attributes.fromJson(json['attributes']);
-    }
-  }
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
+///@nodoc
+@JsonSerializable()
 class Attributes {
-  late String name;
-  late String? imageUrl;
-  late String twitter;
-  late String pixiv;
-  late String melonBook;
-  late String fanBox;
-  late String booth;
-  late String nicoVideo;
-  late String skeb;
-  late String fantia;
-  late String tumblr;
-  late String youtube;
-  late String weibo;
-  late String naver;
-  late String website;
-  late String createdAt;
-  late String updateAt;
-  late int version;
+  final String? name;
+  final String? imageUrl;
+  final String? twitter;
+  final String? pixiv;
+  final String? melonBook;
+  final String? fanBox;
+  final String? booth;
+  final String? nicoVideo;
+  final String? skeb;
+  final String? fantia;
+  final String? tumblr;
+  final String? youtube;
+  final String? weibo;
+  final String? naver;
+  final String? website;
+  final String? createdAt;
+  final String? updateAt;
+  final int? version;
   Attributes(
       this.name,
       this.imageUrl,
@@ -72,34 +68,18 @@ class Attributes {
       this.updateAt,
       this.version);
 
-  Attributes.fromJson(Map<String, dynamic> json) {
-    name = json['name'] ?? '';
-    imageUrl = json['imageUrl'] ?? '';
-    twitter = json['twitter'] ?? '';
-    pixiv = json['pixiv'] ?? '';
-    melonBook = json['melonBook'] ?? '';
-    fanBox = json['fanBox'] ?? '';
-    booth = json['booth'] ?? '';
-    nicoVideo = json['nicoVideo'] ?? '';
-    skeb = json['skeb'] ?? '';
-    fantia = json['fantia'] ?? '';
-    tumblr = json['tumblr'] ?? '';
-    youtube = json['youtube'] ?? '';
-    weibo = json['weibo'] ?? '';
-    naver = json['naver'] ?? '';
-    website = json['website'] ?? '';
-    createdAt = json['createdAt'] ?? '';
-    updateAt = json['updateAt'] ?? '';
-    version = json['version'] ?? 0;
-  }
+  factory Attributes.fromJson(Map<String, dynamic> json) =>
+      _$AttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }
 
+///@nodoc
+@JsonSerializable()
 class Relationship {
-  late String id;
-  late String type;
+  final String? id;
+  final String? type;
   Relationship(this.id, this.type);
-  Relationship.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? '';
-    type = json['type'] ?? '';
-  }
+  factory Relationship.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
 }
