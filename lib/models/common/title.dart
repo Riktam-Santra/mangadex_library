@@ -8,4 +8,5 @@ class Title {
   final String? fr;
   Title(this.en, this.fr);
   factory Title.fromJson(Map<String, dynamic> json) => _$TitleFromJson(json);
+  Map<String, dynamic> toJson() => _$TitleToJson(this);
 }

@@ -1,4 +1,4 @@
-import 'package:mangadex_library/models/common/serverException.dart';
+import 'models/common/server_exception.dart';
 
 class MangadexServerException implements Exception {
   late ServerException info;

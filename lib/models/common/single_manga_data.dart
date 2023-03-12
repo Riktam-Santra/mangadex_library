@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mangadex_library/mangadexServerException.dart';
 import 'package:mangadex_library/models/common/data.dart';
 
 part 'single_manga_data.g.dart';
