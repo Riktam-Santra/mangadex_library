@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the constructPageUrl function from the mangadex_library library, for the Dart programming language.">
-  <title>constructPageUrl function - mangadex_library library - Dart API</title>
+  <meta name="description" content="API docs for the getSingleCustomList function from the mangadex_library library, for the Dart programming language.">
+  <title>getSingleCustomList function - mangadex_library library - Dart API</title>
 
 
   
@@ -30,9 +30,9 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">mangadex_library</a></li>
     <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-    <li class="self-crumb">constructPageUrl function</li>
+    <li class="self-crumb">getSingleCustomList function</li>
   </ol>
-  <div class="self-name">constructPageUrl</div>
+  <div class="self-name">getSingleCustomList</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -49,7 +49,7 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-function">constructPageUrl</span> function 
+<h1><span class="kind-function">getSingleCustomList</span> function 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
@@ -57,11 +57,8 @@
     <section class="multi-line-signature">
         
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
-<span class="name ">constructPageUrl</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="constructPageUrl-param-baseUrl"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">baseUrl</span>, </span></li>
-<li><span class="parameter" id="constructPageUrl-param-dataSaver"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dataSaver</span>, </span></li>
-<li><span class="parameter" id="constructPageUrl-param-chapterHash"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">chapterHash</span>, </span></li>
-<li><span class="parameter" id="constructPageUrl-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
+<span class="name ">getSingleCustomList</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getSingleCustomList-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span></li>
 </ol>)
 
         
@@ -69,20 +66,21 @@
     </section>
     
 <section class="desc markdown">
-  <p>Uses <code>baseUrl</code>, <code>sessionToken</code>, <code>chapterHash</code> and <code>filename</code>
-and returns a <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> containing the full constructed address to the page
-base url can be obtained from the <a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a> function, the token using the login() function
-chapterHash and filename can both be obtained via <a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></p>
+  <p>Gets the data of the customList identified by it's <code>listId</code>
+or list uuid and returns a <code>SingleCustomListResponse</code>containing the data.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String constructPageUrl(
-    String baseUrl, bool dataSaver, String chapterHash, String filename) {
-  var dataMode = dataSaver ? &#39;data-saver&#39; : &#39;data&#39;;
-  return &#39;$baseUrl&#47;$dataMode&#47;$chapterHash&#47;$filename&#39;;
+  <pre class="language-dart"><code class="language-dart">Future&lt;SingleCustomListResponse&gt; getSingleCustomList(String listId) async {
+  var response = await getSingleCustomListResponse(listId);
+  try {
+    return SingleCustomListResponse.fromJson(jsonDecode(response.body));
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
 }</code></pre>
 </section>
 
@@ -99,7 +97,7 @@ chapterHash and filename can both be obtained via <a href="../mangadex_library/g
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../index.html">mangadex_library</a></li>
   <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-  <li class="self-crumb">constructPageUrl function</li>
+  <li class="self-crumb">getSingleCustomList function</li>
 </ol>
 
 

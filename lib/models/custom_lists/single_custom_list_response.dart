@@ -40,9 +40,7 @@ class Attributes {
 class Relationship {
   final String? id;
   final String? type;
-  final String? related;
-  final Attributes attributes;
-  Relationship(this.id, this.type, this.related, this.attributes);
+  Relationship(this.id, this.type);
   factory Relationship.fromJson(Map<String, dynamic> json) =>
       _$RelationshipFromJson(json);
   Map<String, dynamic> toJson() => _$RelationshipToJson(this);

@@ -58,14 +58,10 @@ Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
 Relationship _$RelationshipFromJson(Map<String, dynamic> json) => Relationship(
       json['id'] as String?,
       json['type'] as String?,
-      json['related'] as String?,
-      Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$RelationshipToJson(Relationship instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
-      'related': instance.related,
-      'attributes': instance.attributes,
     };

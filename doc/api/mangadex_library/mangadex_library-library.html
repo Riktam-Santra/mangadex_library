@@ -38,11 +38,8 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
+      <span class="material-symbols-outlined">
         brightness_4
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        brightness_5
       </span>
     </label>
   </div>
@@ -53,6 +50,7 @@
     
       <div>
 <h1><span class="kind-library">mangadex_library</span> library 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -580,49 +578,6 @@ filtered by a list of <code>uploaders</code> and <code>locales</code>
 
 </dd>
 
-        <dt id="getCoverArtUrlMap" class="callable">
-  <span class="name"><a href="../mangadex_library/getCoverArtUrlMap.html">getCoverArtUrlMap</a></span><span class="signature">(<wbr><span class="parameter" id="getCoverArtUrlMap-param-searchData"><span class="type-annotation">Search</span> <span class="parameter-name">searchData</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Directly get Cover art details of a manga with <code>mangaIds</code>
-and return a <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, String&gt;</a> containing values with
-manga IDs mapped to their cover art filenames.
-  
-
-</dd>
-
-        <dt id="getCustomList" class="callable">
-  <span class="name"><a href="../mangadex_library/getCustomList.html">getCustomList</a></span><span class="signature">(<wbr><span class="parameter" id="getCustomList-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Gets the data of the customList identified by it's <code>listId</code>
-or list uuid and returns a <code>SingleCustomListResponse</code>containing the data.
-  
-
-</dd>
-
-        <dt id="getCustomListResponse" class="callable">
-  <span class="name"><a href="../mangadex_library/getCustomListResponse.html">getCustomListResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getCustomListResponse-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Gets the data of the custom list identified by it's <code>listId</code>
-or list uuid and returns a http response containing the data.
-  
-
-</dd>
-
         <dt id="getLoggedInUserCustomLists" class="callable">
   <span class="name"><a href="../mangadex_library/getLoggedInUserCustomLists.html">getLoggedInUserCustomLists</a></span><span class="signature">(<wbr><span class="parameter" id="getLoggedInUserCustomLists-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span><span class="parameter" id="getLoggedInUserCustomLists-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getLoggedInUserCustomLists-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
@@ -806,6 +761,34 @@ from <code>offset</code> which may focus on the given <code>focussedLanguage</co
 
 </dd>
 
+        <dt id="getSingleCustomList" class="callable">
+  <span class="name"><a href="../mangadex_library/getSingleCustomList.html">getSingleCustomList</a></span><span class="signature">(<wbr><span class="parameter" id="getSingleCustomList-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Gets the data of the customList identified by it's <code>listId</code>
+or list uuid and returns a <code>SingleCustomListResponse</code>containing the data.
+  
+
+</dd>
+
+        <dt id="getSingleCustomListResponse" class="callable">
+  <span class="name"><a href="../mangadex_library/getSingleCustomListResponse.html">getSingleCustomListResponse</a></span><span class="signature">(<wbr><span class="parameter" id="getSingleCustomListResponse-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Gets the data of the custom list identified by it's <code>listId</code>
+or list uuid and returns a http response containing the data.
+  
+
+</dd>
+
         <dt id="getUserCustomLists" class="callable">
   <span class="name"><a href="../mangadex_library/getUserCustomLists.html">getUserCustomLists</a></span><span class="signature">(<wbr><span class="parameter" id="getUserCustomLists-param-userId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">userId</span>, </span><span class="parameter" id="getUserCustomLists-param-limit"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getUserCustomLists-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SingleCustomListResponse</span>&gt;</span></span>
@@ -914,7 +897,10 @@ the <code>sessionToken</code> is the session token obtained using the login() fu
 
 </dt>
 <dd>
-  Get a http response of the all the Manga user follows,
+  Directly get Cover art details of a manga with <code>mangaIds</code>
+and return a <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map&lt;String, String&gt;</a> containing values with
+manga IDs mapped to their cover art filenames.
+Get a http response of the all the Manga user follows,
 the <code>sessionToken</code> is the session token obtained using the login() function
   
 
@@ -1399,9 +1385,6 @@ update the list and returns the updated data in a http response.
         <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
         <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
         <li><a href="../mangadex_library/getCoverArtResponse.html">getCoverArtResponse</a></li>
-        <li><a href="../mangadex_library/getCoverArtUrlMap.html">getCoverArtUrlMap</a></li>
-        <li><a href="../mangadex_library/getCustomList.html">getCustomList</a></li>
-        <li><a href="../mangadex_library/getCustomListResponse.html">getCustomListResponse</a></li>
         <li><a href="../mangadex_library/getLoggedInUserCustomLists.html">getLoggedInUserCustomLists</a></li>
         <li><a href="../mangadex_library/getLoggedInUserCustomListsResponse.html">getLoggedInUserCustomListsResponse</a></li>
         <li><a href="../mangadex_library/getLoggedUserDetails.html">getLoggedUserDetails</a></li>
@@ -1415,6 +1398,8 @@ update the list and returns the updated data in a http response.
         <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
         <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
         <li><a href="../mangadex_library/getScanlationGroupResponse.html">getScanlationGroupResponse</a></li>
+        <li><a href="../mangadex_library/getSingleCustomList.html">getSingleCustomList</a></li>
+        <li><a href="../mangadex_library/getSingleCustomListResponse.html">getSingleCustomListResponse</a></li>
         <li><a href="../mangadex_library/getUserCustomLists.html">getUserCustomLists</a></li>
         <li><a href="../mangadex_library/getUserCustomListsResponse.html">getUserCustomListsResponse</a></li>
         <li><a href="../mangadex_library/getUserFeed.html">getUserFeed</a></li>
@@ -1461,7 +1446,7 @@ update the list and returns the updated data in a http response.
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.0
+      1.5.1
   </span>
 
   

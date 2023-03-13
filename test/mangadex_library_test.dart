@@ -24,6 +24,11 @@ void main() {
 
     expect(true, map.isNotEmpty);
   });
+  test('Get Custom List', () async {
+    var data =
+        await getSingleCustomList("44224004-1fad-425e-b416-45b46b74d3d1");
+    expect('ok', data.result!);
+  });
   group('Search Function', () {
     var query = 'oregairu';
     test('Search function check with only query', () async {

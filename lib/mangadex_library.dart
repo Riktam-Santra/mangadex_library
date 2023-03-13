@@ -700,32 +700,6 @@ Future<Cover> getCoverArt(
 ///and return a [Map<String, String>] containing values with
 ///manga IDs mapped to their cover art filenames.
 
-Map<String, String> getCoverArtUrlMap(Search searchData) {
-  // var data = await search(
-  //     ids: mangaIds,
-  //     includes: ['cover_art'],
-  //     orders: {SearchOrders.followedCount: OrderDirections.descending});
-
-  var map = <String, String>{};
-
-  for (final manga in searchData.data!) {
-    final searchVal = manga.relationships
-        ?.where((element) => element.attributes != null)
-        .toList();
-    map.addEntries(
-      [
-        MapEntry(manga.id!, searchVal![0].attributes!.fileName!),
-      ],
-    );
-  }
-
-  print('''
-Note this function only gives a Map of the manga ids mapped to their cover filenames.
-You must use constructPageUrl() in utils and pass the map to it to get the urls. ''');
-
-  return map;
-}
-
 // User related functions
 
 /// Get a http response of the all the Manga user follows,
@@ -1292,7 +1266,7 @@ Future<SingleCustomListResponse> createCustomList(
 ///Gets the data of the custom list identified by it's [listId]
 ///or list uuid and returns a http response containing the data.
 
-Future<http.Response> getCustomListResponse(String listId) async {
+Future<http.Response> getSingleCustomListResponse(String listId) async {
   var unencodedPath = '/list/$listId';
   final uri = 'https://$authority$unencodedPath';
   return await http.get(Uri.parse(uri));
@@ -1300,14 +1274,16 @@ Future<http.Response> getCustomListResponse(String listId) async {
 
 ///Gets the data of the customList identified by it's [listId]
 ///or list uuid and returns a [SingleCustomListResponse]containing the data.
-Future<SingleCustomListResponse> getCustomList(String listId) async {
-  var response = await getCustomListResponse(listId);
+Future<SingleCustomListResponse> getSingleCustomList(String listId) async {
+  var response = await getSingleCustomListResponse(listId);
   try {
     return SingleCustomListResponse.fromJson(jsonDecode(response.body));
   } on Exception {
     throw MangadexServerException(jsonDecode(response.body));
   }
 }
+
+
 
 /// Updates an existing custom list identified by its [listId] or UUID
 /// only if the user identified by the [sessionToken] has permission to

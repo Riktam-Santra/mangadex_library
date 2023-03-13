@@ -439,3 +439,6 @@
 - made Utils class abstract
 - `getCoverArtUrlMap()` doesn't return a future any more, it now directly returns `Map<String, dynamic>` and takes in a `Search` class instance.
 - both `constructCoverPageUrl()` and `getCoverArtUrlMap()` have been shifted to utils class.
+
+## 1.5.1
+- Removed Attribues in the Relationship class specifically for `SingleCustomList`
