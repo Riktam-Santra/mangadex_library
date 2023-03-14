@@ -442,3 +442,6 @@
 
 ## 1.5.1
 - Removed Attribues in the Relationship class specifically for `SingleCustomList`
+
+## 1.5.2
+- Changed conflicting json types in aggregate.json
