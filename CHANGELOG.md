@@ -444,4 +444,7 @@
 - Removed Attribues in the Relationship class specifically for `SingleCustomList`
 
 ## 1.5.2
-- Changed conflicting json types in aggregate.json
+- Changed conflicting json types in aggregate json model
+
+## 1.5.3
+- Changed the volumes field in aggregate json model to be a `map<String, Volume>`

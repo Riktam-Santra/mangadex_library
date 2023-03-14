@@ -8,7 +8,9 @@ part of 'aggregate.dart';
 
 Aggregate _$AggregateFromJson(Map<String, dynamic> json) => Aggregate(
       json['result'] as String?,
-      json['volumes'] as Map<String, dynamic>?,
+      (json['volumes'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, Volume.fromJson(e as Map<String, dynamic>)),
+      ),
     );
 
 Map<String, dynamic> _$AggregateToJson(Aggregate instance) => <String, dynamic>{

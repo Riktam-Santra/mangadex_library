@@ -6,7 +6,7 @@ part 'aggregate.g.dart';
 @JsonSerializable()
 class Aggregate {
   final String? result;
-  final Map<String, dynamic>? volumes;
+  final Map<String, Volume>? volumes;
   Aggregate(this.result, this.volumes);
   factory Aggregate.fromJson(Map<String, dynamic> json) =>
       _$AggregateFromJson(json);
