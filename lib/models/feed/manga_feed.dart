@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'manga_feed.g.dart';
 
+///@nodoc
 @JsonSerializable()
 class MangaFeed {
   final String? result;
@@ -19,6 +20,7 @@ class MangaFeed {
   Map<String, dynamic> toJson() => _$MangaFeedToJson(this);
 }
 
+///@nodoc
 @JsonSerializable()
 class Data {
   final String? id;
@@ -30,6 +32,7 @@ class Data {
   Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
+///@nodoc
 @JsonSerializable()
 class Attributes {
   final String? title;
@@ -66,6 +69,7 @@ class Attributes {
   Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }
 
+///@nodoc
 @JsonSerializable()
 class Relationship {
   final String? id;
