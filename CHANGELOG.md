@@ -454,3 +454,4 @@
 - Added `getMangaFeed()` and `getMangaFeedResponse()` functions for `/manga/{id}/feed` endpoint
 - Added each function's requested endpoint to it's documentation.
 - Removed `getChapterDataByChapterId()` function, replaced by `getBaseUrl()`
+- Moved all enum types to a separate `enums` folder
