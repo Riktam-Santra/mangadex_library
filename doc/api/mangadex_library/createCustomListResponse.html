@@ -62,7 +62,7 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
 <span class="name ">createCustomListResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createCustomListResponse-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="createCustomListResponse-param-listName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listName</span>, </span></li>
-<li><span class="parameter" id="createCustomListResponse-param-visibility"><span class="type-annotation"><a href="../models_common_visibility/Visibility.html">Visibility</a></span> <span class="parameter-name">visibility</span>, </span></li>
+<li><span class="parameter" id="createCustomListResponse-param-visibility"><span class="type-annotation"><a href="../enums_visibility/Visibility.html">Visibility</a></span> <span class="parameter-name">visibility</span>, </span></li>
 <li><span class="parameter" id="createCustomListResponse-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span></li>
 <li><span class="parameter" id="createCustomListResponse-param-version"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">version</span></span></li>
 </ol>)
@@ -72,9 +72,10 @@
     </section>
     
 <section class="desc markdown">
-  <p>Creates a custom list with the name <code>listName</code> and
-sets visibility to either <a href="../models_common_visibility/Visibility.html">Visibility.private</a> or
-<a href="../models_common_visibility/Visibility.html">Visibility.public</a> and adds all mangas IDs / UUIDs
+  <p>Endpoint used: <code>POST /list</code></p>
+<p>Creates a custom list with the name <code>listName</code> and
+sets visibility to either <a href="../enums_visibility/Visibility.html">Visibility.private</a> or
+<a href="../enums_visibility/Visibility.html">Visibility.public</a> and adds all mangas IDs / UUIDs
 in the <code>mangaIds</code> list and returns a http response
 containing data of the list created.</p>
 </section>
@@ -157,8 +158,6 @@ containing data of the list created.</p>
         <li><a href="../mangadex_library/getAuthorByIdResponse.html">getAuthorByIdResponse</a></li>
         <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
         <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
-        <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
-        <li><a class="deprecated" href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></li>
         <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
         <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
         <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
@@ -170,8 +169,10 @@ containing data of the list created.</p>
         <li><a href="../mangadex_library/getMangaAggregate.html">getMangaAggregate</a></li>
         <li><a href="../mangadex_library/getMangaAggregateResponse.html">getMangaAggregateResponse</a></li>
         <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
+        <li><a href="../mangadex_library/getMangaFeed.html">getMangaFeed</a></li>
+        <li><a href="../mangadex_library/getMangaFeedResponse.html">getMangaFeedResponse</a></li>
         <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
-        <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
         <li><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></li>
         <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
         <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
@@ -188,8 +189,8 @@ containing data of the list created.</p>
         <li><a href="../mangadex_library/getUserFollowedMangaResponse.html">getUserFollowedMangaResponse</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsersResponse.html">getUserFollowedUsersResponse</a></li>
-        <li><a href="../mangadex_library/login.html">login</a></li>
-        <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/login.html">login</a></li>
+        <li><a class="deprecated" href="../mangadex_library/loginResponse.html">loginResponse</a></li>
         <li><a href="../mangadex_library/logout.html">logout</a></li>
         <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
         <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
@@ -197,7 +198,7 @@ containing data of the list created.</p>
         <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-        <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+        <li><a class="deprecated" href="../mangadex_library/refresh.html">refresh</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
         <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
@@ -227,7 +228,7 @@ containing data of the list created.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.3
+      1.5.4
   </span>
 
   

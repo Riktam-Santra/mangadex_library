@@ -30,7 +30,7 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">mangadex_library</a></li>
     <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-    <li class="self-crumb">loginResponse function</li>
+    <li class="self-crumb"><span class="deprecated">loginResponse</span> function</li>
   </ol>
   <div class="self-name">loginResponse</div>
   <form class="search navbar-right" role="search">
@@ -58,9 +58,14 @@
 
     <section class="multi-line-signature">
         
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://api.flutter.dev/flutter/dart-core/Deprecated-class.html">Deprecated</a>(&#39;This function is deprecated until further actions are taken my mangadex to introduce the new login methods&#39;)</li>
+    </ol>
+  </div>
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/0.13.5/http/Response-class.html">Response</a></span>&gt;</span></span>
-<span class="name ">loginResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="loginResponse-param-username"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span></li>
+<span class="name deprecated">loginResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="loginResponse-param-username"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">username</span>, </span></li>
 <li><span class="parameter" id="loginResponse-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span></li>
 </ol>)
 
@@ -69,7 +74,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>Returns the a http request of a JWT token for <code>username</code>.</p>
+  <p>Endpoint used: <code>POST /auth/login</code></p>
+<p>Returns the a http request of a JWT token for <code>username</code>.</p>
 <p>Will return null if the requests fails.</p>
 </section>
 
@@ -77,7 +83,9 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;http.Response&gt; loginResponse(String username, String password) async {
+  <pre class="language-dart"><code class="language-dart">@Deprecated(
+    &#39;This function is deprecated until further actions are taken my mangadex to introduce the new login methods&#39;)
+Future&lt;http.Response&gt; loginResponse(String username, String password) async {
   var unencodedPath = &#39;&#47;auth&#47;login&#39;;
   var response = await http.post(
     Uri.https(authority, unencodedPath),
@@ -103,7 +111,7 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../index.html">mangadex_library</a></li>
   <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
-  <li class="self-crumb">loginResponse function</li>
+  <li class="self-crumb"><span class="deprecated">loginResponse</span> function</li>
 </ol>
 
 
@@ -145,8 +153,6 @@
         <li><a href="../mangadex_library/getAuthorByIdResponse.html">getAuthorByIdResponse</a></li>
         <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
         <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
-        <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
-        <li><a class="deprecated" href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></li>
         <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
         <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
         <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
@@ -158,8 +164,10 @@
         <li><a href="../mangadex_library/getMangaAggregate.html">getMangaAggregate</a></li>
         <li><a href="../mangadex_library/getMangaAggregateResponse.html">getMangaAggregateResponse</a></li>
         <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
+        <li><a href="../mangadex_library/getMangaFeed.html">getMangaFeed</a></li>
+        <li><a href="../mangadex_library/getMangaFeedResponse.html">getMangaFeedResponse</a></li>
         <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
-        <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
         <li><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></li>
         <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
         <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
@@ -176,8 +184,8 @@
         <li><a href="../mangadex_library/getUserFollowedMangaResponse.html">getUserFollowedMangaResponse</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsersResponse.html">getUserFollowedUsersResponse</a></li>
-        <li><a href="../mangadex_library/login.html">login</a></li>
-        <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/login.html">login</a></li>
+        <li><a class="deprecated" href="../mangadex_library/loginResponse.html">loginResponse</a></li>
         <li><a href="../mangadex_library/logout.html">logout</a></li>
         <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
         <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
@@ -185,7 +193,7 @@
         <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-        <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+        <li><a class="deprecated" href="../mangadex_library/refresh.html">refresh</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
         <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
@@ -215,7 +223,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.3
+      1.5.4
   </span>
 
   

@@ -61,7 +61,7 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">AllMangaReadingStatus</span>&gt;</span></span>
 <span class="name ">getAllUserMangaReadingStatus</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllUserMangaReadingStatus-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
-<li><span class="parameter" id="getAllUserMangaReadingStatus-param-readingStatus">{<span class="type-annotation"><a href="../models_common_reading_status/ReadingStatus.html">ReadingStatus</a>?</span> <span class="parameter-name">readingStatus</span>}</span></li>
+<li><span class="parameter" id="getAllUserMangaReadingStatus-param-readingStatus">{<span class="type-annotation"><a href="../enums_reading_status/ReadingStatus.html">ReadingStatus</a>?</span> <span class="parameter-name">readingStatus</span>}</span></li>
 </ol>)
 
         
@@ -69,7 +69,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>Returns a <code>AllMangaReadingStatus</code> class instance containing all reading statuses of all manga
+  <p>Endpoint used: <code>GET /manga/status</code></p>
+<p>Returns a <code>AllMangaReadingStatus</code> class instance containing all reading statuses of all manga
 followed by the user identified by the <code>sessionToken</code>
 The <code>sessionToken</code> can be obtained using the login() function.</p>
 </section>
@@ -148,8 +149,6 @@ The <code>sessionToken</code> can be obtained using the login() function.</p>
         <li><a href="../mangadex_library/getAuthorByIdResponse.html">getAuthorByIdResponse</a></li>
         <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
         <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
-        <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
-        <li><a class="deprecated" href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></li>
         <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
         <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
         <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
@@ -161,8 +160,10 @@ The <code>sessionToken</code> can be obtained using the login() function.</p>
         <li><a href="../mangadex_library/getMangaAggregate.html">getMangaAggregate</a></li>
         <li><a href="../mangadex_library/getMangaAggregateResponse.html">getMangaAggregateResponse</a></li>
         <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
+        <li><a href="../mangadex_library/getMangaFeed.html">getMangaFeed</a></li>
+        <li><a href="../mangadex_library/getMangaFeedResponse.html">getMangaFeedResponse</a></li>
         <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
-        <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
         <li><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></li>
         <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
         <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
@@ -179,8 +180,8 @@ The <code>sessionToken</code> can be obtained using the login() function.</p>
         <li><a href="../mangadex_library/getUserFollowedMangaResponse.html">getUserFollowedMangaResponse</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsersResponse.html">getUserFollowedUsersResponse</a></li>
-        <li><a href="../mangadex_library/login.html">login</a></li>
-        <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/login.html">login</a></li>
+        <li><a class="deprecated" href="../mangadex_library/loginResponse.html">loginResponse</a></li>
         <li><a href="../mangadex_library/logout.html">logout</a></li>
         <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
         <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
@@ -188,7 +189,7 @@ The <code>sessionToken</code> can be obtained using the login() function.</p>
         <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-        <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+        <li><a class="deprecated" href="../mangadex_library/refresh.html">refresh</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
         <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
@@ -218,7 +219,7 @@ The <code>sessionToken</code> can be obtained using the login() function.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.3
+      1.5.4
   </span>
 
   

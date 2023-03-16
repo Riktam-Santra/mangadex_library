@@ -63,7 +63,7 @@
 <span class="name ">updateCustomListResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="updateCustomListResponse-param-sessionToken"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionToken</span>, </span></li>
 <li><span class="parameter" id="updateCustomListResponse-param-listId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listId</span>, </span></li>
 <li><span class="parameter" id="updateCustomListResponse-param-listName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">listName</span>, </span></li>
-<li><span class="parameter" id="updateCustomListResponse-param-visibility"><span class="type-annotation"><a href="../models_common_visibility/Visibility.html">Visibility</a></span> <span class="parameter-name">visibility</span>, </span></li>
+<li><span class="parameter" id="updateCustomListResponse-param-visibility"><span class="type-annotation"><a href="../enums_visibility/Visibility.html">Visibility</a></span> <span class="parameter-name">visibility</span>, </span></li>
 <li><span class="parameter" id="updateCustomListResponse-param-mangaIds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">mangaIds</span>, </span></li>
 <li><span class="parameter" id="updateCustomListResponse-param-version"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">version</span></span></li>
 </ol>)
@@ -73,7 +73,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>Updates an existing custom list identified by its <code>listId</code> or UUID
+  <p>Endpoint used: <code>PUT /list/{id}</code></p>
+<p>Updates an existing custom list identified by its <code>listId</code> or UUID
 only if the user identified by the <code>sessionToken</code> has permission to
 update the list and returns the updated data in a http response.</p>
 </section>
@@ -160,8 +161,6 @@ update the list and returns the updated data in a http response.</p>
         <li><a href="../mangadex_library/getAuthorByIdResponse.html">getAuthorByIdResponse</a></li>
         <li><a href="../mangadex_library/getBaseUrl.html">getBaseUrl</a></li>
         <li><a href="../mangadex_library/getBaseUrlResponse.html">getBaseUrlResponse</a></li>
-        <li><a href="../mangadex_library/getChapterDataByChapterId.html">getChapterDataByChapterId</a></li>
-        <li><a class="deprecated" href="../mangadex_library/getChapterFilenames.html">getChapterFilenames</a></li>
         <li><a href="../mangadex_library/getChapters.html">getChapters</a></li>
         <li><a href="../mangadex_library/getChaptersResponse.html">getChaptersResponse</a></li>
         <li><a href="../mangadex_library/getCoverArt.html">getCoverArt</a></li>
@@ -173,8 +172,10 @@ update the list and returns the updated data in a http response.</p>
         <li><a href="../mangadex_library/getMangaAggregate.html">getMangaAggregate</a></li>
         <li><a href="../mangadex_library/getMangaAggregateResponse.html">getMangaAggregateResponse</a></li>
         <li><a href="../mangadex_library/getMangaDataByMangaId.html">getMangaDataByMangaId</a></li>
+        <li><a href="../mangadex_library/getMangaFeed.html">getMangaFeed</a></li>
+        <li><a href="../mangadex_library/getMangaFeedResponse.html">getMangaFeedResponse</a></li>
         <li><a href="../mangadex_library/getMangaReadingStatus.html">getMangaReadingStatus</a></li>
-        <li><a href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/getRefreshResponse.html">getRefreshResponse</a></li>
         <li><a href="../mangadex_library/getScanlationGroup.html">getScanlationGroup</a></li>
         <li><a href="../mangadex_library/getScanlationGroupById.html">getScanlationGroupById</a></li>
         <li><a href="../mangadex_library/getScanlationGroupByIdResponse.html">getScanlationGroupByIdResponse</a></li>
@@ -191,8 +192,8 @@ update the list and returns the updated data in a http response.</p>
         <li><a href="../mangadex_library/getUserFollowedMangaResponse.html">getUserFollowedMangaResponse</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsers.html">getUserFollowedUsers</a></li>
         <li><a href="../mangadex_library/getUserFollowedUsersResponse.html">getUserFollowedUsersResponse</a></li>
-        <li><a href="../mangadex_library/login.html">login</a></li>
-        <li><a href="../mangadex_library/loginResponse.html">loginResponse</a></li>
+        <li><a class="deprecated" href="../mangadex_library/login.html">login</a></li>
+        <li><a class="deprecated" href="../mangadex_library/loginResponse.html">loginResponse</a></li>
         <li><a href="../mangadex_library/logout.html">logout</a></li>
         <li><a href="../mangadex_library/logoutResponse.html">logoutResponse</a></li>
         <li><a class="deprecated" href="../mangadex_library/markChapterRead.html">markChapterRead</a></li>
@@ -200,7 +201,7 @@ update the list and returns the updated data in a http response.</p>
         <li><a class="deprecated" href="../mangadex_library/markChapterUnread.html">markChapterUnread</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersRead.html">markMultipleChaptersRead</a></li>
         <li><a class="deprecated" href="../mangadex_library/markMultipleChaptersUnread.html">markMultipleChaptersUnread</a></li>
-        <li><a href="../mangadex_library/refresh.html">refresh</a></li>
+        <li><a class="deprecated" href="../mangadex_library/refresh.html">refresh</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomList.html">removeMangaFromCustomList</a></li>
         <li><a href="../mangadex_library/removeMangaFromCustomListResponse.html">removeMangaFromCustomListResponse</a></li>
         <li><a href="../mangadex_library/removeMangaReadingStatus.html">removeMangaReadingStatus</a></li>
@@ -230,7 +231,7 @@ update the list and returns the updated data in a http response.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.3
+      1.5.4
   </span>
 
   
