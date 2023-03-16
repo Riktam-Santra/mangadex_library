@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:mangadex_library/mangadex_library.dart';
 import 'package:mangadex_library/models/aggregate/aggregate.dart';
-import 'package:mangadex_library/models/common/order_enums.dart';
+import 'package:mangadex_library/enums/order_enums.dart';
 import 'package:mangadex_library/models/search/search.dart';
 import 'package:mangadex_library/utils.dart';
 import 'package:test/test.dart';
@@ -67,7 +67,7 @@ void main() {
     test('Get chapter by Id', () async {
       print(
           'fetching chapter with UUID $chapterId for manga with UUID $mangaId');
-      var data = await getChapterDataByChapterId(chapterId);
+      var data = await getBaseUrl(chapterId);
 
       pageUrl = constructPageUrl(data.baseUrl!, true, data.chapter!.hash!,
           data.chapter!.dataSaver!.first);
@@ -85,5 +85,10 @@ void main() {
     // print(data.body);
     var parsedData = Aggregate.fromJson(jsonDecode(data.body));
     expect('ok', parsedData.result);
+  });
+
+  test('Get manga feed', () async {
+    var data = await getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb');
+    expect('ok', data.result);
   });
 }

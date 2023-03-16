@@ -8,7 +8,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:mangadex_library/models/aggregate/aggregate.dart';
-import 'package:mangadex_library/models/common/order_enums.dart';
+import 'package:mangadex_library/enums/order_enums.dart';
+import 'package:mangadex_library/models/feed/manga_feed.dart';
 
 import 'mangadexServerException.dart';
 import 'enum_utils.dart';
@@ -17,7 +18,7 @@ import 'package:http/http.dart' as http;
 
 import 'models/author/author_info.dart';
 import 'models/author/author_search_results.dart';
-import 'models/common/visibility.dart';
+import 'enums/visibility.dart';
 import 'models/custom_lists/single_custom_list_response.dart';
 import 'models/login/token_check.dart';
 import 'models/scanlation/scanlation.dart';
@@ -25,13 +26,13 @@ import 'models/scanlation/scanlations_result.dart';
 import 'models/user/user_feed/user_feed.dart';
 import 'models/chapter/read_chapters.dart';
 import 'models/common/all_manga_reading_status.dart';
-import 'models/common/content_rating.dart';
-import 'models/common/language_codes.dart';
+import 'enums/content_rating.dart';
+import 'enums/language_codes.dart';
 import 'models/common/manga_reading_status.dart';
-import 'models/common/manga_status.dart';
-import 'models/common/publication_demographic.dart';
-import 'models/common/reading_status.dart';
-import 'models/common/tag_modes.dart';
+import 'enums/manga_status.dart';
+import 'enums/publication_demographic.dart';
+import 'enums/reading_status.dart';
+import 'enums/tag_modes.dart';
 import 'models/user/user_followed_groups/user_followed_groups.dart';
 import 'models/user/user_followed_users/user_followed_users.dart';
 import 'models/common/result_ok.dart';
@@ -41,7 +42,6 @@ import 'models/chapter/chapter_data.dart';
 import 'models/login/login.dart';
 import 'models/user/user_followed_manga/user_followed_manga.dart';
 import 'models/user/logged_user_details/logged_user_details.dart';
-import 'models/at-home/single_chapter_data.dart';
 import 'models/common/base_url.dart';
 import 'models/common/single_manga_data.dart';
 
@@ -49,9 +49,13 @@ final String authority = 'api.mangadex.org';
 
 // User login related functions
 
+/// Endpoint used: `POST /auth/login`
+///
 /// Returns the a http request of a JWT token for [username].
 ///
 /// Will return null if the requests fails.
+@Deprecated(
+    'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
 Future<http.Response> loginResponse(String username, String password) async {
   var unencodedPath = '/auth/login';
   var response = await http.post(
@@ -64,7 +68,11 @@ Future<http.Response> loginResponse(String username, String password) async {
   return response;
 }
 
+/// Endpoint used: `POST /auth/login`
+///
 /// Returns the a [Login] class instance with a JWT session and refresh token for [username].
+@Deprecated(
+    'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
 Future<Login> login(String username, String password) async {
   var response = await loginResponse(username, password);
   try {
@@ -74,7 +82,11 @@ Future<Login> login(String username, String password) async {
   }
 }
 
+/// Endpoint used: `POST /auth/refresh`
+///
 /// Takes in a [refreshToken] token and returns a *http response* of a new refresh token
+@Deprecated(
+    'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
 Future<http.Response> getRefreshResponse(String refreshToken) async {
   final unencodedPath = '/auth/refresh';
   final uri = 'https://$authority$unencodedPath';
@@ -84,8 +96,12 @@ Future<http.Response> getRefreshResponse(String refreshToken) async {
   return response;
 }
 
+/// Endpoint used: `POST /auth/refresh`
+///
 /// Takes in a refresh token and returns a [Login] class instance
 /// containing the new token
+@Deprecated(
+    'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
 Future<Login> refresh(String refreshToken) async {
   var response = await getRefreshResponse(refreshToken);
   try {
@@ -95,6 +111,8 @@ Future<Login> refresh(String refreshToken) async {
   }
 }
 
+/// Endpoint used: `GET /auth/check`
+///
 /// Returns an http response with data on whether the [sessionToken] is authenticated and the
 /// user has permissions.
 Future<http.Response> checkTokenResponse(String sessionToken) async {
@@ -107,6 +125,8 @@ Future<http.Response> checkTokenResponse(String sessionToken) async {
   return response;
 }
 
+/// Endpoint used: `GET /auth/check`
+///
 /// Returns an [AuthenticationCheck] class instance with data on whether the [sessionToken] is authenticated and the
 /// user's permissions.
 Future<AuthenticationCheck> checkToken(String sessionToken) async {
@@ -118,6 +138,8 @@ Future<AuthenticationCheck> checkToken(String sessionToken) async {
   }
 }
 
+/// Endpoint used: `GET /user/me`
+///
 /// Returns a http response of the user details associated with the [sessionToken]
 Future<http.Response> getLoggedUserDetailsResponse(String sessionToken) async {
   final unencodedPath = '/user/me';
@@ -129,6 +151,8 @@ Future<http.Response> getLoggedUserDetailsResponse(String sessionToken) async {
   return response;
 }
 
+/// Endpoint used: `GET /auth/check`
+///
 /// Gets the account details of the user and returns the data
 /// in a [UserDetails] class instance
 Future<UserDetails> getLoggedUserDetails(String sessionToken) async {
@@ -140,8 +164,11 @@ Future<UserDetails> getLoggedUserDetails(String sessionToken) async {
   }
 }
 
+/// Endpoint used: `POST /auth/logout`
+///
+///Logs out the user pointed out by [sessionToken] and returns the response body
 Future<http.Response> logoutResponse(String sessionToken) async {
-  var unencodedPath = '/auth/login';
+  var unencodedPath = '/auth/logout';
   var uri = 'https://$authority$unencodedPath';
   var response = await http.post(Uri.parse(uri), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
@@ -150,6 +177,9 @@ Future<http.Response> logoutResponse(String sessionToken) async {
   return response;
 }
 
+/// Endpoint used: `POST /auth/logout`
+///
+///Logs out the user pointed out by [sessionToken] and returns a [Result] class instance of the body
 Future<Result> logout(String sessionToken) async {
   var response = await logoutResponse(sessionToken);
   try {
@@ -161,6 +191,11 @@ Future<Result> logout(String sessionToken) async {
 
 // Manga search related functions
 
+/// Endpoint used: `GET /manga`
+///
+//////Gets manga search results
+///takes in optional parameters to filter out content
+///and returns the query data in a [Search] class instance
 Future<http.Response> searchResponse({
   String? title,
   int? limit,
@@ -301,6 +336,8 @@ Future<http.Response> searchResponse({
   return httpResponse;
 }
 
+/// Endpoint used: `GET /manga`
+///
 ///Gets manga search results
 ///takes in optional parameters to filter out content
 ///and returns the query data in a [Search] class instance
@@ -360,6 +397,8 @@ Future<Search> search({
   }
 }
 
+/// Endpoint used: `GET /manga/{id}`
+///
 ///gets details of a manga with the given [mangaId] or uuid
 ///Returns the manga data in a [SingleMangaData] class instance
 Future<SingleMangaData> getMangaDataByMangaId(String mangaId) async {
@@ -374,6 +413,8 @@ Future<SingleMangaData> getMangaDataByMangaId(String mangaId) async {
 
 //Manga chapters related functions
 
+/// Endpoint used: `GET /chapter`
+///
 ///Returns the http response of a list of chapters for [mangaId]
 Future<http.Response> getChaptersResponse(
   String mangaId, {
@@ -467,6 +508,8 @@ Future<http.Response> getChaptersResponse(
   return response;
 }
 
+/// Endpoint used: `GET /chapter`
+///
 ///gets [limit] number of chapters and their data for the given [mangaId] or uuid,
 ///mangas can be filtered by their [groups], [uploader], [volume], or [chapter].
 ///
@@ -520,18 +563,8 @@ Future<ChapterData> getChapters(String mangaId,
   }
 }
 
-///gets details of a manga with the given [chapterId] or uuid
-///Returns the manga data in a [SingleChapterData] class instance
-Future<SingleChapterData> getChapterDataByChapterId(String chapterId) async {
-  var unencodedPath = '/at-home/server/$chapterId';
-  var response = await http.get(Uri.https(authority, unencodedPath));
-  try {
-    return SingleChapterData.fromJson(jsonDecode(response.body));
-  } on Exception {
-    throw MangadexServerException(jsonDecode(response.body));
-  }
-}
-
+/// Endpoint used: `GET /at-home/server/{id}`
+///
 // Functions to get base url for a chapter ID
 
 ///Returns a http response of Base URL for [chapterId] or uuid
@@ -542,6 +575,8 @@ Future<http.Response> getBaseUrlResponse(String chapterId) async {
   return response;
 }
 
+/// Endpoint used: `GET /at-home/server/{id}`
+///
 ///gets base URL of a chapter with the given [chapterId] or uuid
 ///Returns the Base Url data in a [BaseUrl] class instance
 Future<BaseUrl> getBaseUrl(
@@ -565,19 +600,8 @@ String constructPageUrl(
   return '$baseUrl/$dataMode/$chapterHash/$filename';
 }
 
-/// Gets the chapter filenames just using the [chapterId] of a chapter.
-/// returns a [List] of [String] containing all the file names of a chapter.
-@Deprecated('Use [getChapterDataByChapterId] instead')
-Future<List<String>> getChapterFilenames(
-    String chapterId, bool isDataSaverMode) async {
-  var response = await getChapterDataByChapterId(chapterId);
-  if (isDataSaverMode == true) {
-    return response.chapter!.dataSaver!;
-  } else {
-    return response.chapter!.data!;
-  }
-}
-
+/// Endpoint used: `GET /manga/{id}/aggregate`
+///
 ///Gets response of manga chapter and volume info of a manga identified by it's [mangaId],
 ///which can be filtered by [groupIds] and [translatedLanguages]
 Future<http.Response> getMangaAggregateResponse(String mangaId,
@@ -604,6 +628,8 @@ Future<http.Response> getMangaAggregateResponse(String mangaId,
   return response;
 }
 
+/// Endpoint used: `GET /manga/{id}/aggregate`
+///
 ///Gets response of manga chapter and volume info of a manga identified by it's [mangaId],
 ///which can be filtered by [groupIds] and [translatedLanguages]
 Future<Aggregate> getMangaAggregate(String mangaId,
@@ -622,6 +648,8 @@ Future<Aggregate> getMangaAggregate(String mangaId,
 
 // Manga cover art related functions
 
+/// Endpoint used: `GET /cover`
+///
 ///returns a https response with cover art details for a manga with given [mangaIds] or uuid,
 ///it can also take multiple [coverIds] and get their details at once, cover arts can also be
 ///filtered by a list of [uploaders] and [locales]
@@ -676,6 +704,8 @@ Future<http.Response> getCoverArtResponse(
   return response;
 }
 
+/// Endpoint used: `GET /cover`
+///
 ///returns an [Cover] class instance containing cover
 ///art details for a manga with given [mangaIds] or uuid
 Future<Cover> getCoverArt(
@@ -696,6 +726,8 @@ Future<Cover> getCoverArt(
   }
 }
 
+/// Endpoint used: `GET /user/follows/manga`
+///
 ///Directly get Cover art details of a manga with [mangaIds]
 ///and return a [Map<String, String>] containing values with
 ///manga IDs mapped to their cover art filenames.
@@ -717,6 +749,8 @@ Future<http.Response> getUserFollowedMangaResponse(String sessionToken,
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/manga/{id}`
+///
 ///Simply check if the user identified by the current session [sessionToken]
 ///follows a manga with [mangaId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsMangaResponse(
@@ -730,6 +764,8 @@ Future<http.Response> checkIfUserFollowsMangaResponse(
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/manga/{id}`
+///
 ///Simply check if the user identified by the current session [sessionToken]
 ///follows a manga with [mangaId] or uuid and return a boolean
 Future<bool> checkIfUserFollowsManga(
@@ -744,6 +780,8 @@ Future<bool> checkIfUserFollowsManga(
   }
 }
 
+/// Endpoint used: `GET /manga/{id}/aggregate`
+///
 /// Returns a [UserFollowedManga] class instance of all the Manga the user follows,
 /// the [sessionToken] is the session token obtained using the login() function
 Future<UserFollowedManga> getUserFollowedManga(String sessionToken,
@@ -757,6 +795,8 @@ Future<UserFollowedManga> getUserFollowedManga(String sessionToken,
   }
 }
 
+/// Endpoint used: `GET /user/follows/user`
+///
 /// Returns a http response of the all the Users that the user follows,
 /// the [sessionToken] is the session token obtained using the[login] function
 Future<http.Response> getUserFollowedUsersResponse(String sessionToken,
@@ -772,6 +812,8 @@ Future<http.Response> getUserFollowedUsersResponse(String sessionToken,
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/user`
+///
 /// Returns a [UserFollowedUsers] class instance with details of the all the Users that the user follows,
 /// the [sessionToken] is the session token obtained using the login() function
 Future<UserFollowedUsers> getUserFollowedUsers(String sessionToken,
@@ -785,6 +827,8 @@ Future<UserFollowedUsers> getUserFollowedUsers(String sessionToken,
   }
 }
 
+/// Endpoint used: `GET /user/follows/user/{id}`
+///
 ///Returns a http response of whether the user identified by the current session [sessionToken]
 ///follows a User with [userId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsUserResponse(
@@ -798,6 +842,8 @@ Future<http.Response> checkIfUserFollowsUserResponse(
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/user/{id}`
+///
 ///Simply check if the user identified by the current session [sessionToken]
 ///follows a User with [userId] or uuid and return a bool
 Future<bool> checkIfUserFollowsUser(String sessionToken, String userId) async {
@@ -811,6 +857,8 @@ Future<bool> checkIfUserFollowsUser(String sessionToken, String userId) async {
   }
 }
 
+/// Endpoint used: `GET /user/follows/group`
+///
 /// Returns a http response with details of the all the Groups that the user follows,
 /// the [sessionToken] is the session token obtained using the login() function
 Future<http.Response> getUserFollowedGroupsResponse(String sessionToken,
@@ -826,6 +874,8 @@ Future<http.Response> getUserFollowedGroupsResponse(String sessionToken,
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/group`
+///
 /// Returns a [UserFollowedGroups] class instance with details of the all the Groups that the user follows,
 /// the [sessionToken] is the session token obtained using the login() function
 Future<UserFollowedGroups> getUserFollowedGroups(
@@ -842,6 +892,8 @@ Future<UserFollowedGroups> getUserFollowedGroups(
   }
 }
 
+/// Endpoint used: `GET /user/follows/group/{id}`
+///
 ///Simply check if the user identified by the current session [sessionToken]
 ///follows a Group with [groupId] or uuid and return a http response
 Future<http.Response> checkIfUserFollowsGroupResponse(
@@ -855,6 +907,8 @@ Future<http.Response> checkIfUserFollowsGroupResponse(
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/group/{id}`
+///
 ///Simply check if the user identified by the current session [sessionToken]
 ///follows a Group with [groupId] or uuid and return a http response
 Future<bool> checkIfUserFollowsGroup(
@@ -869,6 +923,8 @@ Future<bool> checkIfUserFollowsGroup(
   }
 }
 
+/// Endpoint used: `GET /user/follows/manga/feed`
+///
 ///Returns a http response containing the user feed for the user
 ///identified by the [sessionToken].
 Future<http.Response> getUserFeedResponse(String sessionToken) async {
@@ -881,6 +937,8 @@ Future<http.Response> getUserFeedResponse(String sessionToken) async {
   return response;
 }
 
+/// Endpoint used: `GET /user/follows/manga/feed`
+///
 /// Gets the current User Feed for the user identified
 /// by [sessionToken] and returns the data in a
 /// [UserFeed] class instance.
@@ -893,6 +951,8 @@ Future<UserFeed> getUserFeed(String sessionToken) async {
   }
 }
 
+/// Endpoint used: `GET /user/list`
+///
 /// Gets the [limit] number of custom lists from [offset]
 /// in the list of Custom Lists of the user identified
 /// by the [sessionToken] and returns a http response
@@ -910,6 +970,8 @@ Future<http.Response> getLoggedInUserCustomListsResponse(
   return response;
 }
 
+/// Endpoint used: `GET /user/list`
+///
 /// Gets the [limit] number of custom lists from [offset]
 /// in the list of Custom Lists of the user identified
 /// by the [sessionToken] and returns a [SingleCustomListResponse]
@@ -927,6 +989,8 @@ Future<SingleCustomListResponse> getLoggedInUserCustomLists(
 
 //reading status related
 
+/// Endpoint used: `GET /manga/status`
+///
 ///Returns a http response containing all reading statuses of all manga
 ///followed by the user identified by the [sessionToken]
 ///The [sessionToken] can be obtained using the login() function.
@@ -942,6 +1006,8 @@ Future<http.Response> getAllMangaReadingStatusResponse(
   return response;
 }
 
+/// Endpoint used: `GET /manga/status`
+///
 ///Returns a [AllMangaReadingStatus] class instance containing all reading statuses of all manga
 ///followed by the user identified by the [sessionToken]
 ///The [sessionToken] can be obtained using the login() function.
@@ -959,6 +1025,8 @@ Future<AllMangaReadingStatus> getAllUserMangaReadingStatus(String sessionToken,
   }
 }
 
+/// Endpoint used: `GET /manga/{id}/status`
+///
 /// Returns a [MangaReadingStatus] class instance containing the reading status
 /// of a particular manga identified by [mangaId] or uuid
 Future<MangaReadingStatus> getMangaReadingStatus(
@@ -976,6 +1044,8 @@ Future<MangaReadingStatus> getMangaReadingStatus(
   }
 }
 
+/// Endpoint used: `POST /manga/{id}/status`
+///
 /// Set the reading status for a certain manga to [status]
 /// If no reading status is supplied to it, the reading status is set as 'reading'
 Future<Result> setMangaReadingStatus(
@@ -999,7 +1069,9 @@ Future<Result> setMangaReadingStatus(
   }
 }
 
-/// Set the reading status for a certain manga
+/// Endpoint used: `DELETE /manga/{id}/aggregate`
+///
+/// remove the reading status for a certain manga
 /// If no reading status is supplied to it, the reading status is set as 'reading'
 Future<Result> removeMangaReadingStatus(
     String sessionToken, String mangaId) async {
@@ -1020,6 +1092,8 @@ Future<Result> removeMangaReadingStatus(
 
 //Follow or unfollow a manga
 
+/// Endpoint used: `POST /manga/{id}/follow`
+///
 ///Follow a manga identified by [mangaId] and optionally set a reading status for it.
 ///
 ///If no [readingStatus] is specified, the reading status is set to 'reading' by default
@@ -1043,6 +1117,8 @@ Future<Result> followManga(String sessionToken, String mangaId,
   }
 }
 
+/// Endpoint used: `DELETE /manga/{id}/aggregate`
+///
 /// Unfollow a manga identified by [mangaId] or uuid
 Future<Result> unfollowManga(String sessionToken, String mangaId) async {
   var unencodedPath = '/manga/$mangaId/follow';
@@ -1220,6 +1296,8 @@ Future<Result> markMultipleChaptersUnread(
 
 //Custom Lists related
 
+/// Endpoint used: `POST /list`
+///
 ///Creates a custom list with the name [listName] and
 ///sets visibility to either [Visibility.private] or
 ///[Visibility.public] and adds all mangas IDs / UUIDs
@@ -1243,6 +1321,8 @@ Future<http.Response> createCustomListResponse(
   return await http.post(Uri.parse(uri), headers: payload, body: body);
 }
 
+/// Endpoint used: `POST /list`
+///
 ///Creates a custom list with the name [listName] and
 ///sets visibility to either [Visibility.private] or
 ///[Visibility.public] and adds all mangas IDs / UUIDs
@@ -1263,9 +1343,10 @@ Future<SingleCustomListResponse> createCustomList(
   }
 }
 
+/// Endpoint used: `GET /list/{id}/`
+///
 ///Gets the data of the custom list identified by it's [listId]
 ///or list uuid and returns a http response containing the data.
-
 Future<http.Response> getSingleCustomListResponse(String listId) async {
   var unencodedPath = '/list/$listId';
   final uri = 'https://$authority$unencodedPath';
@@ -1283,8 +1364,8 @@ Future<SingleCustomListResponse> getSingleCustomList(String listId) async {
   }
 }
 
-
-
+/// Endpoint used: `PUT /list/{id}`
+///
 /// Updates an existing custom list identified by its [listId] or UUID
 /// only if the user identified by the [sessionToken] has permission to
 /// update the list and returns the updated data in a http response.
@@ -1310,6 +1391,8 @@ Future<http.Response> updateCustomListResponse(
   return await http.put(Uri.parse(uri), headers: payload, body: body);
 }
 
+/// Endpoint used: `PUT /manga/{id}/aggregate`
+///
 /// Updates an existing custom list identified by its [listId] or UUID
 /// only if the user identified by the [sessionToken] has permission to
 /// update the list and returns the updated data in a [SingleCustomListResponse]
@@ -1330,6 +1413,8 @@ Future<SingleCustomListResponse> updateCustomList(
   }
 }
 
+/// Endpoint used: `DELETE /list/{id}`
+///
 /// Deletes a list identified by it's [listId] only
 /// if the user identified by the [sessionToken] is
 /// eligible to do so and retuns a http response.
@@ -1346,6 +1431,8 @@ Future<http.Response> deleteCustomListResponse(
   return await http.delete(Uri.parse(uri), headers: payload);
 }
 
+/// Endpoint used: `DELETE /list/{id}`
+///
 /// Deletes a list identified by it's [listId] only
 /// if the user identified by the [sessionToken] is
 /// eligible to do so and retuns a [Result] instance
@@ -1359,6 +1446,8 @@ Future<Result> deleteCustomList(String sessionToken, String listId) async {
   }
 }
 
+/// Endpoint used: `POST /list/{id}/follow`
+///
 ///Makes the user identified by the [sessionToken] follow
 ///a custom list identified by it's [listId] and returns a
 ///http response.
@@ -1375,6 +1464,8 @@ Future<http.Response> followCustomListResponse(
   return await http.post(Uri.parse(uri), headers: payload);
 }
 
+/// Endpoint used: `POST /list/{id}/follow`
+///
 ///Makes the user identified by the [sessionToken] follow
 ///a custom list identified by it's [listId] and returns a
 ///[Result] class instance containing info on whether the request was successful.
@@ -1387,6 +1478,8 @@ Future<Result> followCustomList(String sessionToken, String listId) async {
   }
 }
 
+/// Endpoint used: `DELETE /list/{id}/follow`
+///
 ///Makes the user identified by the [sessionToken] unfollow
 ///a custom list identified by it's [listId] and returns a
 ///http response.
@@ -1403,6 +1496,8 @@ Future<http.Response> unfollowCustomListResponse(
   return await http.delete(Uri.parse(uri), headers: payload);
 }
 
+/// Endpoint used: `DELETE /loist/{id}/follow`
+///
 ///Makes the user identified by the [sessionToken] unfollow
 ///a custom list identified by it's [listId] and returns a
 ///[Result] class instance containing info on whether the request was successful.
@@ -1415,6 +1510,8 @@ Future<Result> unfollowCustomList(String sessionToken, String listId) async {
   }
 }
 
+/// Endpoint used: `POST /manga/{id}/list/{id}`
+///
 ///Adds a manga identified by it's [mangaId] / UUID to a custom list identified by
 ///it's [listId] if the user identified by the [sessionToken]
 ///has the permission to do so and returns a http response.
@@ -1432,6 +1529,8 @@ Future<http.Response> addMangaToCustomListResponse(
   return await http.post(Uri.parse(uri), headers: payload);
 }
 
+/// Endpoint used: `POST /manga/{id}/list/{id}`
+///
 ///Adds a manga identified by it's [mangaId] / UUID to a custom list identified by
 ///it's [listId] if the user identified by the [sessionToken]
 ///has the permission to do so and returns a [Result]
@@ -1447,6 +1546,8 @@ Future<Result> addMangaToCustomList(
   }
 }
 
+/// Endpoint used: `DELETE /manga/{id}/list/{id}`
+///
 ///Removes a manga identified by it's [mangaId] / UUID to a custom list identified by
 ///it's [listId] if the user identified by the [sessionToken]
 ///has the permission to do so and returns a http response.
@@ -1464,6 +1565,8 @@ Future<http.Response> removeMangaFromCustomListResponse(
   return await http.delete(Uri.parse(uri), headers: payload);
 }
 
+/// Endpoint used: `DELETE /manga/{id}/list/{id}`
+///
 ///Removes a manga identified by it's [mangaId] / UUID to a custom list identified by
 ///it's [listId] if the user identified by the [sessionToken]
 ///has the permission to do so and returns a [Result] class instance
@@ -1479,6 +1582,8 @@ Future<Result> removeMangaFromCustomList(
   }
 }
 
+/// Endpoint used: `GET /user/{id}/list`
+///
 ///Get's [limit] number of PUBLIC custom lists of a user identified by
 ///it's [userId] counting from list [offset] and returns a http response.
 Future<http.Response> getUserCustomListsResponse(
@@ -1493,6 +1598,8 @@ Future<http.Response> getUserCustomListsResponse(
   return response;
 }
 
+/// Endpoint used: `get /user/{id}/list`
+///
 ///Get's [limit] number of PUBLIC custom lists of a user identified by
 ///it's [userId] counting from list [offset] and returns a
 ///[SingleCustomListResponse] class instance containing the details of the lists.
@@ -1507,7 +1614,8 @@ Future<SingleCustomListResponse> getUserCustomLists(
 }
 
 //Author related
-
+/// Endpoint used: `GET /author`
+///
 /// Search for an author by the author's [name] and return [limit] number of results (10 by default) in a http response.
 Future<http.Response> searchAuthorResponse(
   String? name,
@@ -1541,6 +1649,8 @@ Future<http.Response> searchAuthorResponse(
   return response;
 }
 
+/// Endpoint used: `GET /author/{id}`
+///
 /// Search for an author by the author's [name] and return [limit] number of results (10 by default)
 /// in an [AuthorSearchResults] class instance.
 Future<AuthorSearchResults> searchAuthor(
@@ -1564,6 +1674,8 @@ Future<http.Response> getAuthorByIdResponse(String authorId) async {
   return response;
 }
 
+/// Endpoint used: `GET /author/{id}`
+///
 ///Get details of an author identified by the author's [authorId] or UUID nad return the data
 ///in an [AuthorInfo] class instance.
 Future<AuthorInfo> getAuthorById(String authorId) async {
@@ -1577,6 +1689,8 @@ Future<AuthorInfo> getAuthorById(String authorId) async {
 
 //scanlation group related
 
+/// Endpoint used: `GET /group`
+///
 ///Search for a scanlation group with the [name] and returns [limit] number of results
 ///from [offset] which may focus on the given [focussedLanguage] and returns a http response.
 Future<http.Response> getScanlationGroupResponse({
@@ -1622,6 +1736,8 @@ Future<http.Response> getScanlationGroupResponse({
   });
 }
 
+/// Endpoint used: `GET /group`
+///
 ///Search for a scanlation group with the [name] and returns [limit] number of results
 ///from [offset] which may focus on the given [focussedLanguage] and returns a
 ///[ScanlationsResult] class instance that contains all the information.
@@ -1650,6 +1766,8 @@ Future<ScanlationsResult> getScanlationGroup({
   }
 }
 
+/// Endpoint used: `POST /group`
+///
 ///Creates  a Scanlation Group managed by the user identified by it's [sessionToken] or UUID
 ///and returns an http response containing the group's information after being created.
 Future<http.Response> createScanlationGroupResponse(
@@ -1685,6 +1803,8 @@ Future<http.Response> createScanlationGroupResponse(
   });
 }
 
+/// Endpoint used: `POST /group`
+///
 ///Creates  a Scanlation Group managed by the user identified by it's [sessionToken] or UUID
 ///and returns an http response containing the group's information after being created.
 Future<Scanlation> createScanlationGroup({
@@ -1722,6 +1842,8 @@ Future<Scanlation> createScanlationGroup({
   }
 }
 
+/// Endpoint used: `GET /group/{id}`
+///
 ///Returns an http response containing info of a Scanlation Group identified by it's [groupId] or UUID
 Future<http.Response> getScanlationGroupByIdResponse(String groupId) {
   var unencodedPath = '/group/$groupId';
@@ -1731,6 +1853,8 @@ Future<http.Response> getScanlationGroupByIdResponse(String groupId) {
   });
 }
 
+/// Endpoint used: `GET /group/{id}`
+///
 ///Returns an [Scanlation] class instance containing info of a Scanlation Group identified by it's [groupId] or UUID
 Future<Scanlation> getScanlationGroupById(String groupId) async {
   var response = await getScanlationGroupByIdResponse(groupId);
@@ -1741,8 +1865,173 @@ Future<Scanlation> getScanlationGroupById(String groupId) async {
   }
 }
 
+/// Endpoint used: `GET /manga/{id}/feed`
+///
+/// Gets the feed of a give [mangaId] and returns the
+/// response body of the data received.
+Future<http.Response> getMangaFeedResponse(
+  String mangaId, {
+  int? limit,
+  int? offset,
+  List<LanguageCodes>? translatedLanguage,
+  List<LanguageCodes>? originalLanguage,
+  List<LanguageCodes>? excludedOriginalLanguage,
+  List<ContentRating>? contentRating,
+  List<String>? excludedGroups,
+  List<String>? excludedUploaders,
+  bool? includeFutureUpdates,
+  String? createdAtSince,
+  String? updatedAtSince,
+  String? publishAtSince,
+  Map<ChapterOrders, OrderDirections>? order,
+  List<String>? includes,
+  bool? includeEmptyPages,
+  bool? includeFuturePublishAt,
+  bool? includeExternalUrl,
+}) async {
+  var _limit =
+      ((limit ?? 100) <= 100) ? '?limit=${limit ?? 100}' : '?limit=100';
+  var _offset = ((offset == null) ? '' : '&offset=$offset');
+
+  var _translatedLanguage = '';
+  for (final lang in translatedLanguage ?? []) {
+    '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+  }
+
+  var _originalLanguage = '';
+  for (final lang in originalLanguage ?? []) {
+    '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+  }
+
+  var _excludedOriginalLanguage = '';
+  for (final lang in excludedOriginalLanguage ?? []) {
+    '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+  }
+
+  var _contentRating = '';
+  for (final rating in contentRating ??
+      [
+        ContentRating.safe,
+        ContentRating.suggestive,
+        ContentRating.erotica,
+      ]) {
+    _contentRating +=
+        '&contentRating[]=${EnumUtils.parseContentRatingFromEnum(rating)}';
+  }
+
+  var _excludedGroups = '';
+  for (final group in excludedGroups ?? []) {
+    '&excludedGroups[]=$group';
+  }
+
+  var _excludedUploaders = '';
+  for (final group in excludedUploaders ?? []) {
+    '&excludedUploaders[]=$group';
+  }
+
+  var _createdAtSince =
+      createdAtSince == null ? '' : '&createdAtSince=$createdAtSince';
+
+  var _updatedAtSince =
+      updatedAtSince == null ? '' : '&updatedAtSince=$updatedAtSince';
+
+  var _publishAtSince =
+      publishAtSince == null ? '' : '&publishAtSince=$publishAtSince';
+
+  var _order = '';
+  (order ??
+          {
+            ChapterOrders.createdAt: OrderDirections.ascending,
+            ChapterOrders.updatedAt: OrderDirections.ascending,
+            ChapterOrders.publishAt: OrderDirections.ascending,
+            ChapterOrders.readableAt: OrderDirections.ascending,
+            ChapterOrders.volume: OrderDirections.ascending,
+            ChapterOrders.chapter: OrderDirections.ascending
+          })
+      .entries
+      .forEach((element) {
+    _order = _order +
+        '&order[${EnumUtils.parseChapterOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}';
+  });
+
+  var _includeFutureUpdates = includeFutureUpdates == null
+      ? ''
+      : includeFutureUpdates
+          ? '&includeFutureUpdates=1'
+          : '&includeFutureUpdates=0';
+
+  var _includeEmptyPages = includeEmptyPages == null
+      ? ''
+      : includeEmptyPages
+          ? '&includeEmptyPages=1'
+          : '&includeEmptyPages=0';
+
+  var _includeFuturePublishAt = includeFuturePublishAt == null
+      ? ''
+      : includeFuturePublishAt
+          ? '&includeFuturePublishAt=1'
+          : '&includeFuturePublishAt=0';
+  var _includeExternalUrl = includeExternalUrl == null
+      ? ''
+      : includeExternalUrl
+          ? '&includeExternalUrl=1'
+          : '&includeExternalUrl=0';
+
+  var unencodedpath =
+      '/manga/$mangaId/feed$_limit$_offset$_translatedLanguage$_originalLanguage$_excludedOriginalLanguage$_contentRating$_excludedGroups$_excludedUploaders$_includeFutureUpdates$_order$_createdAtSince$_updatedAtSince$_publishAtSince$_includeEmptyPages$_includeFuturePublishAt$_includeExternalUrl';
+  var uri = 'https://$authority$unencodedpath';
+  return await http.get(Uri.parse(uri));
+}
+
+/// Endpoint used: `GET /manga/{id}/feed`
+///
+///Gets the manga feed for the the given [mangaId] of a manga
+///and returns a [MangaFeed] class instance of the data.
+Future<MangaFeed> getMangaFeed(
+  String mangaId, {
+  int? limit,
+  int? offset,
+  List<LanguageCodes>? translatedLanguage,
+  List<LanguageCodes>? originalLanguage,
+  List<LanguageCodes>? excludedOriginalLanguage,
+  List<ContentRating>? contentRating,
+  List<String>? excludedGroups,
+  List<String>? excludedUploaders,
+  bool? includeFutureUpdates,
+  String? createdAtSince,
+  String? updatedAtSince,
+  String? publishAtSince,
+  Map<ChapterOrders, OrderDirections>? order,
+  List<String>? includes,
+  bool? includeEmptyPages,
+  bool? includeFuturePublishAt,
+  bool? includeExternalUrl,
+}) async {
+  var response = await getMangaFeedResponse(mangaId,
+      limit: limit,
+      offset: offset,
+      translatedLanguage: translatedLanguage,
+      originalLanguage: originalLanguage,
+      excludedOriginalLanguage: excludedOriginalLanguage,
+      contentRating: contentRating,
+      excludedGroups: excludedGroups,
+      excludedUploaders: excludedUploaders,
+      includeFutureUpdates: includeFutureUpdates,
+      createdAtSince: createdAtSince,
+      updatedAtSince: updatedAtSince,
+      publishAtSince: publishAtSince,
+      order: order,
+      includes: includes,
+      includeEmptyPages: includeEmptyPages,
+      includeFuturePublishAt: includeFuturePublishAt,
+      includeExternalUrl: includeExternalUrl);
+  return MangaFeed.fromJson(jsonDecode(response.body));
+}
+
 //Reporting success or failure on receiving an image
 
+/// Endpoint used: `POST https://api.mangadex.network/report`
+///
 ///Report the mangadex at-home servers if a chapter page/image is unretrieveable
 Future<void> reportImageStatus(
     String pageUrl, bool success, bool cached, int bytes, int duration) async {

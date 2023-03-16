@@ -1,13 +1,13 @@
-import 'package:mangadex_library/models/common/manga_status.dart';
-import 'package:mangadex_library/models/common/order_enums.dart';
-import 'package:mangadex_library/models/common/publication_demographic.dart';
-import 'package:mangadex_library/models/common/tag_modes.dart';
-import 'package:mangadex_library/models/common/visibility.dart';
+import 'package:mangadex_library/enums/manga_status.dart';
+import 'package:mangadex_library/enums/order_enums.dart';
+import 'package:mangadex_library/enums/publication_demographic.dart';
+import 'package:mangadex_library/enums/tag_modes.dart';
+import 'package:mangadex_library/enums/visibility.dart';
 
-import 'models/common/content_rating.dart';
-import 'models/common/future_updates.dart';
-import 'models/common/language_codes.dart';
-import 'models/common/reading_status.dart';
+import 'enums/content_rating.dart';
+import 'enums/future_updates.dart';
+import 'enums/language_codes.dart';
+import 'enums/reading_status.dart';
 
 abstract class EnumUtils {
   static String parseStatusFromEnum(ReadingStatus status) {

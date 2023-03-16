@@ -448,3 +448,9 @@
 
 ## 1.5.3
 - Changed the volumes field in aggregate json model to be a `map<String, Volume>`
+
+## 1.5.4
+- Marked all login endpoints as **deprecated** until further action is taken by mangadex to add new login system.
+- Added `getMangaFeed()` and `getMangaFeedResponse()` functions for `/manga/{id}/feed` endpoint
+- Added each function's requested endpoint to it's documentation.
+- Removed `getChapterDataByChapterId()` function, replaced by `getBaseUrl()`
