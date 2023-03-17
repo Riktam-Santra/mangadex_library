@@ -455,3 +455,6 @@
 - Added each function's requested endpoint to it's documentation.
 - Removed `getChapterDataByChapterId()` function, replaced by `getBaseUrl()`
 - Moved all enum types to a separate `enums` folder
+
+## 1.5.5
+- Fixed issues with language filters not applying in `getMangaFeed()`

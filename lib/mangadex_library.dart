@@ -1895,17 +1895,20 @@ Future<http.Response> getMangaFeedResponse(
 
   var _translatedLanguage = '';
   for (final lang in translatedLanguage ?? []) {
-    '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+    _translatedLanguage +=
+        '&translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
   }
 
   var _originalLanguage = '';
   for (final lang in originalLanguage ?? []) {
-    '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+    _originalLanguage +=
+        '&originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
   }
 
   var _excludedOriginalLanguage = '';
   for (final lang in excludedOriginalLanguage ?? []) {
-    '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
+    _excludedOriginalLanguage +=
+        '&excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}';
   }
 
   var _contentRating = '';
@@ -1977,9 +1980,9 @@ Future<http.Response> getMangaFeedResponse(
           ? '&includeExternalUrl=1'
           : '&includeExternalUrl=0';
 
-  var unencodedpath =
-      '/manga/$mangaId/feed$_limit$_offset$_translatedLanguage$_originalLanguage$_excludedOriginalLanguage$_contentRating$_excludedGroups$_excludedUploaders$_includeFutureUpdates$_order$_createdAtSince$_updatedAtSince$_publishAtSince$_includeEmptyPages$_includeFuturePublishAt$_includeExternalUrl';
-  var uri = 'https://$authority$unencodedpath';
+  var unencodedpath = '/manga/$mangaId/feed';
+  var uri =
+      'https://$authority$unencodedpath$_limit$_offset$_translatedLanguage$_originalLanguage$_excludedOriginalLanguage$_contentRating$_excludedGroups$_excludedUploaders$_includeFutureUpdates$_order$_createdAtSince$_updatedAtSince$_publishAtSince$_includeEmptyPages$_includeFuturePublishAt$_includeExternalUrl';
   return await http.get(Uri.parse(uri));
 }
 

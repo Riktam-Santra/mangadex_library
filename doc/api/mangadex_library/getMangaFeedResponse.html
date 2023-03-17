@@ -120,17 +120,20 @@ response body of the data received.</p>
 
   var _translatedLanguage = &#39;&#39;;
   for (final lang in translatedLanguage ?? []) {
-    &#39;&amp;translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
+    _translatedLanguage +=
+        &#39;&amp;translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
   }
 
   var _originalLanguage = &#39;&#39;;
   for (final lang in originalLanguage ?? []) {
-    &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
+    _originalLanguage +=
+        &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
   }
 
   var _excludedOriginalLanguage = &#39;&#39;;
   for (final lang in excludedOriginalLanguage ?? []) {
-    &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
+    _excludedOriginalLanguage +=
+        &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(lang)}&#39;;
   }
 
   var _contentRating = &#39;&#39;;
@@ -202,9 +205,9 @@ response body of the data received.</p>
           ? &#39;&amp;includeExternalUrl=1&#39;
           : &#39;&amp;includeExternalUrl=0&#39;;
 
-  var unencodedpath =
-      &#39;&#47;manga&#47;$mangaId&#47;feed$_limit$_offset$_translatedLanguage$_originalLanguage$_excludedOriginalLanguage$_contentRating$_excludedGroups$_excludedUploaders$_includeFutureUpdates$_order$_createdAtSince$_updatedAtSince$_publishAtSince$_includeEmptyPages$_includeFuturePublishAt$_includeExternalUrl&#39;;
-  var uri = &#39;https:&#47;&#47;$authority$unencodedpath&#39;;
+  var unencodedpath = &#39;&#47;manga&#47;$mangaId&#47;feed&#39;;
+  var uri =
+      &#39;https:&#47;&#47;$authority$unencodedpath$_limit$_offset$_translatedLanguage$_originalLanguage$_excludedOriginalLanguage$_contentRating$_excludedGroups$_excludedUploaders$_includeFutureUpdates$_order$_createdAtSince$_updatedAtSince$_publishAtSince$_includeEmptyPages$_includeFuturePublishAt$_includeExternalUrl&#39;;
   return await http.get(Uri.parse(uri));
 }</code></pre>
 </section>
@@ -334,7 +337,7 @@ response body of the data received.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      1.5.4
+      1.5.5
   </span>
 
   

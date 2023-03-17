@@ -3,9 +3,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:mangadex_library/enums/language_codes.dart';
 import 'package:mangadex_library/mangadex_library.dart';
 import 'package:mangadex_library/models/aggregate/aggregate.dart';
 import 'package:mangadex_library/enums/order_enums.dart';
+import 'package:mangadex_library/models/feed/manga_feed.dart';
 import 'package:mangadex_library/models/search/search.dart';
 import 'package:mangadex_library/utils.dart';
 import 'package:test/test.dart';
@@ -88,7 +90,12 @@ void main() {
   });
 
   test('Get manga feed', () async {
-    var data = await getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb');
+    var data = await getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
+        translatedLanguage: [LanguageCodes.en]);
+
+    for (final Data manga in data.data ?? []) {
+      print(manga.attributes?.translatedLanguage ?? '');
+    }
     expect('ok', data.result);
   });
 }
