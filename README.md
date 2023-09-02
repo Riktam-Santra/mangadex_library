@@ -95,4 +95,4 @@ for now the generated html docs using [dartdoc](https://pub.dev/packages/dartdoc
 
 ## Contact
 
-I'm not always active on github but you can always find me on discord, my ID: Rick~#9387
+I'm not always active on github but you can always find me on discord, ~~my ID: Rick\~#9387~~ my ID: karna.satva
