@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the search method from the MangadexClient class, for the Dart programming language.">
+  <title>search method - MangadexClient class - mangadex_library library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">search method</li>
+  </ol>
+  <div class="self-name">search</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="mangadex_library&#47;MangadexClient-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-method">search</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.dart.dev/stable/3.1.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">Search</span>&gt;</span></span>
+<span class="name ">search</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="search-param-query">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">query</span>, </span></li>
+<li><span class="parameter" id="search-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="search-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="search-param-authors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span></li>
+<li><span class="parameter" id="search-param-artists"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span></li>
+<li><span class="parameter" id="search-param-year"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span></li>
+<li><span class="parameter" id="search-param-includedTags"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span></li>
+<li><span class="parameter" id="search-param-includedTagsMode"><span class="type-annotation">TagsMode?</span> <span class="parameter-name">includedTagsMode</span>, </span></li>
+<li><span class="parameter" id="search-param-excludedTags"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span></li>
+<li><span class="parameter" id="search-param-excludedTagsMode"><span class="type-annotation">TagsMode?</span> <span class="parameter-name">excludedTagsMode</span>, </span></li>
+<li><span class="parameter" id="search-param-status"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">MangaStatus</span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span></li>
+<li><span class="parameter" id="search-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span></li>
+<li><span class="parameter" id="search-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span></li>
+<li><span class="parameter" id="search-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span></li>
+<li><span class="parameter" id="search-param-publicationDemographic"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">PublicDemographic</span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span></li>
+<li><span class="parameter" id="search-param-ids"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span></li>
+<li><span class="parameter" id="search-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">ContentRating</span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span></li>
+<li><span class="parameter" id="search-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span></li>
+<li><span class="parameter" id="search-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
+<li><span class="parameter" id="search-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
+<li><span class="parameter" id="search-param-group"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span></li>
+<li><span class="parameter" id="search-param-orders"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">SearchOrders</span>, <span class="type-parameter">OrderDirections</span>&gt;</span>?</span> <span class="parameter-name">orders</span>}</span></li>
+</ol>)
+
+      <div class="features"><span class="feature">inherited</span></div>
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Endpoint used: <code>GET /manga</code></p>
+<p>Gets manga search results
+takes in optional parameters to filter out content
+and returns the query data in a <code>Search</code> class instance</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;Search&gt; search({
+  String? query,
+  int? limit,
+  int? offset,
+  List&lt;String&gt;? authors,
+  List&lt;String&gt;? artists,
+  int? year,
+  List&lt;String&gt;? includedTags,
+  TagsMode? includedTagsMode,
+  List&lt;String&gt;? excludedTags,
+  TagsMode? excludedTagsMode,
+  List&lt;MangaStatus&gt;? status,
+  List&lt;LanguageCodes&gt;? originalLanguage,
+  List&lt;LanguageCodes&gt;? excludedOriginalLanguages,
+  List&lt;LanguageCodes&gt;? availableTranslatedLanguage,
+  List&lt;PublicDemographic&gt;? publicationDemographic,
+  List&lt;String&gt;? ids,
+  List&lt;ContentRating&gt;? contentRating,
+  String? createdAtSince, &#47;&#47; should be of format DD-MM-YYYY
+  String? updatedAtSince, &#47;&#47; should be of format DD-MM-YYYY
+  List&lt;String&gt;? includes,
+  String? group,
+  Map&lt;SearchOrders, OrderDirections&gt;? orders,
+}) async {
+  var response = await searchResponse(
+    title: query,
+    limit: limit,
+    offset: offset,
+    authors: authors,
+    artists: artists,
+    year: year,
+    includedTags: includedTags,
+    includedTagsMode: includedTagsMode,
+    excludedTags: excludedTags,
+    excludedTagsMode: excludedTagsMode,
+    status: status,
+    originalLanguage: originalLanguage,
+    excludedOriginalLanguages: excludedOriginalLanguages,
+    availableTranslatedLanguage: availableTranslatedLanguage,
+    publicationDemographic: publicationDemographic,
+    ids: ids,
+    contentRating: contentRating,
+    createdAtSince: createdAtSince,
+    updatedAtSince: updatedAtSince,
+    includes: includes,
+    group: group,
+    orders: orders,
+  );
+  try {
+    var data = Search.fromJson(jsonDecode(response.body));
+    return data;
+  } on Exception {
+    throw MangadexServerException(jsonDecode(response.body));
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">search method</li>
+</ol>
+
+
+    <h5>MangadexClient class</h5>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    mangadex_library
+      2.0.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

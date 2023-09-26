@@ -3,18 +3,22 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:mangadex_library/enums/language_codes.dart';
 import 'package:mangadex_library/mangadex_library.dart';
-import 'package:mangadex_library/models/aggregate/aggregate.dart';
-import 'package:mangadex_library/enums/order_enums.dart';
-import 'package:mangadex_library/models/feed/manga_feed.dart';
-import 'package:mangadex_library/models/search/search.dart';
-import 'package:mangadex_library/utils.dart';
+import 'package:mangadex_library/src/enums/language_codes.dart';
+import 'package:mangadex_library/src/models/aggregate/aggregate.dart';
+import 'package:mangadex_library/src/enums/order_enums.dart';
+import 'package:mangadex_library/src/models/feed/manga_feed.dart';
+import 'package:mangadex_library/src/models/search/search.dart';
+import 'package:mangadex_library/src/util/utils.dart';
 import 'package:test/test.dart';
 
 void main() {
+  MangadexClient client =
+      MangadexClient(refreshDuration: Duration(seconds: 10));
+
+  test('Login', () => client.login('riksantra', 'Sikkim123.'));
   test('Retrieve urls', () async {
-    Search s = await search(includes: [
+    Search s = await client.search(includes: [
       'cover_art'
     ], orders: {
       SearchOrders.followedCount: OrderDirections.descending,
@@ -27,21 +31,21 @@ void main() {
     expect(true, map.isNotEmpty);
   });
   test('Get Custom List', () async {
-    var data =
-        await getSingleCustomList('44224004-1fad-425e-b416-45b46b74d3d1');
+    var data = await client
+        .getSingleCustomList('44224004-1fad-425e-b416-45b46b74d3d1');
     expect('ok', data.result!);
   });
   group('Search Function', () {
     var query = 'oregairu';
     test('Search function check with only query', () async {
       print('searching for manga with query value: $query');
-      Search data = await search(query: query);
+      Search data = await client.search(query: query);
 
       expect('ok', data.result);
     });
     test('Search function check with query and order', () async {
       print('searching for manga with query value: $query');
-      var data = await search(
+      var data = await client.search(
         query: query,
         orders: {SearchOrders.createdAt: OrderDirections.ascending},
       );
@@ -52,7 +56,7 @@ void main() {
     var mangaId = '0296dc0b-7635-4154-927a-33c2244c4503';
     test('Fetch manga details', () async {
       print('fetching manga details for manga with UUID: $mangaId');
-      var data = await getMangaDataByMangaId(mangaId);
+      var data = await client.getMangaDataByMangaId(mangaId);
       expect('ok', data.result);
     });
   });
@@ -62,17 +66,17 @@ void main() {
     var chapterId = '';
     test('Fetch manga chapter data', () async {
       print('fetching manga details for manga with UUID: $mangaId');
-      var data = await getChapters(mangaId);
+      var data = await client.getChapters(mangaId);
       chapterId = data.data![0].id!;
       expect('ok', data.result);
     });
     test('Get chapter by Id', () async {
       print(
           'fetching chapter with UUID $chapterId for manga with UUID $mangaId');
-      var data = await getBaseUrl(chapterId);
+      var data = await client.getBaseUrl(chapterId);
 
-      pageUrl = constructPageUrl(data.baseUrl!, true, data.chapter!.hash!,
-          data.chapter!.dataSaver!.first);
+      pageUrl = client.constructPageUrl(data.baseUrl!, true,
+          data.chapter!.hash!, data.chapter!.dataSaver!.first);
       expect('ok', data.result);
     });
     test('Page fetch check', () async {
@@ -81,8 +85,8 @@ void main() {
     });
   });
   test('Aggregate', () async {
-    var data =
-        await getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
+    var data = await client
+        .getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
     print(data.body);
     // print(data.body);
     var parsedData = Aggregate.fromJson(jsonDecode(data.body));
@@ -90,7 +94,7 @@ void main() {
   });
 
   test('Get manga feed', () async {
-    var data = await getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
+    var data = await client.getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
         translatedLanguage: [LanguageCodes.en]);
 
     for (final Data manga in data.data ?? []) {

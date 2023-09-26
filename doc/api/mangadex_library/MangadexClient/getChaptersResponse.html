@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the getChaptersResponse method from the MangadexClient class, for the Dart programming language.">
+  <title>getChaptersResponse method - MangadexClient class - mangadex_library library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">getChaptersResponse method</li>
+  </ol>
+  <div class="self-name">getChaptersResponse</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="mangadex_library&#47;MangadexClient-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-method">getChaptersResponse</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.dart.dev/stable/3.1.0/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/1.1.0/http/Response-class.html">Response</a></span>&gt;</span></span>
+<span class="name ">getChaptersResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getChaptersResponse-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-ids">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-title"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-groups"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">groups</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-uploader"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">uploader</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-volume"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">volume</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-chapter"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">chapter</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-translatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">LanguageCodes</span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">ContentRating</span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-publishedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishedAtSince</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">includes</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-orders"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">ChapterOrders</span>, <span class="type-parameter">OrderDirections</span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="getChaptersResponse-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>}</span></li>
+</ol>)
+
+      <div class="features"><span class="feature">inherited</span></div>
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Endpoint used: <code>GET /chapter</code></p>
+<p>Returns the http response of a list of chapters for <code>mangaId</code></p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;http.Response&gt; getChaptersResponse(
+  String mangaId, {
+  List&lt;String&gt;? ids,
+  String? title,
+  List&lt;String&gt;? groups,
+  String? uploader,
+  String? volume,
+  String? chapter,
+  List&lt;LanguageCodes&gt;? translatedLanguage,
+  List&lt;LanguageCodes&gt;? originalLanguage,
+  List&lt;LanguageCodes&gt;? excludedOriginalLanguage,
+  List&lt;ContentRating&gt;? contentRating,
+  String? createdAtSince,
+  String? updatedAtSince,
+  String? publishedAtSince,
+  String? includes,
+  Map&lt;ChapterOrders, OrderDirections&gt;? orders,
+  int? limit,
+  int? offset,
+}) async {
+  var unencodedPath = &#39;&#47;chapter&#39;;
+  var _mangaId = mangaId;
+  var _limit = limit != null ? &#39;&amp;limit=$limit&#39; : &#39;&amp;limit=10&#39;;
+  var _offset = offset != null ? &#39;&amp;offset=$offset&#39; : &#39;&amp;offset=0&#39;;
+  var _ids = &#39;&#39;;
+  if (ids != null) {
+    ids.forEach((element) {
+      _ids = _ids + &#39;&amp;ids[]=$element&#39;;
+    });
+  }
+  var _title = title != null ? &#39;&amp;title=$title&#39; : &#39;&#39;;
+  var _groups = &#39;&#39;;
+  if (groups != null) {
+    groups.forEach((element) {
+      _groups = _groups + &#39;&amp;groups[]=$element&#39;;
+    });
+  }
+  var _uploader = uploader != null ? &#39;&amp;uploader=$uploader&#39; : &#39;&#39;;
+  var _volume = volume != null ? &#39;&amp;volume=$volume&#39; : &#39;&#39;;
+  var _chapter = chapter != null ? &#39;&amp;chapter=$chapter&#39; : &#39;&#39;;
+
+  var _translatedLanguage = &#39;&#39;;
+  if (translatedLanguage != null) {
+    translatedLanguage.forEach((element) {
+      _translatedLanguage = _translatedLanguage +
+          &#39;&amp;translatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+  var _originalLanguage = &#39;&#39;;
+  if (originalLanguage != null) {
+    originalLanguage.forEach((element) {
+      _originalLanguage = _originalLanguage +
+          &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+  var _excludedOriginalLanguage = &#39;&#39;;
+  if (excludedOriginalLanguage != null) {
+    excludedOriginalLanguage.forEach((element) {
+      _excludedOriginalLanguage = _excludedOriginalLanguage +
+          &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+  var _contentrating = &#39;&#39;;
+  if (contentRating != null) {
+    contentRating.forEach((element) {
+      _contentrating = _contentrating +
+          &#39;&amp;contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}&#39;;
+    });
+  }
+
+  var _createdAtSince =
+      createdAtSince != null ? &#39;&amp;createdAtSince=$createdAtSince&#39; : &#39;&#39;;
+  var _updatedAtSince =
+      updatedAtSince != null ? &#39;&amp;updatedAtSince=$updatedAtSince&#39; : &#39;&#39;;
+  var _publishedAtSince =
+      publishedAtSince != null ? &#39;&amp;publishedAtSince=$publishedAtSince&#39; : &#39;&#39;;
+  var _includes = includes != null ? &#39;&amp;includes[]=$includes&#39; : &#39;&#39;;
+  var _order = &#39;&#39;;
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          &#39;&amp;order[${EnumUtils.parseChapterOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}&#39;;
+    });
+  }
+
+  final url =
+      &#39;https:&#47;&#47;$AUTHORITY$unencodedPath?&amp;manga=$_mangaId$_limit$_offset$_ids$_title$_groups$_uploader$_volume$_chapter$_translatedLanguage$_createdAtSince$_updatedAtSince$_publishedAtSince$_includes&#39;;
+  var response = await http.get(Uri.parse(url),
+      headers: {HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;});
+  return response;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">getChaptersResponse method</li>
+</ol>
+
+
+    <h5>MangadexClient class</h5>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    mangadex_library
+      2.0.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

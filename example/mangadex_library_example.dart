@@ -1,11 +1,12 @@
-import 'package:mangadex_library/mangadexServerException.dart';
-import 'package:mangadex_library/mangadex_library.dart' as lib;
+import 'package:mangadex_library/mangadex_library.dart';
+import 'package:mangadex_library/mangadex_server_exception.dart';
 
 void main() {
   printFilenames();
 }
 
 void printFilenames() async {
+  var client = MangadexClient();
   // this function, needs a mangadex account username and password supplied
   // to retrive login token
   var username = 'USERNAME'; // Put your username here
@@ -15,14 +16,14 @@ void printFilenames() async {
   //two String parameters, username and password and returns
   //an instance of the Login class
   try {
-    var loginData = await lib.login(username, password);
+    var loginData = await client.login(username, password);
     // ignore: unused_local_variable
     var token = loginData.token!
         .session; // this sets the token variable to store the session token obtained using
     //the login function, it is a String value.
     // The token is not required as of now but is only for demonstration of the login function.
 
-    var searchData = await lib.search(
+    var searchData = await client.search(
         query:
             'oregairu'); //This is a search function that queries mangadex for the name of a manga
     // it returns a Search class instance
@@ -33,7 +34,7 @@ void printFilenames() async {
     //for demonstration we are talking the manga ID of only the first search result
     //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
     //For example, chapter pages and thumbnails.
-    var chapterData = await lib.getChapters(
+    var chapterData = await client.getChapters(
         mangaID!); //This function returns an instance of the ChapterData class,
     // it contains info on all the chapters of the manga ID it has been provided.
 
@@ -44,10 +45,10 @@ void printFilenames() async {
     //Chapter ID is required to access info of the desired chapter.
     //Chapter Hash is required for requesting manga pages.
     //All Chapter Hash and Chapter filenames can be requested by using the getBaseUrl() function
-    var baseUrl = await lib.getBaseUrl(chapterID!);
+    var baseUrl = await client.getBaseUrl(chapterID!);
     //This look prints all urls to all the pages of the chapterID
     baseUrl.chapter!.dataSaver!.forEach((filename) {
-      print(lib.constructPageUrl(
+      print(client.constructPageUrl(
           baseUrl.baseUrl!, true, baseUrl.chapter!.hash!, filename));
     });
   } on MangadexServerException catch (e) {
