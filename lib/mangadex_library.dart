@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:mangadex_library/src/repositories/auth_repository.dart';
@@ -8,11 +7,24 @@ import 'package:mangadex_library/src/repositories/repository.dart';
 import 'package:mangadex_library/src/models/login/login.dart';
 
 class MangadexClient extends Repositories {
-  final bool autoSave;
-  final Directory? saveDirectory;
-  final String? filename;
+  // Whether to autoSave tokens or not
+  // final bool autoSave;
+
+  // Directory to save user token to
+  // final Directory? saveDirectory;
+
+  // Name of file to save user token in
+  // final String? filename;
+
+  /// whether to automatically refresh the user tokens or not
   final bool autoRefresh;
+
+  /// interval between token refreshes
+  /// defaults to 14 minutes
   final Duration? refreshDuration;
+
+  /// A function that executes on successful refresh of token
+  final void Function()? onRefresh;
 
   Token? _token;
   late Timer _refreshTimer;
@@ -20,19 +32,22 @@ class MangadexClient extends Repositories {
   MangadexClient(
       {this.autoRefresh = true,
       this.refreshDuration,
-      this.autoSave = false,
-      this.saveDirectory,
-      this.filename}) {
-    if (saveDirectory != null && filename != null && autoSave != false) {
-      loadFromLocation(saveDirectory!, filename)
-          .then((value) => _token = value);
-    }
+      // this.autoSave = false,
+      // this.saveDirectory,
+      // this.filename,
+      this.onRefresh}) {
+    // if (saveDirectory != null && filename != null && autoSave != false) {
+    //   loadFromLocation(saveDirectory!, filename)
+    //       .then((value) => _token = value);
+    // }
     _refreshTimer =
         Timer.periodic(refreshDuration ?? Duration(minutes: 14), (timer) async {
       if (_token != null) {
         try {
           _token = (await refresh(_token!.refresh!)).token;
-          log("Token Refreshed");
+          if (onRefresh != null) {
+            onRefresh!();
+          }
         } on Exception {
           _token = null;
         }

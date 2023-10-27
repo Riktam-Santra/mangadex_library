@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:mangadex_library/mangadex_library.dart';
 import 'package:mangadex_library/mangadex_server_exception.dart';
 
@@ -6,11 +8,16 @@ void main() {
 }
 
 void printFilenames() async {
-  var client = MangadexClient();
+  var client = MangadexClient(
+    refreshDuration: Duration(seconds: 5),
+    onRefresh: () {
+      log('Token refreshed!');
+    },
+  );
   // this function, needs a mangadex account username and password supplied
   // to retrive login token
-  var username = 'USERNAME'; // Put your username here
-  var password = 'PASSWORD'; // Put your password here
+  var username = 'riksantra'; // Put your username here
+  var password = 'Sikkim123.'; // Put your password here
 
   //The line below uses the login function and takes in
   //two String parameters, username and password and returns
@@ -58,4 +65,6 @@ void printFilenames() async {
       print(error.detail);
     });
   }
+  //disposing of client is needed as the refresh timer will still be running.
+  client.dispose();
 }
