@@ -18,6 +18,17 @@ The library is currently in an **under development and gradually changing** stat
 - Set/Get the reading status of a manga for the logged in user
 - Get, Create and Delete Scanlation Groups
 
+## Breaking changes from 2.0.0
+mangadex_library previously was only a set of static functions which were working fine but there were a few number of things that could be handled more gracefully, the issues mainly being:
+ - The single library file became a pile of static functions which made it difficult to understand and work upon
+ - Refreshing of tokens was left to the user to handle manually by only providing the functions to refresh.
+
+Seeing these problems the following breaking changes has been introduced:
+ - The library is now more client based than just static functions, you can now have a MangadexClient instance that upon using the login function will automatically refresh the token every 14 minutes which can be changed if needed. There is also an onrefresh callback function which is run on a successful token refresh to do any custom jobs.
+ - All functions have been placed in their own repositories so that adding of more features in the future can be more easier.
+
+For usage, please refer to the example provided.
+
 ## ToJson() model methods are NOT STABLE
 The toJson() methods of all json model classes are not stable, this is because mangadex returns a list type [] in case an object is empty, for example a description may become an empty list instead of an empty object if the description is empty.
 
