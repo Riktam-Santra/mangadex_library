@@ -1,5 +1,10 @@
 A [dart library](https://pub.dev/packages/mangadex_library) to facilitate easier access to the [mangadex API](https://api.mangadex.org)
 
+# You are currently viewing version 1.x.x
+You are viewing an older version of mangadex_library. This library still works but only has static functions which requires a lot of manual handling such as refreshing tokens. This major version will still receive updates only in case it breaks.
+
+For best support please use version 2.x.x available on the main branch
+
 ## WARNING! In progress library
 
 The library is currently in an **under development and gradually changing** state and therefore doesn't contain many of the features and new features and bugs are added often. At the current state of the library, it is able to:
