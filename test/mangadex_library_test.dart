@@ -97,7 +97,7 @@ void main() {
     var data = await client.getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
         translatedLanguage: [LanguageCodes.en]);
 
-    for (final Data manga in data.data ?? []) {
+    for (final MangaFeedData manga in data.data ?? []) {
       print(manga.attributes?.translatedLanguage ?? '');
     }
     expect('ok', data.result);

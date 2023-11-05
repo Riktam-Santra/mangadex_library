@@ -11,7 +11,8 @@ Scanlation _$ScanlationFromJson(Map<String, dynamic> json) => Scanlation(
       json['response'] as String?,
       json['data'] == null
           ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+          : ScanlationsResultData.fromJson(
+              json['data'] as Map<String, dynamic>),
       json['limit'] as int?,
       json['offset'] as int?,
       json['total'] as int?,

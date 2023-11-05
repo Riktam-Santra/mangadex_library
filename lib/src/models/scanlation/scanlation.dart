@@ -8,7 +8,7 @@ part 'scanlation.g.dart';
 class Scanlation {
   final String? result;
   final String? response;
-  final Data? data;
+  final ScanlationsResultData? data;
   final int? limit;
   final int? offset;
   final int? total;

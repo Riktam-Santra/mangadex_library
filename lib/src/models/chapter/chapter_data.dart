@@ -24,7 +24,7 @@ class ChapterData {
 class Data {
   final String? id;
   final String? type;
-  Attributes? attributes;
+  ChapterAttributes? attributes;
   List<Relationship>? relationships;
   Data(this.id, this.type, this.attributes, this.relationships);
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -33,7 +33,7 @@ class Data {
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class ChapterAttributes {
   final String? volume;
   final String? chapter;
   final String? title;
@@ -45,7 +45,7 @@ class Attributes {
   final String? createdAt;
   final String? updatedAt;
   final int? version;
-  Attributes(
+  ChapterAttributes(
       this.volume,
       this.chapter,
       this.title,
@@ -57,7 +57,7 @@ class Attributes {
       this.createdAt,
       this.updatedAt,
       this.version);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  factory ChapterAttributes.fromJson(Map<String, dynamic> json) =>
+      _$ChapterAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$ChapterAttributesToJson(this);
 }

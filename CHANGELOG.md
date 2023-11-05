@@ -458,3 +458,15 @@
 
 ## 1.5.5
 - Fixed issues with language filters not applying in `getMangaFeed()`
+
+## 2.0.0
+- Moved completely to a client based approach rather than simple static functions to make it easier to automate trivial tasks like token refresh.
+- Refactored functions to their respective repositories.
+- Added class MangadexClient, who instance will be used to acces all required functions.
+- Added arguments:
+  - autoRefresh: Whether to auto refresh auth tokens. 
+  - refreshDuration: Takes in a duration which is the interval at which tokens are refreshed (Defaults to 14 minutes).
+  - onRefresh: Takes in a callback function that executes on successful token refreshes.
+
+## 2.0.1
+- Added exports for all necessary modules and models

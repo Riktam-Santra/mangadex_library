@@ -1,3 +1,5 @@
+library mangadex_library;
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -5,6 +7,10 @@ import 'dart:io';
 import 'package:mangadex_library/src/repositories/auth_repository.dart';
 import 'package:mangadex_library/src/repositories/repository.dart';
 import 'package:mangadex_library/src/models/login/login.dart';
+
+export './mangadex_server_exception.dart';
+export './src/enums/enums.dart';
+export './src/models/models.dart';
 
 class MangadexClient extends Repositories {
   // Whether to autoSave tokens or not

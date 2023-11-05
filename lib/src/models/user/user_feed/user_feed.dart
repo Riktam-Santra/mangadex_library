@@ -6,7 +6,7 @@ part 'user_feed.g.dart';
 class UserFeed {
   final String result;
   final String response;
-  final List<Data> data;
+  final List<UserFeedData> data;
   UserFeed(this.result, this.response, this.data);
   factory UserFeed.fromJson(Map<String, dynamic> json) =>
       _$UserFeedFromJson(json);
@@ -15,19 +15,20 @@ class UserFeed {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class UserFeedData {
   final String id;
   final String type;
-  final Attributes attributes;
-  final List<Relationship> relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  final UserFeedAttributes attributes;
+  final List<UserFeedRelationship> relationships;
+  UserFeedData(this.id, this.type, this.attributes, this.relationships);
+  factory UserFeedData.fromJson(Map<String, dynamic> json) =>
+      _$UserFeedDataFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFeedDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class UserFeedAttributes {
   final String volume;
   final String chapter;
   final String title;
@@ -39,7 +40,7 @@ class Attributes {
   final String updatedAt;
   final int pages;
   final int version;
-  Attributes(
+  UserFeedAttributes(
       this.volume,
       this.chapter,
       this.title,
@@ -51,18 +52,18 @@ class Attributes {
       this.updatedAt,
       this.pages,
       this.version);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  factory UserFeedAttributes.fromJson(Map<String, dynamic> json) =>
+      _$UserFeedAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFeedAttributesToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Relationship {
+class UserFeedRelationship {
   final String id;
   final String type;
-  Relationship(this.id, this.type);
-  factory Relationship.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipFromJson(json);
-  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
+  UserFeedRelationship(this.id, this.type);
+  factory UserFeedRelationship.fromJson(Map<String, dynamic> json) =>
+      _$UserFeedRelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$UserFeedRelationshipToJson(this);
 }

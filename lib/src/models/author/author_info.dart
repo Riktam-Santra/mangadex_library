@@ -7,8 +7,8 @@ part 'author_info.g.dart';
 class AuthorInfo {
   final String? result;
   final String? response;
-  final Data? data;
-  final List<Relationship>? relationships;
+  final AuthorData? data;
+  final List<AuthorRelationship>? relationships;
   AuthorInfo(this.result, this.response, this.data, this.relationships);
   factory AuthorInfo.fromJson(Map<String, dynamic> json) =>
       _$AuthorInfoFromJson(json);
@@ -18,18 +18,19 @@ class AuthorInfo {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class AuthorData {
   final String? id;
   final String? type;
-  final Attributes? attributes;
-  Data(this.id, this.type, this.attributes);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  final AuthorAttributes? attributes;
+  AuthorData(this.id, this.type, this.attributes);
+  factory AuthorData.fromJson(Map<String, dynamic> json) =>
+      _$AuthorDataFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthorDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class AuthorAttributes {
   final String? name;
   final String? imageUrl;
   final String? twitter;
@@ -48,7 +49,7 @@ class Attributes {
   final String? createdAt;
   final String? updateAt;
   final int? version;
-  Attributes(
+  AuthorAttributes(
       this.name,
       this.imageUrl,
       this.twitter,
@@ -68,18 +69,18 @@ class Attributes {
       this.updateAt,
       this.version);
 
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  factory AuthorAttributes.fromJson(Map<String, dynamic> json) =>
+      _$AuthorAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthorAttributesToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Relationship {
+class AuthorRelationship {
   final String? id;
   final String? type;
-  Relationship(this.id, this.type);
-  factory Relationship.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipFromJson(json);
-  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
+  AuthorRelationship(this.id, this.type);
+  factory AuthorRelationship.fromJson(Map<String, dynamic> json) =>
+      _$AuthorRelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthorRelationshipToJson(this);
 }

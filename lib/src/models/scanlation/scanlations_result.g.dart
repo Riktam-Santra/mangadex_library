@@ -11,7 +11,8 @@ ScanlationsResult _$ScanlationsResultFromJson(Map<String, dynamic> json) =>
       json['result'] as String?,
       json['response'] as String?,
       (json['data'] as List<dynamic>?)
-          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+          ?.map(
+              (e) => ScanlationsResultData.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['limit'] as int?,
       json['offset'] as int?,
@@ -28,23 +29,31 @@ Map<String, dynamic> _$ScanlationsResultToJson(ScanlationsResult instance) =>
       'total': instance.total,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+ScanlationsResultData _$ScanlationsResultDataFromJson(
+        Map<String, dynamic> json) =>
+    ScanlationsResultData(
       json['id'] as String,
       json['type'] as String,
-      Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+      ScanlationsResultAttributes.fromJson(
+          json['attributes'] as Map<String, dynamic>),
       (json['relationships'] as List<dynamic>)
-          .map((e) => RelationShip.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              ScanlationsResultRelationShip.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$ScanlationsResultDataToJson(
+        ScanlationsResultData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'attributes': instance.attributes,
       'relationships': instance.relationships,
     };
 
-Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
+ScanlationsResultAttributes _$ScanlationsResultAttributesFromJson(
+        Map<String, dynamic> json) =>
+    ScanlationsResultAttributes(
       json['name'] as String?,
       (json['altNames'] as List<dynamic>?)
           ?.map((e) => Map<String, String>.from(e as Map))
@@ -69,7 +78,8 @@ Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
       json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
+Map<String, dynamic> _$ScanlationsResultAttributesToJson(
+        ScanlationsResultAttributes instance) =>
     <String, dynamic>{
       'name': instance.name,
       'altNames': instance.altNames,
@@ -91,14 +101,17 @@ Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
       'updatedAt': instance.updatedAt,
     };
 
-RelationShip _$RelationShipFromJson(Map<String, dynamic> json) => RelationShip(
+ScanlationsResultRelationShip _$ScanlationsResultRelationShipFromJson(
+        Map<String, dynamic> json) =>
+    ScanlationsResultRelationShip(
       json['id'] as String?,
       json['type'] as String?,
       json['refinald'] as String?,
       json['attributes'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$RelationShipToJson(RelationShip instance) =>
+Map<String, dynamic> _$ScanlationsResultRelationShipToJson(
+        ScanlationsResultRelationShip instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,

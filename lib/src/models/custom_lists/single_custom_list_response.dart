@@ -6,7 +6,7 @@ part 'single_custom_list_response.g.dart';
 class SingleCustomListResponse {
   final String? result;
   final String? response;
-  final Data? data;
+  final CustomListData? data;
   SingleCustomListResponse(this.result, this.response, this.data);
   factory SingleCustomListResponse.fromJson(Map<String, dynamic> json) =>
       _$SingleCustomListResponseFromJson(json);
@@ -14,34 +14,35 @@ class SingleCustomListResponse {
 }
 
 @JsonSerializable()
-class Data {
+class CustomListData {
   final String? id;
   final String? type;
-  final Attributes? attributes;
-  final List<Relationship>? relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  final CustomListAttributes? attributes;
+  final List<CustomListRelationship>? relationships;
+  CustomListData(this.id, this.type, this.attributes, this.relationships);
+  factory CustomListData.fromJson(Map<String, dynamic> json) =>
+      _$CustomListDataFromJson(json);
+  Map<String, dynamic> toJson() => _$CustomListDataToJson(this);
 }
 
 @JsonSerializable()
-class Attributes {
+class CustomListAttributes {
   final String? name;
   final String? visibility;
   final int? version;
-  Attributes(this.name, this.visibility, this.version);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  CustomListAttributes(this.name, this.visibility, this.version);
+  factory CustomListAttributes.fromJson(Map<String, dynamic> json) =>
+      _$CustomListAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$CustomListAttributesToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Relationship {
+class CustomListRelationship {
   final String? id;
   final String? type;
-  Relationship(this.id, this.type);
-  factory Relationship.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipFromJson(json);
-  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
+  CustomListRelationship(this.id, this.type);
+  factory CustomListRelationship.fromJson(Map<String, dynamic> json) =>
+      _$CustomListRelationshipFromJson(json);
+  Map<String, dynamic> toJson() => _$CustomListRelationshipToJson(this);
 }

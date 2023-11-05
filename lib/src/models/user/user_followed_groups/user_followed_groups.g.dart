@@ -9,7 +9,7 @@ part of 'user_followed_groups.dart';
 UserFollowedGroups _$UserFollowedGroupsFromJson(Map<String, dynamic> json) =>
     UserFollowedGroups(
       (json['data'] as List<dynamic>?)
-          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => FollowedGroupsData.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['limit'] as int?,
       json['offset'] as int?,
@@ -24,25 +24,30 @@ Map<String, dynamic> _$UserFollowedGroupsToJson(UserFollowedGroups instance) =>
       'total': instance.total,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+FollowedGroupsData _$FollowedGroupsDataFromJson(Map<String, dynamic> json) =>
+    FollowedGroupsData(
       json['id'] as String?,
       json['type'] as String?,
       json['attributes'] == null
           ? null
-          : Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+          : FollowedGroupsAttributes.fromJson(
+              json['attributes'] as Map<String, dynamic>),
       (json['relationships'] as List<dynamic>?)
           ?.map((e) => Relationship.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$FollowedGroupsDataToJson(FollowedGroupsData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'attributes': instance.attributes,
       'relationships': instance.relationships,
     };
 
-Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
+FollowedGroupsAttributes _$FollowedGroupsAttributesFromJson(
+        Map<String, dynamic> json) =>
+    FollowedGroupsAttributes(
       json['name'] as String?,
       json['website'] as String?,
       json['ircServer'] as String?,
@@ -57,7 +62,8 @@ Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
       json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
+Map<String, dynamic> _$FollowedGroupsAttributesToJson(
+        FollowedGroupsAttributes instance) =>
     <String, dynamic>{
       'name': instance.name,
       'website': instance.website,

@@ -7,7 +7,7 @@ part 'scanlations_result.g.dart';
 class ScanlationsResult {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<ScanlationsResultData>? data;
   final int? limit;
   final int? offset;
   final int? total;
@@ -20,19 +20,21 @@ class ScanlationsResult {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class ScanlationsResultData {
   final String id;
   final String type;
-  final Attributes attributes;
-  final List<RelationShip> relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  final ScanlationsResultAttributes attributes;
+  final List<ScanlationsResultRelationShip> relationships;
+  ScanlationsResultData(
+      this.id, this.type, this.attributes, this.relationships);
+  factory ScanlationsResultData.fromJson(Map<String, dynamic> json) =>
+      _$ScanlationsResultDataFromJson(json);
+  Map<String, dynamic> toJson() => _$ScanlationsResultDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class ScanlationsResultAttributes {
   final String? name;
   final List<Map<String, String>>? altNames;
   final String? website;
@@ -51,7 +53,7 @@ class Attributes {
   final int? version;
   final String? createdAt;
   final String? updatedAt;
-  Attributes(
+  ScanlationsResultAttributes(
       this.name,
       this.altNames,
       this.website,
@@ -70,20 +72,21 @@ class Attributes {
       this.version,
       this.createdAt,
       this.updatedAt);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  factory ScanlationsResultAttributes.fromJson(Map<String, dynamic> json) =>
+      _$ScanlationsResultAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$ScanlationsResultAttributesToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class RelationShip {
+class ScanlationsResultRelationShip {
   final String? id;
   final String? type;
   final String? refinald;
   final Map<String, dynamic>? attributes;
-  RelationShip(this.id, this.type, this.refinald, this.attributes);
-  factory RelationShip.fromJson(Map<String, dynamic> json) =>
-      _$RelationShipFromJson(json);
-  Map<String, dynamic> toJson() => _$RelationShipToJson(this);
+  ScanlationsResultRelationShip(
+      this.id, this.type, this.refinald, this.attributes);
+  factory ScanlationsResultRelationShip.fromJson(Map<String, dynamic> json) =>
+      _$ScanlationsResultRelationShipFromJson(json);
+  Map<String, dynamic> toJson() => _$ScanlationsResultRelationShipToJson(this);
 }

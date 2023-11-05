@@ -1,6 +1,7 @@
 ///@nodoc
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mangadex_library/src/models/common/chapter.dart';
+
+import '../at-home/chapter.dart';
 part 'base_url.g.dart';
 
 ///@nodoc

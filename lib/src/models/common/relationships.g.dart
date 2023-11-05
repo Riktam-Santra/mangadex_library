@@ -11,7 +11,8 @@ Relationship _$RelationshipFromJson(Map<String, dynamic> json) => Relationship(
       json['type'] as String?,
       json['attributes'] == null
           ? null
-          : Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+          : CoverAttributes.fromJson(
+              json['attributes'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$RelationshipToJson(Relationship instance) =>

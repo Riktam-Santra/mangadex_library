@@ -8,7 +8,7 @@ part 'multiple_custom_lists_response.g.dart';
 class MultipleCustomListResponse {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<CustomListData>? data;
   MultipleCustomListResponse(this.result, this.response, this.data);
   factory MultipleCustomListResponse.fromJson(Map<String, dynamic> json) =>
       _$MultipleCustomListResponseFromJson(json);

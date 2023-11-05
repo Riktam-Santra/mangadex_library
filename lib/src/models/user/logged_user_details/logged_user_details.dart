@@ -8,7 +8,7 @@ part 'logged_user_details.g.dart';
 class UserDetails {
   final String? result;
   final String? response;
-  final Data? data;
+  final UserDetailsData? data;
 
   UserDetails(this.result, this.data, this.response);
   factory UserDetails.fromJson(Map<String, dynamic> json) =>
@@ -18,24 +18,25 @@ class UserDetails {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class UserDetailsData {
   final String? id;
   final String? type;
-  final Attributes? attributes;
+  final UserDetailsAttributes? attributes;
   final List<Relationship>? relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  UserDetailsData(this.id, this.type, this.attributes, this.relationships);
+  factory UserDetailsData.fromJson(Map<String, dynamic> json) =>
+      _$UserDetailsDataFromJson(json);
+  Map<String, dynamic> toJson() => _$UserDetailsDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class UserDetailsAttributes {
   final String? username;
   final List<String>? roles;
   final int? version;
-  Attributes(this.username, this.roles, this.version);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  UserDetailsAttributes(this.username, this.roles, this.version);
+  factory UserDetailsAttributes.fromJson(Map<String, dynamic> json) =>
+      _$UserDetailsAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$UserDetailsAttributesToJson(this);
 }

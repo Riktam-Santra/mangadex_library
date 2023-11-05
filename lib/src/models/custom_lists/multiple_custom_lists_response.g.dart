@@ -12,7 +12,7 @@ MultipleCustomListResponse _$MultipleCustomListResponseFromJson(
       json['result'] as String?,
       json['response'] as String?,
       (json['data'] as List<dynamic>?)
-          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CustomListData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

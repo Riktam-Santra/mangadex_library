@@ -10,7 +10,7 @@ UserFeed _$UserFeedFromJson(Map<String, dynamic> json) => UserFeed(
       json['result'] as String,
       json['response'] as String,
       (json['data'] as List<dynamic>)
-          .map((e) => Data.fromJson(e as Map<String, dynamic>))
+          .map((e) => UserFeedData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -20,23 +20,25 @@ Map<String, dynamic> _$UserFeedToJson(UserFeed instance) => <String, dynamic>{
       'data': instance.data,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+UserFeedData _$UserFeedDataFromJson(Map<String, dynamic> json) => UserFeedData(
       json['id'] as String,
       json['type'] as String,
-      Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+      UserFeedAttributes.fromJson(json['attributes'] as Map<String, dynamic>),
       (json['relationships'] as List<dynamic>)
-          .map((e) => Relationship.fromJson(e as Map<String, dynamic>))
+          .map((e) => UserFeedRelationship.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$UserFeedDataToJson(UserFeedData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'attributes': instance.attributes,
       'relationships': instance.relationships,
     };
 
-Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
+UserFeedAttributes _$UserFeedAttributesFromJson(Map<String, dynamic> json) =>
+    UserFeedAttributes(
       json['volume'] as String,
       json['chapter'] as String,
       json['title'] as String,
@@ -50,7 +52,7 @@ Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
       json['version'] as int,
     );
 
-Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
+Map<String, dynamic> _$UserFeedAttributesToJson(UserFeedAttributes instance) =>
     <String, dynamic>{
       'volume': instance.volume,
       'chapter': instance.chapter,
@@ -65,12 +67,15 @@ Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
       'version': instance.version,
     };
 
-Relationship _$RelationshipFromJson(Map<String, dynamic> json) => Relationship(
+UserFeedRelationship _$UserFeedRelationshipFromJson(
+        Map<String, dynamic> json) =>
+    UserFeedRelationship(
       json['id'] as String,
       json['type'] as String,
     );
 
-Map<String, dynamic> _$RelationshipToJson(Relationship instance) =>
+Map<String, dynamic> _$UserFeedRelationshipToJson(
+        UserFeedRelationship instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,

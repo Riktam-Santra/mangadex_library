@@ -8,7 +8,7 @@ part of 'cover.dart';
 
 Cover _$CoverFromJson(Map<String, dynamic> json) => Cover(
       (json['data'] as List<dynamic>?)
-          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CoverData.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['limit'] as int?,
       json['offset'] as int?,
@@ -22,7 +22,7 @@ Map<String, dynamic> _$CoverToJson(Cover instance) => <String, dynamic>{
       'total': instance.total,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+CoverData _$CoverDataFromJson(Map<String, dynamic> json) => CoverData(
       json['id'] as String?,
       json['type'] as String?,
       json['attributes'] == null
@@ -33,14 +33,15 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$CoverDataToJson(CoverData instance) => <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'relationships': instance.relationships,
       'attributes': instance.attributes,
     };
 
-Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
+CoverAttributes _$CoverAttributesFromJson(Map<String, dynamic> json) =>
+    CoverAttributes(
       json['volume'] as String?,
       json['fileName'] as String?,
       json['description'] as String?,
@@ -49,7 +50,7 @@ Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
       json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
+Map<String, dynamic> _$CoverAttributesToJson(CoverAttributes instance) =>
     <String, dynamic>{
       'volume': instance.volume,
       'fileName': instance.fileName,

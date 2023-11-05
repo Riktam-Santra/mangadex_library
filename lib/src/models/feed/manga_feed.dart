@@ -7,7 +7,7 @@ part 'manga_feed.g.dart';
 class MangaFeed {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<MangaFeedData>? data;
   final int? limit;
   final int? offset;
   final int? total;
@@ -22,19 +22,20 @@ class MangaFeed {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class MangaFeedData {
   final String? id;
   final String? type;
-  final Attributes? attributes;
-  Data(this.id, this.type, this.attributes);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  final MangaFeedAttributes? attributes;
+  MangaFeedData(this.id, this.type, this.attributes);
+  factory MangaFeedData.fromJson(Map<String, dynamic> json) =>
+      _$MangaFeedDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$MangaFeedDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class MangaFeedAttributes {
   final String? title;
   final String? volume;
   final String? chapter;
@@ -47,8 +48,8 @@ class Attributes {
   final String? updatedAt;
   final String? publishedAt;
   final String? readableAt;
-  final List<Relationship>? relationships;
-  Attributes(
+  final List<MangaFeedRelationship>? relationships;
+  MangaFeedAttributes(
       this.title,
       this.volume,
       this.chapter,
@@ -63,21 +64,21 @@ class Attributes {
       this.readableAt,
       this.relationships);
 
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
+  factory MangaFeedAttributes.fromJson(Map<String, dynamic> json) =>
+      _$MangaFeedAttributesFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  Map<String, dynamic> toJson() => _$MangaFeedAttributesToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Relationship {
+class MangaFeedRelationship {
   final String? id;
   final String? type;
   final String? related;
-  Relationship(this.id, this.type, this.related);
-  factory Relationship.fromJson(Map<String, dynamic> json) =>
-      _$RelationshipFromJson(json);
+  MangaFeedRelationship(this.id, this.type, this.related);
+  factory MangaFeedRelationship.fromJson(Map<String, dynamic> json) =>
+      _$MangaFeedRelationshipFromJson(json);
 
-  Map<String, dynamic> toJson() => _$RelationshipToJson(this);
+  Map<String, dynamic> toJson() => _$MangaFeedRelationshipToJson(this);
 }

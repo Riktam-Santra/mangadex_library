@@ -5,7 +5,7 @@ part 'user_followed_groups.g.dart';
 ///@nodoc
 @JsonSerializable()
 class UserFollowedGroups {
-  final List<Data>? data;
+  final List<FollowedGroupsData>? data;
   final int? limit;
   final int? offset;
   final int? total;
@@ -17,19 +17,20 @@ class UserFollowedGroups {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class FollowedGroupsData {
   final String? id;
   final String? type;
-  final Attributes? attributes;
+  final FollowedGroupsAttributes? attributes;
   final List<Relationship>? relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  FollowedGroupsData(this.id, this.type, this.attributes, this.relationships);
+  factory FollowedGroupsData.fromJson(Map<String, dynamic> json) =>
+      _$FollowedGroupsDataFromJson(json);
+  Map<String, dynamic> toJson() => _$FollowedGroupsDataToJson(this);
 }
 
 ///@nodoc
 @JsonSerializable()
-class Attributes {
+class FollowedGroupsAttributes {
   final String? name;
   final String? website;
   final String? ircServer;
@@ -42,7 +43,7 @@ class Attributes {
   final int? version;
   final String? createdAt;
   final String? updatedAt;
-  Attributes(
+  FollowedGroupsAttributes(
       this.name,
       this.website,
       this.ircServer,
@@ -55,7 +56,7 @@ class Attributes {
       this.version,
       this.createdAt,
       this.updatedAt);
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
+  factory FollowedGroupsAttributes.fromJson(Map<String, dynamic> json) =>
+      _$FollowedGroupsAttributesFromJson(json);
+  Map<String, dynamic> toJson() => _$FollowedGroupsAttributesToJson(this);
 }

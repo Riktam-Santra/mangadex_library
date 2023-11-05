@@ -7,7 +7,7 @@ part 'relationships.g.dart';
 class Relationship {
   final String? id;
   final String? type;
-  final Attributes? attributes;
+  final CoverAttributes? attributes;
   Relationship(this.id, this.type, this.attributes);
   factory Relationship.fromJson(Map<String, dynamic> json) =>
       _$RelationshipFromJson(json);

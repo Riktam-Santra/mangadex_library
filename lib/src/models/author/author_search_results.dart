@@ -8,7 +8,7 @@ part 'author_search_results.g.dart';
 class AuthorSearchResults {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<AuthorData>? data;
   final int? limit;
   final int? offset;
   final int? total;
