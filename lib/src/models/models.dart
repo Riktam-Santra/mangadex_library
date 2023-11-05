@@ -41,3 +41,7 @@ export 'search/search.dart';
 
 export 'user/logged_user_details/logged_user_details.dart';
 export 'user/user_feed/user_feed.dart';
+export 'user/user_followed_groups/user_followed_groups.dart';
+export 'user/user_followed_manga/manga_check.dart';
+export 'user/user_followed_manga/user_followed_manga.dart';
+export 'user/user_followed_users/user_followed_users.dart';
