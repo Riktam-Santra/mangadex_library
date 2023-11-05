@@ -470,3 +470,4 @@
 
 ## 2.0.1
 - Added exports for all necessary modules and models
+- genberated dart doc

@@ -62,11 +62,10 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">MangadexClient</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-autoRefresh">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoRefresh</span> = <span class="default-value">true</span>, </span></li>
-<li><span class="parameter" id="-param-refreshDuration"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/Duration-class.html">Duration</a>?</span> <span class="parameter-name">refreshDuration</span>, </span></li>
-<li><span class="parameter" id="-param-autoSave"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoSave</span> = <span class="default-value">false</span>, </span></li>
-<li><span class="parameter" id="-param-saveDirectory"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-io/Directory-class.html">Directory</a>?</span> <span class="parameter-name">saveDirectory</span>, </span></li>
-<li><span class="parameter" id="-param-filename"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.0/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">filename</span>}</span></li>
+      <span class="name ">MangadexClient</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-autoRefresh">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoRefresh</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="-param-refreshDuration"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Duration-class.html">Duration</a>?</span> <span class="parameter-name">refreshDuration</span>, </span></li>
+<li><span class="parameter" id="-param-onRefresh"><span class="type-annotation">void</span> <span class="parameter-name">onRefresh</span>(<ol class="parameter-list"></ol>
+)?}</span></li>
 </ol>)
     </section>
 
@@ -76,28 +75,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">MangadexClient(
-    {this.autoRefresh = true,
-    this.refreshDuration,
-    this.autoSave = false,
-    this.saveDirectory,
-    this.filename}) {
-  if (saveDirectory != null &amp;&amp; filename != null &amp;&amp; autoSave != false) {
-    loadFromLocation(saveDirectory!, filename)
-        .then((value) =&gt; _token = value);
-  }
-  _refreshTimer =
-      Timer.periodic(refreshDuration ?? Duration(minutes: 14), (timer) async {
-    if (_token != null) {
-      try {
-        _token = (await refresh(_token!.refresh!)).token;
-        log(&quot;Token Refreshed&quot;);
-      } on Exception {
-        _token = null;
-      }
-    }
-  });
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">MangadexClient</code></pre>
 </section>
 
 
@@ -130,7 +108,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      2.0.0
+      2.0.1
   </span>
 
   
