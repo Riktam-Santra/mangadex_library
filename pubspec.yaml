@@ -1,6 +1,6 @@
 name: mangadex_library
 description: A mangadex library for dart to facilitate easier access to the Mangadex API (https://api.mangadex.org)
-version: 2.0.1
+version: 2.0.2
 repository: https://github.com/Riktam-Santra/mangadex_library
 
 environment:
@@ -16,4 +16,4 @@ dev_dependencies:
   test: ^1.21.3
 dependencies:
   http: ^1.1.0
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.1

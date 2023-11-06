@@ -471,3 +471,7 @@
 ## 2.0.1
 - Added exports for all necessary modules and models
 - genberated dart doc
+
+## 2.0.2
+- Fixed conlicting exported class names
+- Bumped up version for json_annotation (4.8.0 => 4.8.1)

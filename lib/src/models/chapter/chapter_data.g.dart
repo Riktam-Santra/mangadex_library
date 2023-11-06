@@ -10,7 +10,7 @@ ChapterData _$ChapterDataFromJson(Map<String, dynamic> json) => ChapterData(
       json['result'] as String?,
       json['response'] as String?,
       (json['data'] as List<dynamic>?)
-          ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => InternalChapterData.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['limit'] as int?,
       json['offset'] as int?,
@@ -27,7 +27,8 @@ Map<String, dynamic> _$ChapterDataToJson(ChapterData instance) =>
       'total': instance.total,
     };
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+InternalChapterData _$InternalChapterDataFromJson(Map<String, dynamic> json) =>
+    InternalChapterData(
       json['id'] as String?,
       json['type'] as String?,
       json['attributes'] == null
@@ -39,7 +40,9 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$InternalChapterDataToJson(
+        InternalChapterData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'attributes': instance.attributes,

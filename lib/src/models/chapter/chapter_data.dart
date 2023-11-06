@@ -8,7 +8,7 @@ part 'chapter_data.g.dart';
 class ChapterData {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<InternalChapterData>? data;
   final int? limit;
   final int? offset;
   final int? total;
@@ -21,14 +21,15 @@ class ChapterData {
 
 ///@nodoc
 @JsonSerializable()
-class Data {
+class InternalChapterData {
   final String? id;
   final String? type;
   ChapterAttributes? attributes;
   List<Relationship>? relationships;
-  Data(this.id, this.type, this.attributes, this.relationships);
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  InternalChapterData(this.id, this.type, this.attributes, this.relationships);
+  factory InternalChapterData.fromJson(Map<String, dynamic> json) =>
+      _$InternalChapterDataFromJson(json);
+  Map<String, dynamic> toJson() => _$InternalChapterDataToJson(this);
 }
 
 ///@nodoc
