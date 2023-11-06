@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mangadex_library/src/models/common/data.dart';
+import 'package:mangadex_library/src/models/common/search_data.dart';
 
 part 'search.g.dart';
 
@@ -8,7 +8,7 @@ part 'search.g.dart';
 class Search {
   final String? result;
   final String? response;
-  final List<Data>? data;
+  final List<SearchData>? data;
   final int? limit;
   final int? offset;
   final int? total;

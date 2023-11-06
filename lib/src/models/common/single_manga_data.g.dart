@@ -12,7 +12,7 @@ SingleMangaData _$SingleMangaDataFromJson(Map<String, dynamic> json) =>
       json['response'] as String?,
       json['data'] == null
           ? null
-          : Data.fromJson(json['data'] as Map<String, dynamic>),
+          : SearchData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SingleMangaDataToJson(SingleMangaData instance) =>

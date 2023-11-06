@@ -459,7 +459,7 @@
 ## 1.5.5
 - Fixed issues with language filters not applying in `getMangaFeed()`
 
-## 2.0.0
+## 2.0.0 (**important**)
 - Moved completely to a client based approach rather than simple static functions to make it easier to automate trivial tasks like token refresh.
 - Refactored functions to their respective repositories.
 - Added class MangadexClient, who instance will be used to acces all required functions.
@@ -475,3 +475,6 @@
 ## 2.0.2
 - Fixed conlicting exported class names
 - Bumped up version for json_annotation (4.8.0 => 4.8.1)
+
+## 2.0.3
+- Added missing exports

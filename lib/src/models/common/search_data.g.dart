@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'data.dart';
+part of 'search_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+SearchData _$SearchDataFromJson(Map<String, dynamic> json) => SearchData(
       json['id'] as String?,
       json['type'] as String?,
       json['attributes'] == null
@@ -17,7 +17,8 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
           .toList(),
     );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$SearchDataToJson(SearchData instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'attributes': instance.attributes,

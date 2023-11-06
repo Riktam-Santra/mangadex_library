@@ -20,6 +20,7 @@ export 'common/manga_reading_status.dart';
 export 'common/name.dart';
 export 'common/relationships.dart';
 export 'common/result_ok.dart';
+export 'common/search_data.dart';
 export 'common/server_exception.dart';
 export 'common/single_manga_data.dart';
 export 'common/tag_attributes.dart';
