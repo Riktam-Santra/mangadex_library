@@ -24,7 +24,7 @@ class CoverData {
   final String? id;
   final String? type;
   final List<Relationship>? relationships;
-  final Attributes? attributes;
+  final CoverAttributes? attributes;
   CoverData(this.id, this.type, this.attributes, this.relationships);
   factory CoverData.fromJson(Map<String, dynamic> json) =>
       _$CoverDataFromJson(json);

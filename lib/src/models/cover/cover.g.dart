@@ -27,7 +27,8 @@ CoverData _$CoverDataFromJson(Map<String, dynamic> json) => CoverData(
       json['type'] as String?,
       json['attributes'] == null
           ? null
-          : Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+          : CoverAttributes.fromJson(
+              json['attributes'] as Map<String, dynamic>),
       (json['relationships'] as List<dynamic>?)
           ?.map((e) => Relationship.fromJson(e as Map<String, dynamic>))
           .toList(),

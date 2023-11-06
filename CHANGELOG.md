@@ -478,3 +478,6 @@
 
 ## 2.0.3
 - Added missing exports
+
+## 2.0.4
+- Fixed incorrect class use in Cover.dart
