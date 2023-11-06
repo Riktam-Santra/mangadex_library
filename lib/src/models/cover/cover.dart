@@ -2,7 +2,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mangadex_library/src/models/common/relationships.dart';
 
-import '../common/attributes.dart';
 part 'cover.g.dart';
 
 ///@nodoc
