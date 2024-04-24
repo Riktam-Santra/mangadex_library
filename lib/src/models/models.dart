@@ -32,7 +32,7 @@ export 'custom_lists/single_custom_list_response.dart';
 
 export 'feed/manga_feed.dart';
 
-export 'login/login.dart';
+export 'login/token.dart';
 export 'login/token_check.dart';
 
 export 'scanlation/scanlation.dart';

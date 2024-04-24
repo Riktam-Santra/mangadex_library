@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">mangadex_library</a></li>
-    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_client.dart</a></li>
     <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
     <li class="self-crumb">MangadexClient constructor</li>
   </ol>
@@ -62,8 +62,8 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">MangadexClient</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-autoRefresh">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoRefresh</span> = <span class="default-value">true</span>, </span></li>
-<li><span class="parameter" id="-param-refreshDuration"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Duration-class.html">Duration</a>?</span> <span class="parameter-name">refreshDuration</span>, </span></li>
+      <span class="name ">MangadexClient</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-autoRefresh">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoRefresh</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="-param-refreshDuration"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/Duration-class.html">Duration</a>?</span> <span class="parameter-name">refreshDuration</span>, </span></li>
 <li><span class="parameter" id="-param-onRefresh"><span class="type-annotation">void</span> <span class="parameter-name">onRefresh</span>(<ol class="parameter-list"></ol>
 )?}</span></li>
 </ol>)
@@ -75,7 +75,31 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">MangadexClient</code></pre>
+  <pre class="language-dart"><code class="language-dart">MangadexClient(
+    {this.autoRefresh = true,
+    this.refreshDuration,
+    &#47;&#47; this.autoSave = false,
+    &#47;&#47; this.saveDirectory,
+    &#47;&#47; this.filename,
+    this.onRefresh}) {
+  &#47;&#47; if (saveDirectory != null &amp;&amp; filename != null &amp;&amp; autoSave != false) {
+  &#47;&#47;   loadFromLocation(saveDirectory!, filename)
+  &#47;&#47;       .then((value) =&gt; _token = value);
+  &#47;&#47; }
+  _refreshTimer =
+      Timer.periodic(refreshDuration ?? Duration(minutes: 14), (timer) async {
+    if (_token != null) {
+      try {
+        _token = (await AuthRepository.refresh(_token!.refreshToken));
+        if (onRefresh != null) {
+          onRefresh!();
+        }
+      } on Exception {
+        _token = null;
+      }
+    }
+  });
+}</code></pre>
 </section>
 
 
@@ -98,6 +122,7 @@
 
 
     <h5>MangadexClient class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -108,7 +133,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      2.0.3
+      2.0.5
   </span>
 
   

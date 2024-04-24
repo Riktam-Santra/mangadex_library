@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'src/models/common/server_exception.dart';
 
 class MangadexServerException implements Exception {
@@ -10,7 +12,7 @@ class MangadexServerException implements Exception {
   };
 
   MangadexServerException([Map<String, dynamic> error = DEF_VALUE]) {
-    print(error.toString());
+    log(error.toString());
     info = ServerException.fromJson(error);
   }
 }

@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">mangadex_library</a></li>
-    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_library/mangadex_library-library.html">mangadex_client.dart</a></li>
     <li><a href="../../mangadex_library/MangadexClient-class.html">MangadexClient</a></li>
     <li class="self-crumb">getMangaFeedResponse method</li>
   </ol>
@@ -63,25 +63,25 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.dart.dev/stable/3.1.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/1.1.0/http/Response-class.html">Response</a></span>&gt;</span></span>
-<span class="name ">getMangaFeedResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getMangaFeedResponse-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-limit">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-translatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-excludedGroups"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedGroups</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-excludedUploaders"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedUploaders</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-includeFutureUpdates"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeFutureUpdates</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-publishAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishAtSince</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-order"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/ChapterOrders.html">ChapterOrders</a></span>, <span class="type-parameter"><a href="../../mangadex_library/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.1.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-includeEmptyPages"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeEmptyPages</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-includeFuturePublishAt"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeFuturePublishAt</span>, </span></li>
-<li><span class="parameter" id="getMangaFeedResponse-param-includeExternalUrl"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeExternalUrl</span>}</span></li>
+<span class="returntype"><a href="https://api.dart.dev/stable/3.3.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/1.2.1/http/Response-class.html">Response</a></span>&gt;</span></span>
+<span class="name ">getMangaFeedResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getMangaFeedResponse-param-mangaId"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">mangaId</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-limit">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-translatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">translatedLanguage</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-excludedOriginalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguage</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-excludedGroups"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedGroups</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-excludedUploaders"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedUploaders</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-includeFutureUpdates"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeFutureUpdates</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-publishAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">publishAtSince</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-order"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_library/ChapterOrders.html">ChapterOrders</a></span>, <span class="type-parameter"><a href="../../mangadex_library/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">order</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-includeEmptyPages"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeEmptyPages</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-includeFuturePublishAt"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeFuturePublishAt</span>, </span></li>
+<li><span class="parameter" id="getMangaFeedResponse-param-includeExternalUrl"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">includeExternalUrl</span>}</span></li>
 </ol>)
 
       <div class="features"><span class="feature">inherited</span></div>
@@ -236,6 +236,7 @@ response body of the data received.</p>
 
 
     <h5>MangadexClient class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -246,7 +247,7 @@ response body of the data received.</p>
 <footer>
   <span class="no-break">
     mangadex_library
-      2.0.3
+      2.0.5
   </span>
 
   
