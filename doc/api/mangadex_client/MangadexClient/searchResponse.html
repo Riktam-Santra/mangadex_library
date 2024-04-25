@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the searchResponse method from the MangadexClient class, for the Dart programming language.">
+  <title>searchResponse method - MangadexClient class - mangadex_client library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_client/mangadex_client-library.html">mangadex_client.dart</a></li>
+    <li><a href="../../mangadex_client/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">searchResponse method</li>
+  </ol>
+  <div class="self-name">searchResponse</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="mangadex_client&#47;MangadexClient-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-method">searchResponse</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.dart.dev/stable/3.3.4/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/http/1.2.1/http/Response-class.html">Response</a></span>&gt;</span></span>
+<span class="name ">searchResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="searchResponse-param-title">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-limit"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">limit</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-offset"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">offset</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-authors"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">authors</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-artists"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">artists</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-year"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">year</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-includedTags"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includedTags</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-includedTagsMode"><span class="type-annotation"><a href="../../mangadex_client/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">includedTagsMode</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-excludedTags"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">excludedTags</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-excludedTagsMode"><span class="type-annotation"><a href="../../mangadex_client/TagsMode.html">TagsMode</a>?</span> <span class="parameter-name">excludedTagsMode</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-status"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/MangaStatus.html">MangaStatus</a></span>&gt;</span>?</span> <span class="parameter-name">status</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-originalLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">originalLanguage</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-excludedOriginalLanguages"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">excludedOriginalLanguages</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-availableTranslatedLanguage"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/LanguageCodes.html">LanguageCodes</a></span>&gt;</span>?</span> <span class="parameter-name">availableTranslatedLanguage</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-publicationDemographic"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/PublicDemographic.html">PublicDemographic</a></span>&gt;</span>?</span> <span class="parameter-name">publicationDemographic</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-ids"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">ids</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-contentRating"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/ContentRating.html">ContentRating</a></span>&gt;</span>?</span> <span class="parameter-name">contentRating</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-createdAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createdAtSince</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-updatedAtSince"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updatedAtSince</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-includes"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">includes</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-group"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">group</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-orders"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../mangadex_client/SearchOrders.html">SearchOrders</a></span>, <span class="type-parameter"><a href="../../mangadex_client/OrderDirections.html">OrderDirections</a></span>&gt;</span>?</span> <span class="parameter-name">orders</span>, </span></li>
+<li><span class="parameter" id="searchResponse-param-hasAvailableChapters"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.3.4/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">hasAvailableChapters</span>}</span></li>
+</ol>)
+
+      <div class="features"><span class="feature">inherited</span></div>
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Endpoint used: <code>GET /manga</code></p>
+<p>Gets manga search results
+takes in optional parameters to filter out content
+and returns the query data in a <code>Search</code> class instance</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;http.Response&gt; searchResponse({
+  String? title,
+  int? limit,
+  int? offset,
+  List&lt;String&gt;? authors,
+  List&lt;String&gt;? artists,
+  int? year,
+  List&lt;String&gt;? includedTags,
+  TagsMode? includedTagsMode,
+  List&lt;String&gt;? excludedTags,
+  TagsMode? excludedTagsMode,
+  List&lt;MangaStatus&gt;? status,
+  List&lt;LanguageCodes&gt;? originalLanguage,
+  List&lt;LanguageCodes&gt;? excludedOriginalLanguages,
+  List&lt;LanguageCodes&gt;? availableTranslatedLanguage,
+  List&lt;PublicDemographic&gt;? publicationDemographic,
+  List&lt;String&gt;? ids,
+  List&lt;ContentRating&gt;? contentRating,
+  String? createdAtSince,
+  String? updatedAtSince,
+  List&lt;String&gt;? includes,
+  String? group,
+  Map&lt;SearchOrders, OrderDirections&gt;? orders,
+  bool? hasAvailableChapters,
+}) async {
+  var unencodedPath = &#39;&#47;manga&#39;;
+  var _title = title != null ? &#39;&amp;title=$title&#39; : &#39;&#39;;
+  var _authors = &#39;&#39;;
+  if (authors != null) {
+    authors.forEach((element) {
+      _authors = _authors + &#39;&amp;authors[]=$element&#39;;
+    });
+  }
+  var _limit = limit != null ? &#39;&amp;limit=$limit&#39; : &#39;&#39;;
+  var _offset = offset != null ? &#39;&amp;offset=$offset&#39; : &#39;&#39;;
+  var _artists = &#39;&#39;;
+  if (artists != null) {
+    artists.forEach((element) {
+      _artists = _artists + &#39;&amp;artists[]=$element&#39;;
+    });
+  }
+  var _year = year != null ? &#39;&amp;year=$year&#39; : &#39;&#39;;
+  var _includedTags = &#39;&#39;;
+  if (includedTags != null) {
+    includedTags.forEach((element) {
+      _includedTags = _includedTags + &#39;&amp;includedTags[]=$element&#39;;
+    });
+  }
+  var _publicationDemographic = &#39;&#39;;
+  if (publicationDemographic != null) {
+    publicationDemographic.forEach((element) {
+      _publicationDemographic = _publicationDemographic +
+          &#39;&amp;publicationDemographic[]=${EnumUtils.parsePublicDemographicFromEnum(element)}&#39;;
+    });
+  }
+  var _includedTagsMode = &#39;&#39;;
+  if (includedTagsMode != null) {
+    _includedTagsMode = EnumUtils.parseTagModeFromEnum(includedTagsMode);
+  }
+  var _excludedTags = &#39;&#39;;
+  if (excludedTags != null) {
+    excludedTags.forEach((element) {
+      _excludedTags = _excludedTags + &#39;&amp;excludedTags[]=$element&#39;;
+    });
+  }
+  var _excludedTagsMode = &#39;&#39;;
+  if (excludedTagsMode != null) {
+    _excludedTagsMode = EnumUtils.parseTagModeFromEnum(excludedTagsMode);
+  }
+  var _status = &#39;&#39;;
+  if (status != null) {
+    status.forEach((element) {
+      _status = _status +
+          &#39;&amp;status[]=${EnumUtils.parseMangaStatusFromEnum(element)}&#39;;
+    });
+  }
+
+  var _originalLanguage = &#39;&#39;;
+  if (originalLanguage != null) {
+    originalLanguage.forEach((element) {
+      _originalLanguage = _originalLanguage +
+          &#39;&amp;originalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+  var _excludedOriginalLanguage = &#39;&#39;;
+  if (excludedOriginalLanguages != null) {
+    excludedOriginalLanguages.forEach((element) {
+      _excludedOriginalLanguage = _excludedOriginalLanguage +
+          &#39;&amp;excludedOriginalLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+  var _availableTranslatedLanguage = &#39;&#39;;
+  if (availableTranslatedLanguage != null) {
+    availableTranslatedLanguage.forEach((element) {
+      _availableTranslatedLanguage = _availableTranslatedLanguage +
+          &#39;&amp;availableTranslatedLanguage[]=${EnumUtils.parseLanguageCodeFromEnum(element)}&#39;;
+    });
+  }
+
+  var _ids = &#39;&#39;;
+  if (ids != null) {
+    ids.forEach((element) {
+      _ids = _ids + &#39;&amp;ids[]=$element&#39;;
+    });
+  }
+  var _contentRating = &#39;&#39;;
+  if (contentRating != null) {
+    contentRating.forEach((element) {
+      _contentRating = _contentRating +
+          &#39;&amp;contentRating[]=${EnumUtils.parseContentRatingFromEnum(element)}&#39;;
+    });
+  }
+  var _includes = &#39;&#39;;
+  if (includes != null) {
+    includes.forEach((element) {
+      _includes = _includes + &#39;&amp;includes[]=$element&#39;;
+    });
+  }
+  var _createdAtSince =
+      createdAtSince != null ? &#39;&amp;createdAtSince=$createdAtSince&#39; : &#39;&#39;;
+  var _updatedAtSince =
+      updatedAtSince != null ? &#39;&amp;updatedAtSince=$updatedAtSince&#39; : &#39;&#39;;
+  var _group = group != null ? &#39;&amp;group=$group&#39; : &#39;&#39;;
+  var _order = &#39;&#39;;
+  if (orders != null) {
+    orders.entries.forEach((element) {
+      _order = _order +
+          &#39;&amp;order[${EnumUtils.parseSearchOrdersFromEnum(element.key)}]=${EnumUtils.parseOrderDirectionFromEnum(element.value)}&#39;;
+    });
+  } else {
+    _order = &#39;&amp;order[latestUploadedChapter]=desc&#39;;
+  }
+
+  final url =
+      &#39;https:&#47;&#47;$AUTHORITY$unencodedPath?$_title$_limit$_offset$_authors$_artists$_year$_includedTags$_includedTagsMode$_excludedTags$_excludedTagsMode$_status$_originalLanguage$_excludedOriginalLanguage$_availableTranslatedLanguage$_publicationDemographic$_ids$_contentRating$_createdAtSince$_updatedAtSince$_includes$_group$_order&#39;;
+  var httpResponse = await http.get(Uri.parse(url),
+      headers: {HttpHeaders.contentTypeHeader: &#39;application&#47;json&#39;});
+  return httpResponse;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">mangadex_library</a></li>
+    <li><a href="../../mangadex_client/mangadex_client-library.html">mangadex_client</a></li>
+    <li><a href="../../mangadex_client/MangadexClient-class.html">MangadexClient</a></li>
+    <li class="self-crumb">searchResponse method</li>
+</ol>
+
+
+    <h5>MangadexClient class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    mangadex_library
+      2.0.5
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

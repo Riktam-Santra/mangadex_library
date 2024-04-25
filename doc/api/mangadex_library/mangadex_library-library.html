@@ -29,7 +29,7 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">mangadex_library</a></li>
-    <li class="self-crumb">mangadex_library library</li>
+    <li class="self-crumb">mangadex_library.dart</li>
   </ol>
   <div class="self-name">mangadex_library</div>
   <form class="search navbar-right" role="search">
@@ -56,39 +56,36 @@
       data-below-sidebar="mangadex_library&#47;mangadex_library-library-sidebar.html">
       
       <div>
-<h1><span class="kind-library">mangadex_library</span> library 
+        
+
+        <h1>
+          <span class="kind-library">mangadex_library</span>
+          library 
  
-</h1></div>
+
+        </h1>
+      </div>
 
     
+<section class="desc markdown">
+  <p>mangadex_library is a api helper for the Mangadex API (<a href="https://api.mangadex.org">https://api.mangadex.org</a>)</p>
+<p>It offers various functions required to interact with the API and tries to
+eleminate the boiler plate.</p>
+</section>
 
 
     <section class="summary offset-anchor" id="classes">
       <h2>Classes</h2>
 
       <dl>
-        <dt id="CustomListAttributes">
-  <span class="name "><a href="../mangadex_library/CustomListAttributes-class.html">CustomListAttributes</a></span> 
+        <dt id="MangadexPersonalClient">
+  <span class="name "><a href="../mangadex_library/MangadexPersonalClient-class.html">MangadexPersonalClient</a></span> 
 
 </dt>
 <dd>
-  
-</dd>
-
-        <dt id="CustomListData">
-  <span class="name "><a href="../mangadex_library/CustomListData-class.html">CustomListData</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="MangadexClient">
-  <span class="name "><a href="../mangadex_library/MangadexClient-class.html">MangadexClient</a></span> 
-
-</dt>
-<dd>
-  
+  Creates a Personal Mangadex Client (<a href="https://api.mangadex.org/docs/02-authentication/personal-clients/">https://api.mangadex.org/docs/02-authentication/personal-clients/</a>)
+This class requires you to enter a client ID and a client Secret, both can be generated from your
+mangadex account. The class extends <a href="../mangadex_client/MangadexClient-class.html">MangadexClient</a> which is the base building class for all clients.
 </dd>
 
       </dl>
@@ -99,132 +96,9 @@
 
 
 
-    <section class="summary offset-anchor" id="enums">
-      <h2>Enums</h2>
-
-      <dl>
-        <dt id="ChapterOrders">
-  <span class="name "><a href="../mangadex_library/ChapterOrders.html">ChapterOrders</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="ContentRating">
-  <span class="name "><a href="../mangadex_library/ContentRating.html">ContentRating</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="CoverOrders">
-  <span class="name "><a href="../mangadex_library/CoverOrders.html">CoverOrders</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="FutureUpdates">
-  <span class="name "><a href="../mangadex_library/FutureUpdates.html">FutureUpdates</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="LanguageCodes">
-  <span class="name "><a href="../mangadex_library/LanguageCodes.html">LanguageCodes</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="MangaStatus">
-  <span class="name "><a href="../mangadex_library/MangaStatus.html">MangaStatus</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="OrderDirections">
-  <span class="name "><a href="../mangadex_library/OrderDirections.html">OrderDirections</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="PublicDemographic">
-  <span class="name "><a href="../mangadex_library/PublicDemographic.html">PublicDemographic</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="ReadingStatus">
-  <span class="name "><a href="../mangadex_library/ReadingStatus.html">ReadingStatus</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="ScanlationOrders">
-  <span class="name "><a href="../mangadex_library/ScanlationOrders.html">ScanlationOrders</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="SearchOrders">
-  <span class="name "><a href="../mangadex_library/SearchOrders.html">SearchOrders</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="TagsMode">
-  <span class="name "><a href="../mangadex_library/TagsMode.html">TagsMode</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-        <dt id="Visibility">
-  <span class="name "><a href="../mangadex_library/Visibility.html">Visibility</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-      </dl>
-    </section>
 
 
-    <section class="summary offset-anchor" id="exceptions">
-      <h2>Exceptions / Errors</h2>
 
-      <dl>
-        <dt id="MangadexServerException">
-  <span class="name "><a href="../mangadex_server_exception/MangadexServerException-class.html">MangadexServerException</a></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-      </dl>
-    </section>
 
   </div> <!-- /.main-content -->
 
@@ -238,13 +112,14 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">mangadex_library</a></li>
-    <li class="self-crumb">mangadex_library library</li>
+    <li class="self-crumb">mangadex_library.dart</li>
 </ol>
 
 
     <h5><span class="package-name">mangadex_library</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
+      <li><a href="../mangadex_client/mangadex_client-library.html">mangadex_client</a></li>
       <li><a href="../mangadex_library/mangadex_library-library.html">mangadex_library</a></li>
       <li><a href="../mangadex_server_exception/mangadex_server_exception-library.html">mangadex_server_exception</a></li>
 </ol>
@@ -260,7 +135,7 @@
 <footer>
   <span class="no-break">
     mangadex_library
-      2.0.3
+      2.0.5
   </span>
 
   

@@ -481,3 +481,9 @@
 
 ## 2.0.4
 - Fixed incorrect class use in Cover.dart
+
+## 2.0.5
+- Changed the Client class of MangadexClient to PersonalMangadexClient for separating Public and Private clients in the future. As of now Mangadex Client has been converted into a base class for MangadexPrivateClient (Public client to be added when Mangadex introduces one).
+- Added login and refresh methods that uses https://auth.mangadex.org instead of the deprecated login methods.
+- login and refresh methods now return a Token class instance rather than a Login class instance.
+- Removed Login class.

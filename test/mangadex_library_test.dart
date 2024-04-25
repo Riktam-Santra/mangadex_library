@@ -1,22 +1,31 @@
 // ignore_for_file: omit_local_variable_types
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart';
-import 'package:mangadex_library/mangadex_library.dart';
-import 'package:mangadex_library/src/enums/language_codes.dart';
-import 'package:mangadex_library/src/models/aggregate/aggregate.dart';
-import 'package:mangadex_library/src/enums/order_enums.dart';
-import 'package:mangadex_library/src/models/feed/manga_feed.dart';
-import 'package:mangadex_library/src/models/search/search.dart';
+import 'package:mangadex_library/mangadex_client.dart';
+import 'package:mangadex_library/src/client_types/personal_client.dart';
 import 'package:mangadex_library/src/util/utils.dart';
 import 'package:test/test.dart';
 
-void main() {
-  MangadexClient client =
-      MangadexClient(refreshDuration: Duration(seconds: 10));
+void main() async {
+  const username = 'YOUR_USERNAME';
+  const password = 'YOUR_PASSWORD';
+  const clientId = 'YOUR_CLIENT_ID';
+  const clientSecret = 'YOUR_CLIENT_SECRET';
+  MangadexPersonalClient client = MangadexPersonalClient(
+    clientId: clientId,
+    clientSecret: clientSecret,
+    refreshDuration: Duration(seconds: 5),
+    onRefresh: () {
+      log('Token refreshed successfully');
+    },
+  );
 
-  test('Login', () => client.login('riksantra', 'Sikkim123.'));
+  await Future.delayed(Duration(seconds: 10));
+
+  test('Login', () => client.login(username, password));
   test('Retrieve urls', () async {
     Search s = await client.search(includes: [
       'cover_art'
@@ -87,8 +96,6 @@ void main() {
   test('Aggregate', () async {
     var data = await client
         .getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
-    print(data.body);
-    // print(data.body);
     var parsedData = Aggregate.fromJson(jsonDecode(data.body));
     expect('ok', parsedData.result);
   });

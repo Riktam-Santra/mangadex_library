@@ -1,19 +1,18 @@
-import 'dart:developer';
-
-import 'package:mangadex_library/mangadex_library.dart';
+import 'package:mangadex_library/mangadex_client.dart';
 import 'package:mangadex_library/mangadex_server_exception.dart';
+import 'package:mangadex_library/src/client_types/personal_client.dart';
 
 void main() {
   printFilenames();
 }
 
 void printFilenames() async {
-  var client = MangadexClient(
-    refreshDuration: Duration(seconds: 5),
-    onRefresh: () {
-      log('Token refreshed!');
-    },
-  );
+  const clientId = 'YOUR_CLIENT_ID';
+  const clientSecret = 'YOUR_CLIENT_SECRET';
+  // Please refer to https://api.mangadex.org/docs/02-authentication/personal-clients/
+  // for retrieving Client ID and Client Secret
+  final client =
+      MangadexPersonalClient(clientId: clientId, clientSecret: clientSecret);
   // this function, needs a mangadex account username and password supplied
   // to retrive login token
   var username = 'USERNAME'; // Put your username here
@@ -23,12 +22,8 @@ void printFilenames() async {
   //two String parameters, username and password and returns
   //an instance of the Login class
   try {
-    var loginData = await client.login(username, password);
-    // ignore: unused_local_variable
-    var token = loginData.token!
-        .session; // this sets the token variable to store the session token obtained using
-    //the login function, it is a String value.
-    // The token is not required as of now but is only for demonstration of the login function.
+    //This login functions logs the user in and sets the login tokens.
+    await client.login(username, password);
 
     var searchData = await client.search(
         query:

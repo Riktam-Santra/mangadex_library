@@ -112,7 +112,8 @@ mixin UserRepository {
   /// Endpoint used: `GET /user/follows/user`
   ///
   /// Returns a http response of the all the Users that the user follows,
-  /// the [sessionToken] is the session token obtained using the[login] function
+  /// the [sessionToken] is the session token obtained using the login function
+  /// of the client.
   Future<http.Response> getUserFollowedUsersResponse(String sessionToken,
       {int? offset, int? limit}) async {
     final _offset = '&offset=${offset ?? 0}';
