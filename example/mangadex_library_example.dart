@@ -9,6 +9,8 @@ void main() {
 void printFilenames() async {
   const clientId = 'YOUR_CLIENT_ID';
   const clientSecret = 'YOUR_CLIENT_SECRET';
+  // Please refer to https://api.mangadex.org/docs/02-authentication/personal-clients/
+  // for retrieving Client ID and Client Secret
   final client =
       MangadexPersonalClient(clientId: clientId, clientSecret: clientSecret);
   // this function, needs a mangadex account username and password supplied
