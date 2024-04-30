@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:mangadex_library/mangadex_client.dart';
@@ -10,8 +11,12 @@ import 'package:mangadex_library/src/util/utils.dart';
 import 'package:test/test.dart';
 
 void main() async {
-  const username = 'YOUR_USERNAME';
-  const password = 'YOUR_PASSWORD';
+  // Using env to allow github actions to run tests
+  // without exposing username and password of my mangadex account
+  final env = Platform.environment;
+
+  final username = env['USERNAME'] ?? '';
+  final password = env['PASSWORD'] ?? '';
   const clientId = 'YOUR_CLIENT_ID';
   const clientSecret = 'YOUR_CLIENT_SECRET';
   MangadexPersonalClient client = MangadexPersonalClient(
