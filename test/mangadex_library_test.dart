@@ -50,6 +50,8 @@ void main() async {
     expect('ok', data.result!);
   });
   group('Search Function', () {
+    // new client created for anonymous function check
+    MangadexPersonalClient client = MangadexPersonalClient();
     var query = 'oregairu';
     test('Search function check with only query', () async {
       print('searching for manga with query value: $query');

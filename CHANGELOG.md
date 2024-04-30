@@ -487,3 +487,6 @@
 - Added login and refresh methods that uses https://auth.mangadex.org instead of the deprecated login methods.
 - login and refresh methods now return a Token class instance rather than a Login class instance.
 - Removed Login class.
+
+## 2.0.6
+- Allowed client id and client secret to be null while initializing PersonalMangadexClient, this allows for anonymous searching and other functions that don't require a logged in user's auth token
