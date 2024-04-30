@@ -12,13 +12,13 @@ import 'package:test/test.dart';
 
 void main() async {
   // Using env to allow github actions to run tests
-  // without exposing username and password of my mangadex account
+  // without exposing info of my mangadex account
   final env = Platform.environment;
 
   final username = env['USERNAME'] ?? '';
   final password = env['PASSWORD'] ?? '';
-  const clientId = 'YOUR_CLIENT_ID';
-  const clientSecret = 'YOUR_CLIENT_SECRET';
+  final clientId = env['CLIENT_ID'] ?? '';
+  final clientSecret = env['CLIENT_SECRET'] ?? '';
   MangadexPersonalClient client = MangadexPersonalClient(
     clientId: clientId,
     clientSecret: clientSecret,
