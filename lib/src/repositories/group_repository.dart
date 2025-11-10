@@ -10,7 +10,7 @@ import '../models/scanlation/scanlation.dart';
 import '../models/scanlation/scanlations_result.dart';
 import '../util/enum_utils.dart';
 
-mixin GroupRepository {
+class GroupRepository {
 //scanlation group related
 
   /// Endpoint used: `GET /group`

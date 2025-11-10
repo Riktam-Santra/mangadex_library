@@ -1,17 +1,14 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
 import 'package:mangadex_library/src/repositories/repository.dart';
 import 'package:mangadex_library/src/models/login/token.dart';
-
-import 'src/repositories/auth_repository.dart';
 
 export './mangadex_server_exception.dart';
 export './src/enums/enums.dart';
 export './src/models/models.dart';
 
-class MangadexClient extends Repositories {
+class MangadexClient {
+  final Repositories repositories;
   // Whether to autoSave tokens or not
   // final bool autoSave;
 
@@ -40,7 +37,7 @@ class MangadexClient extends Repositories {
       // this.autoSave = false,
       // this.saveDirectory,
       // this.filename,
-      this.onRefresh}) {
+      this.onRefresh}) : repositories = Repositories() {
     // if (saveDirectory != null && filename != null && autoSave != false) {
     //   loadFromLocation(saveDirectory!, filename)
     //       .then((value) => _token = value);
@@ -49,7 +46,7 @@ class MangadexClient extends Repositories {
         Timer.periodic(refreshDuration ?? Duration(minutes: 14), (timer) async {
       if (_token != null) {
         try {
-          _token = (await AuthRepository.refresh(_token!.refreshToken));
+          _token = (await repositories.auth.refresh(_token!.refreshToken));
           if (onRefresh != null) {
             onRefresh!();
           }
@@ -71,14 +68,6 @@ class MangadexClient extends Repositories {
 
   Token? get token => _token;
 
-  static Future<void> saveToLocation(
-      Token token, Directory directory, String? filename) async {
-    var file = File(directory.path + (filename ?? 'userData.json'));
-    if (!(await file.exists())) {
-      await file.create(recursive: true);
-    }
-    await file.writeAsString(jsonEncode(token));
-  }
 
   String constructPageUrl(
       String baseUrl, bool dataSaver, String chapterHash, String filename) {
@@ -86,21 +75,6 @@ class MangadexClient extends Repositories {
     return '$baseUrl/$dataMode/$chapterHash/$filename';
   }
 
-  static Future<Token?> loadFromLocation(
-      Directory directory, String? filename) async {
-    var file = File(directory.path + (filename ?? 'userData.json'));
-    if (await file.exists()) {
-      var data = await file.readAsString();
-
-      try {
-        Map<String, dynamic> json = jsonDecode(data);
-        return Token.fromJson(json);
-      } on Exception {
-        return null;
-      }
-    }
-    return null;
-  }
 
   void dispose() {
     _refreshTimer.cancel();

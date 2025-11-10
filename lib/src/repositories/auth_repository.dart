@@ -9,11 +9,11 @@ import 'package:http/http.dart' as http;
 
 import '../models/login/token_check.dart';
 
-mixin AuthRepository {
+class AuthRepository {
   /// Endpoint used: `POST /realms/mangadex/protocol/openid-connect/token`
   ///
   /// Takes in a [refreshToken] token and returns a *http response* of a new refresh token
-  static Future<Token> loginPersonalClient(String username, String password,
+  Future<Token> loginPersonalClient(String username, String password,
       String clientId, String clientSecret) async {
     final unencodedPath = '/realms/mangadex/protocol/openid-connect/token';
     final uri = 'https://$AUTH_AUTHORITY$unencodedPath';
@@ -34,7 +34,7 @@ mixin AuthRepository {
   /// Takes in a [refreshToken] token and returns a *http response* of a new refresh token
   @Deprecated(
       'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
-  static Future<http.Response> getRefreshResponse(String refreshToken) async {
+  Future<http.Response> getRefreshResponse(String refreshToken) async {
     final unencodedPath = '/realms/mangadex/protocol/openid-connect/token';
     final uri = 'https://$AUTHORITY$unencodedPath';
     var response = await http.post(Uri.parse(uri),
@@ -43,7 +43,7 @@ mixin AuthRepository {
     return response;
   }
 
-  static Future<http.Response> getRefreshResponseForPersonalClient(
+  Future<http.Response> getRefreshResponseForPersonalClient(
       String refreshToken, String clientId, String clientSecret) async {
     final unencodedPath = '/realms/mangadex/protocol/openid-connect/token';
     final uri = 'https://$AUTH_AUTHORITY$unencodedPath';
@@ -68,7 +68,7 @@ mixin AuthRepository {
   /// containing the new token
   @Deprecated(
       'This function is deprecated until further actions are taken my mangadex to introduce the new login methods')
-  static Future<Token> refresh(String refreshToken) async {
+  Future<Token> refresh(String refreshToken) async {
     var response = await getRefreshResponse(refreshToken);
     try {
       return Token.fromJson(jsonDecode(response.body));
@@ -77,7 +77,7 @@ mixin AuthRepository {
     }
   }
 
-  static Future<Token> refreshForPersonalClient(
+  Future<Token> refreshForPersonalClient(
       String refreshToken, String clientId, String clientSecret) async {
     var response = await getRefreshResponseForPersonalClient(
         refreshToken, clientId, clientSecret);
@@ -92,7 +92,7 @@ mixin AuthRepository {
   ///
   /// Returns an http response with data on whether the [sessionToken] is authenticated and the
   /// user has permissions.
-  static Future<http.Response> checkTokenResponse(String sessionToken) async {
+  Future<http.Response> checkTokenResponse(String sessionToken) async {
     final unencodedPath = '/auth/check';
     final uri = 'https://$AUTHORITY$unencodedPath';
     var response = await http.get(Uri.parse(uri), headers: {
@@ -106,7 +106,7 @@ mixin AuthRepository {
   ///
   /// Returns an [AuthenticationCheck] class instance with data on whether the [sessionToken] is authenticated and the
   /// user's permissions.
-  static Future<AuthenticationCheck> checkToken(String sessionToken) async {
+  Future<AuthenticationCheck> checkToken(String sessionToken) async {
     var response = await checkTokenResponse(sessionToken);
     try {
       return AuthenticationCheck.fromJson(jsonDecode(response.body));
@@ -118,7 +118,7 @@ mixin AuthRepository {
   /// Endpoint used: `POST /auth/logout`
   ///
   ///Logs out the user pointed out by [sessionToken] and returns the response body
-  static Future<http.Response> logoutResponse(String sessionToken) async {
+  Future<http.Response> logoutResponse(String sessionToken) async {
     var unencodedPath = '/auth/logout';
     var uri = 'https://$AUTHORITY$unencodedPath';
     var response = await http.post(Uri.parse(uri), headers: {
@@ -131,7 +131,7 @@ mixin AuthRepository {
   /// Endpoint used: `POST /auth/logout`
   ///
   ///Logs out the user pointed out by [sessionToken] and returns a [Result] class instance of the body
-  static Future<Result> logout(String sessionToken) async {
+  Future<Result> logout(String sessionToken) async {
     var response = await logoutResponse(sessionToken);
     try {
       return Result.fromJson(jsonDecode(response.body));

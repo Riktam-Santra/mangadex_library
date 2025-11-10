@@ -11,7 +11,7 @@ import '../enums/language_codes.dart';
 import '../enums/order_enums.dart';
 import '../models/chapter/chapter_data.dart';
 
-mixin ChapterRepository {
+class ChapterRepository {
   /// Endpoint used: `GET /chapter`
   ///
   ///Returns the http response of a list of chapters for [mangaId]

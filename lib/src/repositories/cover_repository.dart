@@ -9,7 +9,7 @@ import '../enums/order_enums.dart';
 import '../models/cover/cover.dart';
 import '../util/enum_utils.dart';
 
-mixin CoverRepository {
+class CoverRepository {
   /// Endpoint used: `GET /cover`
   ///
   ///returns a https response with cover art details for a manga with given [mangaIds] or uuid,

@@ -12,7 +12,7 @@ import '../models/user/user_followed_groups/user_followed_groups.dart';
 import '../models/user/user_followed_manga/user_followed_manga.dart';
 import '../models/user/user_followed_users/user_followed_users.dart';
 
-mixin UserRepository {
+class UserRepository {
   /// Endpoint used: `GET /user/me`
   ///
   /// Returns a http response of the user details associated with the [sessionToken]

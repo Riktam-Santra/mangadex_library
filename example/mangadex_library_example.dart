@@ -25,7 +25,7 @@ void printFilenames() async {
     //This login functions logs the user in and sets the login tokens.
     await client.login(username, password);
 
-    var searchData = await client.search(
+    var searchData = await client.repositories.manga.search(
         query:
             'oregairu'); //This is a search function that queries mangadex for the name of a manga
     // it returns a Search class instance
@@ -36,7 +36,7 @@ void printFilenames() async {
     //for demonstration we are talking the manga ID of only the first search result
     //Manga ID is unique to every manga and therefore is required to obtain any information regarding it
     //For example, chapter pages and thumbnails.
-    var chapterData = await client.getChapters(
+    var chapterData = await client.repositories.chapter.getChapters(
         mangaID!); //This function returns an instance of the ChapterData class,
     // it contains info on all the chapters of the manga ID it has been provided.
 
@@ -47,7 +47,7 @@ void printFilenames() async {
     //Chapter ID is required to access info of the desired chapter.
     //Chapter Hash is required for requesting manga pages.
     //All Chapter Hash and Chapter filenames can be requested by using the getBaseUrl() function
-    var baseUrl = await client.getBaseUrl(chapterID!);
+    var baseUrl = await client.repositories.atHome.getBaseUrl(chapterID!);
     //This look prints all urls to all the pages of the chapterID
     baseUrl.chapter!.dataSaver!.forEach((filename) {
       print(client.constructPageUrl(

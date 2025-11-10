@@ -8,7 +8,7 @@ import '../constants/authority.dart';
 import '../models/author/author_info.dart';
 import '../models/author/author_search_results.dart';
 
-mixin AuthorRepository {
+class AuthorRepository {
 //Author related
   /// Endpoint used: `GET /author`
   ///

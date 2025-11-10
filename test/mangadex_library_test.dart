@@ -32,7 +32,7 @@ void main() async {
 
   test('Login', () => client.login(username, password));
   test('Retrieve urls', () async {
-    Search s = await client.search(includes: [
+    Search s = await client.repositories.manga.search(includes: [
       'cover_art'
     ], orders: {
       SearchOrders.followedCount: OrderDirections.descending,
@@ -45,7 +45,7 @@ void main() async {
     expect(true, map.isNotEmpty);
   });
   test('Get Custom List', () async {
-    var data = await client
+    var data = await client.repositories.list
         .getSingleCustomList('44224004-1fad-425e-b416-45b46b74d3d1');
     expect('ok', data.result!);
   });
@@ -55,13 +55,13 @@ void main() async {
     var query = 'oregairu';
     test('Search function check with only query', () async {
       print('searching for manga with query value: $query');
-      Search data = await client.search(query: query);
+      Search data = await client.repositories.manga.search(query: query);
 
       expect('ok', data.result);
     });
     test('Search function check with query and order', () async {
       print('searching for manga with query value: $query');
-      var data = await client.search(
+      var data = await client.repositories.manga.search(
         query: query,
         orders: {SearchOrders.createdAt: OrderDirections.ascending},
       );
@@ -72,7 +72,7 @@ void main() async {
     var mangaId = '0296dc0b-7635-4154-927a-33c2244c4503';
     test('Fetch manga details', () async {
       print('fetching manga details for manga with UUID: $mangaId');
-      var data = await client.getMangaDataByMangaId(mangaId);
+      var data = await client.repositories.manga.getMangaDataByMangaId(mangaId);
       expect('ok', data.result);
     });
   });
@@ -82,14 +82,14 @@ void main() async {
     var chapterId = '';
     test('Fetch manga chapter data', () async {
       print('fetching manga details for manga with UUID: $mangaId');
-      var data = await client.getChapters(mangaId);
+      var data = await client.repositories.chapter.getChapters(mangaId);
       chapterId = data.data![0].id!;
       expect('ok', data.result);
     });
     test('Get chapter by Id', () async {
       print(
           'fetching chapter with UUID $chapterId for manga with UUID $mangaId');
-      var data = await client.getBaseUrl(chapterId);
+      var data = await client.repositories.atHome.getBaseUrl(chapterId);
 
       pageUrl = client.constructPageUrl(data.baseUrl!, true,
           data.chapter!.hash!, data.chapter!.dataSaver!.first);
@@ -101,14 +101,14 @@ void main() async {
     });
   });
   test('Aggregate', () async {
-    var data = await client
+    var data = await client.repositories.manga
         .getMangaAggregateResponse('99620a4f-2c05-41f7-99b0-9467041bef3b');
     var parsedData = Aggregate.fromJson(jsonDecode(data.body));
     expect('ok', parsedData.result);
   });
 
   test('Get manga feed', () async {
-    var data = await client.getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
+    var data = await client.repositories.manga.getMangaFeed('23b51846-bec4-41e4-a9a2-a034064d01eb',
         translatedLanguage: [LanguageCodes.en]);
 
     for (final MangaFeedData manga in data.data ?? []) {

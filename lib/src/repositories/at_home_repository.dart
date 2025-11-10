@@ -7,7 +7,7 @@ import '../../mangadex_server_exception.dart';
 import '../constants/authority.dart';
 import '../models/common/base_url.dart';
 
-mixin AtHomeRepository {
+class AtHomeRepository {
   /// Endpoint used: `GET /at-home/server/{id}`
   ///
 // Functions to get base url for a chapter ID

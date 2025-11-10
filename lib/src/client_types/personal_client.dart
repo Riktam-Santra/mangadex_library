@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:mangadex_library/mangadex_client.dart';
-import 'package:mangadex_library/src/repositories/auth_repository.dart';
+import 'package:mangadex_library/src/client_types/client_type.dart';
 
 /// Creates a Personal Mangadex Client (https://api.mangadex.org/docs/02-authentication/personal-clients/)
 /// This class requires you to enter a client ID and a client Secret, both can be generated from your
 /// mangadex account. The class extends [MangadexClient] which is the base building class for all clients.
-class MangadexPersonalClient extends MangadexClient {
+class MangadexPersonalClient extends MangadexClient implements ClientType {
   late String? _clientId;
   late String? _clientSecret;
   MangadexPersonalClient(
@@ -34,7 +34,7 @@ class MangadexPersonalClient extends MangadexClient {
         if (super.tokenIsNotNull()) {
           try {
             super.setToken(
-              await AuthRepository.refreshForPersonalClient(
+              await super.repositories.auth.refreshForPersonalClient(
                   super.token!.refreshToken, _clientId!, _clientSecret!),
             );
             if (onRefresh != null) {
@@ -58,7 +58,7 @@ class MangadexPersonalClient extends MangadexClient {
     if (_clientId == null || _clientSecret == null) {
       throw Exception('ClientId or ClientSecret was not set');
     }
-    final authResponse = await AuthRepository.loginPersonalClient(
+    final authResponse = await super.repositories.auth.loginPersonalClient(
         username, password, _clientId!, _clientSecret!);
     super.setToken(authResponse);
   }
@@ -67,7 +67,7 @@ class MangadexPersonalClient extends MangadexClient {
     if (_clientId == null || _clientSecret == null) {
       throw Exception('ClientId or ClientSecret was not set');
     }
-    super.setToken(await AuthRepository.refreshForPersonalClient(
+    super.setToken(await super.repositories.auth.refreshForPersonalClient(
         refreshToken, _clientId!, _clientSecret!));
   }
 }

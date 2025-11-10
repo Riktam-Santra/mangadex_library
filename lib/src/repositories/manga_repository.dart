@@ -22,7 +22,7 @@ import '../enums/tag_modes.dart';
 import '../models/common/single_manga_data.dart';
 import '../models/search/search.dart';
 
-mixin MangaRepository {
+class MangaRepository {
   /// Endpoint used: `GET /manga`
   ///
   ///Gets manga search results

@@ -10,7 +10,7 @@ import '../models/common/result_ok.dart';
 import '../models/custom_lists/single_custom_list_response.dart';
 import '../util/enum_utils.dart';
 
-mixin ListRepository {
+class ListRepository {
   /// Endpoint used: `POST /list`
   ///
   ///Creates a custom list with the name [listName] and
